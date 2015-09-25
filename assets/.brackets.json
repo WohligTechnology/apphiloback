@@ -1,0 +1,6 @@
+{
+    "jscodehints.detectedExclusions": [
+        "C:/xampp/htdocs/backend-zeus/bower_components/jquery/src/outro.js",
+        "C:/xampp/htdocs/backend-zeus/bower_components/jquery/src/core/var/rsingleTag.js"
+    ]
+}

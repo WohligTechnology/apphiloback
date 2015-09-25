@@ -1,0 +1,21 @@
+{
+  "name": "BackendZeus",
+  "version": "1.0.0",
+  "homepage": "https://github.com/WohligTechnology/backend-zeus",
+  "authors": [
+    "Chintan Shah <chintan@wohlig.com>"
+  ],
+  "description": "BackendZeus",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.4",
+    "materialize": "~0.97.1"
+  }
+}
