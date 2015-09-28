@@ -3,9 +3,9 @@
         <h4 class="pad-left-15">Address Config</h4>
     </div>
     <form class="col s12" method="post" action="<?php echo site_url('site/editconfigsubmit');?>" enctype="multipart/form-data">
-<input type="hidden" id="normal-field" class="form-control" name="id" value="<?php echo set_value('id',$before->id);?>" style="display:none;">
+        <input type="hidden" id="normal-field" class="form-control" name="id" value="<?php echo set_value('id',$before->id);?>" style="display:none;">
 
-       <div class="row" style="display:none;">
+        <div class="row" style="display:none;">
             <div class="input-field col s6">
                 <label for="title">Title</label>
                 <input title="text" id="title" name="title" value="<?php echo set_value('title',$before->title);?>">
@@ -18,24 +18,29 @@
                 <label>Address</label>
             </div>
         </div>
-           <div class="row">
+        <div class="row">
             <div class="input-field col s6">
                 <label for="type">Email</label>
                 <input type="text" id="type" name="type" value="<?php echo set_value('type',$before->type);?>">
             </div>
         </div>
-          <div class="row">
+        <div class="row">
             <div class="input-field col s6">
                 <label for="text">Phone Number</label>
                 <input type="text" id="text" name="text" value="<?php echo set_value('text',$before->text);?>">
             </div>
         </div>
-       
+       <div class="row">
+            <div class="input-field col s12"><textarea name="description" class="materialize-textarea" length="600"><?php echo set_value( 'description',$before->description);?></textarea>
+                <label>Map Embed Link</label>
+            </div>
+        </div>
+
         <div class=" form-group">
             <label class="col-sm-2 control-label">&nbsp;</label>
             <div class="col-sm-4">
                 <button type="submit" class="btn btn-primary">Save</button>
-                <a href="<?php echo site_url("site/viewconfig"); ?>" class="btn btn-secondary">Cancel</a>
+                <a href="<?php echo site_url(" site/viewconfig "); ?>" class="btn btn-secondary">Cancel</a>
             </div>
         </div>
     </form>

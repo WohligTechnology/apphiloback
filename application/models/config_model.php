@@ -24,12 +24,12 @@ $this->db->where("id",$id);
 $query=$this->db->get("config")->row();
 return $query;
 }
-public function edit($id,$title,$content,$text,$image,$type)
+public function edit($id,$title,$content,$text,$image,$type,$description)
 {
     if($image){
     $text=$image;
     }
-$data=array("title" => $title,"content" => $content,"text" => $text,"image" => $image,"type" => $type);
+$data=array("title" => $title,"content" => $content,"text" => $text,"image" => $image,"type" => $type,"description" => $description);
 $this->db->where( "id", $id );
 $query=$this->db->update( "config", $data );
 return 1;
