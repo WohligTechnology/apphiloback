@@ -3,9 +3,9 @@ if ( !defined( "BASEPATH" ) )
 exit( "No direct script access allowed" );
 class frontmenu_model extends CI_Model
 {
-public function create($order,$parent,$status,$name,$json)
+public function create($order,$parent,$status,$name,$json,$image,$linktype,$link)
 {
-$data=array("order" => $order,"parent" => $parent,"status" => $status,"name" => $name,"json" => $json);
+$data=array("order" => $order,"parent" => $parent,"status" => $status,"name" => $name,"json" => $json,"image" => $image,"link" => $link,"linktype" => $linktype);
 $query=$this->db->insert( "webapp_frontmenu", $data );
 $id=$this->db->insert_id();
 if(!$query)
@@ -24,9 +24,9 @@ $this->db->where("id",$id);
 $query=$this->db->get("webapp_frontmenu")->row();
 return $query;
 }
-public function edit($id,$order,$parent,$status,$name,$json)
+public function edit($id,$order,$parent,$status,$name,$json,$image,$linktype,$link)
 {
-$data=array("order" => $order,"parent" => $parent,"status" => $status,"name" => $name,"json" => $json);
+$data=array("order" => $order,"parent" => $parent,"status" => $status,"name" => $name,"json" => $json,"image" => $image,"link" => $link,"linktype" => $linktype);
 $this->db->where( "id", $id );
 $query=$this->db->update( "webapp_frontmenu", $data );
 return 1;

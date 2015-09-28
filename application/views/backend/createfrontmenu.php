@@ -15,11 +15,7 @@
                     <input type="text" id="order" name="order" value="<?php echo set_value('order');?>">
                 </div>
             </div> 
-             <div class="row">
-                <div class="input-field col s6">
-                    <?php echo form_dropdown( 'parent',$parent,set_value( 'parent'), 'class="chzn-select form-control" 	data-placeholder="Choose a Accesslevel..."'); ?>
-                </div>
-            </div>
+
           
             <div class="row">
                 <div class="input-field col s6">
@@ -27,9 +23,33 @@
                 </div>
             </div>
         
-            <div class="row">
+                <div class="row">
+                <div class="input-field col s6">
+                    <?php echo form_dropdown( 'linktype',$linktype,set_value( 'linktype'), 'class="chzn-select form-control" 	data-placeholder="Choose a Accesslevel..."'); ?>
+                </div>
+            </div>
+            
+             <div class="row">
                 <div class="input-field col s6">
                     <?php echo form_dropdown( 'parent',$parent,set_value( 'parent'), 'class="chzn-select form-control" 	data-placeholder="Choose a Accesslevel..."'); ?>
+                </div>
+            </div>
+
+             <div class="row" style="display:none">
+                <div class="input-field col s6">
+                    <label for="link">link</label>
+                    <input type="text" id="link" name="link" value="<?php echo set_value('link');?>">
+                </div>
+            </div>
+              <div class="row">
+                <div class="file-field input-field col s12">
+                    <div class="btn">
+                        <span>Image</span>
+                        <input name="image" type="file" multiple>
+                    </div>
+                    <div class="file-path-wrapper">
+                        <input class="file-path validate" type="text" placeholder="Upload one or more files" value="<?php echo set_value('image');?>">
+                    </div>
                 </div>
             </div>
             <div class="row">

@@ -99,6 +99,24 @@ $elements[5]->field="`webapp_frontmenu`.`json`";
 $elements[5]->sort="1";
 $elements[5]->header="Json";
 $elements[5]->alias="json";
+    
+$elements[6]=new stdClass();
+$elements[6]->field="`webapp_frontmenu`.`image`";
+$elements[6]->sort="1";
+$elements[6]->header="image";
+$elements[6]->alias="image";
+    
+$elements[7]=new stdClass();
+$elements[7]->field="`webapp_frontmenu`.`linktype`";
+$elements[7]->sort="1";
+$elements[7]->header="linktype";
+$elements[7]->alias="linktype";
+    
+$elements[8]=new stdClass();
+$elements[8]->field="`webapp_frontmenu`.`link`";
+$elements[8]->sort="1";
+$elements[8]->header="link";
+$elements[8]->alias="link";
 
 $search=$this->input->get_post("search");
 $pageno=$this->input->get_post("pageno");

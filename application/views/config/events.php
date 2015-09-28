@@ -8,7 +8,7 @@
         <div class="row">
             <div class="input-field col s6">
                 <label for="title">Title</label>
-                <input type="text" id="title" name="title" value="<?php echo set_value('title');?>">
+                <input type="text" id="title" name="title" value="<?php echo set_value('title',$before->title);?>">
             </div>
         </div>
         <div class="row">
@@ -20,7 +20,7 @@
         </div>
         <div class="row">
             <div class="input-field col s6">
-                <select>
+                <select name="text">
                     <option value="">Want Event</option>
                     <option value="Drop down yes">Yes</option>
                     <option value="Drop down no">No</option>

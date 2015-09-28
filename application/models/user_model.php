@@ -260,7 +260,20 @@ class User_model extends CI_Model
 	{
 		$query=$this->db->query("SELECT * FROM `statuses`  ORDER BY `id` ASC")->result();
 		$return=array(
-            "" => "Select"
+            "" => "Status"
+		);
+		foreach($query as $row)
+		{
+			$return[$row->id]=$row->name;
+		}
+		
+		return $return;
+	}  
+    public function getlinktypedropdown()
+	{
+		$query=$this->db->query("SELECT * FROM `linktype`  ORDER BY `id` ASC")->result();
+		$return=array(
+            "" => "Link Type"
 		);
 		foreach($query as $row)
 		{

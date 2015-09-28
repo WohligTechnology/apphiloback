@@ -700,6 +700,7 @@ $json=array();
             $data["fieldjson"]=$json;
 $data[ 'status' ] =$this->user_model->getstatusdropdown();
 $data[ 'parent' ] =$this->user_model->getfrontmenudropdown();
+$data[ 'linktype' ] =$this->user_model->getlinktypedropdown();
 $data["title"]="Create frontmenu";
 $this->load->view("template",$data);
 }
@@ -728,7 +729,19 @@ $parent=$this->input->get_post("parent");
 $status=$this->input->get_post("status");
 $name=$this->input->get_post("name");
 $json=$this->input->get_post("json");
-if($this->frontmenu_model->create($order,$parent,$status,$name,$json)==0)
+$linktype=$this->input->get_post("linktype");
+$link=$this->input->get_post("link");
+     $config['upload_path'] = './uploads/';
+						$config['allowed_types'] = 'gif|jpg|png|jpeg';
+						$this->load->library('upload', $config);
+						$filename="image";
+						$image="";
+						if (  $this->upload->do_upload($filename))
+						{
+							$uploaddata = $this->upload->data();
+							$image=$uploaddata['file_name'];
+						}
+if($this->frontmenu_model->create($order,$parent,$status,$name,$json,$image,$linktype,$link)==0)
 $data["alerterror"]="New frontmenu could not be created.";
 else
 $data["alertsuccess"]="frontmenu created Successfully.";
@@ -743,6 +756,7 @@ $this->checkaccess($access);
 $data["page"]="editfrontmenu";
 $data[ 'parent' ] =$this->user_model->getfrontmenudropdown();
 $data[ 'status' ] =$this->user_model->getstatusdropdown();
+$data[ 'linktype' ] =$this->user_model->getlinktypedropdown();
 $data["title"]="Edit frontmenu";
 $data["before"]=$this->frontmenu_model->beforeedit($this->input->get("id"));
 $this->load->view("template",$data);
@@ -775,7 +789,26 @@ $parent=$this->input->get_post("parent");
 $status=$this->input->get_post("status");
 $name=$this->input->get_post("name");
 $json=$this->input->get_post("json");
-if($this->frontmenu_model->edit($id,$order,$parent,$status,$name,$json)==0)
+$linktype=$this->input->get_post("linktype");
+$link=$this->input->get_post("link");
+     $config['upload_path'] = './uploads/';
+						$config['allowed_types'] = 'gif|jpg|png|jpeg';
+						$this->load->library('upload', $config);
+						$filename="image";
+						$image="";
+						if (  $this->upload->do_upload($filename))
+						{
+							$uploaddata = $this->upload->data();
+							$image=$uploaddata['file_name'];
+						}
+
+						if($image=="")
+						{
+						$image=$this->gallery_model->getimagebyid($id);
+						   // print_r($image);
+							$image=$image->image;
+						}
+if($this->frontmenu_model->edit($id,$order,$parent,$status,$name,$json,$image,$linktype,$link)==0)
 $data["alerterror"]="New frontmenu could not be Updated.";
 else
 $data["alertsuccess"]="frontmenu Updated Successfully.";
