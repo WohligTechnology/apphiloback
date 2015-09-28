@@ -36,5 +36,10 @@ public function delete($id)
 $query=$this->db->query("DELETE FROM `slider` WHERE `id`='$id'");
 return $query;
 }
+     public function getimagebyid($id)
+	{
+		$query=$this->db->query("SELECT `image` FROM `slider` WHERE `id`='$id'")->row();
+		return $query;
+	}
 }
 ?>

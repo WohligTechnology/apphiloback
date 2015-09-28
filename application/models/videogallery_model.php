@@ -3,9 +3,9 @@ if ( !defined( "BASEPATH" ) )
 exit( "No direct script access allowed" );
 class videogallery_model extends CI_Model
 {
-public function create($order,$status,$name,$json)
+public function create($order,$status,$name,$json,$subtitle)
 {
-$data=array("order" => $order,"status" => $status,"name" => $name,"json" => $json);
+$data=array("order" => $order,"status" => $status,"name" => $name,"json" => $json,"subtitle" => $subtitle);
 $query=$this->db->insert( "webapp_videogallery", $data );
 $id=$this->db->insert_id();
 if(!$query)
@@ -24,9 +24,9 @@ $query=$this->db->query("SELECT `id`, `order`, `status`, `name`, `json` FROM `we
     $query->videos=$this->db->query("SELECT `id`, `order`, `status`, `name`, `json` FROM `webapp_videogallery` WHERE `status`=1 AND `id`='$id'")->result();
 return $query;
 }
-public function edit($id,$order,$status,$name,$json,$timestamp)
+public function edit($id,$order,$status,$name,$json,$timestamp,$subtitle)
 {
-$data=array("order" => $order,"status" => $status,"name" => $name,"json" => $json,"timestamp" => $timestamp);
+$data=array("order" => $order,"status" => $status,"name" => $name,"json" => $json,"timestamp" => $timestamp,"subtitle" => $subtitle);
 $this->db->where( "id", $id );
 $query=$this->db->update( "webapp_videogallery", $data );
 return 1;

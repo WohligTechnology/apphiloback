@@ -40,5 +40,10 @@ $query=$this->db->query("DELETE FROM `webapp_gallery` WHERE `id`='$id'");
 $query=$this->db->query("DELETE FROM `webapp_galleryimage` WHERE `gallery`='$id'");
 return $query;
 }
+    public function getimagebyid($id)
+	{
+		$query=$this->db->query("SELECT `image` FROM `webapp_gallery` WHERE `id`='$id'")->row();
+		return $query;
+	}
 }
 ?>

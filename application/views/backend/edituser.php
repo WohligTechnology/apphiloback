@@ -54,14 +54,12 @@
 
         <div class="row">
             <div class="input-field col s6">
-                <label>Select: </label>
                 <?php echo form_dropdown( 'status',$status,set_value( 'status',$before->status), 'class="chzn-select form-control" data-placeholder="Choose a Accesslevel..."'); ?>
             </div>
         </div>
 
         <div class="row">
             <div class="input-field col s6">
-                <label>Select Accesslevel </label>
                 <?php echo form_dropdown( 'accesslevel',$accesslevel,set_value( 'accesslevel',$before->accesslevel), 'class="chzn-select form-control" data-placeholder="Choose a Accesslevel..."'); ?>
             </div>
         </div>
@@ -73,7 +71,8 @@
                 </div>
                 <div class="file-path-wrapper">
                     <input class="file-path validate" type="text" placeholder="Upload one or more files" value="<?php echo set_value('image',$before->image);?>">
-                    <?php if($before->image == "") { } else { ?><img src="<?php echo base_url('uploads')." / ".$before->image; ?>" width="140px" height="140px">
+                    <?php if($before->image == "") { } else {
+                    ?><img src="<?php echo base_url('uploads')."/".$before->image; ?>" width="140px" height="140px">
                     <?php } ?>
                 </div>
             </div>
@@ -87,9 +86,27 @@
 
         <div class="row">
             <div class="input-field col s12">
-                <textarea name="address" class="materialize-textarea" length="120">
-                    <?php echo set_value( 'address',$before->address);?></textarea>
-                <label>Address</label>
+                <textarea name="address" class="materialize-textarea" length="120"><?php echo set_value( 'address',$before->address);?></textarea><label>Address</label>
+            </div>
+        </div>
+         <div class="row">
+            <div class="input-field col s6">
+                <?php echo form_dropdown( 'eventnotification',$eventnotification,set_value( 'eventnotification',$before->eventnotification), 'class="chzn-select form-control" data-placeholder="Choose a Accesslevel..."'); ?>
+            </div>
+        </div>
+         <div class="row">
+            <div class="input-field col s6">
+                <?php echo form_dropdown( 'photonotification',$photonotification,set_value( 'photonotification',$before->photonotification), 'class="chzn-select form-control" data-placeholder="Choose a Accesslevel..."'); ?>
+            </div>
+        </div>
+         <div class="row">
+            <div class="input-field col s6">
+                <?php echo form_dropdown( 'videonotification',$videonotification,set_value( 'videonotification',$before->videonotification), 'class="chzn-select form-control" data-placeholder="Choose a Accesslevel..."'); ?>
+            </div>
+        </div>
+         <div class="row">
+            <div class="input-field col s6">
+                <?php echo form_dropdown( 'blognotification',$blognotification,set_value( 'blognotification',$before->blognotification), 'class="chzn-select form-control" data-placeholder="Choose a Accesslevel..."'); ?>
             </div>
         </div>
         <div class=" form-group">

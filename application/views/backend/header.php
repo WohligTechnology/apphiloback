@@ -11,6 +11,7 @@
     <script src="<?php echo base_url('assets').'/';?>bower_components/Materialize/bin/materialize.js"></script>
     <script src="<?php echo base_url('assets').'/';?>bower_components/Materialize/js/sideNav.js"></script>
     <script src="<?php echo base_url('assets').'/';?>js/chintantable.js"></script>
+    <script src="<?php echo base_url('assets').'/';?>js/formInit.js"></script>
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>

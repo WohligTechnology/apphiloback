@@ -31,6 +31,9 @@ ul#nav-mobile li {
 	z-index: 5;
 }
 
+.propericon{
+padding-top: 5px;
+}
 
 /*li.logo {
     height: 64px;

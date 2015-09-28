@@ -35,6 +35,10 @@ class Site extends CI_Controller
 		$data['accesslevel']=$this->user_model->getaccesslevels();
 		$data[ 'status' ] =$this->user_model->getstatusdropdown();
 		$data[ 'logintype' ] =$this->user_model->getlogintypedropdown();
+           $data[ 'eventnotification' ] =$this->user_model->geteventnotificationdropdown();
+            $data[ 'photonotification' ] =$this->user_model->getphotonotificationdropdown();
+            $data[ 'videonotification' ] =$this->user_model->getvideonotificationdropdown();
+            $data[ 'blognotification' ] =$this->user_model->getblognotificationdropdown();
 //        $data['category']=$this->category_model->getcategorydropdown();
 		$data[ 'page' ] = 'createuser';
 		$data[ 'title' ] = 'Create User';
@@ -59,6 +63,10 @@ class Site extends CI_Controller
 			$data['accesslevel']=$this->user_model->getaccesslevels();
             $data[ 'status' ] =$this->user_model->getstatusdropdown();
             $data[ 'logintype' ] =$this->user_model->getlogintypedropdown();
+            $data[ 'eventnotification' ] =$this->user_model->geteventnotificationdropdown();
+            $data[ 'photonotification' ] =$this->user_model->getphotonotificationdropdown();
+            $data[ 'videonotification' ] =$this->user_model->getvideonotificationdropdown();
+            $data[ 'blognotification' ] =$this->user_model->getblognotificationdropdown();
             $data[ 'page' ] = 'createuser';
             $data[ 'title' ] = 'Create User';
             $this->load->view( 'template', $data );	
@@ -75,6 +83,10 @@ class Site extends CI_Controller
             $json=$this->input->post('json');
             $contact=$this->input->post('contact');
             $address=$this->input->post('address');
+            $eventnotification=$this->input->post('eventnotification');
+            $photonotification=$this->input->post('photonotification');
+            $videonotification=$this->input->post('videonotification');
+            $blognotification=$this->input->post('blognotification');
             $config['upload_path'] = './uploads/';
 			$config['allowed_types'] = 'gif|jpg|png|jpeg';
 			$this->load->library('upload', $config);
@@ -110,7 +122,7 @@ class Site extends CI_Controller
                 
 			}
             
-			if($this->user_model->create($name,$email,$password,$accesslevel,$status,$socialid,$logintype,$image,$json,$contact,$address)==0)
+			if($this->user_model->create($name,$email,$password,$accesslevel,$status,$socialid,$logintype,$image,$json,$contact,$address,$eventnotification,$photonotification,$videonotification,$blognotification)==0)
 			$data['alerterror']="New user could not be created.";
 			else
 			$data['alertsuccess']="User created Successfully.";
@@ -214,6 +226,10 @@ class Site extends CI_Controller
 		$data[ 'status' ] =$this->user_model->getstatusdropdown();
 		$data['accesslevel']=$this->user_model->getaccesslevels();
 		$data[ 'logintype' ] =$this->user_model->getlogintypedropdown();
+           $data[ 'eventnotification' ] =$this->user_model->geteventnotificationdropdown();
+            $data[ 'photonotification' ] =$this->user_model->getphotonotificationdropdown();
+            $data[ 'videonotification' ] =$this->user_model->getvideonotificationdropdown();
+            $data[ 'blognotification' ] =$this->user_model->getblognotificationdropdown();
 		$data['before']=$this->user_model->beforeedit($this->input->get('id'));
 		$data['page']='edituser';
 		$data['page2']='block/userblock';
@@ -242,6 +258,10 @@ class Site extends CI_Controller
 			$data[ 'status' ] =$this->user_model->getstatusdropdown();
 			$data['accesslevel']=$this->user_model->getaccesslevels();
             $data[ 'logintype' ] =$this->user_model->getlogintypedropdown();
+                  $data[ 'eventnotification' ] =$this->user_model->geteventnotificationdropdown();
+            $data[ 'photonotification' ] =$this->user_model->getphotonotificationdropdown();
+            $data[ 'videonotification' ] =$this->user_model->getvideonotificationdropdown();
+            $data[ 'blognotification' ] =$this->user_model->getblognotificationdropdown();
 			$data['before']=$this->user_model->beforeedit($this->input->post('id'));
 			$data['page']='edituser';
 //			$data['page2']='block/userblock';
@@ -262,6 +282,10 @@ class Site extends CI_Controller
             $json=$this->input->get_post('json');
             $contact=$this->input->get_post('contact');
             $address=$this->input->post('address');
+            $eventnotification=$this->input->post('eventnotification');
+            $photonotification=$this->input->post('photonotification');
+            $videonotification=$this->input->post('videonotification');
+            $blognotification=$this->input->post('blognotification');
             
             $config['upload_path'] = './uploads/';
 			$config['allowed_types'] = 'gif|jpg|png|jpeg';
@@ -305,7 +329,7 @@ class Site extends CI_Controller
                 $image=$image->image;
             }
             
-			if($this->user_model->edit($id,$name,$email,$password,$accesslevel,$status,$socialid,$logintype,$image,$json,$contact,$address)==0)
+			if($this->user_model->edit($id,$name,$email,$password,$accesslevel,$status,$socialid,$logintype,$image,$json,$contact,$address,$eventnotification,$photonotification,$videonotification,$blognotification)==0)
 			$data['alerterror']="User Editing was unsuccesful";
 			else
 			$data['alertsuccess']="User edited Successfully.";
@@ -455,7 +479,41 @@ $status=$this->input->get_post("status");
 $title=$this->input->get_post("title");
 $json=$this->input->get_post("json");
 $content=$this->input->get_post("content");
-if($this->articles_model->create($status,$title,$json,$content)==0)
+       $config['upload_path'] = './uploads/';
+			$config['allowed_types'] = 'gif|jpg|png|jpeg';
+			$this->load->library('upload', $config);
+			$filename="image";
+			$image="";
+			if (  $this->upload->do_upload($filename))
+			{
+				$uploaddata = $this->upload->data();
+				$image=$uploaddata['file_name'];
+                
+                $config_r['source_image']   = './uploads/' . $uploaddata['file_name'];
+                $config_r['maintain_ratio'] = TRUE;
+                $config_t['create_thumb'] = FALSE;///add this
+                $config_r['width']   = 800;
+                $config_r['height'] = 800;
+                $config_r['quality']    = 100;
+                //end of configs
+
+                $this->load->library('image_lib', $config_r); 
+                $this->image_lib->initialize($config_r);
+                if(!$this->image_lib->resize())
+                {
+                    echo "Failed." . $this->image_lib->display_errors();
+                    //return false;
+                }  
+                else
+                {
+                    //print_r($this->image_lib->dest_image);
+                    //dest_image
+                    $image=$this->image_lib->dest_image;
+                    //return false;
+                }
+                
+			}
+if($this->articles_model->create($status,$title,$json,$content,$image)==0)
 $data["alerterror"]="New articles could not be created.";
 else
 $data["alertsuccess"]="articles created Successfully.";
@@ -499,7 +557,48 @@ $title=$this->input->get_post("title");
 $json=$this->input->get_post("json");
 $content=$this->input->get_post("content");
 $timestamp=$this->input->get_post("timestamp");
-if($this->articles_model->edit($id,$status,$title,$json,$content,$timestamp)==0)
+             $config['upload_path'] = './uploads/';
+			$config['allowed_types'] = 'gif|jpg|png|jpeg';
+			$this->load->library('upload', $config);
+			$filename="image";
+			$image="";
+			if (  $this->upload->do_upload($filename))
+			{
+				$uploaddata = $this->upload->data();
+				$image=$uploaddata['file_name'];
+                
+                $config_r['source_image']   = './uploads/' . $uploaddata['file_name'];
+                $config_r['maintain_ratio'] = TRUE;
+                $config_t['create_thumb'] = FALSE;///add this
+                $config_r['width']   = 800;
+                $config_r['height'] = 800;
+                $config_r['quality']    = 100;
+                //end of configs
+
+                $this->load->library('image_lib', $config_r); 
+                $this->image_lib->initialize($config_r);
+                if(!$this->image_lib->resize())
+                {
+                    echo "Failed." . $this->image_lib->display_errors();
+                    //return false;
+                }  
+                else
+                {
+                    //print_r($this->image_lib->dest_image);
+                    //dest_image
+                    $image=$this->image_lib->dest_image;
+                    //return false;
+                }
+                
+			}
+            
+            if($image=="")
+            {
+            $image=$this->article_model->getimagebyid($id);
+               // print_r($image);
+                $image=$image->image;
+            }
+if($this->articles_model->edit($id,$status,$title,$json,$content,$timestamp,$image)==0)
 $data["alerterror"]="New articles could not be Updated.";
 else
 $data["alertsuccess"]="articles Updated Successfully.";
@@ -872,7 +971,7 @@ $timestamp=$this->input->get_post("timestamp");
 
 						if($image=="")
 						{
-						$image=$this->bannerslides_model->getimagebyid($id);
+						$image=$this->gallery_model->getimagebyid($id);
 						   // print_r($image);
 							$image=$image->image;
 						}
@@ -1252,7 +1351,8 @@ $order=$this->input->get_post("order");
 $status=$this->input->get_post("status");
 $name=$this->input->get_post("name");
 $json=$this->input->get_post("json");
-if($this->videogallery_model->create($order,$status,$name,$json)==0)
+$subtitle=$this->input->get_post("subtitle");
+if($this->videogallery_model->create($order,$status,$name,$json,$subtitle)==0)
 $data["alerterror"]="New videogallery could not be created.";
 else
 $data["alertsuccess"]="videogallery created Successfully.";
@@ -1301,7 +1401,8 @@ $status=$this->input->get_post("status");
 $name=$this->input->get_post("name");
 $json=$this->input->get_post("json");
     $timestamp=$this->input->get_post("timestamp");
-if($this->videogallery_model->edit($id,$order,$status,$name,$json,$timestamp)==0)
+     $subtitle=$this->input->get_post("subtitle");
+if($this->videogallery_model->edit($id,$order,$status,$name,$json,$timestamp,$subtitle)==0)
 $data["alerterror"]="New videogallery could not be Updated.";
 else
 $data["alertsuccess"]="videogallery Updated Successfully.";
@@ -3456,11 +3557,11 @@ $order=$this->input->get_post("order");
 
 						if($image=="")
 						{
-						$image=$this->bannerslides_model->getimagebyid($id);
+						$image=$this->slider_model->getimagebyid($id);
 						   // print_r($image);
 							$image=$image->image;
 						}
-if($this->slider_model->edit($id,$blog,$status,$order,$image)==0)
+if($this->slider_model->edit($id,$alt,$status,$order,$image)==0)
 $data["alerterror"]="New slider could not be Updated.";
 else
 $data["alertsuccess"]="slider Updated Successfully.";
@@ -3676,6 +3777,78 @@ public function editconfigsubmit()
     $text=$this->input->get_post("text");
     $title=$this->input->get_post("title");
     $content=$this->input->get_post("content");
+    $newtext = json_decode($text);
+	//update hauth
+	
+	$urlforcontrollertest=$_SERVER["SCRIPT_FILENAME"];
+        $urlforcontrollertest=substr($urlforcontrollertest,0,-9);
+        $urlcontrollertest=$urlforcontrollertest.'application/config/hybridauthlib.php';
+        
+        
+	for($i = 0 ; $i < sizeOf($newtext) ; $i++){
+		$comp = $newtext[$i]->name;
+		switch($comp){
+			case "Google" : {
+				$controllerfile=read_file($urlcontrollertest);
+				$mnutext = explode("//google",$controllerfile);
+				$googletext = "'Google' => array (
+				'enabled' => true,
+				'keys'    => array ( 'id' => '".$newtext[$i]->appid."', 'secret' => '".$newtext[$i]->secret."' )
+			),";
+				$googletext = $mnutext[0]."//google\n".$googletext."//google".$mnutext[2];
+				if(write_file($urlforcontrollertest.'application/config/hybridauthlib.php', $googletext)){
+		
+	}
+			}
+			break;
+			case "Facebook" : {
+				$controllerfile=read_file($urlcontrollertest);
+				$mnutext = explode("//facebook",$controllerfile);
+				$googletext = "'Facebook' => array (
+				'enabled' => true,
+				'keys'    => array ( 'id' => '".$newtext[$i]->appid."', 'secret' => '".$newtext[$i]->secret."' ),
+                'scope'   => 'email, user_about_me, user_birthday, user_hometown, user_website,publish_actions'
+			),";
+				$googletext = $mnutext[0]."//facebook\n".$googletext."\n//facebook".$mnutext[2];
+				if(write_file($urlforcontrollertest.'application/config/hybridauthlib.php', $googletext)){
+		
+	}
+			}
+			break;
+			case "twitter" : {
+				$controllerfile=read_file($urlcontrollertest);
+				$mnutext = explode("//twitter",$controllerfile);
+				$googletext = "'Twitter' => array (
+				'enabled' => true,
+				'keys'    => array ( 'key' => '".$newtext[$i]->appid."', 'secret' =>'".$newtext[$i]->secret."' )
+			),";
+				$googletext = $mnutext[0]."//twitter\n".$googletext."\n//twitter".$mnutext[2];
+				if(write_file($urlforcontrollertest.'application/config/hybridauthlib.php', $googletext)){
+		
+	}
+			}
+			break;
+			case "instagram" : {
+				$controllerfile=read_file($urlcontrollertest);
+				$mnutext = explode("//instagram",$controllerfile);
+				$googletext = "'Google' => array (
+				'enabled' => true,
+				'keys'    => array ( 'id' => '".$newtext[$i]->appid."', 'secret' => '".$newtext[$i]->secret."' )
+			),";
+				$googletext = $mnutext[0]."//instagram\n".$googletext."\n//instagram".$mnutext[2];
+				if(write_file($urlforcontrollertest.'application/config/hybridauthlib.php', $googletext)){
+		
+	}
+			}
+			break;
+			default:{
+				
+			}
+			
+		}
+		
+		
+	}
     $config['upload_path'] = './uploads/';
     $config['allowed_types'] = 'gif|jpg|png|jpeg';
     $this->load->library('upload', $config);

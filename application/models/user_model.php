@@ -32,7 +32,7 @@ class User_model extends CI_Model
 	}
 	
 	
-	public function create($name,$email,$password,$accesslevel,$status,$socialid,$logintype,$image,$json,$contact,$address)
+	public function create($name,$email,$password,$accesslevel,$status,$socialid,$logintype,$image,$json,$contact,$address,$eventnotification,$photonotification,$videonotification,$blognotification)
 	{
 		$data  = array(
 			'name' => $name,
@@ -45,7 +45,11 @@ class User_model extends CI_Model
             'json'=> $json,
 			'logintype' => $logintype,
 			'contact' => $contact,
-			'address' => $address
+			'address' => $address,
+			'eventnotification' => $eventnotification,
+			'photonotification' => $photonotification,
+			'videonotification' => $videonotification,
+			'blognotification' => $blognotification
 		);
 		$query=$this->db->insert( 'user', $data );
 		$id=$this->db->insert_id();
@@ -89,7 +93,7 @@ class User_model extends CI_Model
 		return $query;
 	}
 	
-	public function edit($id,$name,$email,$password,$accesslevel,$status,$socialid,$logintype,$image,$json,$contact,$address)
+	public function edit($id,$name,$email,$password,$accesslevel,$status,$socialid,$logintype,$image,$json,$contact,$address,$eventnotification,$photonotification,$videonotification,$blognotification)
 	{
 		$data  = array(
 			'name' => $name,
@@ -101,7 +105,11 @@ class User_model extends CI_Model
             'json'=> $json,
 			'logintype' => $logintype,
 			'contact' => $contact,
-			'address' => $address
+			'address' => $address,
+            'eventnotification' => $eventnotification,
+			'photonotification' => $photonotification,
+			'videonotification' => $videonotification,
+			'blognotification' => $blognotification
             
 		);
 		if($password != "")
@@ -320,6 +328,42 @@ class User_model extends CI_Model
 		"1" => "Text",
 		"2" => "File",
 		"3" => "Drop down"
+		);
+		return $return;
+	} 
+    public function geteventnotificationdropdown()
+	{
+		$return=array(
+		"" => "Eventnotification",
+		"1" => "No",
+		"2" => "Yes"
+		);
+		return $return;
+	}
+    public function getphotonotificationdropdown()
+	{
+		$return=array(
+		"" => "Photonotification",
+		"1" => "No",
+		"2" => "Yes"
+		);
+		return $return;
+	}
+    public function getvideonotificationdropdown()
+	{
+		$return=array(
+		"" => "Videonotification",
+		"1" => "No",
+		"2" => "Yes"
+		);
+		return $return;
+	} 
+    public function getblognotificationdropdown()
+	{
+		$return=array(
+		"" => "Blognotification",
+		"1" => "No",
+		"2" => "Yes"
 		);
 		return $return;
 	}

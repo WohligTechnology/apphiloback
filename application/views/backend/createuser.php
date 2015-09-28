@@ -1,5 +1,7 @@
 <div class="row">
-    <div class="col s8 offset-s2">
+    <div class="col s12">
+    <h4 class="pad-left-15">Create User</h4>
+    </div>
         <form class="col s12" method="post" action="<?php echo site_url('site/createusersubmit');?>" enctype="multipart/form-data">
 
             <div class="row">
@@ -26,14 +28,6 @@
                     <label for="confirmpassword">Confirm Password</label>
                 </div>
             </div>
-            <!--
-                <div class=" input-field col s6">
-                    <label class="col-sm-2 control-label" for="normal-field">SocialId</label>
-                    <div class="col-sm-4">
-                        <input type="text" id="normal-field" class="form-control" name="socialid" value="<?php echo set_value('socialid');?>">
-                    </div>
-                </div>
--->
             <div class="row">
                 <div class="input-field col s6">
                     <label for="socialid">SocialId</label>
@@ -54,23 +48,9 @@
             </div>
             <div class="row">
                 <div class="input-field col s6">
-                    <label>Select: </label>
                     <?php echo form_dropdown( 'status',$status,set_value( 'status'), 'class="chzn-select form-control" 	data-placeholder="Choose a Accesslevel..."'); ?>
                 </div>
             </div>
-
-            <!--
-                        <div class=" input-field col s6">
-                            <label class="col-sm-2 control-label" for="normal-field">Image</label>
-                            <div class="col-sm-4">
-
-                                <span class="pull-left btn btn-default btn-file">
-											Browse... <input type="file" id="normal-field" class="form-control" name="image" value="<?php echo set_value('image');?>">
-											</span>
-                            </div>
-                        </div>
--->
-
             <div class="row">
                 <div class="file-field input-field col s12">
                     <div class="btn">
@@ -84,7 +64,6 @@
             </div>
             <div class="row">
                 <div class="input-field col s6">
-                    <label>Select Accesslevel </label>
                     <?php echo form_dropdown( 'accesslevel',$accesslevel,set_value( 'accesslevel'), 'class="chzn-select form-control" 	data-placeholder="Choose a Accesslevel..."'); ?>
                 </div>
             </div>
@@ -102,6 +81,26 @@
                     <label>Address</label>
                 </div>
             </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <?php echo form_dropdown( 'eventnotification',$eventnotification,set_value( 'eventnotification'), 'class="chzn-select form-control" 	data-placeholder="Choose a Accesslevel..."'); ?>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <?php echo form_dropdown( 'photonotification',$photonotification,set_value( 'photonotification'), 'class="chzn-select form-control" 	data-placeholder="Choose a Accesslevel..."'); ?>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <?php echo form_dropdown( 'videonotification',$videonotification,set_value( 'videonotification'), 'class="chzn-select form-control" 	data-placeholder="Choose a Accesslevel..."'); ?>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <?php echo form_dropdown( 'blognotification',$blognotification,set_value( 'blognotification'), 'class="chzn-select form-control" 	data-placeholder="Choose a Accesslevel..."'); ?>
+                </div>
+            </div>
             <div class=" form-group">
                 <label class="col-sm-2 control-label">&nbsp;</label>
                 <div class="col-sm-4">
@@ -110,5 +109,4 @@
                 </div>
             </div>
         </form>
-    </div>
 </div>

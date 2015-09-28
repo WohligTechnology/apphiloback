@@ -268,6 +268,18 @@ $elements[4]->field="`webapp_videogallery`.`json`";
 $elements[4]->sort="1";
 $elements[4]->header="Json";
 $elements[4]->alias="json";
+    
+$elements[5]=new stdClass();
+$elements[5]->field="`webapp_videogallery`.`subtitle`";
+$elements[5]->sort="1";
+$elements[5]->header="subtitle";
+$elements[5]->alias="subtitle";
+    
+$elements[6]=new stdClass();
+$elements[6]->field="GROUP_CONCAT(`webapp_videogalleryvideo`.`url`)";
+$elements[6]->sort="1";
+$elements[6]->header="url";
+$elements[6]->alias="url";
 
  
     
@@ -284,7 +296,7 @@ if($orderby=="`webapp_videogallery`.`order`")
 $orderby="id";
 $orderorder="ASC";
 }
-$data["message"]=$this->chintantable->query($pageno,$maxrow,$orderby,$orderorder,$search,$elements,"FROM `webapp_videogallery`","WHERE `webapp_videogallery`.`status`=1");
+$data["message"]=$this->chintantable->query($pageno,$maxrow,$orderby,$orderorder,$search,$elements,"FROM `webapp_videogallery` LEFT OUTER JOIN `webapp_videogalleryvideo` ON `webapp_videogalleryvideo`.`videogallery`=`webapp_videogallery`.`id`","WHERE `webapp_videogallery`.`status`=1","GROUP BY `webapp_videogallery`.`id`");
 $this->load->view("json",$data);
 }
 public function getsinglevideogallery()
@@ -1240,5 +1252,16 @@ $data["message"]=$this->restapi_model->getappconfig();
         $searchelement=$data['searchelement'];
         $data['message']=$this->restapi_model->searchelement($searchelement);
         $this->load->view("json", $data); 
+ }
+  public function profileimageupload(){
+	 $date = new DateTime();
+        $imageName = "image-".rand(0, 100000)."".$date->getTimestamp().".jpg";
+        if(move_uploaded_file($_FILES["file"]["tmp_name"], "./uploads/".$imageName)){
+       		$data["message"]=$imageName;
+            	$this->load->view("json",$data); 
+        }else{
+        	$data["message"]="false";
+            	$this->load->view("json",$data); 
+        }
  }
 } ?>

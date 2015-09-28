@@ -8,7 +8,7 @@ function generatejquery(url)
             var pageno = 1;
             var orderby = "";
             var orderorder = "";
-            var maxrow = 2;
+            var maxrow = 10;
             $(".drawchintantable .maxrow").val(maxrow);
             
 
