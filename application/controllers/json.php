@@ -32,6 +32,12 @@ $elements[4]->field="`webapp_articles`.`content`";
 $elements[4]->sort="1";
 $elements[4]->header="Content";
 $elements[4]->alias="content";
+    
+$elements[5]=new stdClass();
+$elements[5]->field="`webapp_articles`.`image`";
+$elements[5]->sort="1";
+$elements[5]->header="image";
+$elements[5]->alias="image";
 
 $search=$this->input->get_post("search");
 $pageno=$this->input->get_post("pageno");

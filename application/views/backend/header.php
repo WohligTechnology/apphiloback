@@ -25,7 +25,12 @@
                         <div class=logo>
                             <a id="logo-container" href="#" class="brand-logo text-center">Wohlig</a>
                         </div>
-                        <a class="waves-effect waves-light btn red " style="float:right;">  <i class="large material-icons ">power_settings_new</i> Logout</a>
+                        <a href="<?php echo site_url('login/logout'); ?>" class="waves-effect waves-light btn red " style="float:right;">  <i class="large material-icons ">power_settings_new</i> Logout</a>
+<!--
+                          <a href="<?php echo site_url('login/logout'); ?>" class="btn btn-primary">
+                                        <i class="fa fa-sign-out fa-fw"></i> Logout
+                                    </a>
+-->
                         
                     </div>
                 </div>
