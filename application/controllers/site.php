@@ -3776,6 +3776,7 @@ public function editconfigsubmit()
     $id=$this->input->get_post("id");
     $text=$this->input->get_post("text");
     $title=$this->input->get_post("title");
+    $type=$this->input->get_post("type");
     $content=$this->input->get_post("content");
     $newtext = json_decode($text);
 	//update hauth
@@ -3883,7 +3884,7 @@ public function editconfigsubmit()
         }
 
     }
-    if($this->config_model->edit($id,$title,$content,$text,$image)==0)
+    if($this->config_model->edit($id,$title,$content,$text,$image,$type)==0)
     $data["alerterror"]="New config could not be Updated.";
     else
     $data["alertsuccess"]="config Updated Successfully.";
