@@ -1,6 +1,6 @@
 <section class="row offset-s4">
     <div class="col s12">
-        <h4 class="pad-left-15">Login Config</h4>
+        <h4 class="pad-left-15">Blog Config</h4>
     </div>
     <div class="col s4">
         <div class="logintype cms">
@@ -11,7 +11,7 @@
             </div>
 -->
 
-        <div class="row">
+        <div class="row checkbox">
                 <div class="col s6">
                     <label for="filled-in-box" class="form-checkbox">CMS</label>
                 </div>
@@ -27,7 +27,7 @@
             </div>
         </div>
         <div class="logintype facebookLogin">
-          <div class="row">
+          <div class="row checkbox">
                 <div class="col s6">
                     <label for="filled-in-box" class="form-checkbox">Wordpress</label>
                 </div>
@@ -58,7 +58,7 @@
 
         </div>
         <div class="logintype twitterLogin">
-         <div class="row">
+         <div class="row checkbox">
                 <div class="col s6">
                     <label for="filled-in-box" class="form-checkbox">Tumblr</label>
                 </div>

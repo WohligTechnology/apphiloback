@@ -5,7 +5,7 @@
 
     <div class="col s4">
         <div class="logintype normalLogin">
-            <div class="row">
+            <div class="row checkbox">
                 <div class="col s6">
                     <label for="filled-in-box" class="form-checkbox">Email and Password Login</label>
                 </div>
@@ -13,7 +13,7 @@
                     <div class="switch">
                         <label>
                             Off
-                            <input type="checkbox">
+                            <input type="checkbox" name="email">
                             <span class="lever"></span> On
                         </label>
 
@@ -25,7 +25,7 @@
         </div>
         <div class="logintype googleLogin">
           
-            <div class="row">
+            <div class="row checkbox">
                 <div class="col s6">
                     <label for="filled-in-box" class="form-checkbox">Google Login</label>
                 </div>
@@ -40,7 +40,7 @@
                 </div>
             </div>
 
-            <div class="row">
+<!--            <div class="row checkbox">-->
                 <div class="sublogintype" style=" min-height: 110px;">
                     <div class="row">
                         <div class="input-field col s12">
@@ -55,11 +55,11 @@
                         </div>
                     </div>
                 </div>
-            </div>
+<!--            </div>-->
 
         </div>
         <div class="logintype facebookLogin">
-            <div class="row">
+            <div class="row checkbox">
                 <div class="col s6">
                     <label for="filled-in-box" class="form-checkbox">Facebook Login</label>
                 </div>
@@ -90,7 +90,7 @@
 
         </div>
         <div class="logintype twitterLogin">
-            <div class="row">
+            <div class="row checkbox">
                 <div class="col s6">
                     <label for="filled-in-box" class="form-checkbox">Twitter Login</label>
                 </div>
@@ -121,7 +121,7 @@
 
         </div>
         <div class="logintype instagramLogin">
-           <div class="row">
+           <div class="row checkbox">
                 <div class="col s6">
                     <label for="filled-in-box" class="form-checkbox">Instagram Login</label>
                 </div>
