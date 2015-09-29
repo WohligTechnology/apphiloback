@@ -269,6 +269,13 @@ class User_model extends CI_Model
 		
 		return $return;
 	}  
+    public function getusercount()
+	{
+		$query=$this->db->query("SELECT COUNT(*) as `usercount` FROM `user`")->row();
+        $usercount=$query->usercount;
+		return $usercount;
+	}  
+    
     public function getlinktypedropdown()
 	{
 		$query=$this->db->query("SELECT * FROM `linktype`  ORDER BY `id` ASC")->result();

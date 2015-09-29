@@ -1,6 +1,7 @@
 
     <!-- Body starts -->
     <div class="row dash-row">
+<!--
         <div class="col m3">
             <div class="card red darken-1 mar-left-30 ">
                 <div class="card-content white-text text-center">
@@ -9,16 +10,18 @@
                 </div>
             </div>
         </div>
+-->
 
 
         <div class="col m3">
-            <div class="card purple darken-1 mar-left-30 ">
+            <div class="card red darken-1 mar-left-30 ">
                 <div class="card-content white-text text-center">
                     <i class="large mdi-action-account-child block"></i>
-                    <span class="card-title">478 Users</span>
+                    <span class="card-title"><?php echo $usercount;?> Users</span>
                 </div>
             </div>
         </div>
+<!--
         <div class="col m3">
             <div class="card pink darken-1 mar-left-30 ">
                 <div class="card-content white-text text-center">
@@ -37,6 +40,7 @@
                 </div>
             </div>
         </div>
+-->
     </div>
 
     <!-- Body Ends -->
