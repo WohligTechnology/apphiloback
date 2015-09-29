@@ -8,11 +8,13 @@
         <input type="hidden" id="normal-field" class="form-control" name="id" value="<?php echo set_value('id',$before->id);?>" style="display:none;">
 
         
+<!--
            <div class="row">
             <div class="input-field col s6">
                 <?php echo form_dropdown( 'parent',$parent,set_value( 'parent',$before->parent), 'class="chzn-select form-control" data-placeholder="Choose a Accesslevel..."'); ?>
             </div>
         </div> 
+-->
            <div class="row">
             <div class="input-field col s6">
                 <?php echo form_dropdown( 'status',$status,set_value( 'status',$before->status), 'class="chzn-select form-control" data-placeholder="Choose a Accesslevel..."'); ?>
@@ -36,6 +38,44 @@
                 <input type="text" name="link" value="<?php echo set_value('link',$before->link);?>">
             </div>
         </div> 
+           <!--	Event-->
+		<div class="row drop">
+			<div class="input-field col s6">
+				<?php echo form_dropdown('event',$event,set_value('event',$before->event), 'class="chzn-select form-control" data-placeholder="Choose a Accesslevel..."'); ?>
+			</div>
+		</div>
+
+		<!--	Blog-->
+		<div class="row drop">
+			<div class="input-field col s6">
+				<?php echo form_dropdown('blog',$blog,set_value('blog',$before->blog), 'class="chzn-select form-control" data-placeholder="Choose a Accesslevel..."'); ?>
+
+			</div>
+		</div>
+
+		<!--	Gallery-->
+		<div class="row drop">
+			<div class="input-field col s6">
+				<?php echo form_dropdown('video',$video,set_value('video',$before->video), 'class="chzn-select form-control" 	data-placeholder="Choose a Accesslevel..."'); ?>
+
+			</div>
+		</div>
+
+		<!--	Video-->
+		<div class="row drop">
+			<div class="input-field col s6">
+				<?php echo form_dropdown('gallery',$gallery,set_value('gallery',$before->gallery), 'class="chzn-select form-control" 	data-placeholder="Choose a Accesslevel..."'); ?>
+
+			</div>
+		</div>
+		
+		<!--	Article-->
+		<div class="row drop">
+			<div class="input-field col s6">
+				<?php echo form_dropdown('article',$article,set_value('article',$before->article), 'class="chzn-select form-control" 	data-placeholder="Choose a Accesslevel..."'); ?>
+
+			</div>
+		</div>
             <div class="row">
             <div class="input-field col s6">
                 <?php echo form_dropdown( 'linktype',$linktype,set_value( 'linktype',$before->linktype), 'class="chzn-select form-control" data-placeholder="Choose a Accesslevel..."'); ?>
@@ -72,13 +112,106 @@
     </form>
 </div>
 
-        <script type="text/javascript">
-        $(document).ready(function () {
-            //        console.log($(".fieldjsoninput").val());
-            filljsoninput(".fieldjsoninput", ".fieldjson");
-            $(".jsonsubmit").click(function () {
-                jsonsubmit(".fieldjsoninput", ".fieldjson");
-                //return false;
-            });
-        });
-    </script>
+<script type="text/javascript">
+	//dropdown function
+	var $linktype;
+	var $sub;
+	var $i;
+	var $typeid = 0;
+
+	function hideshow(id) {
+		for($i=0;$i<$sub.length;$i++){
+			$sub.eq($i).prop("hidden", true);
+		}
+		$sub.eq(id).prop("hidden", false);
+
+	}
+
+
+	$(document).ready(function () {
+		//jquery to dropdown
+		$sub = $(".drop");
+		for ($i = 0; $i < $sub.length; $i++) {
+			$sub.eq($i).prop("hidden", true);
+		}
+
+		//my changes
+		$linktype = $('select[name=linktype]');
+		$linktype.change(function () {
+			
+			switch ($linktype.val()) {
+			case "2":
+				{
+					hideshow(4);
+					$typeid = $('select[name=article]').val();
+				}
+				break;
+			case "3":
+				{
+					hideshow(0);
+					$typeid = $('select[name=event]').val();
+				}
+				break;
+			case "6":
+				{
+					hideshow(3);
+					$typeid = $('select[name=gallery]').val();
+				}
+				break;
+			case "8":
+				{
+					hideshow(2);
+					$typeid = $('select[name=video]').val();
+				}
+				break;
+			case "10":
+				{
+					hideshow(1);
+					$typeid = $('select[name=blog]').val();
+				}
+				break;
+			default:
+				{
+
+				}
+			}
+
+		});
+
+
+
+		//avi code
+		//		var $linktype = $("select.linktype");
+		//		var $test = $("select.test");
+		//		var $question = $("select.question");
+		//		var $option = $("select.option");
+		//		var $pillar = $("select.pillar");
+		//		var new_base_url = "<?php echo site_url(); ?>";
+		//
+		//		$test.change(function () {
+		//			$.getJSON(new_base_url + '/site/getquestionbytest', {
+		//				test: $test.val(),
+		//				pillar: $pillar.val()
+		//			}, function (data) {
+		//				populate(data, $question);
+		//			});
+		//		});
+		//
+		//		$question.change(function () {
+		//			$.getJSON(new_base_url + '/site/getoptionbyquestion', {
+		//				question: $question.val()
+		//			}, function (data) {
+		//				populate(data, $option);
+		//			});
+		//		});
+		//
+		//
+				//Jquery to fill json
+				filljsoninput(".fieldjsoninput", ".fieldjson");
+				$(".jsonsubmit").click(function () {
+					$("#typeid").val($typeid);
+					jsonsubmit(".fieldjsoninput", ".fieldjson");
+//					$("form.jsonsubmit").submit();
+				});
+	});
+</script>

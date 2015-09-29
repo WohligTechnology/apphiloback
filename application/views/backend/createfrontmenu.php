@@ -32,15 +32,14 @@
 		<!--	Event-->
 		<div class="row drop">
 			<div class="input-field col s6">
-				<?php echo form_dropdown('event',$parent,set_value('event'), 'class="chzn-select form-control" data-placeholder="Choose a Accesslevel..."'); ?>
-
+				<?php echo form_dropdown('event',$event,set_value('event'), 'class="chzn-select form-control" data-placeholder="Choose a Accesslevel..."'); ?>
 			</div>
 		</div>
 
 		<!--	Blog-->
 		<div class="row drop">
 			<div class="input-field col s6">
-				<?php echo form_dropdown('blog',$parent,set_value('blog'), 'class="chzn-select form-control" data-placeholder="Choose a Accesslevel..."'); ?>
+				<?php echo form_dropdown('blog',$blog,set_value('blog'), 'class="chzn-select form-control" data-placeholder="Choose a Accesslevel..."'); ?>
 
 			</div>
 		</div>
@@ -48,7 +47,7 @@
 		<!--	Gallery-->
 		<div class="row drop">
 			<div class="input-field col s6">
-				<?php echo form_dropdown('video',$parent,set_value('video'), 'class="chzn-select form-control" 	data-placeholder="Choose a Accesslevel..."'); ?>
+				<?php echo form_dropdown('video',$video,set_value('video'), 'class="chzn-select form-control" 	data-placeholder="Choose a Accesslevel..."'); ?>
 
 			</div>
 		</div>
@@ -56,7 +55,7 @@
 		<!--	Video-->
 		<div class="row drop">
 			<div class="input-field col s6">
-				<?php echo form_dropdown('gallery',$parent,set_value('gallery'), 'class="chzn-select form-control" 	data-placeholder="Choose a Accesslevel..."'); ?>
+				<?php echo form_dropdown('gallery',$gallery,set_value('gallery'), 'class="chzn-select form-control" 	data-placeholder="Choose a Accesslevel..."'); ?>
 
 			</div>
 		</div>
@@ -64,7 +63,7 @@
 		<!--	Article-->
 		<div class="row drop">
 			<div class="input-field col s6">
-				<?php echo form_dropdown('article',$parent,set_value('article'), 'class="chzn-select form-control" 	data-placeholder="Choose a Accesslevel..."'); ?>
+				<?php echo form_dropdown('article',$article,set_value('article'), 'class="chzn-select form-control" 	data-placeholder="Choose a Accesslevel..."'); ?>
 
 			</div>
 		</div>
@@ -77,8 +76,8 @@
 		
 		<div class="row">
 			<div class="input-field col s6">
-				<label for="name">Id selected</label>
-				<input type="text" id="typeid" name="name">
+				<label for="typeid">Id selected</label>
+				<input type="text" id="typeid" name="typeid" value="<?php echo set_value('typeid');?>">
 			</div>
 		</div>
 		
@@ -116,7 +115,7 @@
 	var $linktype;
 	var $sub;
 	var $i;
-	var $typeid = 0;
+	var $typeid;
 
 	function hideshow(id) {
 		for($i=0;$i<$sub.length;$i++){
@@ -148,6 +147,7 @@
 			case "3":
 				{
 					hideshow(0);
+                    console.log("event selected");
 					$typeid = $('select[name=event]').val();
 				}
 				break;
@@ -209,86 +209,9 @@
 				filljsoninput(".fieldjsoninput", ".fieldjson");
 				$(".jsonsubmit").click(function () {
 					$("#typeid").val($typeid);
+                    console.log($typeid);
 					jsonsubmit(".fieldjsoninput", ".fieldjson");
 //					$("form.jsonsubmit").submit();
 				});
 	});
 </script>
-
-
-
-
-
-
-
-<!--
-<div id="page-title">
-    <a href="<?php echo site_url(" site/viewfrontmenu "); ?>" class="btn btn-primary btn-labeled fa fa-arrow-left margined pull-right">Back</a>
-    <h1 class="page-header text-overflow">Frontmenu Details </h1>
-</div>
-<div id="page-content">
-    <div class="row">
-        <div class="col-lg-12">
-            <section class="panel">
-                <div class="panel-heading">
-                    <h3 class="panel-title">
-Create Frontmenu </h3>
-                </div>
-                <div class="panel-body">
-                    <form class='form-horizontal tasi-form' method='post' action='<?php echo site_url("site/createfrontmenusubmit");?>' enctype='multipart/form-data'>
-                        <div class="panel-body">
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label" for="normal-field">Order</label>
-                                <div class="col-sm-4">
-                                    <input type="text" id="normal-field" class="form-control" name="order" value='<?php echo set_value(' order ');?>'>
-                                </div>
-                            </div>
-                            <div class=" form-group">
-                                <label class="col-sm-2 control-label" for="normal-field">Parent</label>
-                                <div class="col-sm-4">
-                                    <?php echo form_dropdown( "parent",$parent,set_value( 'parent'), "class='chzn-select form-control'");?>
-                                </div>
-                            </div>
-                            <div class=" form-group">
-                                <label class="col-sm-2 control-label" for="normal-field">Status</label>
-                                <div class="col-sm-4">
-                                    <?php echo form_dropdown( "status",$status,set_value( 'status'), "class='chzn-select form-control'");?>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label" for="normal-field">Name</label>
-                                <div class="col-sm-4">
-                                    <input type="text" id="normal-field" class="form-control" name="name" value='<?php echo set_value(' name ');?>'>
-                                </div>
-                            </div>
-                            <div class="form-group hidden">
-                                <label class="col-sm-2 control-label" for="normal-field">json</label>
-                                <div class="col-sm-4">
-                                    <textarea name="json" id="" cols="20" rows="10" class="form-control fieldjsoninput">
-                                        <?php echo json_encode($fieldjson,true); ?>
-                                    </textarea>
-
-                                </div>
-                            </div>
-                            <div class="fieldjson"></div>
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label" for="normal-field">&nbsp;</label>
-                                <div class="col-sm-4">
-                                    <button type="submit" class="btn btn-primary jsonsubmit">Save</button>
-                                    <a href="<?php echo site_url(" site/viewfrontmenu "); ?>" class="btn btn-secondary">Cancel</a>
-                                </div>
-                            </div>
-                    </form>
-                    </div>
-            </section>
-            </div>
-        </div>
-    </div>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            filljsoninput(".fieldjsoninput", ".fieldjson");
-            $(".jsonsubmit").click(function () {
-                jsonsubmit(".fieldjsoninput", ".fieldjson");
-            });
-        });
-    </script>-->

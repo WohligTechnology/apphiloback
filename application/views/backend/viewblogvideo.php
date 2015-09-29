@@ -30,7 +30,7 @@
 </div>
 <script>
     function drawtable(resultrow) {
-          return "<tr><td>" + resultrow.id + "</td><td>" + resultrow.blog + "</td><td>" + resultrow.status + "</td><td>" + resultrow.order + "</td><td>" + resultrow.video + "</td><td><a class='btn btn-primary btn-xs' href='<?php echo site_url('site/editblogvideo?id=');?>" + resultrow.id + "&blogid=" + resultrow.blogid + "'><i class='material-icons propericon'>system_update_alt</i></a><a class='btn btn-danger btn-xs' onclick=\"return confirm('Are you sure you want to delete?');\" href='<?php echo site_url('site/deleteblogvideo?id='); ?>" + resultrow.id + "&blogid=" + resultrow.blogid + "'><i class='material-icons propericon'>delete</i></a></td></tr>";
+          return "<tr><td>" + resultrow.id + "</td><td>" + resultrow.blog + "</td><td>" + resultrow.status + "</td><td>" + resultrow.order + "</td><td>" + resultrow.video + "</td><td><a class='btn btn-primary btn-xs waves-effect waves-light' href='<?php echo site_url('site/editblogvideo?id=');?>" + resultrow.id + "&blogid=" + resultrow.blogid + "'><i class='material-icons propericon'>system_update_alt</i></a><a class='btn btn-danger btn-xs' onclick=\"return confirm('Are you sure you want to delete?');\" href='<?php echo site_url('site/deleteblogvideo?id='); ?>" + resultrow.id + "&blogid=" + resultrow.blogid + "'><i class='material-icons propericon'>delete</i></a></td></tr>";
     }
     generatejquery('<?php echo $base_url;?>');
 </script>

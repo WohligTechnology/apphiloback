@@ -702,6 +702,11 @@ $json=array();
 $data[ 'status' ] =$this->user_model->getstatusdropdown();
 $data[ 'parent' ] =$this->user_model->getfrontmenudropdown();
 $data[ 'linktype' ] =$this->user_model->getlinktypedropdown();
+$data[ 'event' ] =$this->user_model->geteventsdropdown();
+$data[ 'blog' ] =$this->user_model->getblogdropdown();
+$data[ 'video' ] =$this->user_model->getvideogallerydropdown(); 
+$data[ 'article' ] =$this->user_model->getarticledropdown();   
+$data[ 'gallery' ] =$this->user_model->getgallerydropdown();
 $data["title"]="Create frontmenu";
 $this->load->view("template",$data);
 }
@@ -720,6 +725,11 @@ $data["alerterror"]=validation_errors();
 $data["page"]="createfrontmenu";
 $data[ 'status' ] =$this->user_model->getstatusdropdown();
 $data[ 'parent' ] =$this->user_model->getfrontmenudropdown();
+    $data[ 'event' ] =$this->user_model->geteventsdropdown();
+$data[ 'blog' ] =$this->user_model->getblogdropdown();
+$data[ 'video' ] =$this->user_model->getvideodropdown();
+$data[ 'article' ] =$this->user_model->getarticledropdown();
+$data[ 'gallery' ] =$this->user_model->getgallerydropdown();
 $data["title"]="Create frontmenu";
 $this->load->view("template",$data);
 }
@@ -732,6 +742,12 @@ $name=$this->input->get_post("name");
 $json=$this->input->get_post("json");
 $linktype=$this->input->get_post("linktype");
 $link=$this->input->get_post("link");
+$event=$this->input->get_post("event");
+$blog=$this->input->get_post("blog");
+$video=$this->input->get_post("video");
+$article=$this->input->get_post("article");
+$gallery=$this->input->get_post("gallery");
+$typeid=$this->input->get_post("typeid");
      $config['upload_path'] = './uploads/';
 						$config['allowed_types'] = 'gif|jpg|png|jpeg';
 						$this->load->library('upload', $config);
@@ -742,7 +758,7 @@ $link=$this->input->get_post("link");
 							$uploaddata = $this->upload->data();
 							$image=$uploaddata['file_name'];
 						}
-if($this->frontmenu_model->create($order,$parent,$status,$name,$json,$image,$linktype,$link)==0)
+if($this->frontmenu_model->create($order,$parent,$status,$name,$json,$image,$linktype,$link,$event,$blog,$video,$article,$gallery,$typeid)==0)
 $data["alerterror"]="New frontmenu could not be created.";
 else
 $data["alertsuccess"]="frontmenu created Successfully.";
@@ -758,6 +774,11 @@ $data["page"]="editfrontmenu";
 $data[ 'parent' ] =$this->user_model->getfrontmenudropdown();
 $data[ 'status' ] =$this->user_model->getstatusdropdown();
 $data[ 'linktype' ] =$this->user_model->getlinktypedropdown();
+    $data[ 'event' ] =$this->user_model->geteventsdropdown();
+$data[ 'blog' ] =$this->user_model->getblogdropdown();
+$data[ 'video' ] =$this->user_model->getvideodropdown();
+$data[ 'article' ] =$this->user_model->getarticledropdown();
+$data[ 'gallery' ] =$this->user_model->getgallerydropdown();
 $data["title"]="Edit frontmenu";
 $data["before"]=$this->frontmenu_model->beforeedit($this->input->get("id"));
 $this->load->view("template",$data);
@@ -778,6 +799,11 @@ $data["alerterror"]=validation_errors();
 $data[ 'status' ] =$this->user_model->getstatusdropdown();
 $data["page"]="editfrontmenu";
 $data[ 'parent' ] =$this->user_model->getfrontmenudropdown();
+$data[ 'event' ] =$this->user_model->geteventsdropdown();
+$data[ 'blog' ] =$this->user_model->getblogdropdown();
+$data[ 'video' ] =$this->user_model->getvideodropdown();
+$data[ 'article' ] =$this->user_model->getarticledropdown();
+$data[ 'gallery' ] =$this->user_model->getgallerydropdown();
 $data["title"]="Edit frontmenu";
 $data["before"]=$this->frontmenu_model->beforeedit($this->input->get("id"));
 $this->load->view("template",$data);
@@ -792,6 +818,13 @@ $name=$this->input->get_post("name");
 $json=$this->input->get_post("json");
 $linktype=$this->input->get_post("linktype");
 $link=$this->input->get_post("link");
+$event=$this->input->get_post("event");
+$blog=$this->input->get_post("blog");
+$video=$this->input->get_post("video");
+$article=$this->input->get_post("article");
+$gallery=$this->input->get_post("gallery");
+    $typeid=$this->input->get_post("typeid");
+  
      $config['upload_path'] = './uploads/';
 						$config['allowed_types'] = 'gif|jpg|png|jpeg';
 						$this->load->library('upload', $config);
@@ -809,7 +842,7 @@ $link=$this->input->get_post("link");
 						   // print_r($image);
 							$image=$image->image;
 						}
-if($this->frontmenu_model->edit($id,$order,$parent,$status,$name,$json,$image,$linktype,$link)==0)
+if($this->frontmenu_model->edit($id,$order,$parent,$status,$name,$json,$image,$linktype,$link,$event,$blog,$video,$article,$gallery,$typeid)==0)
 $data["alerterror"]="New frontmenu could not be Updated.";
 else
 $data["alertsuccess"]="frontmenu Updated Successfully.";

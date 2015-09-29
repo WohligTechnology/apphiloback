@@ -39,7 +39,7 @@
             } else if (resultrow.type == 3) {
                 resultrow.type = "Drop Down";
             }
-            return "<tr><td>" + resultrow.id + "</td><td>" + resultrow.title + "</td><td>" + resultrow.type + "</td><td>" + resultrow.text + "</td><td><a class='btn btn-primary btn-xs' href='<?php echo site_url('site/editconfig?id=');?>" + resultrow.id + "'><i class='material-icons propericon'>system_update_alt</i></a></td></tr>";
+            return "<tr><td>" + resultrow.id + "</td><td>" + resultrow.title + "</td><td>" + resultrow.type + "</td><td>" + resultrow.text + "</td><td><a class='btn btn-primary btn-xs waves-effect waves-light' href='<?php echo site_url('site/editconfig?id=');?>" + resultrow.id + "'><i class='material-icons propericon'>system_update_alt</i></a></td></tr>";
     }
     generatejquery('<?php echo $base_url;?>');
 </script>

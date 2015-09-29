@@ -197,7 +197,7 @@ class User_model extends CI_Model
 	{
 		$query=$this->db->query("SELECT * FROM `webapp_blog`  ORDER BY `id` ASC")->result();
 		$return=array(
-		"" => "Select"
+		"" => "Blog"
 		);
 		foreach($query as $row)
 		{
@@ -269,6 +269,58 @@ class User_model extends CI_Model
 		
 		return $return;
 	}  
+//     public function getblogdropdown()
+//{
+//	$query=$this->db->query("SELECT * FROM `webapp_blog`  ORDER BY `id` ASC")->result();
+//		$return=array(
+//            "" => "Blog"
+//		);
+//		foreach($query as $row)
+//		{
+//			$return[$row->id]=$row->title;
+//		}
+//		
+//		return $return;
+//} 
+    public function getvideodropdown()
+{
+	$query=$this->db->query("SELECT * FROM `webapp_videogallery`  ORDER BY `id` ASC")->result();
+		$return=array(
+            "" => "Videogallery"
+		);
+		foreach($query as $row)
+		{
+			$return[$row->id]=$row->name;
+		}
+		
+		return $return;
+} 
+    public function getarticledropdown()
+{
+	$query=$this->db->query("SELECT * FROM `webapp_articles`  ORDER BY `id` ASC")->result();
+		$return=array(
+            "" => "Articles"
+		);
+		foreach($query as $row)
+		{
+			$return[$row->id]=$row->title;
+		}
+		
+		return $return;
+}
+    public function getgallerydropdown()
+{
+	$query=$this->db->query("SELECT * FROM `webapp_gallery`  ORDER BY `id` ASC")->result();
+		$return=array(
+            "" => "Gallery"
+		);
+		foreach($query as $row)
+		{
+			$return[$row->id]=$row->name;
+		}
+		
+		return $return;
+}
     public function getusercount()
 	{
 		$query=$this->db->query("SELECT COUNT(*) as `usercount` FROM `user`")->row();
@@ -289,24 +341,24 @@ class User_model extends CI_Model
 		
 		return $return;
 	}
-     public function getgallerydropdown()
-	{
-		$query=$this->db->query("SELECT * FROM `webapp_gallery`  ORDER BY `id` ASC")->result();
-		$return=array(
-		"" => "Select"
-		);
-		foreach($query as $row)
-		{
-			$return[$row->id]=$row->name;
-		}
-
-		return $return;
-	} 
+//     public function getgallerydropdown()
+//	{
+//		$query=$this->db->query("SELECT * FROM `webapp_gallery`  ORDER BY `id` ASC")->result();
+//		$return=array(
+//		"" => "Select"
+//		);
+//		foreach($query as $row)
+//		{
+//			$return[$row->id]=$row->name;
+//		}
+//
+//		return $return;
+//	} 
     public function geteventsdropdown()
 	{
 		$query=$this->db->query("SELECT * FROM `webapp_events`  ORDER BY `id` ASC")->result();
 		$return=array(
-		"" => "Select"
+		"" => "Events"
 		);
 		foreach($query as $row)
 		{
@@ -319,7 +371,7 @@ class User_model extends CI_Model
 	{
 		$query=$this->db->query("SELECT * FROM `webapp_videogallery`  ORDER BY `id` ASC")->result();
 		$return=array(
-		"" => "Select"
+		"" => "Videogallery"
 		);
 		foreach($query as $row)
 		{
