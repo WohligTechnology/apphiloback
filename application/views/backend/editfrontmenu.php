@@ -117,7 +117,12 @@
 	var $linktype;
 	var $sub;
 	var $i;
-	var $typeid = 0;
+	var $typeid;
+	var $event;
+	var $article;
+	var $video;
+	var $gallery;
+	var $blog;
 
 	function hideshow(id) {
 		for($i=0;$i<$sub.length;$i++){
@@ -130,6 +135,29 @@
 
 	$(document).ready(function () {
 		//jquery to dropdown
+		
+		$event = $('select[name=event]');
+		$event.change(function(){
+			$("#typeid").val($event.val());
+		});
+		$event = $('select[name=article]');
+		$event.change(function(){
+			$("#typeid").val($event.val());
+		});
+		$event = $('select[name=gallery]');
+		$event.change(function(){
+			$("#typeid").val($event.val());
+		});
+		$event = $('select[name=video]');
+		$event.change(function(){
+			$("#typeid").val($event.val());
+		});
+		$event = $('select[name=blog]');
+		$event.change(function(){
+			$("#typeid").val($event.val());
+		});
+		
+		
 		$sub = $(".drop");
 		for ($i = 0; $i < $sub.length; $i++) {
 			$sub.eq($i).prop("hidden", true);
