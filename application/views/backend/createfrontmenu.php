@@ -32,7 +32,7 @@
 		<!--	Event-->
 		<div class="row drop">
 			<div class="input-field col s6">
-				<?php echo form_dropdown('Event',$parent,set_value('parent'), 'class="chzn-select form-control" 	data-placeholder="Choose a Accesslevel..."'); ?>
+				<?php echo form_dropdown('event',$parent,set_value('event'), 'class="chzn-select form-control" 	data-placeholder="Choose a Accesslevel..."'); ?>
 
 			</div>
 		</div>
@@ -40,7 +40,7 @@
 		<!--	Blog-->
 		<div class="row drop">
 			<div class="input-field col s6">
-				<?php echo form_dropdown('Blog',$parent,set_value('parent'), 'class="chzn-select form-control" 	data-placeholder="Choose a Accesslevel..."'); ?>
+				<?php echo form_dropdown('blog',$parent,set_value('blog'), 'class="chzn-select form-control" 	data-placeholder="Choose a Accesslevel..."'); ?>
 
 			</div>
 		</div>
@@ -48,7 +48,7 @@
 		<!--	Gallery-->
 		<div class="row drop">
 			<div class="input-field col s6">
-				<?php echo form_dropdown('Video',$parent,set_value('parent'), 'class="chzn-select form-control" 	data-placeholder="Choose a Accesslevel..."'); ?>
+				<?php echo form_dropdown('video',$parent,set_value('video'), 'class="chzn-select form-control" 	data-placeholder="Choose a Accesslevel..."'); ?>
 
 			</div>
 		</div>
@@ -56,7 +56,7 @@
 		<!--	Video-->
 		<div class="row drop">
 			<div class="input-field col s6">
-				<?php echo form_dropdown('Gallery',$parent,set_value('parent'), 'class="chzn-select form-control" 	data-placeholder="Choose a Accesslevel..."'); ?>
+				<?php echo form_dropdown('gallery',$parent,set_value('gallery'), 'class="chzn-select form-control" 	data-placeholder="Choose a Accesslevel..."'); ?>
 
 			</div>
 		</div>
@@ -66,6 +66,14 @@
 				<input type="text" id="link" name="link" value="<?php echo set_value('link');?>">
 			</div>
 		</div>
+		
+		<div class="row">
+			<div class="input-field col s6">
+				<label for="name">Id selected</label>
+				<input type="text" id="typeid" name="name">
+			</div>
+		</div>
+		
 		<div class="row">
 			<div class="file-field input-field col s12">
 				<div class="btn">
@@ -100,6 +108,7 @@
 	var $linktype;
 	var $sub;
 	var $i;
+	var $typeid = 0;
 
 	function hideshow(id) {
 		for($i=0;$i<$sub.length;$i++){
@@ -126,21 +135,25 @@
 			case "3":
 				{
 					hideshow(0);
+					$typeid = $('select[name=event]').val();
 				}
 				break;
 			case "6":
 				{
 					hideshow(3);
+					$typeid = $('select[name=gallery]').val();
 				}
 				break;
 			case "8":
 				{
 					hideshow(2);
+					$typeid = $('select[name=video]').val();
 				}
 				break;
 			case "10":
 				{
 					hideshow(1);
+					$typeid = $('select[name=blog]').val();
 				}
 				break;
 			default:
@@ -179,11 +192,13 @@
 		//		});
 		//
 		//
-		//		//Jquery to fill json
-		//		filljsoninput(".fieldjsoninput", ".fieldjson");
-		//		$(".jsonsubmit").click(function () {
-		//			jsonsubmit(".fieldjsoninput", ".fieldjson");
-		//		});
+				//Jquery to fill json
+				filljsoninput(".fieldjsoninput", ".fieldjson");
+				$(".jsonsubmit").click(function () {
+					$("#typeid").val($typeid);
+					jsonsubmit(".fieldjsoninput", ".fieldjson");
+//					$("form.jsonsubmit").submit();
+				});
 	});
 </script>
 
