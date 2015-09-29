@@ -3,33 +3,50 @@
         <h4 class="pad-left-15">Login Config</h4>
     </div>
     <div class="col s4">
-        <!--
-        <div class="logintype no">
-            <div class="checkbox">
-                <label class="form-checkbox form-normal form-primary active form-text">
-                    <input type="checkbox"  class="class1"  name="no">No</label>
-            </div>   </div> 
--->
         <div class="logintype cms">
+<!--
             <div class="checkbox">
-                <!--
-				<label class="form-checkbox form-normal form-primary active form-text">
-					<input type="checkbox" class="class1" id="1" name="cms">CMS</label>
--->
                 <input type="checkbox" class="filled-in class1" name="cms" id="filled-in-box" />
                 <label for="filled-in-box">CMS</label>
             </div>
+-->
 
+        <div class="row">
+                <div class="col s6">
+                    <label for="filled-in-box" class="form-checkbox">CMS</label>
+                </div>
+                <div class="col s6">
+                    <div class="switch">
+                        <label>
+                            Off
+                            <input type="checkbox"  name="cms">
+                            <span class="lever"></span> On
+                        </label>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="logintype facebookLogin">
+          <div class="row">
+                <div class="col s6">
+                    <label for="filled-in-box" class="form-checkbox">Wordpress</label>
+                </div>
+                <div class="col s6">
+                    <div class="switch">
+                        <label>
+                            Off
+                            <input type="checkbox"  name="wordpress">
+                            <span class="lever"></span> On
+                        </label>
+                    </div>
+                </div>
+            </div>
+<!--
             <div class="checkbox">
-                <!--
-                <label class="form-checkbox form-normal form-primary active form-text">
-                    <input type="checkbox" class="class1" id="1" name="wordpress">Wordpress</label>
--->
                 <input type="checkbox" class="filled-in class1" name="wordpress" id="filled-in-box" />
                 <label for="filled-in-box">Wordpress</label>
             </div>
+-->
             <div class="sublogintype" style=" min-height: 110px;">
                 <div class="form-group">
                     <label class="col-md-3 control-label" for="demo-text-input">Wordpress User Name</label>
@@ -37,27 +54,30 @@
                         <input type="text" id="demo-text-input" name="appid" class="form-control" placeholder="Text">
                     </div>
                 </div>
-                <!--
-				<div class="form-group">
-					<label class="col-md-3 control-label" for="demo-text-input">Wordpress Secret Id</label>
-					<div class="col-md-9">
-						<input type="text" id="demo-text-input" name="secret" class="form-control" placeholder="Text">
-						<small class="help-block">This is a help text</small>
-					</div>
-				</div>
--->
             </div>
 
         </div>
         <div class="logintype twitterLogin">
+         <div class="row">
+                <div class="col s6">
+                    <label for="filled-in-box" class="form-checkbox">Tumblr</label>
+                </div>
+                <div class="col s6">
+                    <div class="switch">
+                        <label>
+                            Off
+                            <input type="checkbox"  name="tumblr">
+                            <span class="lever"></span> On
+                        </label>
+                    </div>
+                </div>
+            </div>
+<!--
             <div class="checkbox">
-                <!--
-                <label class="form-checkbox form-normal form-primary active form-text">
-                    <input type="checkbox" class="class1" id="1" name="tumblr">Tumblr</label>
--->
                 <input type="checkbox" class="filled-in class1" name="tumblr" id="filled-in-box" />
                 <label for="filled-in-box">Tumblr</label>
             </div>
+-->
             <div class="sublogintype" style=" min-height: 110px;">
                 <div class="form-group">
                     <label class="col-md-3 control-label" for="demo-text-input">Tumblr User Name</label>
@@ -65,15 +85,6 @@
                         <input type="text" id="demo-text-input" name="appid" class="form-control" placeholder="Text">
                     </div>
                 </div>
-                <!--
-				<div class="form-group">
-					<label class="col-md-3 control-label" for="demo-text-input">Tumblr Secret Id</label>
-					<div class="col-md-9">
-						<input type="text" id="demo-text-input" name="secret" class="form-control" placeholder="Text">
-						<small class="help-block">This is a help text</small>
-					</div>
-				</div>
--->
             </div>
 
         </div>
@@ -126,15 +137,6 @@
         </div>
 
     </div>
-<!--
-    <div class="panel-footer">
-        <div class="submitlogin">
-            <button class="btn btn-info btn-labeled fa fa-check fa-lg loginsubmit" type="submit">Save</button>
-            <a href='<?php echo site_url("site/viewconfig"); ?>' class="btn btn-danger btn-labeled fa fa-close fa-lg logincancel" type="submit">Cancel</a>
-                        <button class="btn btn-danger btn-labeled fa fa-close fa-lg logincancel" type="submit">Cancel</button>
-        </div>
-    </div>
--->
 </section>
 
 <script>

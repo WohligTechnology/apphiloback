@@ -230,8 +230,6 @@
                 var sendjson = [];
                 var $logintype = $(".logintype");
                 $logint = $logintype;
-                console.log("loint");
-                console.log($logint);
                 for (var i = 0; i < $logintype.length; i++) {
                     var obj = {};
                     var $checkbox = $logintype.eq(i).children(".checkbox").find("input[type=checkbox]");
