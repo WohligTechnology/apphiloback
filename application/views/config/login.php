@@ -10,16 +10,6 @@
                 <label for="filled-in-box" class="form-checkbox">Email and Password Login</label>
             </div>
         </div>
-<!--
-        	<div class="logintype normalLogin">
-			<div class="checkbox">
-				<label class="form-checkbox form-normal form-primary active form-text">
-					<input type="checkbox" name="email">Email and Password Login</label>
-			</div>
-
-		</div>
--->
-
         <div class="logintype googleLogin">
             <div class="checkbox">
                 <input type="checkbox" name="Google" class="filled-in active" id="filled-in-box" />
@@ -27,30 +17,18 @@
             </div>
             <div class="row">
                 <div class="sublogintype" style=" min-height: 110px;">
-                    <div class="input-field col s6">
+                    <div class="row">
+                    <div class="input-field col s12">
                         <label for="appid">Google Appid</label>
                         <input type="text" id="appid" name="appid">
                     </div>
-                    <div class="input-field col s6">
+                    </div>
+                      <div class="row">
+                    <div class="input-field col s12">
                         <label for="secretid">Google Secret Id</label>
                         <input type="text" id="secretid" name="secret">
                     </div>
-                    <!--
-                    <label class="col-md-3 control-label" for="demo-text-input">Google App Id</label>
-                    <div class="col-md-9">
-                        <input type="text" id="demo-text-input" name="appid" class="form-control" placeholder="Text">
-                        <small class="help-block">This is a help text</small>
                     </div>
--->
-                    <!--
-                <div class="form-group">
-                    <label class="col-md-3 control-label" for="demo-text-input">Google Secret Id</label>
-                    <div class="col-md-9">
-                        <input type="text" id="demo-text-input" name="secret" class="form-control" placeholder="Text">
-                        <small class="help-block">This is a help text</small>
-                    </div>
-                </div>
--->
                 </div>
             </div>
 
@@ -61,30 +39,18 @@
                 <label for="filled-in-box" class="form-checkbox">Facebook Login</label>
             </div>
             <div class="sublogintype" style=" min-height: 110px;">
-                <div class="input-field col s6">
+               <div class="row">
+                <div class="input-field col s12">
                     <label for="fbappid">Facebook Appid</label>
                     <input type="text" id="fbappid" name="appid">
                 </div>
-                <div class="input-field col s6">
+                </div>
+                 <div class="row">
+                <div class="input-field col s12">
                     <label for="fbsecretid">Facebook Secret Id</label>
                     <input type="text" id="fbsecretid" name="secret">
                 </div>
-                <!--
-                <div class="form-group">
-                    <label class="col-md-3 control-label" for="demo-text-input">Facebook App Id</label>
-                    <div class="col-md-9">
-                        <input type="text" id="demo-text-input" name="appid" class="form-control" placeholder="Text">
-                        <small class="help-block">This is a help text</small>
-                    </div>
                 </div>
-                <div class="form-group">
-                    <label class="col-md-3 control-label" for="demo-text-input">Facebook Secret Id</label>
-                    <div class="col-md-9">
-                        <input type="text" id="demo-text-input" name="secret" class="form-control" placeholder="Text">
-                        <small class="help-block">This is a help text</small>
-                    </div>
-                </div>
--->
             </div>
 
         </div>
@@ -94,31 +60,18 @@
                 <label for="filled-in-box" class="form-checkbox">Twitter Login</label>
             </div>
             <div class="sublogintype" style=" min-height: 110px;">
-
-                <div class="input-field col s6">
+                  <div class="row">
+                <div class="input-field col s12">
                     <label for="tappid">Twitter Appid</label>
                     <input type="text" id="tappid" name="appid">
                 </div>
-                <div class="input-field col s6">
+                </div>
+                  <div class="row">
+                <div class="input-field col s12">
                     <label for="tsecretid">Twitter Secret Id</label>
                     <input type="text" id="tsecretid" name="secret">
                 </div>
-                <!--
-                <div class="form-group">
-                    <label class="col-md-3 control-label" for="demo-text-input">Twitter App Key</label>
-                    <div class="col-md-9">
-                        <input type="text" id="demo-text-input" name="appid" class="form-control" placeholder="Text">
-                        <small class="help-block">This is a help text</small>
-                    </div>
                 </div>
-                <div class="form-group">
-                    <label class="col-md-3 control-label" for="demo-text-input">Twitter Secret Id</label>
-                    <div class="col-md-9">
-                        <input type="text" id="demo-text-input" name="secret" class="form-control" placeholder="Text">
-                        <small class="help-block">This is a help text</small>
-                    </div>
-                </div>
--->
             </div>
 
         </div>
@@ -128,33 +81,21 @@
                 <label for="filled-in-box" class="form-checkbox">Instagram Login</label>
             </div>
             <div class="sublogintype" style=" min-height: 110px;">
-                <div class="input-field col s6">
+                <div class="row">
+                <div class="input-field col s12">
                     <label for="iappid">Instagram Appid</label>
                     <input type="text" id="iappid" name="appid">
                 </div>
-                <div class="input-field col s6">
+                </div>
+                 <div class="row">
+                <div class="input-field col s12">
                     <label for="isecretid">Instagram Secret Id</label>
                     <input type="text" id="isecretid" name="secret">
                 </div>
-                <!--
-                <div class="form-group">
-                    <label class="col-md-3 control-label" for="demo-text-input">Instagram App Id</label>
-                    <div class="col-md-9">
-                        <input type="text" id="demo-text-input" name="appid" class="form-control" placeholder="Text">
-                        <small class="help-block">This is a help text</small>
-                    </div>
                 </div>
-                <div class="form-group">
-                    <label class="col-md-3 control-label" for="demo-text-input">Instagram Secret Id</label>
-                    <div class="col-md-9">
-                        <input type="text" id="demo-text-input" name="secret" class="form-control" placeholder="Text">
-                        <small class="help-block">This is a help text</small>
-                    </div>
-                </div>
--->
             </div>
         </div>
-        <form class="col s12" hidden="true" method="post" action="<?php echo site_url('site/editconfigsubmit');?>" enctype="multipart/form-data">
+        <form class="col s12" method="post" action="<?php echo site_url('site/editconfigsubmit');?>" enctype="multipart/form-data">
             <input type="hidden" id="normal-field" class="form-control" name="id" value="<?php echo set_value('id',$before->id);?>" style="display:none;">
 
             <div class="row">
@@ -193,16 +134,8 @@
                     </div>
                 </div>
             </div>
-            <!--
-            <div class=" form-group">
-                <label class="col-sm-2 control-label">&nbsp;</label>
-                <div class="submitlogin">
-                    <button type="submit" class="btn btn-primary loginsubmit">Save</button>
-                    <a href="<?php echo site_url(" site/viewconfig "); ?>" class="btn btn-secondary logincancel">Cancel</a>
-                </div>
-            </div>
--->
         </form>
+<!--
         <div class="row">
             <div class="input-field col s12">
                 <div class="submitlogin">
@@ -211,6 +144,7 @@
                 </div>
             </div>
         </div>
+-->
     </div>
     <script>
         var $logint = {};

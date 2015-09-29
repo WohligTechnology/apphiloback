@@ -11,6 +11,11 @@
                 <input type="text" id="title" name="title" value="<?php echo set_value('title',$before->title);?>">
             </div>
         </div>
+           <div class="row" style="display:none">
+                <div class="input-field col s6">
+                    <?php echo form_dropdown( 'type',$type,set_value( 'type',$before->type), 'class="chzn-select form-control" 	data-placeholder="Choose a Accesslevel..."'); ?>
+                </div>
+            </div>
         <div class="row">
             <div class="input-field col s12">
                 <textarea name="content" class="materialize-textarea" length="120"><?php echo set_value( 'content',$before->content);?>
@@ -18,10 +23,10 @@
                 <label>Content</label>
             </div>
         </div>
-        <div class="row">
+          <div class="row">
             <div class="input-field col s6">
                 <select name="text">
-                    <option value="">Want Event</option>
+                    <option value=""><?php echo set_value('text',$before->text);?></option>
                     <option value="Drop down yes">Yes</option>
                     <option value="Drop down no">No</option>
                 </select>

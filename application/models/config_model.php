@@ -26,6 +26,43 @@ return $query;
 }
 public function edit($id,$title,$content,$text,$image,$type,$description)
 {
+    // GALLERY
+    if($id==6 && $text=="Drop down no"){
+    $data=array("access" => 0);
+    $this->db->where( "menu", 5 );
+    $query=$this->db->update( "menuaccess", $data );
+    } 
+    else if($id==6 && $text=="Drop down yes"){
+    $data=array("access" => 1);
+    $this->db->where( "menu", 5 );
+    $query=$this->db->update( "menuaccess", $data );
+    }
+    
+    //VIDEOS
+    
+    else if($id==7 && $text=="Drop down no"){
+    $data=array("access" => 0);
+    $this->db->where( "menu", 7 );
+    $query=$this->db->update( "menuaccess", $data );
+    }
+    else if($id==7 && $text=="Drop down yes"){
+    $data=array("access" => 1);
+    $this->db->where( "menu", 7 );
+    $query=$this->db->update( "menuaccess", $data );
+    }
+    
+    // EVENTS
+    
+    else if($id==8 && $text=="Drop down no"){
+    $data=array("access" => 0);
+    $this->db->where( "menu", 9 );
+    $query=$this->db->update( "menuaccess", $data );
+    }
+    else if($id==8 && $text=="Drop down yes"){
+    $data=array("access" => 1);
+    $this->db->where( "menu", 9 );
+    $query=$this->db->update( "menuaccess", $data );
+    }
     if($image){
     $text=$image;
     }
