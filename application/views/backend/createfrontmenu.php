@@ -60,6 +60,14 @@
 
 			</div>
 		</div>
+		
+		<!--	Article-->
+		<div class="row drop">
+			<div class="input-field col s6">
+				<?php echo form_dropdown('article',$parent,set_value('article'), 'class="chzn-select form-control" 	data-placeholder="Choose a Accesslevel..."'); ?>
+
+			</div>
+		</div>
 		<div class="row" style="display:none">
 			<div class="input-field col s6">
 				<label for="link">link</label>
@@ -132,6 +140,12 @@
 		$linktype.change(function () {
 			console.log($linktype.val());
 			switch ($linktype.val()) {
+			case "2":
+				{
+					hideshow(4);
+					$typeid = $('select[name=article]').val();
+				}
+				break;
 			case "3":
 				{
 					hideshow(0);
