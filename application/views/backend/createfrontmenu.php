@@ -116,11 +116,11 @@
 	var $sub;
 	var $i;
 	var $typeid;
-	var $event;
-	var $article;
-	var $video;
-	var $gallery;
-	var $blog;
+	var $event = $('select[name=event]');
+	var $article = $('select[name=article]');
+	var $video = $('select[name=video]');
+	var $gallery = $('select[name=gallery]');
+	var $blog = $('select[name=blog]');
 
 	function hideshow(id, data) {
 		for($i=0;$i<$sub.length;$i++){
@@ -138,25 +138,20 @@
 	$(document).ready(function () {
 		//jquery to dropdown
 		
-		$event = $('select[name=event]');
 		$event.change(function(){
 			$("#typeid").val($event.val());
 		});
-		$event = $('select[name=article]');
-		$event.change(function(){
-			$("#typeid").val($event.val());
+		$article.change(function(){
+			$("#typeid").val($article.val());
 		});
-		$event = $('select[name=gallery]');
-		$event.change(function(){
-			$("#typeid").val($event.val());
+		$video.change(function(){
+			$("#typeid").val($video.val());
 		});
-		$event = $('select[name=video]');
-		$event.change(function(){
-			$("#typeid").val($event.val());
+		$gallery.change(function(){
+			$("#typeid").val($gallery.val());
 		});
-		$event = $('select[name=blog]');
-		$event.change(function(){
-			$("#typeid").val($event.val());
+		$blog.change(function(){
+			$("#typeid").val($blog.val());
 		});
 		
 		
