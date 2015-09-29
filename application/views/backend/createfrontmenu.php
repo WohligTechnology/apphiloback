@@ -19,20 +19,20 @@
 
 		<div class="row">
 			<div class="input-field col s6">
-				<?php echo form_dropdown( 'status',$status,set_value( 'status'), 'class="chzn-select form-control" 	data-placeholder="Choose a Accesslevel..."'); ?>
+				<?php echo form_dropdown( 'status',$status,set_value( 'status'), 'class="chzn-select form-control" data-placeholder="Choose a Accesslevel..."'); ?>
 			</div>
 		</div>
 
 		<div class="row">
 			<div class="input-field col s6">
-				<?php echo form_dropdown('linktype',$linktype,set_value('linktype'), 'class="chzn-select form-control" 	data-placeholder="Choose a Accesslevel..."'); ?>
+				<?php echo form_dropdown('linktype',$linktype,set_value('linktype'), 'class="chzn-select form-control" data-placeholder="Choose a Accesslevel..."'); ?>
 			</div>
 		</div>
 
 		<!--	Event-->
 		<div class="row drop">
 			<div class="input-field col s6">
-				<?php echo form_dropdown('event',$parent,set_value('event'), 'class="chzn-select form-control" 	data-placeholder="Choose a Accesslevel..."'); ?>
+				<?php echo form_dropdown('event',$parent,set_value('event'), 'class="chzn-select form-control" data-placeholder="Choose a Accesslevel..."'); ?>
 
 			</div>
 		</div>
@@ -40,7 +40,7 @@
 		<!--	Blog-->
 		<div class="row drop">
 			<div class="input-field col s6">
-				<?php echo form_dropdown('blog',$parent,set_value('blog'), 'class="chzn-select form-control" 	data-placeholder="Choose a Accesslevel..."'); ?>
+				<?php echo form_dropdown('blog',$parent,set_value('blog'), 'class="chzn-select form-control" data-placeholder="Choose a Accesslevel..."'); ?>
 
 			</div>
 		</div>
@@ -136,9 +136,8 @@
 
 		//my changes
 		$linktype = $('select[name=linktype]');
-		console.log($linktype.val());
 		$linktype.change(function () {
-			console.log($linktype.val());
+			
 			switch ($linktype.val()) {
 			case "2":
 				{
