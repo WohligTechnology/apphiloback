@@ -208,6 +208,11 @@
             $(".logindata").val(JSON.stringify(sendjson));
             $("form.loginform").submit();
         });
+           function  triggercheckbox() {
+                $(".logintype input[type=checkbox]").trigger("click");
+                $(".logintype input[type=checkbox]").trigger("click");
+            }
+            triggercheckbox();
 
     });
 </script>

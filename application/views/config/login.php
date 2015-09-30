@@ -161,7 +161,7 @@
             </div>
             <div class="row" style="display:none">
                 <div class="input-field col s12">
-                    <textarea name="content" class="materialize-textarea" length="120">
+                    <textarea name="content" class="materialize-textarea" >
                         <?php echo set_value( 'content',$before->content);?>
                     </textarea>
                     <label>Content</label>
@@ -169,7 +169,7 @@
             </div>
             <div class="row" style="display:none">
                 <div class="input-field col s12">
-                    <textarea name="text" class="materialize-textarea" id="textid" length="120">
+                    <textarea name="text" class="materialize-textarea logindata" id="textid">
                         <?php echo set_value( 'text',$before->text);?>
                     </textarea>
                     <label>Text</label>
@@ -184,7 +184,7 @@
             <div class="row">
                 <div class="input-field col s6">
                     <div class="submitlogin">
-                        <button class="btn cyan waves-effect waves-light right loginsubmit" type="submit" name="action">Save
+                        <button class="btn cyan waves-effect waves-light right loginsubmit" name="action">Save
                         </button>
                     </div>
                 </div>
@@ -209,6 +209,8 @@
     });
         var $logint = {};
         $(document).ready(function () {
+            
+            
 
             var $logintype = $(".logintype");
             console.log(JSON.parse($("#textid").val()).length);
@@ -244,8 +246,8 @@
                 $logint = $logintype;
                 for (var i = 0; i < $logintype.length; i++) {
                     var obj = {};
-                    var $checkbox = $logintype.eq(i).children(".checkbox").find("input[type=checkbox]");
-                    var $inputs = $logintype.eq(i).children(".sublogintype").find("input");
+                    var $checkbox = $logintype.eq(i).find(".checkbox").find("input[type=checkbox]");
+                    var $inputs = $logintype.eq(i).find(".sublogintype").find("input");
                     obj.name = $checkbox.attr("name");
                     obj.value = $checkbox.prop("checked");
                     for (var j = 0; j < $inputs.length; j++) {
@@ -258,6 +260,13 @@
                 $(".logindata").val(JSON.stringify(sendjson));
                 $("form.loginform").submit();
             });
+            
+            
+            function  triggercheckbox() {
+                $(".logintype input[type=checkbox]").trigger("click");
+                $(".logintype input[type=checkbox]").trigger("click");
+            }
+            triggercheckbox();
 
         });
     </script>

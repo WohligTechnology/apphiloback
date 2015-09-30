@@ -31,13 +31,13 @@ $config =
 			//google
 'Google' => array (
 				'enabled' => true,
-				'keys'    => array ( 'id' => '567519663924-lcssud29ri7ke9h3hou1dlslqu7epc57.apps.googleusercontent.com', 'secret' => 'gsnrnG_gmfyeim1ICXIgH2Di' )
+				'keys'    => array ( 'id' => 'fsdfds', 'secret' => 'fsdsfdfs' )
 			),//google
 			
 			//facebook
 'Facebook' => array (
 				'enabled' => true,
-				'keys'    => array ( 'id' => '1072550936103157', 'secret' => '335344270f5085d99a13873cd90da8c7' ),
+				'keys'    => array ( 'id' => 'dssdf', 'secret' => 'fsdfsd' ),
                 'scope'   => 'email, user_about_me, user_birthday, user_hometown, user_website,publish_actions'
 			),
 //facebook
@@ -45,7 +45,7 @@ $config =
 			//twitter
 'Twitter' => array (
 				'enabled' => true,
-				'keys'    => array ( 'key' => '33vWD8ADW7VcZhxLkaVsUeqwI', 'secret' =>'lr8dK6i23oSKbhDojbb9zHIOOyW55yq8mfbTCsf3HkDPrsbqaL' )
+				'keys'    => array ( 'key' => '', 'secret' =>'' )
 			),
 //twitter
 
@@ -72,7 +72,7 @@ $config =
 			//instagram
 'Google' => array (
 				'enabled' => true,
-				'keys'    => array ( 'id' => '5eefc5f1645d45dcb97ff14610f38bdc', 'secret' => '6916d43d2aec456486a2a41de155a17c' )
+				'keys'    => array ( 'id' => '', 'secret' => '' )
 			),
 //instagram
 		),
