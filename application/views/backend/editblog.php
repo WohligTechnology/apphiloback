@@ -44,8 +44,8 @@
         <div class=" form-group">
             <label class="col-sm-2 control-label">&nbsp;</label>
             <div class="col-sm-4">
-                <button type="submit" class="btn btn-primary jsonsubmit">Save</button>
-                <a href="<?php echo site_url('site/viewblog'); ?>" class="btn btn-secondary">Cancel</a>
+                <button type="submit" class="btn btn-primary jsonsubmit waves-effect waves-light">Save</button>
+                <a href="<?php echo site_url('site/viewblog'); ?>" class="btn btn-secondary waves-effect waves-light">Cancel</a>
             </div>
         </div>
     </form>

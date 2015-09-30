@@ -65,8 +65,8 @@
             <div class=" form-group">
                 <label class="col-sm-2 control-label">&nbsp;</label>
                 <div class="col-sm-4">
-                    <button type="submit" class="btn btn-primary">Save</button>
-                    <a href="<?php echo site_url('site/viewnotification'); ?>" class="btn btn-secondary">Cancel</a>
+                    <button type="submit" class="btn btn-primary waves-effect waves-light">Save</button>
+                    <a href="<?php echo site_url('site/viewnotification'); ?>" class="btn btn-secondary waves-effect waves-light">Cancel</a>
                 </div>
             </div>
         </form>

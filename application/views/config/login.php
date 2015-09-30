@@ -193,6 +193,20 @@
     </div>
     <script>
         var $demo=0;
+          $('.class1').click(function () {
+        var $this = $(this);
+        console.log($this);
+        if ($this.is(".class1")) {
+            if ($this.is(":checked")) {
+                $(".class1").not($this).prop({
+                    disabled: true,
+                    checked: false
+                });
+            } else {
+                $(".class1").prop("disabled", false);
+            }
+        }
+    });
         var $logint = {};
         $(document).ready(function () {
 
@@ -214,11 +228,9 @@
 
             $(".logintype input[type=checkbox]").click(function () {
                 var shouldshow = $(this).prop("checked");
-                $demo=$(this);
-                console.log(shouldshow);
+//                $demo=$(this);
+//                console.log(shouldshow);
                 var $sublogin = $(this).parents(".logintype").find(".sublogintype");
-                
-                console.log($sublogin);
                 if (shouldshow) {
                     $sublogin.show(200);
                 } else {
