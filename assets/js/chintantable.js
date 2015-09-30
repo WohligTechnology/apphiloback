@@ -71,19 +71,19 @@ function generatejquery(url)
                         $(".drawchintantable thead tr th[data-field='" + element.alias + "']").html(element.header);
 
                         if (element.sort == "ASC") {
-                            $(".drawchintantable thead tr th[data-field='" + element.alias + "']").append("<button data-sort='DESC' class='btn fa fa-sort pull-right deep-purple lighten-3 waves-effect waves-light'></button>");
+                            $(".drawchintantable thead tr th[data-field='" + element.alias + "']").append("<button data-sort='DESC' class='btn chisorting fa fa-sort-asc pull-right deep-purple lighten-3 waves-effect waves-light'></button>");
                         } else if (element.sort == "DESC") {
-                            $(".drawchintantable thead tr th[data-field='" + element.alias + "']").append("<button data-sort='ASC' class='btn btn fa fa-sort pull-right deep-purple lighten-3 waves-effect waves-light'></button>");
+                            $(".drawchintantable thead tr th[data-field='" + element.alias + "']").append("<button data-sort='ASC' class='btn btn chisorting fa fa-sort-desc pull-right deep-purple lighten-3 waves-effect waves-light'></button>");
                         } else if (element.sort == "1") {
-                            $(".drawchintantable thead tr th[data-field='" + element.alias + "']").append("<button data-sort='ASC' class='btn btn fa fa-sort  pull-right deep-purple lighten-3 waves-effect waves-light'></button>");
+                            $(".drawchintantable thead tr th[data-field='" + element.alias + "']").append("<button data-sort='ASC' class='btn btn chisorting fa fa-sort  pull-right deep-purple lighten-3 waves-effect waves-light'></button>");
                         }
                     }
 
-                    $(".drawchintantable thead tr th button.sortbutton").click(function () {
+                    $(".drawchintantable .chisorting").click(function () {
                         console.log("Clicked");
                         orderby = $(this).parents("th").attr("data-field");
                         orderorder = $(this).attr("data-sort");
-                        maxrow=$(".drawchintantable .maxrow").val();
+                        maxrow=$(".drawchintantable select.maxrow").val();
                         fillchintandata();
                     });
 
@@ -100,20 +100,20 @@ function generatejquery(url)
             $(".chintantablesearchgo").click(function () {
                 search = $(".chintantablesearch").val();
                 pageno = 1;
-                maxrow=$(".drawchintantable .maxrow").val();
+                maxrow=$(".drawchintantable select.maxrow").val();
                 fillchintandata();
             });
 
             $(".chintantablesearchgo").click(function () {
                 search = $(".chintantablesearch").val();
                 pageno = 1;
-                maxrow=$(".drawchintantable .maxrow").val();
+                maxrow=$(".drawchintantable select.maxrow").val();
                 fillchintandata();
             });
             $(".drawchintantable .maxrow").change(function () {
                 search = $(".chintantablesearch").val();
                 pageno = 1;
-                maxrow=$(".drawchintantable .maxrow").val();
+                maxrow=$(".drawchintantable select.maxrow").val();
                 fillchintandata();
             });
 

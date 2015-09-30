@@ -1,7 +1,8 @@
 <div class="row">
     <div class="col s12">
-        <h5 class="pad-left-15">Videogallery List</h5>
         <div class="col s12 drawchintantable">
+           
+            <?php $this->chintantable->createsearch("Videogallery List");?>
             <table class="highlight">
                 <thead>
                     <tr>
@@ -24,7 +25,7 @@
 
 
     </div>
-    <div class="createbuttonplacement"><a class="btn-floating btn-large waves-effect waves-light light-green accent-4" href="<?php echo site_url("site/createvideogallery "); ?>"><i class="material-icons">add</i></a>
+    <div class="createbuttonplacement"><a class="btn-floating btn-large waves-effect waves-light light-green accent-4" href="<?php echo site_url("site/createvideogallery"); ?>"><i class="material-icons">add</i></a>
     </div>
 
 </div>

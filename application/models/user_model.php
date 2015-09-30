@@ -425,8 +425,18 @@ class User_model extends CI_Model
 	{
 		$return=array(
 		"" => "Icon",
-		"1" => "No",
-		"2" => "Yes"
+		"ln-gear2" => "ln-gear2",
+		"ln-arrow-right2" => "ln-arrow-right2",
+		"ln-bell" => "ln-bell",
+		"ln-calendar2" => "ln-calendar2",
+		"ln-papers" => "ln-papers",
+		"ln-picture" => "ln-picture",
+		"ln-film-play" => "ln-film-play",
+		"ln-circle-exclamation" => "ln-circle-exclamation",
+		"ln-briefcase" => "ln-briefcase",
+		"ln-user" => "ln-user",
+		"ln-users2" => "ln-users2",
+		"ln-phone2" => "ln-phone2"
 		);
 		return $return;
 	}

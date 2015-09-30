@@ -95,29 +95,28 @@ class Chintantable {
         echo '<div class="chintantablepagination"><ul class="pagination"></ul></div>';
     }
     public function createsearch($title = "", $description = "") {
-        echo '<div class="loader">
-        <div class="dots">Loading...</div>
-            </div>
-        <div class="panel-heading">
-    <h3 class="panel-title">' . $title . '</h3>
-</div>
+        echo '<div class="loader"><div class="dots">Loading...</div></div>
 <div class="panel-body">
-    <div class="bootstrap-table">
-        <div class="fixed-table-toolbar">
-            <div class="columns columns-right btn-group pull-right">            
-            <button class="btn btn-default chintantablesearchgo" type="button">Go!</button>
-                <select class="maxrow form-control" style="float: left;  width: 76px;">
+    <div class="row">
+        <div class="col s6">
+            <h5 class="panel-title">' . $title . '</h5>
+        </div>
+        <div class="col s6">
+            <div class="row margintop15">
+                <div class="col s6"><input class="form-control chintantablesearch" type="text" placeholder="Search"></div>
+                <div class="col s3"><button class="btn purple chintantablesearchgo" type="button">Go!</button></div>
+                <div class="col s3">
+                <select class="maxrow form-control">
                     <option value="10">10</option>
                     <option value="20">20</option>
                     <option value="50">50</option>
                     <option value="100">100</option>
                 </select>
+                </div>
             </div>
-        <div class="pull-right search">
-            <input class="form-control chintantablesearch" type="text" placeholder="Search">
         </div>
-        </div>
-    </div>';
+    </div>
+</div>';
     }
     public function gethighstockjson($element1, $element2, $from, $where = "", $group = "", $having = "", $order = "", $limit = "", $otherselect = "") {
         if ($where == "") {

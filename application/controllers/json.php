@@ -201,6 +201,12 @@ $elements[22]->field="`webapp_gallery`.`name`";
 $elements[22]->sort="1";
 $elements[22]->header="galleryname";
 $elements[22]->alias="galleryname";
+    
+$elements[23]=new stdClass();
+$elements[23]->field="`webapp_frontmenu`.`link`";
+$elements[23]->sort="1";
+$elements[23]->header="icon";
+$elements[23]->alias="icon";
 
 $search=$this->input->get_post("search");
 $pageno=$this->input->get_post("pageno");
