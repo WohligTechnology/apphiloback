@@ -15,7 +15,7 @@
                     <?php echo form_dropdown( 'status',$status,set_value( 'status'), 'class="chzn-select form-control" 	data-placeholder="Choose a Accesslevel..."'); ?>
                 </div>
             </div>
-            <div class="row">
+            <div class="row" style="display:none">
                 <div class="input-field col s6">
                     <label for="json">Json</label>
     <textarea name="json" class="fieldjsoninput"><?php echo json_encode($fieldjson,true); ?></textarea>

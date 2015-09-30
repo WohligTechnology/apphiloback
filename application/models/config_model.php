@@ -26,8 +26,8 @@ return $query;
 }
 public function edit($id,$title,$content,$text,$image,$type,$description)
 {
-    // CMS BLOG
-    
+      // CMS BLOG
+    if($id==5){
      $res = json_decode($text);
     if($res[0]->value==1){
     $data=array("access" => 1);
@@ -40,9 +40,11 @@ public function edit($id,$title,$content,$text,$image,$type,$description)
     $query=$this->db->update( "menuaccess", $data );
     }
     
+    }
+    
     // GALLERY
     
-    else if($id==6 && $text=="Drop down no"){
+    if($id==6 && $text=="Drop down no"){
     $data=array("access" => 0);
     $this->db->where( "menu", 5 );
     $query=$this->db->update( "menuaccess", $data );
@@ -78,8 +80,7 @@ public function edit($id,$title,$content,$text,$image,$type,$description)
     $this->db->where( "menu", 9 );
     $query=$this->db->update( "menuaccess", $data );
     }
-    
-    
+  
     
     if($image){
     $text=$image;

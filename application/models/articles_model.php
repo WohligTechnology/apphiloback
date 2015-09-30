@@ -20,7 +20,7 @@ $query=$this->db->get("webapp_articles")->row();
 return $query;
 }
 function getsinglearticles($id){
-$query=$this->db->query("SELECT `id`, `status`, `title`, `json`, `content` FROM `webapp_articles` WHERE `status`=1 AND `id`='$id'")->row();
+$query=$this->db->query("SELECT `id`, `status`, `title`, `json`, `content`,`timestamp`,`image` FROM `webapp_articles` WHERE `status`=1 AND `id`='$id'")->row();
 return $query;
 }
 public function edit($id,$status,$title,$json,$content,$timestamp,$image)

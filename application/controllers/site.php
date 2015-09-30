@@ -233,9 +233,9 @@ class Site extends CI_Controller
             $data[ 'blognotification' ] =$this->user_model->getblognotificationdropdown();
 		$data['before']=$this->user_model->beforeedit($this->input->get('id'));
 		$data['page']='edituser';
-		$data['page2']='block/userblock';
+//		$data['page2']='block/userblock';
 		$data['title']='Edit User';
-		$this->load->view('templatewith2',$data);
+		$this->load->view('template',$data);
 	}
 	function editusersubmit()
 	{
