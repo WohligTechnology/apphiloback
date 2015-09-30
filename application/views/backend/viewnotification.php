@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col s12">
-        <h5 class="pad-left-15">Notification List</h5>
         <div class="col s12 drawchintantable">
+           <?php $this->chintantable->createsearch("Notification List");?>
             <table class="highlight">
                 <thead>
                     <tr>

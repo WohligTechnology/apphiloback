@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col s12">
-        <h5 class="pad-left-15">Menu List</h5>
         <div class="col s12 drawchintantable">
+           <?php $this->chintantable->createsearch("Menu List");?>
             <table class="highlight">
                 <thead>
                     <tr>
