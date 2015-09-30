@@ -56,6 +56,7 @@ ul#nav-mobile li a {
 	padding: 0 0;
 	height: 45px;
 	line-height: 3;
+	width: 100%;
 }
 
 .text-center {
@@ -185,6 +186,14 @@ input[type="search"] {
 
 ul#nav-mobile li {
 	padding: 0px;
+}
+
+.panel ul#nav-mobile li a {
+    color:black;
+    text-shadow: none;
+}
+.panel ul#nav-mobile li {
+    margin:10px 0;
 }
 
 ul#nav-mobile li a {

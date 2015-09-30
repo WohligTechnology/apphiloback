@@ -748,6 +748,8 @@ $video=$this->input->get_post("video");
 $article=$this->input->get_post("article");
 $gallery=$this->input->get_post("gallery");
 $typeid=$this->input->get_post("typeid");
+    echo "type id  ";
+    print_r($_POST);
      $config['upload_path'] = './uploads/';
 						$config['allowed_types'] = 'gif|jpg|png|jpeg';
 						$this->load->library('upload', $config);

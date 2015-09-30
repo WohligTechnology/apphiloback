@@ -113,10 +113,94 @@ $elements[7]->header="linktype";
 $elements[7]->alias="linktype";
     
 $elements[8]=new stdClass();
-$elements[8]->field="`webapp_frontmenu`.`link`";
+$elements[8]->field="`webapp_frontmenu`.`event`";
 $elements[8]->sort="1";
-$elements[8]->header="link";
-$elements[8]->alias="link";
+$elements[8]->header="event";
+$elements[8]->alias="event";
+    
+$elements[9]=new stdClass();
+$elements[9]->field="`webapp_frontmenu`.`blog`";
+$elements[9]->sort="1";
+$elements[9]->header="blog";
+$elements[9]->alias="blog";
+    
+$elements[10]=new stdClass();
+$elements[10]->field="`webapp_frontmenu`.`video`";
+$elements[10]->sort="1";
+$elements[10]->header="video";
+$elements[10]->alias="video";
+    
+$elements[11]=new stdClass();
+$elements[11]->field="`webapp_frontmenu`.`article`";
+$elements[11]->sort="1";
+$elements[11]->header="article";
+$elements[11]->alias="article";
+    
+$elements[12]=new stdClass();
+$elements[12]->field="`webapp_frontmenu`.`gallery`";
+$elements[12]->sort="1";
+$elements[12]->header="gallery";
+$elements[12]->alias="gallery";
+    
+$elements[13]=new stdClass();
+$elements[13]->field="`linktype`.`id`";
+$elements[13]->sort="1";
+$elements[13]->header="linktypeid";
+$elements[13]->alias="linktypeid";
+    
+$elements[14]=new stdClass();
+$elements[14]->field="`linktype`.`name`";
+$elements[14]->sort="1";
+$elements[14]->header="linktypename";
+$elements[14]->alias="linktypename";
+    
+$elements[15]=new stdClass();
+$elements[15]->field="`linktype`.`status`";
+$elements[15]->sort="1";
+$elements[15]->header="linktypestatusstatus";
+$elements[15]->alias="linktypestatus";
+    
+$elements[16]=new stdClass();
+$elements[16]->field="`linktype`.`order`";
+$elements[16]->sort="1";
+$elements[16]->header="linktypeorder";
+$elements[16]->alias="linktypeorder";
+    
+$elements[17]=new stdClass();
+$elements[17]->field="`linktype`.`link`";
+$elements[17]->sort="1";
+$elements[17]->header="linktypelink";
+$elements[17]->alias="linktypelink";
+    
+$elements[18]=new stdClass();
+$elements[18]->field="`webapp_events`.`title`";
+$elements[18]->sort="1";
+$elements[18]->header="eventname";
+$elements[18]->alias="eventname";
+    
+$elements[19]=new stdClass();
+$elements[19]->field="`webapp_blog`.`title`";
+$elements[19]->sort="1";
+$elements[19]->header="blogname";
+$elements[19]->alias="blogname";
+    
+$elements[20]=new stdClass();
+$elements[20]->field="`webapp_videogallery`.`name`";
+$elements[20]->sort="1";
+$elements[20]->header="videoname";
+$elements[20]->alias="videoname";
+    
+$elements[21]=new stdClass();
+$elements[21]->field="`webapp_articles`.`title`";
+$elements[21]->sort="1";
+$elements[21]->header="articlename";
+$elements[21]->alias="articlename";
+    
+$elements[22]=new stdClass();
+$elements[22]->field="`webapp_gallery`.`name`";
+$elements[22]->sort="1";
+$elements[22]->header="galleryname";
+$elements[22]->alias="galleryname";
 
 $search=$this->input->get_post("search");
 $pageno=$this->input->get_post("pageno");
@@ -131,7 +215,7 @@ if($orderby=="")
 $orderby="order";
 $orderorder="ASC";
 }
-$data["message"]=$this->chintantable->query($pageno,$maxrow,$orderby,$orderorder,$search,$elements,"FROM `webapp_frontmenu`","WHERE `webapp_frontmenu`.`status`=1");
+$data["message"]=$this->chintantable->query($pageno,$maxrow,$orderby,$orderorder,$search,$elements,"FROM `webapp_frontmenu` LEFT OUTER JOIN `linktype` ON `linktype`.`id`=`webapp_frontmenu`.`linktype` LEFT OUTER JOIN `webapp_events` ON `webapp_events`.`id`=`webapp_frontmenu`.`event` LEFT OUTER JOIN `webapp_blog` ON `webapp_blog`.`id`=`webapp_frontmenu`.`blog` LEFT OUTER JOIN `webapp_videogallery` ON `webapp_videogallery`.`id`=`webapp_frontmenu`.`video` LEFT OUTER JOIN `webapp_articles` ON `webapp_articles`.`id`=`webapp_frontmenu`.`article` LEFT OUTER JOIN `webapp_gallery` ON `webapp_gallery`.`id`=`webapp_frontmenu`.`gallery`","WHERE `webapp_frontmenu`.`status`=1");
 $this->load->view("json",$data);
 }
 //public function getsinglefrontmenu()

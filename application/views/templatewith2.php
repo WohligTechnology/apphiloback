@@ -1,10 +1,10 @@
 <?php echo $this->load->view('backend/header'); ?>
 <div id="page-content">
     <div class="row">
-        <div class="col-md-9">
+        <div class="col s9">
             <?php echo $this->load->view('backend/'.$page); ?>
         </div>
-        <div class="col-md-3">
+        <div class="col s3">
             <?php echo $this->load->view('backend/'.$page2); ?>
         </div>
     </div>

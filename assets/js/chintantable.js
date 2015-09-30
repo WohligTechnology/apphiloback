@@ -71,11 +71,11 @@ function generatejquery(url)
                         $(".drawchintantable thead tr th[data-field='" + element.alias + "']").html(element.header);
 
                         if (element.sort == "ASC") {
-                            $(".drawchintantable thead tr th[data-field='" + element.alias + "']").append("<button data-sort='DESC' class='btn fa fa-sort pull-right purple lighten-3 waves-effect waves-light'></button>");
+                            $(".drawchintantable thead tr th[data-field='" + element.alias + "']").append("<button data-sort='DESC' class='btn fa fa-sort pull-right deep-purple waves-effect waves-light'></button>");
                         } else if (element.sort == "DESC") {
-                            $(".drawchintantable thead tr th[data-field='" + element.alias + "']").append("<button data-sort='ASC' class='btn btn fa fa-sort pull-right purple lighten-3 waves-effect waves-light'></button>");
+                            $(".drawchintantable thead tr th[data-field='" + element.alias + "']").append("<button data-sort='ASC' class='btn btn fa fa-sort pull-right deep-purple waves-effect waves-light'></button>");
                         } else if (element.sort == "1") {
-                            $(".drawchintantable thead tr th[data-field='" + element.alias + "']").append("<button data-sort='ASC' class='btn btn fa fa-sort  pull-right purple lighten-3 waves-effect waves-light'></button>");
+                            $(".drawchintantable thead tr th[data-field='" + element.alias + "']").append("<button data-sort='ASC' class='btn btn fa fa-sort  pull-right deep-purple waves-effect waves-light'></button>");
                         }
                     }
 
