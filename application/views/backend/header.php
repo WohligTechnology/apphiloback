@@ -4,8 +4,8 @@
 <head>
     <link rel="stylesheet" href="<?php echo base_url('assets').'/';?>bower_components/Materialize/bin/materialize.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    
     <link href="<?php echo base_url('assets').'/';?>css/style.css" rel="stylesheet">
+    <link href="<?php echo base_url('assets').'/';?>css/font-awesome.min.css" rel="stylesheet">
     
     <script src="<?php echo base_url('assets').'/';?>bower_components/jquery/dist/jquery.min.js"></script>
     <script src="<?php echo base_url('assets').'/';?>bower_components/Materialize/bin/materialize.js"></script>
