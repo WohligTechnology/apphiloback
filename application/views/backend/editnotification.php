@@ -9,18 +9,7 @@
 
       
         
-           <div class="row">
-            <div class="input-field col s6">
-                <label for="link">link</label>
-                <input type="text" id="link" name="link" value="<?php echo set_value('link',$before->link);?>">
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="input-field col s6">
-                <?php echo form_dropdown( 'status',$status,set_value( 'status',$before->status), 'class="chzn-select form-control" data-placeholder="Choose a Accesslevel..."'); ?>
-            </div>
-        </div>
+         
             <div class="row">
             <div class="input-field col s6">
                 <?php echo form_dropdown( 'videogallery',$videogallery,set_value( 'videogallery',$before->videogallery), 'class="chzn-select form-control" data-placeholder="Choose a Accesslevel..."'); ?>
@@ -36,7 +25,18 @@
                 <?php echo form_dropdown( 'article',$article,set_value( 'article',$before->article), 'class="chzn-select form-control" data-placeholder="Choose a Accesslevel..."'); ?>
             </div>
         </div>
+          <div class="row">
+            <div class="input-field col s6">
+                <label for="link">link</label>
+                <input type="text" id="link" name="link" value="<?php echo set_value('link',$before->link);?>">
+            </div>
+        </div>
 
+        <div class="row">
+            <div class="input-field col s6">
+                <?php echo form_dropdown( 'status',$status,set_value( 'status',$before->status), 'class="chzn-select form-control" data-placeholder="Choose a Accesslevel..."'); ?>
+            </div>
+        </div>
         <div class="row">
             <div class="file-field input-field col s12">
                 <div class="btn">
@@ -52,9 +52,7 @@
             </div>
         </div>
          <div class="row">
-                <div class="input-field col s12">
-                    <textarea name="content" class="materialize-textarea" length="120">
-                        <?php echo set_value( 'content',$before->content);?>
+                <div class="input-field col s12"><textarea name="content" class="materialize-textarea" length="120"><?php echo set_value( 'content',$before->content);?>
                     </textarea>
                     <label>Content</label>
                 </div>

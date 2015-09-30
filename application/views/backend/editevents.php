@@ -6,28 +6,21 @@
 <div class="row">
     <form class="col s12" method="post" action="<?php echo site_url('site/editeventssubmit');?>" enctype="multipart/form-data">
         <input type="hidden" id="normal-field" class="form-control" name="id" value="<?php echo set_value('id',$before->id);?>" style="display:none;">
-
-         <div class="row">
-            <div class="input-field col s6">
-                <?php echo form_dropdown( 'status',$status,set_value( 'status',$before->status), 'class="chzn-select form-control" data-placeholder="Choose a Accesslevel..."'); ?>
-            </div>
-        </div>
-            <div class="row">
+          <div class="row">
             <div class="input-field col s6">
                 <label>Title</label>
                 <input type="text" name="title" value="<?php echo set_value('title',$before->title);?>">
             </div>
         </div>
-           <div class="row">
+         <div class="row">
             <div class="input-field col s6">
-                <label for="timestamp">Timestamp</label>
-                <input type="text" id="timestamp" name="timestamp" value="<?php echo set_value('timestamp',$before->timestamp);?>">
+                <?php echo form_dropdown( 'status',$status,set_value( 'status',$before->status), 'class="chzn-select form-control" data-placeholder="Choose a Accesslevel..."'); ?>
             </div>
         </div>
+          
+         
            <div class="row">
-                <div class="input-field col s12">
-                    <textarea name="content" class="materialize-textarea" length="120">
-                        <?php echo set_value( 'content',$before->content);?>
+                <div class="input-field col s12"><textarea name="content" class="materialize-textarea" length="120"><?php echo set_value( 'content',$before->content);?>
                     </textarea>
                     <label>Content</label>
                 </div>
@@ -46,16 +39,22 @@
                 </div>
             </div>
         </div>
-           <div class="row">
+            <div class="row">
             <div class="input-field col s6">
                 <label for="startdate">Startdate</label>
-                <input type="date" id="startdate" name="startdate" value="<?php echo set_value('startdate',$before->startdate);?>">
+                <input type="text" id="startdate" name="startdate" value="<?php echo set_value('startdate',$before->startdate);?>">
             </div>
         </div>
            <div class="row">
             <div class="input-field col s6">
                 <label for="starttime">Starttime</label>
-                <input type="time" id="starttime" name="starttime" value="<?php echo set_value('starttime',$before->starttime);?>">
+                <input type="text" id="starttime" name="starttime" value="<?php echo set_value('starttime',$before->starttime);?>">
+            </div>
+        </div>
+          <div class="row">
+            <div class="input-field col s6">
+                <label for="timestamp">Timestamp</label>
+                <input type="text" id="timestamp" name="timestamp" value="<?php echo set_value('timestamp',$before->timestamp);?>">
             </div>
         </div>
 

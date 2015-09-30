@@ -420,6 +420,15 @@ class User_model extends CI_Model
 		"2" => "Yes"
 		);
 		return $return;
+	} 
+    public function getlinkdropdown()
+	{
+		$return=array(
+		"" => "Icon",
+		"1" => "No",
+		"2" => "Yes"
+		);
+		return $return;
 	}
     public function getvideonotificationdropdown()
 	{

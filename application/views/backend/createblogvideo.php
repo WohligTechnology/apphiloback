@@ -4,7 +4,12 @@
     </div>
         <form class="col s12" method="post" action="<?php echo site_url('site/createblogvideosubmit');?>" enctype="multipart/form-data">
 
-          
+           <div class="row">
+                <div class="input-field col s6">
+                    <label for="video">Video</label>
+                    <input type="text" name="video" id="video" value="<?php echo set_value('video');?>">
+                </div>
+            </div>
             <div class="row">
                 <div class="input-field col s6">
                     <?php echo form_dropdown( 'status',$status,set_value( 'status'), 'class="chzn-select form-control" 	data-placeholder="Choose a Accesslevel..."'); ?>
@@ -15,12 +20,7 @@
                     <?php echo form_dropdown( 'blog',$blog,set_value( 'blog'), 'class="chzn-select form-control" 	data-placeholder="Choose a Accesslevel..."'); ?>
                 </div>
             </div>
-            <div class="row">
-                <div class="input-field col s6">
-                    <label for="video">Video</label>
-                    <input type="text" name="video" id="video" value="<?php echo set_value('video');?>">
-                </div>
-            </div> 
+            
                <div class="row">
                 <div class="input-field col s6">
                     <label for="order">Order</label>

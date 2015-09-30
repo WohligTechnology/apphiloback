@@ -3,7 +3,11 @@
     <h4 class="pad-left-15">Create Galleryimage</h4>
     </div>
         <form class="col s12" method="post" action="<?php echo site_url('site/creategalleryimagesubmit');?>" enctype="multipart/form-data">
-
+              <div class="row">
+                <div class="input-field col s6">
+                    <?php echo form_dropdown( 'gallery',$gallery,set_value( 'gallery'), 'class="chzn-select form-control" 	data-placeholder="Choose a Accesslevel..."'); ?>
+                </div>
+            </div>
             <div class="row">
                 <div class="input-field col s6">
                     <label for="order">Order</label>
@@ -32,11 +36,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="input-field col s6">
-                    <?php echo form_dropdown( 'gallery',$gallery,set_value( 'gallery'), 'class="chzn-select form-control" 	data-placeholder="Choose a Accesslevel..."'); ?>
-                </div>
-            </div>
+          
             <div class=" form-group">
                 <label class="col-sm-2 control-label">&nbsp;</label>
                 <div class="col-sm-4">

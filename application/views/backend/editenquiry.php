@@ -39,9 +39,7 @@
             </div>
         </div>
            <div class="row">
-                <div class="input-field col s12">
-                    <textarea name="content" class="materialize-textarea" length="120">
-                        <?php echo set_value( 'content',$before->content);?>
+                <div class="input-field col s12"><textarea name="content" class="materialize-textarea" length="120"><?php echo set_value( 'content',$before->content);?>
                     </textarea>
                     <label>Content</label>
                 </div>

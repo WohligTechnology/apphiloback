@@ -25,7 +25,7 @@
                     <label>Content</label>
                 </div>
             </div>
-              <div class="row">
+              <div class="row" style="display:none">
                 <div class="input-field col s6">
                     <label for="json">Json</label>
     <textarea name="json" class="fieldjsoninput"><?php echo set_value( 'json',$before->json);?></textarea>

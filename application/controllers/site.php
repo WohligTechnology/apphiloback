@@ -595,7 +595,7 @@ $timestamp=$this->input->get_post("timestamp");
             
             if($image=="")
             {
-            $image=$this->article_model->getimagebyid($id);
+            $image=$this->articles_model->getimagebyid($id);
                // print_r($image);
                 $image=$image->image;
             }
@@ -707,6 +707,7 @@ $data[ 'blog' ] =$this->user_model->getblogdropdown();
 $data[ 'video' ] =$this->user_model->getvideogallerydropdown(); 
 $data[ 'article' ] =$this->user_model->getarticledropdown();   
 $data[ 'gallery' ] =$this->user_model->getgallerydropdown();
+$data[ 'link' ] =$this->user_model->getlinkdropdown();
 $data["title"]="Create frontmenu";
 $this->load->view("template",$data);
 }
@@ -730,6 +731,7 @@ $data[ 'blog' ] =$this->user_model->getblogdropdown();
 $data[ 'video' ] =$this->user_model->getvideodropdown();
 $data[ 'article' ] =$this->user_model->getarticledropdown();
 $data[ 'gallery' ] =$this->user_model->getgallerydropdown();
+$data[ 'link' ] =$this->user_model->getlinkdropdown();
 $data["title"]="Create frontmenu";
 $this->load->view("template",$data);
 }
@@ -748,8 +750,6 @@ $video=$this->input->get_post("video");
 $article=$this->input->get_post("article");
 $gallery=$this->input->get_post("gallery");
 $typeid=$this->input->get_post("typeid");
-    echo "type id  ";
-    print_r($_POST);
      $config['upload_path'] = './uploads/';
 						$config['allowed_types'] = 'gif|jpg|png|jpeg';
 						$this->load->library('upload', $config);
@@ -781,6 +781,7 @@ $data[ 'blog' ] =$this->user_model->getblogdropdown();
 $data[ 'video' ] =$this->user_model->getvideodropdown();
 $data[ 'article' ] =$this->user_model->getarticledropdown();
 $data[ 'gallery' ] =$this->user_model->getgallerydropdown();
+$data[ 'link' ] =$this->user_model->getlinkdropdown();
 $data["title"]="Edit frontmenu";
 $data["before"]=$this->frontmenu_model->beforeedit($this->input->get("id"));
 $this->load->view("template",$data);
@@ -806,6 +807,7 @@ $data[ 'blog' ] =$this->user_model->getblogdropdown();
 $data[ 'video' ] =$this->user_model->getvideodropdown();
 $data[ 'article' ] =$this->user_model->getarticledropdown();
 $data[ 'gallery' ] =$this->user_model->getgallerydropdown();
+$data[ 'link' ] =$this->user_model->getlinkdropdown();
 $data["title"]="Edit frontmenu";
 $data["before"]=$this->frontmenu_model->beforeedit($this->input->get("id"));
 $this->load->view("template",$data);

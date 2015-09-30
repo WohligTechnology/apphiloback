@@ -111,11 +111,6 @@
 						</div>
 						<div class="row">
 							<div class="col-xs-8 text-left checkbox">
-<!--
-								<label class="form-checkbox form-icon">
-								<input type="checkbox"> Remember me
-								</label>
--->
 							</div>
 							<div class="col-xs-4">
 								<div class="form-group text-right">
@@ -123,12 +118,6 @@
 								</div>
 							</div>
 						</div>
-<!--
-						<div class="mar-btm"><em>- or -</em></div>
-						<button class="btn btn-primary btn-lg btn-block" type="button">
-							<i class="fa fa-facebook fa-fw"></i> Login with Facebook
-						</button>
--->
 					</form>
 				</div>
 			</div>

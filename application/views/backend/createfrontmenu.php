@@ -67,21 +67,20 @@
 
 			</div>
 		</div>
-		<div class="row" style="display:none">
-			<div class="input-field col s6">
-				<label for="link">link</label>
-				<input type="text" id="link" name="link" value="<?php echo set_value('link');?>">
-			</div>
-		</div>
 		
-		<div class="row">
+		
+		<div class="row" style="display:none">
 			<div class="input-field col s6">
 				<label for="typeid">Id selected</label>
 				<input type="text" id="typeid" name="typeid" value="<?php echo set_value('typeid');?>">
 			</div>
 		</div>
-		
 		<div class="row">
+			<div class="input-field col s6">
+				<?php echo form_dropdown( 'link',$link,set_value( 'link'), 'class="chzn-select form-control" data-placeholder="Choose a Accesslevel..."'); ?>
+			</div>
+		</div>
+		<div class="row" style="display:none">
 			<div class="file-field input-field col s12">
 				<div class="btn">
 					<span>Image</span>
@@ -92,7 +91,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="row">
+		<div class="row" style="display:none">
 			<div class="input-field col s12">
 				<textarea name="json" class="materialize-textarea fieldjsoninput" length="120">
 					<?php echo json_encode($fieldjson,true); ?>

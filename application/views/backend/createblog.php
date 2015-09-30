@@ -16,17 +16,14 @@
                     <input type="text" id="title" name="title" value="<?php echo set_value('title');?>">
                 </div>
             </div>
-            <div class="row">
+            <div class="row" style="display:none">
                 <div class="input-field col s6">
                     <label for="json">Json</label>
     <textarea name="json" class="fieldjsoninput"><?php echo json_encode($fieldjson,true); ?></textarea>
                 </div>
             </div>
             <div class="row">
-                <div class="input-field col s12">
-                    <textarea name="content" class="materialize-textarea" length="120">
-                        <?php echo set_value( 'content');?>
-                    </textarea>
+                <div class="input-field col s12"><textarea name="content" class="materialize-textarea" length="120"><?php echo set_value( 'content');?></textarea>
                     <label>Content</label>
                 </div>
             </div>
