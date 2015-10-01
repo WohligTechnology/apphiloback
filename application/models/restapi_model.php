@@ -146,6 +146,10 @@ return  1;
         $userid=$this->session->userdata('id');
         $query=$this->db->query("UPDATE `user` SET `coverimage`='$imageName' WHERE 'id'=$userid"); 
         return $query;
+    } 
+    public function getallsliders(){
+        $query=$this->db->query("SELECT `id`, `image`, `order`, `status`, `alt` FROM `slider` WHERE `status`=1"); 
+        return $query;
     }
 }
 ?>

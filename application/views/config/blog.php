@@ -127,7 +127,7 @@
                 <div class="row">
                     <div class="input-field col s6">
                         <div class="submitlogin">
-                            <button class="btn cyan waves-effect waves-light right loginsubmit" type="submit" name="action">Save
+                            <button class="btn cyan waves-effect waves-light green right loginsubmit" type="submit" name="action">Save
                             </button>
                         </div>
                     </div>

@@ -82,7 +82,7 @@
 		</div>
 		<div class="row" style="display:none">
 			<div class="file-field input-field col s12">
-				<div class="btn">
+				<div class="btn brown">
 					<span>Image</span>
 					<input name="image" type="file" multiple>
 				</div>
@@ -103,8 +103,8 @@
 		<div class=" form-group">
 			<label class="col-sm-2 control-label">&nbsp;</label>
 			<div class="col-sm-4">
-				<button type="submit" class="btn btn-primary jsonsubmit waves-effect waves-light">Save</button>
-				<a href="<?php echo site_url('site/viewfrontmenu'); ?>" class="btn btn-secondary waves-effect waves-light">Cancel</a>
+				<button type="submit" class="btn btn-primary jsonsubmit waves-effect waves-light green">Save</button>
+				<a href="<?php echo site_url('site/viewfrontmenu'); ?>" class="btn btn-secondary waves-effect waves-light red">Cancel</a>
 			</div>
 		</div>
 	</form>
