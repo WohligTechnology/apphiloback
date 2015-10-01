@@ -595,6 +595,7 @@ $content=$this->input->get_post("content");
                 }
                 
 			}
+    print_r($_POST);
 if($this->articles_model->create($status,$title,$json,$content,$image)==0)
 $data["alerterror"]="New articles could not be created.";
 else

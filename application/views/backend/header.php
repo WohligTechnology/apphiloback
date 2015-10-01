@@ -1,9 +1,3 @@
-<script src="js/wysihtml5-0.3.0.js"></script>
-<script src="js/jquery-1.7.2.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/bootstrap-wysihtml5.js"></script>
-
-
 <html>
 <title>BusinessApp</title>
 <head>
