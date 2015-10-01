@@ -28,7 +28,7 @@ return  1;
     }
     public function signin($username,$password){
      $password=md5($password);
-        $query=$this->db->query("SELECT `id` FROM `user` WHERE `username`='$username' AND `password`= '$password'");
+        $query=$this->db->query("SELECT `id` FROM `user` WHERE `email`='$username' AND `password`= '$password'");
         if($query->num_rows > 0)
         {
             $user=$query->row();
