@@ -32,7 +32,7 @@ class User_model extends CI_Model
 	}
 	
 	
-	public function create($name,$email,$password,$accesslevel,$status,$socialid,$logintype,$image,$json,$contact,$address,$eventnotification,$photonotification,$videonotification,$blognotification)
+	public function create($name,$email,$password,$accesslevel,$status,$socialid,$logintype,$image,$json,$contact,$address,$eventnotification,$photonotification,$videonotification,$blognotification,$coverimage)
 	{
 		$data  = array(
 			'name' => $name,
@@ -49,7 +49,8 @@ class User_model extends CI_Model
 			'eventnotification' => $eventnotification,
 			'photonotification' => $photonotification,
 			'videonotification' => $videonotification,
-			'blognotification' => $blognotification
+			'blognotification' => $blognotification,
+			'coverimage' => $coverimage
 		);
 		$query=$this->db->insert( 'user', $data );
 		$id=$this->db->insert_id();
@@ -93,7 +94,7 @@ class User_model extends CI_Model
 		return $query;
 	}
 	
-	public function edit($id,$name,$email,$password,$accesslevel,$status,$socialid,$logintype,$image,$json,$contact,$address,$eventnotification,$photonotification,$videonotification,$blognotification)
+	public function edit($id,$name,$email,$password,$accesslevel,$status,$socialid,$logintype,$image,$json,$contact,$address,$eventnotification,$photonotification,$videonotification,$blognotification,$coverimage)
 	{
 		$data  = array(
 			'name' => $name,
@@ -109,7 +110,8 @@ class User_model extends CI_Model
             'eventnotification' => $eventnotification,
 			'photonotification' => $photonotification,
 			'videonotification' => $videonotification,
-			'blognotification' => $blognotification
+			'blognotification' => $blognotification,
+            'coverimage' => $coverimage
             
 		);
 		if($password != "")
@@ -123,6 +125,11 @@ class User_model extends CI_Model
 	public function getuserimagebyid($id)
 	{
 		$query=$this->db->query("SELECT `image` FROM `user` WHERE `id`='$id'")->row();
+		return $query;
+	}
+    public function getcoverimagebyid($id)
+	{
+		$query=$this->db->query("SELECT `coverimage` FROM `user` WHERE `id`='$id'")->row();
 		return $query;
 	}
     public function getsliderimagebyid($id)
@@ -570,7 +577,7 @@ class User_model extends CI_Model
         } //$is_logged_in !== 'true' || !isset( $is_logged_in )
         else {
 		$userid=$this->session->userdata('id');
-		$query=$this->db->query("SELECT * FROM `user` WHERE `id`='$userid'")->row();
+		$query=$this->db->query("SELECT `id`, `name`, `password`, `email`, `accesslevel`, `timestamp`, `status`, `image`, `username`, `socialid`, `logintype`, `json`, `dob`, `street`, `address`, `city`, `state`, `pincode`, `facebook`, `twitter`, `google`, `country`, `instagram`, `contact`, `eventnotification`, `photonotification`, `videonotification`, `blognotification`, `coverimage` FROM `user` WHERE `id`='$userid'")->row();
            // $userid = $this->session->userdata( );
          return $query;
         }

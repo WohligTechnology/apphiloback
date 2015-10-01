@@ -1213,6 +1213,19 @@ $data["message"]=$this->restapi_model->getappconfig();
 	 $date = new DateTime();
         $imageName = "image-".rand(0, 100000)."".$date->getTimestamp().".jpg";
         if(move_uploaded_file($_FILES["file"]["tmp_name"], "./uploads/".$imageName)){
+            $this->restapi_model->updateprofileimage($imageName);
+       		$data["message"]=$imageName;
+            	$this->load->view("json",$data); 
+        }else{
+        	$data["message"]="false";
+            	$this->load->view("json",$data); 
+        }
+ } 
+ public function coverimageupload(){
+	 $date = new DateTime();
+        $imageName = "image-".rand(0, 100000)."".$date->getTimestamp().".jpg";
+        if(move_uploaded_file($_FILES["file"]["tmp_name"], "./uploads/".$imageName)){
+             $this->restapi_model->updatecoverimage($imageName);
        		$data["message"]=$imageName;
             	$this->load->view("json",$data); 
         }else{
