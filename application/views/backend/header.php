@@ -1,19 +1,29 @@
+<script src="js/wysihtml5-0.3.0.js"></script>
+<script src="js/jquery-1.7.2.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/bootstrap-wysihtml5.js"></script>
+
+
 <html>
 <title>BusinessApp</title>
-
 <head>
     <link rel="stylesheet" href="<?php echo base_url('assets').'/';?>bower_components/Materialize/bin/materialize.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="<?php echo base_url('assets').'/';?>css/style.css" rel="stylesheet">
     <link href="<?php echo base_url('assets').'/';?>css/font-awesome.min.css" rel="stylesheet">
-    <link href="<?php echo base_url('assets').'/';?>bootstrap-wysihtml5-0.0.2/bootstrap-wysihtml5-0.0.2/bootstrap-wysihtml5-0.0.2.css" rel="stylesheet">
-    <script src="<?php echo base_url('assets').'/';?>bootstrap-wysihtml5-0.0.2/bootstrap-wysihtml5-0.0.2/bootstrap-wysihtml5-0.0.2.js"></script> 
-    <script src="<?php echo base_url('assets').'/';?>bootstrap-wysihtml5-0.0.2/bootstrap-wysihtml5-0.0.2/bootstrap-wysihtml5-0.0.2.min.js"></script>
+    <link href="<?php echo base_url('assets').'/';?>css/bootstrap-wysihtml5-0.0.2.css" rel="stylesheet">
+   
     <script src="<?php echo base_url('assets').'/';?>bower_components/jquery/dist/jquery.min.js"></script>
     <script src="<?php echo base_url('assets').'/';?>bower_components/Materialize/bin/materialize.js"></script>
     <script src="<?php echo base_url('assets').'/';?>bower_components/Materialize/js/sideNav.js"></script>
     <script src="<?php echo base_url('assets').'/';?>js/chintantable.js"></script>
     <script src="<?php echo base_url('assets').'/';?>js/formInit.js"></script>
+ 
+   
+    <script src="<?php echo base_url('assets').'/';?>js/wysihtml5-0.3.0.js"></script>
+       <script src="<?php echo base_url('assets').'/';?>js/jquery-1.7.2.min.js"></script>
+        <script src="<?php echo base_url('assets').'/';?>js/bootstrap.min.js"></script>
+         <script src="<?php echo base_url('assets').'/';?>js/bootstrap-wysihtml5-0.0.2.js"></script>
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>

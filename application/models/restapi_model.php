@@ -150,6 +150,10 @@ return  1;
     public function getallsliders(){
         $query=$this->db->query("SELECT `id`, `image`, `order`, `status`, `alt` FROM `slider` WHERE `status`=1")->result(); 
         return $query;
+    } 
+    public function getsingleuserdetail($id){
+        $query=$this->db->query("SELECT `id`, `name`, `email`, `accesslevel`, `timestamp`, `status`, `image`, `username`, `socialid`, `logintype`, `json`, `dob`, `street`, `address`, `city`, `state`, `pincode`, `facebook`, `twitter`, `google`, `country`, `instagram`, `contact`, `eventnotification`, `photonotification`, `videonotification`, `blognotification`, `coverimage` FROM `user` WHERE `id`='$id'")->row(); 
+        return $query;
     }
 }
 ?>

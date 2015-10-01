@@ -1189,4 +1189,9 @@ $data["message"]=$this->restapi_model->getappconfig();
             	$this->load->view("json",$data); 
         }
  }
+ public function getsingleuserdetail(){
+        $id=$this->input->get('id');
+        $data['message']=$this->restapi_model->getsingleuserdetail($id);
+        $this->load->view("json", $data); 
+ }
 } ?>
