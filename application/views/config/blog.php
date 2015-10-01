@@ -164,20 +164,30 @@
             var $checkbox = $logintype.eq(i).children(".checkbox").find("input[type=checkbox]");
             var $inputs = $logintype.eq(i).children(".sublogintype").find("input");
             console.log(alldata[i]);
+
             $inputs.eq(0).val(alldata[i].appid);
             $inputs.eq(1).val(alldata[i].secret);
 
             if (alldata[i].value == true) {
                 $checkbox.prop("checked", true);
             }
-
         }
 
 
         $(".logintype input[type=checkbox]").click(function () {
             var shouldshow = $(this).prop("checked");
+
             var $sublogin = $(this).parents(".logintype").children(".sublogintype");
             if (shouldshow) {
+                var $inputs=$(".logintype input[type=checkbox]");
+                for(var i=0;i<$inputs.length;i++)
+                {
+                    if($inputs.eq(i).prop("checked"))
+                    {
+                        $inputs.eq(i).click();
+                    }
+                }   
+                $(this).click();
                 $sublogin.show(200);
             } else {
                 $sublogin.hide(200);
