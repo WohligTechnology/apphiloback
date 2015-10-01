@@ -30,7 +30,7 @@
 </div>
 <script>
     function drawtable(resultrow) {
-         return "<tr><td>" + resultrow.id + "</td><td>" + resultrow.notification + "</td><td>" + resultrow.user + "</td><td>" + resultrow.timestamp + "</td><td><a class='btn btn-primary btn-xs waves-effect waves-light' href='<?php echo site_url('site/editnotificationuser?id=');?>" + resultrow.id + "&notificationid=" + resultrow.notificationid + "'><i class='material-icons propericon'>system_update_alt</i></a><a class='btn btn-danger btn-xs waves-effect waves-light' onclick=\"return confirm('Are you sure you want to delete?');\" href='<?php echo site_url('site/deletenotificationuser?id='); ?>" + resultrow.id + "&notificationid=" + resultrow.notificationid + "'><i class='material-icons propericon'>delete</i></a></td></tr>";
+         return "<tr><td>" + resultrow.id + "</td><td>" + resultrow.notification + "</td><td>" + resultrow.user + "</td><td>" + resultrow.timestamp + "</td><td><a class='btn btn-primary btn-xs waves-effect waves-light orange lighten-1' href='<?php echo site_url('site/editnotificationuser?id=');?>" + resultrow.id + "&notificationid=" + resultrow.notificationid + "'><i class='material-icons propericon'>system_update_alt</i></a><a class='btn btn-danger btn-xs waves-effect waves-light red' onclick=\"return confirm('Are you sure you want to delete?');\" href='<?php echo site_url('site/deletenotificationuser?id='); ?>" + resultrow.id + "&notificationid=" + resultrow.notificationid + "'><i class='material-icons propericon'>delete</i></a></td></tr>";
     }
     generatejquery('<?php echo $base_url;?>');
 </script>

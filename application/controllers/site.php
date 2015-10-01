@@ -123,7 +123,43 @@ class Site extends CI_Controller
                 
 			}
             
-			if($this->user_model->create($name,$email,$password,$accesslevel,$status,$socialid,$logintype,$image,$json,$contact,$address,$eventnotification,$photonotification,$videonotification,$blognotification)==0)
+            // COVERIMAGE
+            $config['upload_path'] = './uploads/';
+			$config['allowed_types'] = 'gif|jpg|png|jpeg';
+			$this->load->library('upload', $config);
+			$filename="coverimage";
+			$coverimage="";
+			if (  $this->upload->do_upload($filename))
+			{
+				$uploaddata = $this->upload->data();
+				$coverimage=$uploaddata['file_name'];
+                
+                $config_r['source_image']   = './uploads/' . $uploaddata['file_name'];
+                $config_r['maintain_ratio'] = TRUE;
+                $config_t['create_thumb'] = FALSE;///add this
+                $config_r['width']   = 800;
+                $config_r['height'] = 800;
+                $config_r['quality']    = 100;
+                //end of configs
+
+                $this->load->library('image_lib', $config_r); 
+                $this->image_lib->initialize($config_r);
+                if(!$this->image_lib->resize())
+                {
+                    echo "Failed." . $this->image_lib->display_errors();
+                    //return false;
+                }  
+                else
+                {
+                    //print_r($this->image_lib->dest_image);
+                    //dest_image
+                    $coverimage=$this->image_lib->dest_image;
+                    //return false;
+                }
+                
+			}
+            
+			if($this->user_model->create($name,$email,$password,$accesslevel,$status,$socialid,$logintype,$image,$json,$contact,$address,$eventnotification,$photonotification,$videonotification,$blognotification,$coverimage)==0)
 			$data['alerterror']="New user could not be created.";
 			else
 			$data['alertsuccess']="User created Successfully.";
@@ -330,7 +366,52 @@ class Site extends CI_Controller
                 $image=$image->image;
             }
             
-			if($this->user_model->edit($id,$name,$email,$password,$accesslevel,$status,$socialid,$logintype,$image,$json,$contact,$address,$eventnotification,$photonotification,$videonotification,$blognotification)==0)
+            
+            //COVERIMAGE
+            
+                $config['upload_path'] = './uploads/';
+			$config['allowed_types'] = 'gif|jpg|png|jpeg';
+			$this->load->library('upload', $config);
+			$filename="coverimage";
+			$coverimage="";
+			if (  $this->upload->do_upload($filename))
+			{
+				$uploaddata = $this->upload->data();
+				$coverimage=$uploaddata['file_name'];
+                
+                $config_r['source_image']   = './uploads/' . $uploaddata['file_name'];
+                $config_r['maintain_ratio'] = TRUE;
+                $config_t['create_thumb'] = FALSE;///add this
+                $config_r['width']   = 800;
+                $config_r['height'] = 800;
+                $config_r['quality']    = 100;
+                //end of configs
+
+                $this->load->library('image_lib', $config_r); 
+                $this->image_lib->initialize($config_r);
+                if(!$this->image_lib->resize())
+                {
+                    echo "Failed." . $this->image_lib->display_errors();
+                    //return false;
+                }  
+                else
+                {
+                    //print_r($this->image_lib->dest_image);
+                    //dest_image
+                    $coverimage=$this->image_lib->dest_image;
+                    //return false;
+                }
+                
+			}
+            
+            if($coverimage=="")
+            {
+            $coverimage=$this->user_model->getcoverimagebyid($id);
+               // print_r($coverimage);
+                $coverimage=$coverimage->coverimage;
+            }
+            
+			if($this->user_model->edit($id,$name,$email,$password,$accesslevel,$status,$socialid,$logintype,$image,$json,$contact,$address,$eventnotification,$photonotification,$videonotification,$blognotification,$coverimage)==0)
 			$data['alerterror']="User Editing was unsuccesful";
 			else
 			$data['alertsuccess']="User edited Successfully.";

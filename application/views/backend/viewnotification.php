@@ -36,7 +36,7 @@
         if (resultrow.image == "") {
             image = "No Receipt Available";
         }
-        return "<tr><td>" + resultrow.id + "</td><td>" + resultrow.videogallery + "</td><td>" + resultrow.event + "</td><td>" + resultrow.status + "</td><td>" + image + "</td><td>" + resultrow.timestamp + "</td><td><a class='btn btn-primary btn-xs waves-effect waves-light' href='<?php echo site_url('site/editnotification?id=');?>" + resultrow.id + "'><i class='material-icons propericon'>system_update_alt</i></a><a class='btn btn-danger btn-xs waves-effect waves-light' onclick=\"return confirm('Are you sure you want to delete?');\" href='<?php echo site_url('site/deletenotification?id='); ?>" + resultrow.id + "'><i class='material-icons propericon'>delete</i></a></td></tr>";
+        return "<tr><td>" + resultrow.id + "</td><td>" + resultrow.videogallery + "</td><td>" + resultrow.event + "</td><td>" + resultrow.status + "</td><td>" + image + "</td><td>" + resultrow.timestamp + "</td><td><a class='btn btn-primary btn-xs waves-effect waves-light orange lighten-1' href='<?php echo site_url('site/editnotification?id=');?>" + resultrow.id + "'><i class='material-icons propericon'>system_update_alt</i></a><a class='btn btn-danger btn-xs waves-effect waves-light red' onclick=\"return confirm('Are you sure you want to delete?');\" href='<?php echo site_url('site/deletenotification?id='); ?>" + resultrow.id + "'><i class='material-icons propericon'>delete</i></a></td></tr>";
     }
     generatejquery('<?php echo $base_url;?>');
 </script>

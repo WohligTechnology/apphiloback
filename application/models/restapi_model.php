@@ -124,5 +124,18 @@ return  1;
           $query['videogallery']=$this->db->query("SELECT `id`, `order`, `status`, `name`, `json`, `timestamp` FROM `webapp_videogallery` WHERE `name` LIKE '%$searchelement%'")->result();
         return $query;
     }
+    
+    public function getallfrontmenu(){
+       $query['menu']=$this->db->query("SELECT `webapp_frontmenu`.`id`,`webapp_frontmenu`.`order`,`webapp_frontmenu`.`parent`,`webapp_frontmenu`.`status`,`webapp_frontmenu`.`name`,`webapp_frontmenu`.`json`,`webapp_frontmenu`.`image`,`webapp_frontmenu`.`linktype`,`webapp_frontmenu`.`event`,`webapp_frontmenu`.`blog`,`webapp_frontmenu`.`video`,`webapp_frontmenu`.`article`,`webapp_frontmenu`.`gallery`,`linktype`.`id` as `linktypeid`,`linktype`.`name` as `linktypename`,`linktype`.`status` as `linktypestatus`,`linktype`.`order` as `linktypeorder`,`linktype`.`link` as `linktypelink`,`webapp_events`.`title` as `eventname`,`webapp_blog`.`title` as `blogname`,`webapp_videogallery`.`name` as `videoname`,`webapp_articles`.`title` as `articlename`,`webapp_gallery`.`name` as `galleryname`,`webapp_frontmenu`.`link` as `icon` FROM `webapp_frontmenu` 
+    LEFT OUTER JOIN `linktype` ON `linktype`.`id`=`webapp_frontmenu`.`linktype` 
+    LEFT OUTER JOIN `webapp_events` ON `webapp_events`.`id`=`webapp_frontmenu`.`event` 
+    LEFT OUTER JOIN `webapp_blog` ON `webapp_blog`.`id`=`webapp_frontmenu`.`blog` 
+    LEFT OUTER JOIN `webapp_videogallery` ON `webapp_videogallery`.`id`=`webapp_frontmenu`.`video` 
+    LEFT OUTER JOIN `webapp_articles` ON `webapp_articles`.`id`=`webapp_frontmenu`.`article` 
+    LEFT OUTER JOIN `webapp_gallery` ON `webapp_gallery`.`id`=`webapp_frontmenu`.`gallery` WHERE `webapp_frontmenu`.`status`=1 ORDER BY `webapp_frontmenu`.`order` ASC")->result();
+        $query['config']=$this->db->query("SELECT `id`, `title`, `content`, `text`, `type`, `image`, `description` FROM `config`")->result();
+        return $query;
+    
+    }
 }
 ?>
