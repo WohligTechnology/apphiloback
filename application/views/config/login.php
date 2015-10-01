@@ -76,13 +76,13 @@
             <div class="sublogintype" style=" min-height: 110px;">
                 <div class="row">
                     <div class="input-field col s12">
-                        <label for="fbappid">Facebook Appid</label>
+                        <label for="fbappid">Facebook App ID</label>
                         <input type="text" id="fbappid" name="appid">
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <label for="fbsecretid">Facebook Secret Id</label>
+                        <label for="fbsecretid">Facebook App Secret</label>
                         <input type="text" id="fbsecretid" name="secret">
                     </div>
                 </div>
@@ -107,13 +107,13 @@
             <div class="sublogintype" style=" min-height: 110px;">
                 <div class="row">
                     <div class="input-field col s12">
-                        <label for="tappid">Twitter Appid</label>
+                        <label for="tappid">Twitter Consumer Key (API Key)</label>
                         <input type="text" id="tappid" name="appid">
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <label for="tsecretid">Twitter Secret Id</label>
+                        <label for="tsecretid">Twitter Consumer Secret (API Secret)</label>
                         <input type="text" id="tsecretid" name="secret">
                     </div>
                 </div>
@@ -138,13 +138,13 @@
             <div class="sublogintype" style=" min-height: 110px;">
                 <div class="row">
                     <div class="input-field col s12">
-                        <label for="iappid">Instagram Appid</label>
+                        <label for="iappid">Instagram Client ID</label>
                         <input type="text" id="iappid" name="appid">
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <label for="isecretid">Instagram Secret Id</label>
+                        <label for="isecretid">Instagram Client Secret</label>
                         <input type="text" id="isecretid" name="secret">
                     </div>
                 </div>
