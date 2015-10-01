@@ -44,13 +44,13 @@
                 <div class="sublogintype" style=" min-height: 110px;">
                     <div class="row">
                         <div class="input-field col s12">
-                            <label for="appid">Google Appid</label>
+                            <label for="appid">Google Client ID</label>
                             <input type="text" id="appid" name="appid">
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <label for="secretid">Google Secret Id</label>
+                            <label for="secretid">Google Client secret</label>
                             <input type="text" id="secretid" name="secret">
                         </div>
                     </div>
