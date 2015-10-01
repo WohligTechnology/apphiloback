@@ -1,5 +1,5 @@
 <html>
-<title>Backend zeus</title>
+<title>BusinessApp</title>
 
 <head>
     <link rel="stylesheet" href="<?php echo base_url('assets').'/';?>bower_components/Materialize/bin/materialize.css">
@@ -23,7 +23,7 @@
                 <div class="row">
                     <div class="col m12 l12 search">
                         <div class=logo>
-                            <a id="logo-container" href="#" class="brand-logo text-center">Wohlig</a>
+                            <a id="logo-container" href="#" class="brand-logo text-center"><div style="text-align:center; color: #fff; font-size: 38px"><span style="margin-left: -29px;">Business</span><span style="font-weight: 500;">App</span></div></a>
                         </div>
                         <a href="<?php echo site_url('login/logout'); ?>" class="waves-effect waves-light btn red " style="float:right;">  <i class="large material-icons ">power_settings_new</i> Logout</a>
 <!--

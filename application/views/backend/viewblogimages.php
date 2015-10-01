@@ -24,7 +24,7 @@
 
 
     </div>
-    <div class="createbuttonplacement"><a class="btn-floating btn-large waves-effect waves-light light-green accent-4" href="<?php echo site_url("site/createblogimages?id=").$this->input->get('id');?>"><i class="material-icons">add</i></a>
+    <div class="createbuttonplacement"><a class="btn-floating btn-large waves-effect waves-light green accent-4" href="<?php echo site_url("site/createblogimages?id=").$this->input->get('id');?>"><i class="material-icons">add</i></a>
     </div>
 
 </div>
@@ -34,7 +34,7 @@
         if (resultrow.image == "") {
             image = "No Receipt Available";
         }
-        return "<tr><td>" + resultrow.id + "</td><td>" + resultrow.blog + "</td><td>" + resultrow.status + "</td><td>" + image + "</td><td><a class='btn btn-primary btn-xs waves-effect waves-light orange lighten-1' href='<?php echo site_url('site/editblogimages?id=');?>" + resultrow.id + "&blogid=" + resultrow.blogid + "'><i class='material-icons propericon'>system_update_alt</i></a><a class='btn btn-danger btn-xs waves-effect waves-light red' onclick=\"return confirm('Are you sure you want to delete?');\" href='<?php echo site_url('site/deleteblogimages?id='); ?>" + resultrow.id + "&blogid=" + resultrow.blogid + "'><i class='material-icons propericon'>delete</i></a></td></tr>";
+        return "<tr><td>" + resultrow.id + "</td><td>" + resultrow.blog + "</td><td>" + resultrow.status + "</td><td>" + image + "</td><td><a class='btn btn-primary btn-xs waves-effect waves-light orange lighten-1' href='<?php echo site_url('site/editblogimages?id=');?>" + resultrow.id + "&blogid=" + resultrow.blogid + "'><i class='fa fa-pencil-square propericon'></i></a><a class='btn btn-danger btn-xs waves-effect waves-light red' onclick=\"return confirm('Are you sure you want to delete?');\" href='<?php echo site_url('site/deleteblogimages?id='); ?>" + resultrow.id + "&blogid=" + resultrow.blogid + "'><i class='material-icons propericon'>delete</i></a></td></tr>";
     }
     generatejquery('<?php echo $base_url;?>');
 </script>

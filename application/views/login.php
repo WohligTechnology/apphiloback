@@ -18,16 +18,20 @@
             background-repeat: no-repeat;
         }
         /* label focus color */
-        a, .input-field input[type=email]:focus:not([readonly]) + label,
+        
+        a,
+        .input-field input[type=email]:focus:not([readonly]) + label,
         .input-field input[type=password]:focus:not([readonly]) + label {
             color: #546e7a;
         }
         /* label underline focus color */
+        
         .input-field input[type=email]:focus:not([readonly]),
         .input-field input[type=password]:focus:not([readonly]) {
             border-bottom: 1px solid #e53935;
             box-shadow: 0 1px 0 0 #e53935;
         }
+        
         .padding-top {
             padding-top: 10%;
         }
@@ -41,11 +45,17 @@
 
 <body>
     <div class="padding-top">
-        <div class="row">
-            <form class="col s12 offset-s0 m6 offset-m3 l4 offset-l4"  method="post" action="<?php echo site_url('login/validate') ;?>">
-                <div class="card">
-                
 <!--
+        <div style="text-align:center; color: #fff; font-size: 38px">
+            <span>Business</span><span style="color:#f13232">App</span>
+        </div>
+-->
+
+        <div class="row">
+            <form class="col s12 offset-s0 m6 offset-m3 l4 offset-l4" method="post" action="<?php echo site_url('login/validate') ;?>">
+                <div class="card">
+
+                    <!--
                   
 						<div class="form-group">
 							<div class="input-group">
@@ -75,7 +85,7 @@
                             <span class="card-title">Sign In</span>
                         </div>
                     </div>
-                    
+
                     <div class="card-content">
                         <div class="row">
                             <div class="input-field col s12">
@@ -92,11 +102,11 @@
                         <div class="row">
                             <div class="col s12">
                                 <button class="btn waves-effect waves-light red darken-1 right" type="submit">Login</button>
-<!--                                <a href="">Forgot password?</a>-->
+                                <!--                                <a href="">Forgot password?</a>-->
                             </div>
                         </div>
                     </div>
-                   
+
                 </div>
             </form>
         </div>
