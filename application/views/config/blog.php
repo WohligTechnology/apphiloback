@@ -4,14 +4,14 @@
     </div>
     <div class="col s4">
         <div class="logintype cms">
-<!--
+            <!--
             <div class="checkbox">
                 <input type="checkbox" class="filled-in class1" name="cms" id="filled-in-box" />
                 <label for="filled-in-box">CMS</label>
             </div>
 -->
 
-        <div class="row checkbox">
+            <div class="row checkbox">
                 <div class="col s6">
                     <label for="filled-in-box" class="form-checkbox">CMS</label>
                 </div>
@@ -19,7 +19,7 @@
                     <div class="switch">
                         <label>
                             Off
-                            <input type="checkbox"  name="cms">
+                            <input type="checkbox" name="cms">
                             <span class="lever"></span> On
                         </label>
                     </div>
@@ -27,7 +27,7 @@
             </div>
         </div>
         <div class="logintype facebookLogin">
-          <div class="row checkbox">
+            <div class="row checkbox">
                 <div class="col s6">
                     <label for="filled-in-box" class="form-checkbox">Wordpress</label>
                 </div>
@@ -35,30 +35,28 @@
                     <div class="switch">
                         <label>
                             Off
-                            <input type="checkbox"  name="wordpress">
+                            <input type="checkbox" name="wordpress">
                             <span class="lever"></span> On
                         </label>
                     </div>
                 </div>
             </div>
-<!--
+            <!--
             <div class="checkbox">
                 <input type="checkbox" class="filled-in class1" name="wordpress" id="filled-in-box" />
                 <label for="filled-in-box">Wordpress</label>
             </div>
 -->
             <div class="sublogintype" style=" min-height: 110px;">
-                <div class="form-group">
-                    <label class="col-md-3 control-label" for="demo-text-input">Wordpress User Name</label>
-                    <div class="col-md-9">
-                        <input type="text" id="demo-text-input" name="appid" class="form-control" placeholder="Text">
-                    </div>
+                <div class="input-field col s12">
+                    <label for="appid">Wordpress User Name</label>
+                    <input type="text" id="appid" name="appid">
                 </div>
             </div>
 
         </div>
         <div class="logintype twitterLogin">
-         <div class="row checkbox">
+            <div class="row checkbox">
                 <div class="col s6">
                     <label for="filled-in-box" class="form-checkbox">Tumblr</label>
                 </div>
@@ -66,24 +64,22 @@
                     <div class="switch">
                         <label>
                             Off
-                            <input type="checkbox"  name="tumblr">
+                            <input type="checkbox" name="tumblr">
                             <span class="lever"></span> On
                         </label>
                     </div>
                 </div>
             </div>
-<!--
+            <!--
             <div class="checkbox">
                 <input type="checkbox" class="filled-in class1" name="tumblr" id="filled-in-box" />
                 <label for="filled-in-box">Tumblr</label>
             </div>
 -->
             <div class="sublogintype" style=" min-height: 110px;">
-                <div class="form-group">
-                    <label class="col-md-3 control-label" for="demo-text-input">Tumblr User Name</label>
-                    <div class="col-md-9">
-                        <input type="text" id="demo-text-input" name="appid" class="form-control" placeholder="Text">
-                    </div>
+                <div class="input-field col s12">
+                    <label for="appid">Tumblr User Name</label>
+                    <input type="text" id="appid" name="appid">
                 </div>
             </div>
 
@@ -208,11 +204,12 @@
             $(".logindata").val(JSON.stringify(sendjson));
             $("form.loginform").submit();
         });
-           function  triggercheckbox() {
-                $(".logintype input[type=checkbox]").trigger("click");
-                $(".logintype input[type=checkbox]").trigger("click");
-            }
-            triggercheckbox();
+
+        function triggercheckbox() {
+            $(".logintype input[type=checkbox]").trigger("click");
+            $(".logintype input[type=checkbox]").trigger("click");
+        }
+        triggercheckbox();
 
     });
 </script>
