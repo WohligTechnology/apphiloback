@@ -29,13 +29,11 @@
             </div>
        
              <div class="row">
-                <div class="input-field col s12">
-                    <textarea name="content" class="materialize-textarea" length="120">
-                        <?php echo set_value( 'content');?>
-                    </textarea>
-                    <label>Content</label>
-                </div>
-            </div> 
+            <textarea id="some-textarea" name="content" placeholder="Enter text ..."><?php echo set_value( 'content');?></textarea>
+            <script type="text/javascript">
+                $('#some-textarea').wysihtml5();
+            </script>
+        </div>
             <div class=" form-group">
                 <label class="col-sm-2 control-label">&nbsp;</label>
                 <div class="col-sm-4">

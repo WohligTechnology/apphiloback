@@ -19,6 +19,12 @@ $this->db->where("id",$id);
 $query=$this->db->get("slider")->row();
 return $query;
 }
+    public function beforeedithome($id)
+{
+$this->db->where("id",$id);
+$query=$this->db->get("home")->row();
+return $query;
+}
 function getsingleblogimages($id){
 $this->db->where("id",$id);
 $query=$this->db->get("slider")->row();
@@ -29,6 +35,13 @@ public function edit($id,$alt,$status,$order,$image)
 $data=array("alt" => $alt,"status" => $status,"order" => $order,"image" => $image);
 $this->db->where( "id", $id );
 $query=$this->db->update( "slider", $data );
+return 1;
+}
+    public function edithome($id,$content)
+{
+$data=array("content" => $content);
+$this->db->where( "id", $id );
+$query=$this->db->update( "home", $data );
 return 1;
 }
 public function delete($id)

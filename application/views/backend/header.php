@@ -5,7 +5,6 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="<?php echo base_url('assets').'/';?>css/style.css" rel="stylesheet">
     <link href="<?php echo base_url('assets').'/';?>css/font-awesome.min.css" rel="stylesheet">
-    <link href="<?php echo base_url('assets').'/';?>css/bootstrap-wysihtml5-0.0.2.css" rel="stylesheet">
    
     <script src="<?php echo base_url('assets').'/';?>bower_components/jquery/dist/jquery.min.js"></script>
     <script src="<?php echo base_url('assets').'/';?>bower_components/Materialize/bin/materialize.js"></script>
@@ -15,9 +14,10 @@
  
    
     <script src="<?php echo base_url('assets').'/';?>js/wysihtml5-0.3.0.js"></script>
+    <script src="<?php echo base_url('assets').'/';?>js/bootstrap-wysihtml5.js"></script>
+<!--
        <script src="<?php echo base_url('assets').'/';?>js/jquery-1.7.2.min.js"></script>
-        <script src="<?php echo base_url('assets').'/';?>js/bootstrap.min.js"></script>
-         <script src="<?php echo base_url('assets').'/';?>js/bootstrap-wysihtml5-0.0.2.js"></script>
+-->
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
@@ -29,7 +29,7 @@
                 <div class="row">
                     <div class="col m12 l12 search">
                         <div class=logo>
-                            <a id="logo-container" href="#" class="brand-logo text-center"><div style="text-align:center; color: #fff; font-size: 38px"><span style="margin-left: -29px;">Business</span><span style="font-weight: 500;">App</span></div></a>
+                            <a id="logo-container" href="#" class="brand-logo text-center"><div style="text-align:center; color: #fff; font-size: 38px; font-family: lato;"><span style="margin-left: -29px;">Business</span><span style="font-weight: 500;">App</span></div></a>
                         </div>
                         <a href="<?php echo site_url('login/logout'); ?>" class="waves-effect waves-light btn red " style="float:right;">  <i class="large material-icons ">power_settings_new</i> Logout</a>
 <!--

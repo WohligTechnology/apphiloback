@@ -19,11 +19,11 @@
         </div>
           
          
-           <div class="row">
-                <div class="input-field col s12"><textarea name="content" class="materialize-textarea" length="120"><?php echo set_value( 'content',$before->content);?>
-                    </textarea>
-                    <label>Content</label>
-                </div>
+            <div class="row">
+                  <textarea id="some-textarea" name="content" placeholder="Enter text ..."><?php echo set_value( 'content',$before->content);?></textarea>
+            <script type="text/javascript">
+                $('#some-textarea').wysihtml5();
+            </script>
             </div>
              <div class="row">
             <div class="file-field input-field col s12">

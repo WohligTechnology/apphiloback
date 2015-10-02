@@ -1194,4 +1194,8 @@ $data["message"]=$this->restapi_model->getappconfig();
         $data['message']=$this->restapi_model->getsingleuserdetail($id);
         $this->load->view("json", $data); 
  }
+ public function gethomecontent(){
+        $data['message']=$this->restapi_model->gethomecontent();
+        $this->load->view("json", $data); 
+ }
 } ?>

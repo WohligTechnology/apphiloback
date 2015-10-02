@@ -41,5 +41,10 @@ $query=$this->db->query("DELETE FROM `webapp_eventvideo` WHERE `event`='$id'");
 $query=$this->db->query("DELETE FROM `webapp_eventimages` WHERE `event`='$id'");
 return $query;
 }
+    public function getimagebyid($id)
+{
+$query=$this->db->query("SELECT `image` FROM `webapp_events` WHERE `id`='$id'")->row();
+return $query;
+}
 }
 ?>

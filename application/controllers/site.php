@@ -1902,7 +1902,7 @@ $starttime=$this->input->get_post("starttime");
 
 						if($image=="")
 						{
-						$image=$this->bannerslides_model->getimagebyid($id);
+						$image=$this->events_model->getimagebyid($id);
 						   // print_r($image);
 							$image=$image->image;
 						}
@@ -4056,6 +4056,34 @@ $this->load->view("redirect",$data);
     
     
 //CONFIG CRUDE END
+    
+    
+    //HOME
+    
+    
+    public function edithome()
+{
+$access=array("1");
+$this->checkaccess($access);
+$data["page"]="edithome";
+$data["title"]="Edit home";
+$data["before"]=$this->slider_model->beforeedithome("1");
+$this->load->view("template",$data);
+}
+public function edithomesubmit()
+{
+$access=array("1");
+$this->checkaccess($access);
+$id=$this->input->get_post("id");
+$content=$this->input->get_post("content");
+if($this->slider_model->edithome($id,$content)==0)
+$data["alerterror"]="New home could not be Updated.";
+else
+$data["alertsuccess"]="home Updated Successfully.";
+$data["redirect"]="site/edithome";
+$this->load->view("redirect",$data);
+
+}
 
 }
 ?>

@@ -27,19 +27,28 @@ return $query;
 public function edit($id,$title,$content,$text,$image,$type,$description)
 {
       // CMS BLOG
+    print_r($text);
+    echo $text;
     if($id==5){
      $res = json_decode($text);
     if($res[0]->value==1){
     $data=array("access" => 1);
     $this->db->where( "menu", 15 );
     $query=$this->db->update( "menuaccess", $data );
+          // add blog detail from linktype dropdown
+    $data=array("status" => 1);
+    $this->db->where( "id", 10 );
+    $query=$this->db->update( "linktype", $data );
     } 
     else if($res[0]->value==""){
     $data=array("access" => 0);
     $this->db->where( "menu", 15 );
     $query=$this->db->update( "menuaccess", $data );
-    }
-    
+          // remove blog detail from linktype dropdown
+    $data=array("status" => 0);
+    $this->db->where( "id", 10 );
+    $query=$this->db->update( "linktype", $data );
+    }   
     }
     
     // GALLERY

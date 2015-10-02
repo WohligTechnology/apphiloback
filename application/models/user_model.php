@@ -337,7 +337,7 @@ class User_model extends CI_Model
     
     public function getlinktypedropdown()
 	{
-		$query=$this->db->query("SELECT * FROM `linktype`  ORDER BY `id` ASC")->result();
+		$query=$this->db->query("SELECT * FROM `linktype` WHERE `status`=1  ORDER BY `id` ASC")->result();
 		$return=array(
             "" => "Link Type"
 		);

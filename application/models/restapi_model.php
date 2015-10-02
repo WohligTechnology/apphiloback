@@ -155,5 +155,10 @@ return  1;
         $query=$this->db->query("SELECT `id`, `name`, `email`, `accesslevel`, `timestamp`, `status`, `image`, `username`, `socialid`, `logintype`, `json`, `dob`, `street`, `address`, `city`, `state`, `pincode`, `facebook`, `twitter`, `google`, `country`, `instagram`, `contact`, `eventnotification`, `photonotification`, `videonotification`, `blognotification`, `coverimage` FROM `user` WHERE `id`='$id'")->row(); 
         return $query;
     }
+    public function gethomecontent(){
+        $query=$this->db->query("SELECT `content` FROM `home`")->row(); 
+        return $query;
+    }
+    
 }
 ?>
