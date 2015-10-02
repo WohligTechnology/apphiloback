@@ -414,8 +414,8 @@ class User_model extends CI_Model
 	{
 		$return=array(
 		"" => "Eventnotification",
-		"1" => "No",
-		"2" => "Yes"
+		"1" => "False",
+		"2" => "True"
 		);
 		return $return;
 	}
@@ -423,8 +423,8 @@ class User_model extends CI_Model
 	{
 		$return=array(
 		"" => "Photonotification",
-		"1" => "No",
-		"2" => "Yes"
+		"1" => "False",
+		"2" => "True"
 		);
 		return $return;
 	} 
@@ -463,8 +463,8 @@ class User_model extends CI_Model
 	{
 		$return=array(
 		"" => "Videonotification",
-		"1" => "No",
-		"2" => "Yes"
+		"1" => "False",
+		"2" => "True"
 		);
 		return $return;
 	} 
@@ -472,8 +472,8 @@ class User_model extends CI_Model
 	{
 		$return=array(
 		"" => "Blognotification",
-		"1" => "No",
-		"2" => "Yes"
+		"1" => "False",
+		"2" => "True"
 		);
 		return $return;
 	}
