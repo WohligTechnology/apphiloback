@@ -137,8 +137,7 @@ $this->load->view("json",$data);
 }
 function getallgalleryimage()
 {
-$data = json_decode(file_get_contents('php://input'), true);
-    $id=$data['id'];
+ $id=$this->input->get_post("id");
 $elements=array();
 $elements[0]=new stdClass();
 $elements[0]->field="`webapp_galleryimage`.`id`";

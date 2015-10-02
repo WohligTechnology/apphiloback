@@ -281,3 +281,7 @@ h6 {
 .text-center > span.color {
     color: #f13232;
 }
+
+.createbuttonplacement {
+    z-index: 1;
+}
