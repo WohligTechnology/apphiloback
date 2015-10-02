@@ -46,10 +46,10 @@ class User_model extends CI_Model
 			'logintype' => $logintype,
 			'contact' => $contact,
 			'address' => $address,
-			'eventnotification' => $eventnotification,
-			'photonotification' => $photonotification,
-			'videonotification' => $videonotification,
-			'blognotification' => $blognotification,
+			'eventnotification' => "false",
+			'photonotification' => "false",
+			'videonotification' => "false",
+			'blognotification' => "false",
 			'coverimage' => $coverimage
 		);
 		$query=$this->db->insert( 'user', $data );
@@ -414,8 +414,8 @@ class User_model extends CI_Model
 	{
 		$return=array(
 		"" => "Eventnotification",
-		"1" => "False",
-		"2" => "True"
+		"false" => "No",
+		"true" => "Yes"
 		);
 		return $return;
 	}
@@ -423,8 +423,8 @@ class User_model extends CI_Model
 	{
 		$return=array(
 		"" => "Photonotification",
-		"1" => "False",
-		"2" => "True"
+		"false" => "No",
+		"true" => "Yes"
 		);
 		return $return;
 	} 
@@ -463,8 +463,8 @@ class User_model extends CI_Model
 	{
 		$return=array(
 		"" => "Videonotification",
-		"1" => "False",
-		"2" => "True"
+		"false" => "No",
+		"true" => "Yes"
 		);
 		return $return;
 	} 
@@ -472,8 +472,8 @@ class User_model extends CI_Model
 	{
 		$return=array(
 		"" => "Blognotification",
-		"1" => "False",
-		"2" => "True"
+		"false" => "No",
+		"true" => "Yes"
 		);
 		return $return;
 	}
