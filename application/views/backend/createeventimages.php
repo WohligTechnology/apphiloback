@@ -8,7 +8,7 @@
           
                <div class="row">
                 <div class="input-field col s6">
-                    <?php echo form_dropdown( 'event',$event,set_value( 'event'), 'class="chzn-select form-control" 	data-placeholder="Choose a Accesslevel..."'); ?>
+                    <?php echo form_dropdown( 'event',$event,set_value( 'event',$this->input->get('id')), 'class="chzn-select form-control" 	data-placeholder="Choose a Accesslevel..."'); ?>
                 </div>
             </div>
                <div class="row">
