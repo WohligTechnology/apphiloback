@@ -1205,10 +1205,10 @@ $data["message"]=$this->restapi_model->getappconfig();
  public function changesetting(){
       $data = json_decode(file_get_contents('php://input'), true);
         $id=$data['id'];
-        $event=$data['event'];
-        $photo=$data['photo'];
-        $video=$data['video'];
-        $blog=$data['blog'];
+        $event=$data['eventnotification'];
+        $photo=$data['photonotification'];
+        $video=$data['videonotification'];
+        $blog=$data['blognotification'];
         $data['message']=$this->restapi_model->changesetting($id,$event,$photo,$video,$blog);
         $this->load->view("json", $data); 
  }

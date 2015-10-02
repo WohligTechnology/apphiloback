@@ -503,7 +503,7 @@ if($orderby=="")
 $orderby="id";
 $orderorder="ASC";
 }
-$data["message"]=$this->chintantable->query($pageno,$maxrow,$orderby,$orderorder,$search,$elements,"FROM `webapp_articles` LEFT OUTER JOIN `statuses` ON `statuses`.`id`=`webapp_articles`.`status`");
+$data["message"]=$this->chintantable->query($pageno,$maxrow,$orderby,$orderorder,$search,$elements,"FROM `webapp_articles` LEFT OUTER JOIN `statuses` ON `statuses`.`id`=`webapp_articles`.`status`","WHERE `webapp_articles`.`id`<>1");
 $this->load->view("json",$data);
 }
 
@@ -682,7 +682,12 @@ if($this->articles_model->edit($id,$status,$title,$json,$content,$timestamp,$ima
 $data["alerterror"]="New articles could not be Updated.";
 else
 $data["alertsuccess"]="articles Updated Successfully.";
+    if($id!=1){
 $data["redirect"]="site/viewarticles";
+    }
+    else{
+    $data["redirect"]="site/editarticles?id=1";
+    }
 $this->load->view("redirect",$data);
 }
 }

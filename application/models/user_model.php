@@ -443,7 +443,19 @@ class User_model extends CI_Model
 		"ln-briefcase" => "ln-briefcase",
 		"ln-user" => "ln-user",
 		"ln-users2" => "ln-users2",
-		"ln-phone2" => "ln-phone2"
+		"ln-phone2" => "ln-phone2",
+		"ln-home3" => "ln-home3",
+		"ln-edit" => "ln-edit",
+		"ln-feather" => "ln-feather",
+		"ln-moon" => "ln-moon",
+		"ln-heart" => "ln-heart",
+		"ln-trophy" => "ln-trophy",
+		"ln-photo"=> "ln-photo",
+		"ln-users"=> "ln-users",
+		"ln-map-marker"=> "ln-map-marker",
+		"ln-chat"=> "ln-chat",
+		"ln-diamond3"=> "ln-diamond3",
+		"ln-quote-open"=> "ln-quote-open"
 		);
 		return $return;
 	}
