@@ -289,8 +289,6 @@ class Site extends CI_Controller
 		$this->form_validation->set_rules('json','json','trim');
 		if($this->form_validation->run() == FALSE)	
 		{
-            echo validation_errors();
-             print_r(validation_errors());
 			$data['alerterror'] = validation_errors();
 			$data[ 'status' ] =$this->user_model->getstatusdropdown();
 			$data['accesslevel']=$this->user_model->getaccesslevels();
@@ -595,7 +593,6 @@ $content=$this->input->get_post("content");
                 }
                 
 			}
-    print_r($_POST);
 if($this->articles_model->create($status,$title,$json,$content,$image)==0)
 $data["alerterror"]="New articles could not be created.";
 else

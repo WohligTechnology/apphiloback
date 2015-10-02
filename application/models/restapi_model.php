@@ -159,6 +159,11 @@ return  1;
         $query=$this->db->query("SELECT `content` FROM `home`")->row(); 
         return $query;
     }
+    public function changesetting($id,$event,$photo,$video,$blog){
+        $query=$this->db->query("UPDATE `user` SET `eventnotification`='$event',`photonotification`='$photo',`videonotification`='$video',`blognotification`='$blog' WHERE `id`='$id'"); 
+        return $query;
+        }
+    
     
 }
 ?>

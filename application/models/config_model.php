@@ -27,8 +27,6 @@ return $query;
 public function edit($id,$title,$content,$text,$image,$type,$description)
 {
       // CMS BLOG
-    print_r($text);
-    echo $text;
     if($id==5){
      $res = json_decode($text);
     if($res[0]->value==1){

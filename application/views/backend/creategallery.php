@@ -33,7 +33,7 @@
                     <input type="text" name="order" id="order" value="<?php echo set_value('order');?>">
                 </div>
             </div>
-             <div class="row">
+             <div class="row" style="display:none">
                 <div class="input-field col s12">
                     <textarea name="json" class="materialize-textarea fieldjsoninput" length="120">
                         <?php echo json_encode($fieldjson,true); ?>
