@@ -5,7 +5,7 @@
         <form class="col s12" method="post" action="<?php echo site_url('site/createslidersubmit');?>" enctype="multipart/form-data">
 
           
-            <div class="row">
+            <div class="row" style="display:none">
                 <div class="input-field col s6">
                     <label for="alt">Alt</label>
                     <input type="text" id="alt" name="alt" value="<?php echo set_value('alt');?>">

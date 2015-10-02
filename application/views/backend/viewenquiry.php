@@ -9,8 +9,8 @@
                         <th data-field="user">User</th>
                         <th data-field="name">Name</th>
                         <th data-field="email">Email</th>
-                        <th data-field="title">Title</th>
-                        <th data-field="timestamp">Timestamp</th>
+<!--                        <th data-field="title">Title</th>-->
+<!--                        <th data-field="timestamp">Timestamp</th>-->
                         <th data-field="action">Action</th>
 
                     </tr>
@@ -25,13 +25,13 @@
 
 
     </div>
-    <div class="createbuttonplacement"><a class="btn-floating btn-large waves-effect waves-light green accent-4" href="<?php echo site_url("site/createenquiry"); ?>"><i class="material-icons">add</i></a>
+    <div class="createbuttonplacement"><a class="btn-floating btn-large waves-effect waves-light green accent-4 zindex-zero" href="<?php echo site_url("site/createenquiry"); ?>"><i class="material-icons">add</i></a>
     </div>
 
 </div>
 <script>
     function drawtable(resultrow) {
-        return "<tr><td>" + resultrow.id + "</td><td>" + resultrow.user + "</td><td>" + resultrow.name + "</td><td>" + resultrow.email + "</td><td>" + resultrow.title + "</td><td>" + resultrow.timestamp + "</td><td><a class='btn btn-primary btn-xs waves-effect waves-light orange lighten-1' href='<?php echo site_url('site/editenquiry?id=');?>" + resultrow.id + "'><i class='fa fa-pencil-square propericon'></i></a><a class='btn btn-danger btn-xs waves-effect waves-light red' onclick=\"return confirm('Are you sure you want to delete?');\" href='<?php echo site_url('site/deleteenquiry?id='); ?>" + resultrow.id + "'><i class='material-icons propericon'>delete</i></a></td></tr>";
+        return "<tr><td>" + resultrow.id + "</td><td>" + resultrow.user + "</td><td>" + resultrow.name + "</td><td>" + resultrow.email + "</td><td><a class='btn btn-primary btn-xs waves-effect waves-light orange lighten-1 zindex-put' href='<?php echo site_url('site/editenquiry?id=');?>" + resultrow.id + "'><i class='fa fa-pencil-square propericon'></i></a><a class='btn btn-danger btn-xs waves-effect waves-light red zindex-put' onclick=\"return confirm('Are you sure you want to delete?');\" href='<?php echo site_url('site/deleteenquiry?id='); ?>" + resultrow.id + "'><i class='material-icons propericon'>delete</i></a></td></tr>";
     }
     generatejquery('<?php echo $base_url;?>');
 </script>

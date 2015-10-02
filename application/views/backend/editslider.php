@@ -9,7 +9,7 @@
 
       
         
-           <div class="row">
+           <div class="row" style="display:none">
             <div class="input-field col s6">
                 <label for="alt">alt</label>
                 <input type="text" id="alt" name="alt" value="<?php echo set_value('alt',$before->alt);?>">

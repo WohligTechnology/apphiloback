@@ -11,7 +11,7 @@
 
         <div class="row">
             <div class="input-field col s6">
-                <label for="alt">Alt</label>
+                <label for="alt">Title</label>
                 <input type="text" id="alt" name="alt" value="<?php echo set_value('alt');?>">
             </div>
         </div>
