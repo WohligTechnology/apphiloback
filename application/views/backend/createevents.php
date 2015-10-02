@@ -32,6 +32,12 @@
             <script type="text/javascript">
                 $('#some-textarea').wysihtml5();
             </script>
+        </div> 
+           <div class="row">
+            <textarea id="some-textarea1" name="venue" placeholder="Enter text ..."><?php echo set_value( 'venue');?></textarea>
+            <script type="text/javascript">
+                $('#some-textarea1').wysihtml5();
+            </script>
         </div>
               <div class="row">
                 <div class="input-field col s6">

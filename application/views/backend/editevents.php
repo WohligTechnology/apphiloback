@@ -25,6 +25,12 @@
                 $('#some-textarea').wysihtml5();
             </script>
             </div>
+                 <div class="row">
+                  <textarea id="some-textarea1" name="venue" placeholder="Enter text ..."><?php echo set_value( 'venue',$before->venue);?></textarea>
+            <script type="text/javascript">
+                $('#some-textarea1').wysihtml5();
+            </script>
+            </div>
              <div class="row">
             <div class="file-field input-field col s12">
                 <div class="btn grey darken-1">

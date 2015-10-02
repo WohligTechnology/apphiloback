@@ -404,6 +404,12 @@ $elements[7]->field="`webapp_events`.`starttime`";
 $elements[7]->sort="1";
 $elements[7]->header="starttime";
 $elements[7]->alias="starttime";
+
+$elements[8]=new stdClass();
+$elements[8]->field="`webapp_events`.`venue`";
+$elements[8]->sort="1";
+$elements[8]->header="venue";
+$elements[8]->alias="venue";
     
 
 $search=$this->input->get_post("search");

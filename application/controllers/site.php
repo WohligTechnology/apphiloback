@@ -1825,6 +1825,7 @@ $status=$this->input->get_post("status");
 $title=$this->input->get_post("title");
 $timestamp=$this->input->get_post("timestamp");
 $content=$this->input->get_post("content");
+$venue=$this->input->get_post("venue");
 //$image=$this->input->get_post("image");
 $startdate=$this->input->get_post("startdate");
 $starttime=$this->input->get_post("starttime");
@@ -1838,7 +1839,7 @@ $starttime=$this->input->get_post("starttime");
 							$uploaddata = $this->upload->data();
 							$image=$uploaddata['file_name'];
 						}
-if($this->events_model->create($status,$title,$timestamp,$content,$image,$startdate,$starttime)==0)
+if($this->events_model->create($status,$title,$timestamp,$content,$venue,$image,$startdate,$starttime)==0)
 $data["alerterror"]="New events could not be created.";
 else
 $data["alertsuccess"]="events created Successfully.";
@@ -1885,6 +1886,7 @@ $status=$this->input->get_post("status");
 $title=$this->input->get_post("title");
 $timestamp=$this->input->get_post("timestamp");
 $content=$this->input->get_post("content");
+$venue=$this->input->get_post("venue");
 //$image=$this->input->get_post("image");
 $startdate=$this->input->get_post("startdate");
 $starttime=$this->input->get_post("starttime");
@@ -1906,7 +1908,7 @@ $starttime=$this->input->get_post("starttime");
 						   // print_r($image);
 							$image=$image->image;
 						}
-if($this->events_model->edit($id,$status,$title,$timestamp,$content,$image,$startdate,$starttime)==0)
+if($this->events_model->edit($id,$status,$title,$timestamp,$content,$venue,$image,$startdate,$starttime)==0)
 $data["alerterror"]="New events could not be Updated.";
 else
 $data["alertsuccess"]="events Updated Successfully.";
