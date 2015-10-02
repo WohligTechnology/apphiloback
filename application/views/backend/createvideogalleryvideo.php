@@ -5,7 +5,7 @@
     <form class="col s12" method="post" action="<?php echo site_url('site/createvideogalleryvideosubmit');?>" enctype="multipart/form-data">
         <div class="row">
             <div class="input-field col s6">
-                <?php echo form_dropdown( 'videogallery',$videogallery,set_value( 'videogallery'), 'class="chzn-select form-control" 	data-placeholder="Choose a Accesslevel..."'); ?>
+                <?php echo form_dropdown( 'videogallery',$videogallery,set_value( 'videogallery',$this->input->get('id')), 'class="chzn-select form-control" 	data-placeholder="Choose a Accesslevel..."'); ?>
             </div>
         </div>
 
