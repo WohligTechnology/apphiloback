@@ -1,14 +1,16 @@
 <div class="row">
     <div class="col s12">
         <div class="col s12 drawchintantable">
-           <?php $this->chintantable->createsearch("Config List");?>
+           <?php $this->chintantable->createsearch("List of Config ");?>
             <table class="highlight">
                 <thead>
                     <tr>
-                      <th data-field="id">ID</th>
+<!--                      <th data-field="id">ID</th>-->
                                     <th data-field="title">Title</th>
+<!--
                                     <th data-field="type">Type</th>
                                     <th data-field="text">Text</th>
+-->
 <!--                                    <th data-field="content">Description</th>-->
                                     <th data-field="action">Action</th>
 
@@ -39,7 +41,7 @@
             } else if (resultrow.type == 3) {
                 resultrow.type = "Drop Down";
             }
-            return "<tr><td>" + resultrow.id + "</td><td>" + resultrow.title + "</td><td>" + resultrow.type + "</td><td>" + resultrow.text + "</td><td><a class='btn btn-primary btn-xs waves-effect waves-light orange lighten-1' href='<?php echo site_url('site/editconfig?id=');?>" + resultrow.id + "'><i class='fa fa-pencil-square propericon'></i></a></td></tr>";
+            return "<tr><td>" + resultrow.title + "</td><td><a class='btn btn-primary btn-xs waves-effect waves-light orange lighten-1' href='<?php echo site_url('site/editconfig?id=');?>" + resultrow.id + "'><i class='fa fa-pencil-square propericon'></i></a></td></tr>";
     }
     generatejquery('<?php echo $base_url;?>');
 </script>

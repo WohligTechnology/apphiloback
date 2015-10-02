@@ -2,7 +2,7 @@
     <div class="col s12">
         <div class="col s12 drawchintantable">
            
-            <?php $this->chintantable->createsearch("Videogallery List");?>
+            <?php $this->chintantable->createsearch("List of Videogallery");?>
             <table class="highlight">
                 <thead>
                     <tr>

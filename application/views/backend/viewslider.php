@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col s12">
         <div class="col s12 drawchintantable">
-           <?php $this->chintantable->createsearch("Slider List");?>
+           <?php $this->chintantable->createsearch("List of Slider");?>
             <table class="highlight">
                 <thead>
                     <tr>

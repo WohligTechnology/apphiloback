@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col s12">
         <div class="col s12 drawchintantable">
-           <?php $this->chintantable->createsearch("Blog List");?>
+           <?php $this->chintantable->createsearch("List of Blog");?>
             <table class="highlight">
                 <thead>
                     <tr>
