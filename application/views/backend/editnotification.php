@@ -6,7 +6,11 @@
 <div class="row">
     <form class="col s12" method="post" action="<?php echo site_url('site/editnotificationsubmit');?>" enctype="multipart/form-data">
         <input type="hidden" id="normal-field" class="form-control" name="id" value="<?php echo set_value('id',$before->id);?>" style="display:none;">
-
+             <div class="row drop">
+            <div class="input-field col s6">
+                <?php echo form_dropdown( 'linktype',$linktype,set_value( 'linktype',$before->linktype), 'class="chzn-select form-control" data-placeholder="Choose a Accesslevel..."'); ?>
+            </div>
+        </div>
           
         <!--	Event-->
         <div class="row drop">

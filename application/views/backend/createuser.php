@@ -102,6 +102,51 @@
                         </label>
                     </div>
                 </div>
+            </div>  
+               
+               <div class="row">
+                <div class="col s6">
+                    <label for="filled-in-box" class="form-checkbox">Photo Notification</label>
+                </div>
+                <div class="col s6">
+                    <div class="switch">
+                        <label>
+                            Off
+                            <input type="checkbox" name="photonotification" value="true">
+                            <span class="lever"></span> On
+                        </label>
+                    </div>
+                </div>
+            </div>  
+               
+            <div class="row">
+                <div class="col s6">
+                    <label for="filled-in-box" class="form-checkbox">Video Notification</label>
+                </div>
+                <div class="col s6">
+                    <div class="switch">
+                        <label>
+                            Off
+                            <input type="checkbox" name="videonotification" value="true">
+                            <span class="lever"></span> On
+                        </label>
+                    </div>
+                </div>
+            </div> 
+               
+            <div class="row">
+                <div class="col s6">
+                    <label for="filled-in-box" class="form-checkbox">Blog Notification</label>
+                </div>
+                <div class="col s6">
+                    <div class="switch">
+                        <label>
+                            Off
+                            <input type="checkbox" name="blognotification" value="true">
+                            <span class="lever"></span> On
+                        </label>
+                    </div>
+                </div>
             </div>
 <!--
             <div class="row">
@@ -110,6 +155,7 @@
                 </div>
             </div>
 -->
+<!--
             <div class="row">
                 <div class="input-field col s6">
                     <?php echo form_dropdown( 'photonotification',$photonotification,set_value( 'photonotification'), 'class="chzn-select form-control" 	data-placeholder="Choose a Accesslevel..."'); ?>
@@ -125,6 +171,7 @@
                     <?php echo form_dropdown( 'blognotification',$blognotification,set_value( 'blognotification'), 'class="chzn-select form-control" 	data-placeholder="Choose a Accesslevel..."'); ?>
                 </div>
             </div>
+-->
             <div class=" form-group">
                 <label class="col-sm-2 control-label">&nbsp;</label>
                 <div class="col-sm-4">
