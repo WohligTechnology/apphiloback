@@ -17,7 +17,7 @@ return  1;
         return $query;
     }    
     public function signup($username,$email,$password,$dob){
-		$data=array("username" => $username,"email" => $email,"password" => md5($password),"dob" => $dob);
+		$data=array("username" => $username,"email" => $email,"password" => md5($password),"eventnotification" => 'false',"photonotification" => 'false',"videonotification" => 'false',"blognotification" => 'false',"dob" => $dob);
 		$query=$this->db->insert( "user", $data );
 		$id=$this->db->insert_id();
 	    $newdata=$this->db->query("SELECT * FROM `user` WHERE `id`='$id'")->row();

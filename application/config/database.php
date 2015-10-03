@@ -52,7 +52,7 @@ $active_record = TRUE;
 
 $myserver=$_SERVER['SERVER_NAME'];
 
-if($myserver!="localhost")
+if($myserver!="localhost" && $myserver!="192.168.2.28")
 {
     $db['default']['hostname'] = 'localhost';
     $db['default']['username'] = 'wohligco_webapp';

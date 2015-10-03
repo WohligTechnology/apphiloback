@@ -61,7 +61,6 @@ class Site extends CI_Controller
 		if($this->form_validation->run() == FALSE)	
 		{
 			$data['alerterror'] = validation_errors();
-            print_r($data['alerterror']);
 			$data['accesslevel']=$this->user_model->getaccesslevels();
             $data[ 'status' ] =$this->user_model->getstatusdropdown();
             $data[ 'logintype' ] =$this->user_model->getlogintypedropdown();
@@ -89,8 +88,6 @@ class Site extends CI_Controller
             $photonotification=$this->input->post('photonotification');
             $videonotification=$this->input->post('videonotification');
             $blognotification=$this->input->post('blognotification');
-            print_r($_POST);
-            echo $_POST;
             $config['upload_path'] = './uploads/';
 			$config['allowed_types'] = 'gif|jpg|png|jpeg';
 			$this->load->library('upload', $config);
@@ -786,6 +783,7 @@ $json=array();
             $json[1]->classes="";
     
             $data["fieldjson"]=$json;
+    $this->frontmenu_model->changestatusofexternallink();
 $data[ 'status' ] =$this->user_model->getstatusdropdown();
 $data[ 'parent' ] =$this->user_model->getfrontmenudropdown();
 $data[ 'linktype' ] =$this->user_model->getlinktypedropdown();
@@ -860,6 +858,7 @@ public function editfrontmenu()
 $access=array("1");
 $this->checkaccess($access);
 $data["page"]="editfrontmenu";
+     $this->frontmenu_model->changestatusofexternallink();
 $data[ 'parent' ] =$this->user_model->getfrontmenudropdown();
 $data[ 'status' ] =$this->user_model->getstatusdropdown();
 $data[ 'linktype' ] =$this->user_model->getlinktypedropdown();
@@ -2606,7 +2605,7 @@ public function createnotification()
 $access=array("1");
 $this->checkaccess($access);
 $data["page"]="createnotification";
-    
+$this->notification_model->changestatusofexternallink();
 $data[ 'linktype' ] =$this->user_model->getlinktypedropdown();
 $data[ 'event' ] =$this->user_model->geteventsdropdown();
 $data[ 'blog' ] =$this->user_model->getblogdropdown();
@@ -2621,43 +2620,17 @@ public function createnotificationsubmit()
 {
 $access=array("1");
 $this->checkaccess($access);
-$this->form_validation->set_rules("videogallery","Video Gallery","trim");
-$this->form_validation->set_rules("event","event","trim");
-$this->form_validation->set_rules("videogalleryvideo","Video Gallery Video","trim");
-$this->form_validation->set_rules("galleryimage","Gallery Image","trim");
-$this->form_validation->set_rules("article","article","trim");
-$this->form_validation->set_rules("status","Status","trim");
-$this->form_validation->set_rules("link","Link","trim");
-$this->form_validation->set_rules("image","Image","trim");
-$this->form_validation->set_rules("timestamp","Timestamp","trim");
-$this->form_validation->set_rules("content","Content","trim");
-if($this->form_validation->run()==FALSE)
-{
-$data["alerterror"]=validation_errors();
-    
-$data[ 'linktype' ] =$this->user_model->getlinktypedropdown();
-$data[ 'event' ] =$this->user_model->geteventsdropdown();
-$data[ 'blog' ] =$this->user_model->getblogdropdown();
-$data[ 'video' ] =$this->user_model->getvideogallerydropdown(); 
-$data[ 'article' ] =$this->user_model->getarticledropdown();   
-$data[ 'gallery' ] =$this->user_model->getgallerydropdown();
-$data[ 'status' ] =$this->user_model->getstatusdropdown();
-$data["page"]="createnotification";
-$data["title"]="Create notification";
-$this->load->view("template",$data);
-}
-else
-{
-$videogallery=$this->input->get_post("videogallery");
+$linktype=$this->input->get_post("linktype");
 $event=$this->input->get_post("event");
-$videogalleryvideo=$this->input->get_post("videogalleryvideo");
-$galleryimage=$this->input->get_post("galleryimage");
+$video=$this->input->get_post("video");
+$gallery=$this->input->get_post("gallery");
 $article=$this->input->get_post("article");
 $status=$this->input->get_post("status");
+$blog=$this->input->get_post("blog");
 $link=$this->input->get_post("link");
+    $content=$this->input->get_post("content");
 //$image=$this->input->get_post("image");
-$timestamp=$this->input->get_post("timestamp");
-$content=$this->input->get_post("content");
+
        $config['upload_path'] = './uploads/';
 			$config['allowed_types'] = 'gif|jpg|png|jpeg';
 			$this->load->library('upload', $config);
@@ -2692,13 +2665,13 @@ $content=$this->input->get_post("content");
                 }
                 
 			}
-if($this->notification_model->create($videogallery,$event,$videogalleryvideo,$galleryimage,$article,$status,$link,$image,$timestamp,$content)==0)
+if($this->notification_model->create($linktype,$event,$video,$gallery,$article,$status,$blog,$link,$content,$image)==0)
 $data["alerterror"]="New notification could not be created.";
 else
 $data["alertsuccess"]="notification created Successfully.";
 $data["redirect"]="site/viewnotification";
 $this->load->view("redirect",$data);
-}
+
 }
 public function editnotification()
 {
@@ -2706,6 +2679,7 @@ $access=array("1");
 $this->checkaccess($access);
 $data["page"]="editnotification";
 //$data["page2"]="block/notificationblock";
+$this->notification_model->changestatusofexternallink();
 $data["before1"]=$this->input->get('id');
 $data["before2"]=$this->input->get('id');
 $data[ 'linktype' ] =$this->user_model->getlinktypedropdown();
@@ -2752,10 +2726,16 @@ $this->load->view("template",$data);
 else
 {
 $id=$this->input->get_post("id");
+$linktype=$this->input->get_post("linktype");
+$event=$this->input->get_post("event");
+$video=$this->input->get_post("video");
+$gallery=$this->input->get_post("gallery");
+$article=$this->input->get_post("article");
 $status=$this->input->get_post("status");
+$blog=$this->input->get_post("blog");
 $link=$this->input->get_post("link");
+    $content=$this->input->get_post("content");
 $timestamp=$this->input->get_post("timestamp");
-$content=$this->input->get_post("content");
       $config['upload_path'] = './uploads/';
 			$config['allowed_types'] = 'gif|jpg|png|jpeg';
 			$this->load->library('upload', $config);
@@ -2798,7 +2778,7 @@ $content=$this->input->get_post("content");
                 $image=$image->image;
             }
             
-if($this->notification_model->edit($id,$videogallery,$event,$videogalleryvideo,$galleryimage,$article,$status,$link,$image,$timestamp,$content)==0)
+if($this->notification_model->edit($id,$linktype,$event,$video,$gallery,$article,$status,$blog,$link,$content,$image,$timestamp)==0)
 $data["alerterror"]="New notification could not be Updated.";
 else
 $data["alertsuccess"]="notification Updated Successfully.";

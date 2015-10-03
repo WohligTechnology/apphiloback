@@ -36,6 +36,11 @@ public function delete($id)
 $query=$this->db->query("DELETE FROM `webapp_frontmenu` WHERE `id`='$id'");
 return $query;
 }
+    public function changestatusofexternallink(){
+    $data=array("status" => 0);
+$this->db->where( "id", 17 );
+$query=$this->db->update( "linktype", $data );
+    }
    
 }
 ?>

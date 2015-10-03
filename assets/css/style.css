@@ -136,7 +136,30 @@ input[type="search"] {
     z-index: 0;
     top: 13px;
 }
-
+.side-nav{
+    height: 600px !important;
+}
+.side-nav::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+.side-nav::-webkit-scrollbar {
+    width: 6px;
+}
+.side-nav::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    -webkit-background-clip: padding-box;
+    -moz-border-radius: 10px;
+    -moz-background-clip: padding;
+    border-radius: 10px;
+    background-clip: padding-box;
+  
+      background: #EE6E73;
+    -webkit-box-shadow: inset 0 0 6px rgb(238, 110, 115);
+    -moz-box-shadow: inset 0 0 6px rgb(238, 110, 115);
+    box-shadow: inset 0 0 6px rgb(238, 110, 115);
+}
 .logo {
     margin: 10px 0px 0 45px;
 }
