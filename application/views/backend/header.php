@@ -11,13 +11,8 @@
     <script src="<?php echo base_url('assets').'/';?>bower_components/Materialize/js/sideNav.js"></script>
     <script src="<?php echo base_url('assets').'/';?>js/chintantable.js"></script>
     <script src="<?php echo base_url('assets').'/';?>js/formInit.js"></script>
+    <script src="<?php echo base_url('assets').'/';?>tinymce/tinymce.min.js"></script>
  
-   
-    <script src="<?php echo base_url('assets').'/';?>js/wysihtml5-0.3.0.js"></script>
-    <script src="<?php echo base_url('assets').'/';?>js/bootstrap-wysihtml5.js"></script>
-<!--
-       <script src="<?php echo base_url('assets').'/';?>js/jquery-1.7.2.min.js"></script>
--->
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
