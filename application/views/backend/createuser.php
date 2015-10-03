@@ -89,11 +89,27 @@
                     <label>Address</label>
                 </div>
             </div>
+              <div class="row">
+                <div class="col s6">
+                    <label for="filled-in-box" class="form-checkbox">Event Notification</label>
+                </div>
+                <div class="col s6">
+                    <div class="switch">
+                        <label>
+                            Off
+                            <input type="checkbox" name="eventnotification" value="true">
+                            <span class="lever"></span> On
+                        </label>
+                    </div>
+                </div>
+            </div>
+<!--
             <div class="row">
                 <div class="input-field col s6">
                     <?php echo form_dropdown( 'eventnotification',$eventnotification,set_value( 'eventnotification'), 'class="chzn-select form-control" 	data-placeholder="Choose a Accesslevel..."'); ?>
                 </div>
             </div>
+-->
             <div class="row">
                 <div class="input-field col s6">
                     <?php echo form_dropdown( 'photonotification',$photonotification,set_value( 'photonotification'), 'class="chzn-select form-control" 	data-placeholder="Choose a Accesslevel..."'); ?>

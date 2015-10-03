@@ -205,6 +205,42 @@ return  1;
         return $query;
     }
     public function changesetting($id,$event,$photo,$video,$blog){
+            // eventnotification
+        if($event=="true")
+        {
+            $event=true;
+        }
+        else
+        {
+            $event=false;
+        }    
+        // photonotification
+        if($photo=="true")
+        {
+            $photo=true;
+        }
+        else
+        {
+            $photo=false;
+        }
+        // videonotification
+        if($video=="true")
+        {
+            $video=true;
+        }
+        else
+        {
+            $video=false;
+        }
+        // blognotification
+        if($blog=="true")
+        {
+            $blog=true;
+        }
+        else
+        {
+            $blog=false;
+        }
         $query=$this->db->query("UPDATE `user` SET `eventnotification`='$event',`photonotification`='$photo',`videonotification`='$video',`blognotification`='$blog' WHERE `id`='$id'"); 
         return $query;
         }

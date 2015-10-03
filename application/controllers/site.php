@@ -61,6 +61,7 @@ class Site extends CI_Controller
 		if($this->form_validation->run() == FALSE)	
 		{
 			$data['alerterror'] = validation_errors();
+            print_r($data['alerterror']);
 			$data['accesslevel']=$this->user_model->getaccesslevels();
             $data[ 'status' ] =$this->user_model->getstatusdropdown();
             $data[ 'logintype' ] =$this->user_model->getlogintypedropdown();
@@ -88,6 +89,8 @@ class Site extends CI_Controller
             $photonotification=$this->input->post('photonotification');
             $videonotification=$this->input->post('videonotification');
             $blognotification=$this->input->post('blognotification');
+            print_r($_POST);
+            echo $_POST;
             $config['upload_path'] = './uploads/';
 			$config['allowed_types'] = 'gif|jpg|png|jpeg';
 			$this->load->library('upload', $config);
@@ -163,8 +166,8 @@ class Site extends CI_Controller
 			$data['alerterror']="New user could not be created.";
 			else
 			$data['alertsuccess']="User created Successfully.";
-			$data['redirect']="site/viewusers";
-			$this->load->view("redirect",$data);
+//			$data['redirect']="site/viewusers";
+//			$this->load->view("redirect",$data);
 		}
 	}
     function viewusers()
