@@ -2603,10 +2603,14 @@ public function createnotification()
 $access=array("1");
 $this->checkaccess($access);
 $data["page"]="createnotification";
-$data[ 'status' ] =$this->user_model->getstatusdropdown();
-$data[ 'videogallery' ] =$this->user_model->getvideogallerydropdown();
+    
+$data[ 'linktype' ] =$this->user_model->getlinktypedropdown();
 $data[ 'event' ] =$this->user_model->geteventsdropdown();
-$data[ 'article' ] =$this->user_model->getarticlesdropdown();
+$data[ 'blog' ] =$this->user_model->getblogdropdown();
+$data[ 'video' ] =$this->user_model->getvideogallerydropdown(); 
+$data[ 'article' ] =$this->user_model->getarticledropdown();   
+$data[ 'gallery' ] =$this->user_model->getgallerydropdown();
+$data[ 'status' ] =$this->user_model->getstatusdropdown();
 $data["title"]="Create notification";
 $this->load->view("template",$data);
 }
@@ -2627,11 +2631,15 @@ $this->form_validation->set_rules("content","Content","trim");
 if($this->form_validation->run()==FALSE)
 {
 $data["alerterror"]=validation_errors();
-$data[ 'status' ] =$this->user_model->getstatusdropdown();
+    
+$data[ 'linktype' ] =$this->user_model->getlinktypedropdown();
 $data[ 'event' ] =$this->user_model->geteventsdropdown();
+$data[ 'blog' ] =$this->user_model->getblogdropdown();
+$data[ 'video' ] =$this->user_model->getvideogallerydropdown(); 
+$data[ 'article' ] =$this->user_model->getarticledropdown();   
+$data[ 'gallery' ] =$this->user_model->getgallerydropdown();
+$data[ 'status' ] =$this->user_model->getstatusdropdown();
 $data["page"]="createnotification";
-$data[ 'videogallery' ] =$this->user_model->getvideogallerydropdown();
-$data[ 'article' ] =$this->user_model->getarticlesdropdown();
 $data["title"]="Create notification";
 $this->load->view("template",$data);
 }
@@ -2694,16 +2702,19 @@ public function editnotification()
 $access=array("1");
 $this->checkaccess($access);
 $data["page"]="editnotification";
-$data["page2"]="block/notificationblock";
+//$data["page2"]="block/notificationblock";
 $data["before1"]=$this->input->get('id');
 $data["before2"]=$this->input->get('id');
-$data[ 'videogallery' ] =$this->user_model->getvideogallerydropdown();
-$data[ 'status' ] =$this->user_model->getstatusdropdown();
+$data[ 'linktype' ] =$this->user_model->getlinktypedropdown();
 $data[ 'event' ] =$this->user_model->geteventsdropdown();
-$data[ 'article' ] =$this->user_model->getarticlesdropdown();
+$data[ 'blog' ] =$this->user_model->getblogdropdown();
+$data[ 'video' ] =$this->user_model->getvideogallerydropdown(); 
+$data[ 'article' ] =$this->user_model->getarticledropdown();   
+$data[ 'gallery' ] =$this->user_model->getgallerydropdown();
+$data[ 'status' ] =$this->user_model->getstatusdropdown();
 $data["title"]="Edit notification";
 $data["before"]=$this->notification_model->beforeedit($this->input->get("id"));
-$this->load->view("templatewith2",$data);
+$this->load->view("template",$data);
 }
 public function editnotificationsubmit()
 {
@@ -2724,10 +2735,13 @@ if($this->form_validation->run()==FALSE)
 {
 $data["alerterror"]=validation_errors();
 $data["page"]="editnotification";
-$data[ 'videogallery' ] =$this->user_model->getvideogallerydropdown();
-$data[ 'status' ] =$this->user_model->getstatusdropdown();
+$data[ 'linktype' ] =$this->user_model->getlinktypedropdown();
 $data[ 'event' ] =$this->user_model->geteventsdropdown();
-$data[ 'article' ] =$this->user_model->getarticlesdropdown();
+$data[ 'blog' ] =$this->user_model->getblogdropdown();
+$data[ 'video' ] =$this->user_model->getvideogallerydropdown(); 
+$data[ 'article' ] =$this->user_model->getarticledropdown();   
+$data[ 'gallery' ] =$this->user_model->getgallerydropdown();
+$data[ 'status' ] =$this->user_model->getstatusdropdown();
 $data["title"]="Edit notification";
 $data["before"]=$this->notification_model->beforeedit($this->input->get("id"));
 $this->load->view("template",$data);
@@ -2735,14 +2749,8 @@ $this->load->view("template",$data);
 else
 {
 $id=$this->input->get_post("id");
-$videogallery=$this->input->get_post("videogallery");
-$event=$this->input->get_post("event");
-$videogalleryvideo=$this->input->get_post("videogalleryvideo");
-$galleryimage=$this->input->get_post("galleryimage");
-$article=$this->input->get_post("article");
 $status=$this->input->get_post("status");
 $link=$this->input->get_post("link");
-//$image=$this->input->get_post("image");
 $timestamp=$this->input->get_post("timestamp");
 $content=$this->input->get_post("content");
       $config['upload_path'] = './uploads/';
@@ -3081,7 +3089,42 @@ $name=$this->input->get_post("name");
 $title=$this->input->get_post("title");
 $json=$this->input->get_post("json");
 $content=$this->input->get_post("content");
-if($this->blog_model->create($name,$title,$json,$content)==0)
+$url=$this->input->get_post("url");
+     $config['upload_path'] = './uploads/';
+			$config['allowed_types'] = 'gif|jpg|png|jpeg';
+			$this->load->library('upload', $config);
+			$filename="image";
+			$image="";
+			if (  $this->upload->do_upload($filename))
+			{
+				$uploaddata = $this->upload->data();
+				$image=$uploaddata['file_name'];
+                
+                $config_r['source_image']   = './uploads/' . $uploaddata['file_name'];
+                $config_r['maintain_ratio'] = TRUE;
+                $config_t['create_thumb'] = FALSE;///add this
+                $config_r['width']   = 800;
+                $config_r['height'] = 800;
+                $config_r['quality']    = 100;
+                //end of configs
+
+                $this->load->library('image_lib', $config_r); 
+                $this->image_lib->initialize($config_r);
+                if(!$this->image_lib->resize())
+                {
+                    echo "Failed." . $this->image_lib->display_errors();
+                    //return false;
+                }  
+                else
+                {
+                    //print_r($this->image_lib->dest_image);
+                    //dest_image
+                    $image=$this->image_lib->dest_image;
+                    //return false;
+                }
+                
+			}
+if($this->blog_model->create($name,$title,$json,$content,$url,$image)==0)
 $data["alerterror"]="New blog could not be created.";
 else
 $data["alertsuccess"]="blog created Successfully.";
@@ -3094,13 +3137,13 @@ public function editblog()
 $access=array("1");
 $this->checkaccess($access);
 $data["page"]="editblog";
-$data["page2"]="block/blogblock";
+//$data["page2"]="block/blogblock";
 $data["before1"]=$this->input->get('id');
 $data["before2"]=$this->input->get('id');
 $data["before3"]=$this->input->get('id');
 $data["title"]="Edit blog";
 $data["before"]=$this->blog_model->beforeedit($this->input->get("id"));
-$this->load->view("templatewith2",$data);
+$this->load->view("template",$data);
 }
 public function editblogsubmit()
 {
@@ -3127,7 +3170,50 @@ $title=$this->input->get_post("title");
 $json=$this->input->get_post("json");
 $content=$this->input->get_post("content");
       $timestamp=$this->input->get_post("timestamp");
-if($this->blog_model->edit($id,$name,$title,$json,$content,$timestamp)==0)
+    $url=$this->input->get_post("url");
+    $config['upload_path'] = './uploads/';
+			$config['allowed_types'] = 'gif|jpg|png|jpeg';
+			$this->load->library('upload', $config);
+			$filename="image";
+			$image="";
+			if (  $this->upload->do_upload($filename))
+			{
+				$uploaddata = $this->upload->data();
+				$image=$uploaddata['file_name'];
+                
+                $config_r['source_image']   = './uploads/' . $uploaddata['file_name'];
+                $config_r['maintain_ratio'] = TRUE;
+                $config_t['create_thumb'] = FALSE;///add this
+                $config_r['width']   = 800;
+                $config_r['height'] = 800;
+                $config_r['quality']    = 100;
+                //end of configs
+
+                $this->load->library('image_lib', $config_r); 
+                $this->image_lib->initialize($config_r);
+                if(!$this->image_lib->resize())
+                {
+                    echo "Failed." . $this->image_lib->display_errors();
+                    //return false;
+                }  
+                else
+                {
+                    //print_r($this->image_lib->dest_image);
+                    //dest_image
+                    $image=$this->image_lib->dest_image;
+                    //return false;
+                }
+                
+			}
+            
+            if($image=="")
+            {
+            $image=$this->blog_model->getimagebyid($id);
+               // print_r($image);
+                $image=$image->image;
+            }
+            
+if($this->blog_model->edit($id,$name,$title,$json,$content,$timestamp,$url,$image)==0)
 $data["alerterror"]="New blog could not be Updated.";
 else
 $data["alertsuccess"]="blog Updated Successfully.";

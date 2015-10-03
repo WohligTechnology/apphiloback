@@ -1170,10 +1170,11 @@ $data["message"]=$this->restapi_model->getappconfig();
         $this->load->view("json", $data); 
  }
   public function profileimageupload(){
+      $user=$this->input->get_post("id");
 	 $date = new DateTime();
         $imageName = "image-".rand(0, 100000)."".$date->getTimestamp().".jpg";
         if(move_uploaded_file($_FILES["file"]["tmp_name"], "./uploads/".$imageName)){
-            $this->restapi_model->updateprofileimage($imageName);
+            $this->restapi_model->updateprofileimage($imageName,$user);
        		$data["message"]=$imageName;
             	$this->load->view("json",$data); 
         }else{
@@ -1182,10 +1183,11 @@ $data["message"]=$this->restapi_model->getappconfig();
         }
  } 
  public function coverimageupload(){
+     $user=$this->input->get_post("id");
 	 $date = new DateTime();
         $imageName = "image-".rand(0, 100000)."".$date->getTimestamp().".jpg";
         if(move_uploaded_file($_FILES["file"]["tmp_name"], "./uploads/".$imageName)){
-             $this->restapi_model->updatecoverimage($imageName);
+             $this->restapi_model->updatecoverimage($imageName,$user);
        		$data["message"]=$imageName;
             	$this->load->view("json",$data); 
         }else{

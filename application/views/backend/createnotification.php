@@ -3,11 +3,53 @@
     <h4 class="pad-left-15">Create Notification</h4>
     </div>
         <form class="col s12" method="post" action="<?php echo site_url('site/createnotificationsubmit');?>" enctype="multipart/form-data">
+           <div class="row">
+			<div class="input-field col s6">
+				<?php echo form_dropdown('linktype',$linktype,set_value('linktype'), 'class="chzn-select form-control" data-placeholder="Choose a Accesslevel..."'); ?>
+			</div>
+		</div>
+            <!--	Event-->
+		<div class="row drop">
+			<div class="input-field col s6">
+				<?php echo form_dropdown('event',$event,set_value('event'), 'class="chzn-select form-control" data-placeholder="Choose a Accesslevel..."'); ?>
+			</div>
+		</div>
 
+		<!--	Blog-->
+		<div class="row drop">
+			<div class="input-field col s6">
+				<?php echo form_dropdown('blog',$blog,set_value('blog'), 'class="chzn-select form-control" data-placeholder="Choose a Accesslevel..."'); ?>
+
+			</div>
+		</div>
+
+		<!--	Gallery-->
+		<div class="row drop">
+			<div class="input-field col s6">
+				<?php echo form_dropdown('video',$video,set_value('video'), 'class="chzn-select form-control" 	data-placeholder="Choose a Accesslevel..."'); ?>
+
+			</div>
+		</div>
+
+		<!--	Video-->
+		<div class="row drop">
+			<div class="input-field col s6">
+				<?php echo form_dropdown('gallery',$gallery,set_value('gallery'), 'class="chzn-select form-control" 	data-placeholder="Choose a Accesslevel..."'); ?>
+
+			</div>
+		</div>
+		
+		<!--	Article-->
+		<div class="row drop">
+			<div class="input-field col s6">
+				<?php echo form_dropdown('article',$article,set_value('article'), 'class="chzn-select form-control" 	data-placeholder="Choose a Accesslevel..."'); ?>
+
+			</div>
+		</div>
            
             <div class="row">
                 <div class="input-field col s6">
-                    <label for="link">link</label>
+                    <label for="link">External link</label>
                     <input type="text" id="link" name="link" value="<?php echo set_value('link');?>">
                 </div>
             </div>
@@ -16,33 +58,7 @@
                     <?php echo form_dropdown( 'status',$status,set_value( 'status'), 'class="chzn-select form-control" 	data-placeholder="Choose a Accesslevel..."'); ?>
                 </div>
             </div> 
-                <div class="row">
-                <div class="input-field col s6">
-                    <?php echo form_dropdown( 'videogallery',$videogallery,set_value( 'videogallery'), 'class="chzn-select form-control" 	data-placeholder="Choose a Accesslevel..."'); ?>
-                </div>
-            </div> 
-<!--
-                <div class="row">
-                <div class="input-field col s6">
-                    <?php echo form_dropdown( 'videogalleryvideo',$videogalleryvideo,set_value( 'videogalleryvideo'), 'class="chzn-select form-control" 	data-placeholder="Choose a Accesslevel..."'); ?>
-                </div>
-            </div> 
-                <div class="row">
-                <div class="input-field col s6">
-                    <?php echo form_dropdown( 'galleryimage',$galleryimage,set_value( 'galleryimage'), 'class="chzn-select form-control" 	data-placeholder="Choose a Accesslevel..."'); ?>
-                </div>
-            </div> 
--->
-                <div class="row">
-                <div class="input-field col s6">
-                    <?php echo form_dropdown( 'event',$event,set_value( 'event'), 'class="chzn-select form-control" 	data-placeholder="Choose a Accesslevel..."'); ?>
-                </div>
-            </div> 
-                <div class="row">
-                <div class="input-field col s6">
-                    <?php echo form_dropdown( 'article',$article,set_value( 'article'), 'class="chzn-select form-control" 	data-placeholder="Choose a Accesslevel..."'); ?>
-                </div>
-            </div>
+              
             <div class="row">
                 <div class="file-field input-field col s12">
                     <div class="btn brown">
@@ -54,12 +70,10 @@
                     </div>
                 </div>
             </div>
-             <div class="row">
-            <textarea id="some-textarea" name="content" placeholder="Enter text ..."><?php echo set_value( 'content');?></textarea>
-            <script type="text/javascript">
-                $('#some-textarea').wysihtml5();
-            </script>
-        </div>
+           	<div class="row">
+							<div class="input-field col s6"><textarea id="content" name="content" class="materialize-textarea"></textarea><label for="content">Content</label>
+							</div>
+						</div>
             <div class=" form-group">
                 <label class="col-sm-2 control-label">&nbsp;</label>
                 <div class="col-sm-4">
@@ -69,98 +83,134 @@
             </div>
         </form>
 </div>
+<script type="text/javascript">
+	//dropdown function
+	var $linktype;
+	var $sub;
+	var $i;
+	var $typeid;
+	var $event = $('select[name=event]');
+	var $article = $('select[name=article]');
+	var $video = $('select[name=video]');
+	var $gallery = $('select[name=gallery]');
+	var $blog = $('select[name=blog]');
+
+	function hideshow(id, data) {
+		for($i=0;$i<$sub.length;$i++){
+			$sub.eq($i).prop("hidden", true);
+		}
+		$sub.eq(id).prop("hidden", false);
+		console.log(data.val());
+		$typeid = data.val();
+
+	}
+	
+	
+
+
+	$(document).ready(function () {
+		//jquery to dropdown
+		
+		$event.change(function(){
+			$("#typeid").val($event.val());
+		});
+		$article.change(function(){
+			$("#typeid").val($article.val());
+		});
+		$video.change(function(){
+			$("#typeid").val($video.val());
+		});
+		$gallery.change(function(){
+			$("#typeid").val($gallery.val());
+		});
+		$blog.change(function(){
+			$("#typeid").val($blog.val());
+		});
+		
+		
+		
+		
+		$sub = $(".drop");
+		for ($i = 0; $i < $sub.length; $i++) {
+			$sub.eq($i).prop("hidden", true);
+		}
+
+		//my changes
+		$linktype = $('select[name=linktype]');
+		$linktype.change(function () {
+			
+			switch ($linktype.val()) {
+			case "2":
+				{
+					hideshow(4,$('select[name=article]'));
+					$typeid = $('select[name=article]').val();
+				}
+				break;
+			case "3":
+				{
+					hideshow(0,$('select[name=event]'));
+					$typeid = $('select[name=event]').val();
+				}
+				break;
+			case "6":
+				{
+					hideshow(3,$('select[name=gallery]'));
+					$typeid = $('select[name=gallery]').val();
+				}
+				break;
+			case "8":
+				{
+					hideshow(2,$('select[name=video]'));
+					$typeid = $('select[name=video]').val();
+				}
+				break;
+			case "10":
+				{
+					hideshow(1,$('select[name=blog]'));
+					$typeid = $('select[name=blog]').val();
+				}
+				break;
+			default:
+				{
+
+				}
+			}
+
+		});
+
+
+
+		//avi code
+		//		var $linktype = $("select.linktype");
+		//		var $test = $("select.test");
+		//		var $question = $("select.question");
+		//		var $option = $("select.option");
+		//		var $pillar = $("select.pillar");
+		//		var new_base_url = "<?php echo site_url(); ?>";
+		//
+		//		$test.change(function () {
+		//			$.getJSON(new_base_url + '/site/getquestionbytest', {
+		//				test: $test.val(),
+		//				pillar: $pillar.val()
+		//			}, function (data) {
+		//				populate(data, $question);
+		//			});
+		//		});
+		//
+		//		$question.change(function () {
+		//			$.getJSON(new_base_url + '/site/getoptionbyquestion', {
+		//				question: $question.val()
+		//			}, function (data) {
+		//				populate(data, $option);
+		//			});
+		//		});
+		//
+		//
+	});
+</script>
 
 
 
 
 
 
-
-<!--
-<div id="page-title">
-<a href="<?php echo site_url("site/viewnotification"); ?>" class="btn btn-primary btn-labeled fa fa-arrow-left margined pull-right">Back</a>
-<h1 class="page-header text-overflow">Notification Details </h1>
-</div>
-<div id="page-content">
-<div class="row">
-<div class="col-lg-12">
-<section class="panel">
-<div class="panel-heading">
-<h3 class="panel-title">
-Create Notification </h3>
-</div>
-<div class="panel-body">
-<form class='form-horizontal tasi-form' method='post' action='<?php echo site_url("site/createnotificationsubmit");?>' enctype= 'multipart/form-data'>
-<div class="panel-body">
-<div class=" form-group">
-<label class="col-sm-2 control-label" for="normal-field">Video Gallery</label>
-<div class="col-sm-4">
-<?php echo form_dropdown("videogallery",$videogallery,set_value('videogallery'),"class='chzn-select form-control'");?>
-</div>
-</div>
-<div class=" form-group">
-<label class="col-sm-2 control-label" for="normal-field">event</label>
-<div class="col-sm-4">
-<?php echo form_dropdown("event",$event,set_value('event'),"class='chzn-select form-control'");?>
-</div>
-</div>
--->
-<!--
-<div class=" form-group">
-<label class="col-sm-2 control-label" for="normal-field">Video Gallery Video</label>
-<div class="col-sm-4">
-<?php echo form_dropdown("videogalleryvideo",$videogalleryvideo,set_value('videogalleryvideo'),"class='chzn-select form-control'");?>
-</div>
-</div>
-<div class=" form-group">
-<label class="col-sm-2 control-label" for="normal-field">Gallery Image</label>
-<div class="col-sm-4">
-<?php echo form_dropdown("galleryimage",$galleryimage,set_value('galleryimage'),"class='chzn-select form-control'");?>
-</div>
-</div>
--->
-<!--
-<div class=" form-group">
-<label class="col-sm-2 control-label" for="normal-field">article</label>
-<div class="col-sm-4">
-<?php echo form_dropdown("article",$article,set_value('article'),"class='chzn-select form-control'");?>
-</div>
-</div>
-<div class=" form-group">
-<label class="col-sm-2 control-label" for="normal-field">Status</label>
-<div class="col-sm-4">
-<?php echo form_dropdown("status",$status,set_value('status'),"class='chzn-select form-control'");?>
-</div>
-</div>
-<div class="form-group">
-<label class="col-sm-2 control-label" for="normal-field">Link</label>
-<div class="col-sm-4">
-<input type="text" id="normal-field" class="form-control" name="link" value='<?php echo set_value('link');?>'>
-</div>
-</div>
-<div class=" form-group">
-<label class="col-sm-2 control-label" for="normal-field">Image</label>
-<div class="col-sm-4">
-<input type="file" id="normal-field" class="form-control" name="image" value='<?php echo set_value('image');?>'>
-</div>
-</div>
-<div class=" form-group">
-<label class="col-sm-2 control-label" for="normal-field">Content</label>
-<div class="col-sm-8">
-<textarea name="content" id="" cols="20" rows="10" class="form-control tinymce"><?php echo set_value( 'content');?></textarea>
-</div>
-</div>
-<div class="form-group">
-<label class="col-sm-2 control-label" for="normal-field">&nbsp;</label>
-<div class="col-sm-4">
-<button type="submit" class="btn btn-primary">Save</button>
-<a href="<?php echo site_url("site/viewnotification"); ?>" class="btn btn-secondary">Cancel</a>
-</div>
-</div>
-</form>
-</div>
-</section>
-</div>
-</div>
-</div>
--->

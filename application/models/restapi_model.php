@@ -137,13 +137,11 @@ return  1;
         return $query;
     
     }
-    public function updateprofileimage($imageName){
-        $userid=$this->session->userdata('id');
+    public function updateprofileimage($imageName,$userid){
         $query=$this->db->query("UPDATE `user` SET `image`='$imageName' WHERE 'id'=$userid"); 
         return $query;
     } 
-    public function updatecoverimage($imageName){
-        $userid=$this->session->userdata('id');
+    public function updatecoverimage($imageName,$userid){
         $query=$this->db->query("UPDATE `user` SET `coverimage`='$imageName' WHERE 'id'=$userid"); 
         return $query;
     } 

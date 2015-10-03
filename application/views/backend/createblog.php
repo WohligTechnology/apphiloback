@@ -28,6 +28,23 @@
                 $('#some-textarea').wysihtml5();
             </script>
         </div>
+             <div class="row">
+                <div class="file-field input-field col s12">
+                    <div class="btn brown">
+                        <span>Image</span>
+                        <input name="image" type="file" multiple>
+                    </div>
+                    <div class="file-path-wrapper">
+                        <input class="file-path validate" type="text" placeholder="Upload one or more files" value="<?php echo set_value('image');?>">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <label for="url">Video Url</label>
+                    <input type="text" id="url" name="url" value="<?php echo set_value('url');?>">
+                </div>
+            </div>
             <div class=" form-group">
                 <label class="col-sm-2 control-label">&nbsp;</label>
                 <div class="col-sm-4">

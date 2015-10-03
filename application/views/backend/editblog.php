@@ -25,12 +25,32 @@
                 $('#some-textarea').wysihtml5();
             </script>
             </div>
-              <div class="row">
+              <div class="row" style="display:none">
                 <div class="input-field col s6">
                     <label for="json">Json</label>
     <textarea name="json" class="fieldjsoninput"><?php echo set_value( 'json',$before->json);?></textarea>
                 </div>
             </div>
+             <div class="row">
+            <div class="file-field input-field col s12">
+                <div class="btn brown">
+                    <span>Image</span>
+                    <input name="image" type="file" multiple>
+                </div>
+                <div class="file-path-wrapper">
+                    <input class="file-path validate" type="text" placeholder="Upload one or more files" value="<?php echo set_value('image',$before->image);?>">
+                    <?php if($before->image == "") { } else {
+                    ?><img src="<?php echo base_url('uploads')."/".$before->image; ?>" width="140px" height="140px">
+                    <?php } ?>
+                </div>
+            </div>
+        </div>
+              <div class="row">
+            <div class="input-field col s6">
+                <label>Video Url</label>
+                <input type="text" name="url" value="<?php echo set_value('url',$before->url);?>">
+            </div>
+        </div>
             <div class="fieldjson"></div>
                <div class="row">
             <div class="input-field col s6">

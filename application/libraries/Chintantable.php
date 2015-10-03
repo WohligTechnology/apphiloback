@@ -104,7 +104,7 @@ class Chintantable {
         <div class="col s6">
             <div class="row margintop15">
                 <div class="col s6"><input class="form-control chintantablesearch" type="text" placeholder="Search"></div>
-                <div class="col s3"><button class="btn purple chintantablesearchgo" type="button">Go!</button></div>
+                <div class="col s3"><button class="btn purple chintantablesearchgo waves-effect waves-light" type="button">Go!</button></div>
                 <div class="col s3">
                 <select class="maxrow form-control">
                     <option value="10">10</option>
