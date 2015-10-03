@@ -138,11 +138,21 @@ return  1;
     
     }
     public function updateprofileimage($imageName,$userid){
-        $query=$this->db->query("UPDATE `user` SET `image`='$imageName' WHERE 'id'=$userid"); 
+        $data = array(
+               'image' => $imageName
+            );
+
+        $this->db->where('id', $userid);
+        $this->db->update('user', $data); 
         return $query;
     } 
     public function updatecoverimage($imageName,$userid){
-        $query=$this->db->query("UPDATE `user` SET `coverimage`='$imageName' WHERE 'id'=$userid"); 
+         $data = array(
+               'coverimage' => $imageName
+            );
+
+        $this->db->where('id', $userid);
+        $this->db->update('user', $data); 
         return $query;
     } 
     public function getallsliders(){
@@ -150,7 +160,44 @@ return  1;
         return $query;
     } 
     public function getsingleuserdetail($id){
-        $query=$this->db->query("SELECT `id`, `name`, `email`, `accesslevel`, `timestamp`, `status`, `image`, `username`, `socialid`, `logintype`, `json`, `dob`, `street`, `address`, `city`, `state`, `pincode`, `facebook`, `twitter`, `google`, `country`, `instagram`, `contact`, `eventnotification`, `photonotification`, `videonotification`, `blognotification`, `coverimage` FROM `user` WHERE `id`='$id'")->row(); 
+        $query=$this->db->query("SELECT `id`, `name`, `email`, `accesslevel`, `timestamp`, `status`, `image`, `username`, `socialid`, `logintype`, `json`, `dob`, `street`, `address`, `city`, `state`, `pincode`, `facebook`, `twitter`, `google`, `country`, `instagram`, `contact`, `eventnotification`, `photonotification`, `videonotification`, `blognotification`, `coverimage` FROM `user` WHERE `id`='$id'")->row();
+        // eventnotification
+        if($query->eventnotification=="true")
+        {
+            $query->eventnotification=true;
+        }
+        else
+        {
+            $query->eventnotification=false;
+        }    
+        // photonotification
+        if($query->photonotification=="true")
+        {
+            $query->photonotification=true;
+        }
+        else
+        {
+            $query->photonotification=false;
+        }
+        // videonotification
+        if($query->videonotification=="true")
+        {
+            $query->videonotification=true;
+        }
+        else
+        {
+            $query->videonotification=false;
+        }
+        // blognotification
+        if($query->blognotification=="true")
+        {
+            $query->blognotification=true;
+        }
+        else
+        {
+            $query->blognotification=false;
+        }
+        
         return $query;
     }
     public function gethomecontent(){
