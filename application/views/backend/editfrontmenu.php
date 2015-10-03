@@ -88,7 +88,7 @@
 				<?php echo form_dropdown( 'link',$link,set_value( 'link',$before->link), 'class="chzn-select form-control" data-placeholder="Choose a Accesslevel..."'); ?>
 			</div>
 		</div>
-        <div class="row">
+        <div class="row" style="display:none">
             <div class="file-field input-field col s12">
                 <div class="btn brown">
                     <span>Image</span>

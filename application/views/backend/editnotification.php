@@ -6,7 +6,7 @@
 <div class="row">
     <form class="col s12" method="post" action="<?php echo site_url('site/editnotificationsubmit');?>" enctype="multipart/form-data">
         <input type="hidden" id="normal-field" class="form-control" name="id" value="<?php echo set_value('id',$before->id);?>" style="display:none;">
-             <div class="row drop">
+             <div class="row">
             <div class="input-field col s6">
                 <?php echo form_dropdown( 'linktype',$linktype,set_value( 'linktype',$before->linktype), 'class="chzn-select form-control" data-placeholder="Choose a Accesslevel..."'); ?>
             </div>
@@ -50,24 +50,8 @@
 
             </div>
         </div>
-        
-         
-            <div class="row">
-            <div class="input-field col s6">
-                <?php echo form_dropdown( 'videogallery',$videogallery,set_value( 'videogallery',$before->videogallery), 'class="chzn-select form-control" data-placeholder="Choose a Accesslevel..."'); ?>
-            </div>
-        </div>  
-             <div class="row">
-            <div class="input-field col s6">
-                <?php echo form_dropdown( 'event',$event,set_value( 'event',$before->event), 'class="chzn-select form-control" data-placeholder="Choose a Accesslevel..."'); ?>
-            </div>
-        </div>  
-             <div class="row">
-            <div class="input-field col s6">
-                <?php echo form_dropdown( 'article',$article,set_value( 'article',$before->article), 'class="chzn-select form-control" data-placeholder="Choose a Accesslevel..."'); ?>
-            </div>
-        </div>
-          <div class="row">
+<!--       External link-->
+          <div class="row drop">
             <div class="input-field col s6">
                 <label for="link">External link</label>
                 <input type="text" id="link" name="link" value="<?php echo set_value('link',$before->link);?>">
@@ -118,44 +102,49 @@
     var $sub;
     var $i;
     var $typeid;
-    var $event = $('select[name=event]');;
-    var $article = $('select[name=article]');;
-    var $video = $('select[name=video]');;
-    var $gallery = $('select[name=gallery]');;
-    var $blog = $('select[name=blog]');;
+    var $event = $('select[name=event]');
+    var $article = $('select[name=article]');
+    var $video = $('select[name=video]');
+    var $gallery = $('select[name=gallery]');
+    var $blog = $('select[name=blog]');
+    var $link = $('#link');
 
-    function hideshow(id) {
+    function hideshow(id, data) {
         for ($i = 0; $i < $sub.length; $i++) {
             $sub.eq($i).prop("hidden", true);
         }
         $sub.eq(id).prop("hidden", false);
+        console.log(data.val());
+        $typeid = data.val();
 
     }
+
+
 
 
     $(document).ready(function () {
         //jquery to dropdown
 
-
         $event.change(function () {
             $("#typeid").val($event.val());
         });
-
         $article.change(function () {
             $("#typeid").val($article.val());
         });
-
-        $gallery.change(function () {
-            $("#typeid").val($gallery.val());
-        });
-
         $video.change(function () {
             $("#typeid").val($video.val());
         });
-
+        $gallery.change(function () {
+            $("#typeid").val($gallery.val());
+        });
         $blog.change(function () {
             $("#typeid").val($blog.val());
         });
+        $link.change(function () {
+            $("#typeid").val($link.val());
+        });
+
+
 
 
         $sub = $(".drop");
@@ -170,37 +159,45 @@
             switch ($linktype.val()) {
             case "2":
                 {
-                    hideshow(4);
+                    hideshow(4, $('select[name=article]'));
                     $typeid = $('select[name=article]').val();
                 }
                 break;
             case "3":
                 {
-                    hideshow(0);
+                    hideshow(0, $('select[name=event]'));
                     $typeid = $('select[name=event]').val();
                 }
                 break;
             case "6":
                 {
-                    hideshow(3);
+                    hideshow(3, $('select[name=gallery]'));
                     $typeid = $('select[name=gallery]').val();
                 }
                 break;
             case "8":
                 {
-                    hideshow(2);
+                    hideshow(2, $('select[name=video]'));
                     $typeid = $('select[name=video]').val();
                 }
                 break;
             case "10":
                 {
-                    hideshow(1);
+                    hideshow(1, $('select[name=blog]'));
                     $typeid = $('select[name=blog]').val();
+                }
+                break;
+            case "17":
+                {
+                    hideshow(5, $('select[name=link]'));
+                    $typeid = $('select[name=link]').val();
                 }
                 break;
             default:
                 {
-
+                    for ($i = 0; $i < $sub.length; $i++) {
+                        $sub.eq($i).prop("hidden", true);
+                    }
                 }
             }
 

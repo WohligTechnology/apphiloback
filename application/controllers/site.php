@@ -512,27 +512,6 @@ public function createarticles()
 $access=array("1");
 $this->checkaccess($access);
 $data["page"]="createarticles";
-    
-    $json=array();
-            $json[0]=new stdClass();
-            $json[0]->placeholder="";
-            $json[0]->value="";
-            $json[0]->label="Meta Title";
-            $json[0]->type="text";
-            $json[0]->options="";
-            $json[0]->classes="";
-    
-            $json[1]=new stdClass();
-            $json[1]->placeholder="";
-            $json[1]->value="";
-            $json[1]->label="Meta Description";
-            $json[1]->type="text";
-            $json[1]->options="";
-            $json[1]->classes="";
-    
-            $data["fieldjson"]=$json;
-        
-    
 $data[ 'status' ] =$this->user_model->getstatusdropdown();
 $data["title"]="Create articles";
 $this->load->view("template",$data);
@@ -765,24 +744,6 @@ public function createfrontmenu()
 $access=array("1");
 $this->checkaccess($access);
 $data["page"]="createfrontmenu";
-$json=array();
-            $json[0]=new stdClass();
-            $json[0]->placeholder="";
-            $json[0]->value="";
-            $json[0]->label="Meta Title";
-            $json[0]->type="text";
-            $json[0]->options="";
-            $json[0]->classes="";
-    
-            $json[1]=new stdClass();
-            $json[1]->placeholder="";
-            $json[1]->value="";
-            $json[1]->label="Meta Description";
-            $json[1]->type="text";
-            $json[1]->options="";
-            $json[1]->classes="";
-    
-            $data["fieldjson"]=$json;
     $this->frontmenu_model->changestatusofexternallink();
 $data[ 'status' ] =$this->user_model->getstatusdropdown();
 $data[ 'parent' ] =$this->user_model->getfrontmenudropdown();
@@ -1014,24 +975,6 @@ public function creategallery()
 $access=array("1");
 $this->checkaccess($access);
 $data["page"]="creategallery";
-    $json=array();
-            $json[0]=new stdClass();
-            $json[0]->placeholder="";
-            $json[0]->value="";
-            $json[0]->label="Meta Title";
-            $json[0]->type="text";
-            $json[0]->options="";
-            $json[0]->classes="";
-    
-            $json[1]=new stdClass();
-            $json[1]->placeholder="";
-            $json[1]->value="";
-            $json[1]->label="Meta Description";
-            $json[1]->type="text";
-            $json[1]->options="";
-            $json[1]->classes="";
-    
-            $data["fieldjson"]=$json;
 $data[ 'status' ] =$this->user_model->getstatusdropdown();
 $data["title"]="Create gallery";
 $this->load->view("template",$data);
@@ -1462,24 +1405,6 @@ public function createvideogallery()
 $access=array("1");
 $this->checkaccess($access);
 $data["page"]="createvideogallery";
-$json=array();
-            $json[0]=new stdClass();
-            $json[0]->placeholder="";
-            $json[0]->value="";
-            $json[0]->label="Meta Title";
-            $json[0]->type="text";
-            $json[0]->options="";
-            $json[0]->classes="";
-    
-            $json[1]=new stdClass();
-            $json[1]->placeholder="";
-            $json[1]->value="";
-            $json[1]->label="Meta Description";
-            $json[1]->type="text";
-            $json[1]->options="";
-            $json[1]->classes="";
-    
-            $data["fieldjson"]=$json;
 $data[ 'status' ] =$this->user_model->getstatusdropdown();
 $data[ 'videogallery' ] =$this->user_model->getvideogallerydropdown();
 $data["title"]="Create videogallery";
@@ -2533,55 +2458,20 @@ $elements[0]->sort="1";
 $elements[0]->header="ID";
 $elements[0]->alias="id";
 $elements[1]=new stdClass();
-$elements[1]->field="`webapp_videogallery`.`name`";
+$elements[1]->field="`statuses`.`name`";
 $elements[1]->sort="1";
-$elements[1]->header="Video Gallery";
-$elements[1]->alias="videogallery";
+$elements[1]->header="Status";
+$elements[1]->alias="status";
 $elements[2]=new stdClass();
-$elements[2]->field="`webapp_events`.`title`";
+$elements[2]->field="`webapp_notification`.`image`";
 $elements[2]->sort="1";
-$elements[2]->header="event";
-$elements[2]->alias="event";
+$elements[2]->header="Image";
+$elements[2]->alias="image";
 $elements[3]=new stdClass();
-$elements[3]->field="`webapp_notification`.`videogalleryvideo`";
+$elements[3]->field="`webapp_notification`.`timestamp`";
 $elements[3]->sort="1";
-$elements[3]->header="Video Gallery Video";
-$elements[3]->alias="videogalleryvideo";
-$elements[4]=new stdClass();
-$elements[4]->field="`webapp_notification`.`galleryimage`";
-$elements[4]->sort="1";
-$elements[4]->header="Gallery Image";
-$elements[4]->alias="galleryimage";
-$elements[5]=new stdClass();
-$elements[5]->field="`webapp_articles`.`title`";
-$elements[5]->sort="1";
-$elements[5]->header="article";
-$elements[5]->alias="article";
-$elements[6]=new stdClass();
-$elements[6]->field="`statuses`.`name`";
-$elements[6]->sort="1";
-$elements[6]->header="Status";
-$elements[6]->alias="status";
-$elements[7]=new stdClass();
-$elements[7]->field="`webapp_notification`.`link`";
-$elements[7]->sort="1";
-$elements[7]->header="Link";
-$elements[7]->alias="link";
-$elements[8]=new stdClass();
-$elements[8]->field="`webapp_notification`.`image`";
-$elements[8]->sort="1";
-$elements[8]->header="Image";
-$elements[8]->alias="image";
-$elements[9]=new stdClass();
-$elements[9]->field="`webapp_notification`.`timestamp`";
-$elements[9]->sort="1";
-$elements[9]->header="Timestamp";
-$elements[9]->alias="timestamp";
-$elements[10]=new stdClass();
-$elements[10]->field="`webapp_notification`.`content`";
-$elements[10]->sort="1";
-$elements[10]->header="Content";
-$elements[10]->alias="content";
+$elements[3]->header="Timestamp";
+$elements[3]->alias="timestamp";
 $search=$this->input->get_post("search");
 $pageno=$this->input->get_post("pageno");
 $orderby=$this->input->get_post("orderby");
@@ -2596,7 +2486,7 @@ if($orderby=="")
 $orderby="id";
 $orderorder="ASC";
 }
-$data["message"]=$this->chintantable->query($pageno,$maxrow,$orderby,$orderorder,$search,$elements,"FROM `webapp_notification` LEFT OUTER JOIN `statuses` ON `statuses`.`id`=`webapp_notification`.`status` LEFT OUTER JOIN `webapp_articles` ON `webapp_articles`.`id`=`webapp_notification`.`article` LEFT OUTER JOIN `webapp_events` ON `webapp_events`.`id`=`webapp_notification`.`event` LEFT OUTER JOIN `webapp_videogallery` ON `webapp_videogallery`.`id`=`webapp_notification`.`videogallery`");
+$data["message"]=$this->chintantable->query($pageno,$maxrow,$orderby,$orderorder,$search,$elements,"FROM `webapp_notification` LEFT OUTER JOIN `statuses` ON `statuses`.`id`=`webapp_notification`.`status`");
 $this->load->view("json",$data);
 }
 
@@ -3030,24 +2920,6 @@ public function createblog()
 $access=array("1");
 $this->checkaccess($access);
 $data["page"]="createblog";
-    $json=array();
-            $json[0]=new stdClass();
-            $json[0]->placeholder="";
-            $json[0]->value="";
-            $json[0]->label="Meta Title";
-            $json[0]->type="text";
-            $json[0]->options="";
-            $json[0]->classes="";
-    
-            $json[1]=new stdClass();
-            $json[1]->placeholder="";
-            $json[1]->value="";
-            $json[1]->label="Meta Description";
-            $json[1]->type="text";
-            $json[1]->options="";
-            $json[1]->classes="";
-    
-            $data["fieldjson"]=$json;
 $data["title"]="Create blog";
 $this->load->view("template",$data);
 }

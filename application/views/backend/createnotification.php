@@ -1,216 +1,226 @@
 <div class="row">
     <div class="col s12">
-    <h4 class="pad-left-15">Create Notification</h4>
+        <h4 class="pad-left-15">Create Notification</h4>
     </div>
-        <form class="col s12" method="post" action="<?php echo site_url('site/createnotificationsubmit');?>" enctype="multipart/form-data">
-           <div class="row">
-			<div class="input-field col s6">
-				<?php echo form_dropdown('linktype',$linktype,set_value('linktype'), 'class="chzn-select form-control" data-placeholder="Choose a Accesslevel..."'); ?>
-			</div>
-		</div>
-            <!--	Event-->
-		<div class="row drop">
-			<div class="input-field col s6">
-				<?php echo form_dropdown('event',$event,set_value('event'), 'class="chzn-select form-control" data-placeholder="Choose a Accesslevel..."'); ?>
-			</div>
-		</div>
+    <form class="col s12" method="post" action="<?php echo site_url('site/createnotificationsubmit');?>" enctype="multipart/form-data">
+        <div class="row">
+            <div class="input-field col s6">
+                <?php echo form_dropdown( 'linktype',$linktype,set_value( 'linktype'), 'class="chzn-select form-control" data-placeholder="Choose a Accesslevel..."'); ?>
+            </div>
+        </div>
+        <!--	Event-->
+        <div class="row drop">
+            <div class="input-field col s6">
+                <?php echo form_dropdown( 'event',$event,set_value( 'event'), 'class="chzn-select form-control" data-placeholder="Choose a Accesslevel..."'); ?>
+            </div>
+        </div>
 
-		<!--	Blog-->
-		<div class="row drop">
-			<div class="input-field col s6">
-				<?php echo form_dropdown('blog',$blog,set_value('blog'), 'class="chzn-select form-control" data-placeholder="Choose a Accesslevel..."'); ?>
+        <!--	Blog-->
+        <div class="row drop">
+            <div class="input-field col s6">
+                <?php echo form_dropdown( 'blog',$blog,set_value( 'blog'), 'class="chzn-select form-control" data-placeholder="Choose a Accesslevel..."'); ?>
 
-			</div>
-		</div>
+            </div>
+        </div>
 
-		<!--	Gallery-->
-		<div class="row drop">
-			<div class="input-field col s6">
-				<?php echo form_dropdown('video',$video,set_value('video'), 'class="chzn-select form-control" 	data-placeholder="Choose a Accesslevel..."'); ?>
+        <!--	Gallery-->
+        <div class="row drop">
+            <div class="input-field col s6">
+                <?php echo form_dropdown( 'video',$video,set_value( 'video'), 'class="chzn-select form-control" 	data-placeholder="Choose a Accesslevel..."'); ?>
 
-			</div>
-		</div>
+            </div>
+        </div>
 
-		<!--	Video-->
-		<div class="row drop">
-			<div class="input-field col s6">
-				<?php echo form_dropdown('gallery',$gallery,set_value('gallery'), 'class="chzn-select form-control" 	data-placeholder="Choose a Accesslevel..."'); ?>
+        <!--	Video-->
+        <div class="row drop">
+            <div class="input-field col s6">
+                <?php echo form_dropdown( 'gallery',$gallery,set_value( 'gallery'), 'class="chzn-select form-control" 	data-placeholder="Choose a Accesslevel..."'); ?>
 
-			</div>
-		</div>
-		
-		<!--	Article-->
-		<div class="row drop">
-			<div class="input-field col s6">
-				<?php echo form_dropdown('article',$article,set_value('article'), 'class="chzn-select form-control" 	data-placeholder="Choose a Accesslevel..."'); ?>
+            </div>
+        </div>
 
-			</div>
-		</div>
-           
-            <div class="row">
-                <div class="input-field col s6">
-                    <label for="link">External link</label>
-                    <input type="text" id="link" name="link" value="<?php echo set_value('link');?>">
+        <!--	Article-->
+        <div class="row drop">
+            <div class="input-field col s6">
+                <?php echo form_dropdown( 'article',$article,set_value( 'article'), 'class="chzn-select form-control" 	data-placeholder="Choose a Accesslevel..."'); ?>
+
+            </div>
+        </div>
+        <!--	External link-->
+        <div class="row drop">
+            <div class="input-field col s6">
+                <label for="link">External link</label>
+                <input type="text" id="link" name="link" value="<?php echo set_value('link');?>">
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="input-field col s6">
+                <?php echo form_dropdown( 'status',$status,set_value( 'status'), 'class="chzn-select form-control" 	data-placeholder="Choose a Accesslevel..."'); ?>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="file-field input-field col s12">
+                <div class="btn brown">
+                    <span>Image</span>
+                    <input name="image" type="file" multiple>
+                </div>
+                <div class="file-path-wrapper">
+                    <input class="file-path validate" type="text" placeholder="Upload one or more files" value="<?php echo set_value('image');?>">
                 </div>
             </div>
-            <div class="row">
-                <div class="input-field col s6">
-                    <?php echo form_dropdown( 'status',$status,set_value( 'status'), 'class="chzn-select form-control" 	data-placeholder="Choose a Accesslevel..."'); ?>
-                </div>
-            </div> 
-              
-            <div class="row">
-                <div class="file-field input-field col s12">
-                    <div class="btn brown">
-                        <span>Image</span>
-                        <input name="image" type="file" multiple>
-                    </div>
-                    <div class="file-path-wrapper">
-                        <input class="file-path validate" type="text" placeholder="Upload one or more files" value="<?php echo set_value('image');?>">
-                    </div>
-                </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s6">
+                <textarea id="content" name="content" class="materialize-textarea"></textarea>
+                <label for="content">Content</label>
             </div>
-           	<div class="row">
-							<div class="input-field col s6"><textarea id="content" name="content" class="materialize-textarea"></textarea><label for="content">Content</label>
-							</div>
-						</div>
-            <div class=" form-group">
-                <label class="col-sm-2 control-label">&nbsp;</label>
-                <div class="col-sm-4">
-                    <button type="submit" class="btn btn-primary waves-effect waves-light green">Save</button>
-                    <a href="<?php echo site_url('site/viewnotification'); ?>" class="btn btn-secondary waves-effect waves-light red">Cancel</a>
-                </div>
+        </div>
+        <div class=" form-group">
+            <label class="col-sm-2 control-label">&nbsp;</label>
+            <div class="col-sm-4">
+                <button type="submit" class="btn btn-primary waves-effect waves-light green">Save</button>
+                <a href="<?php echo site_url('site/viewnotification'); ?>" class="btn btn-secondary waves-effect waves-light red">Cancel</a>
             </div>
-        </form>
+        </div>
+    </form>
 </div>
 <script type="text/javascript">
-	//dropdown function
-	var $linktype;
-	var $sub;
-	var $i;
-	var $typeid;
-	var $event = $('select[name=event]');
-	var $article = $('select[name=article]');
-	var $video = $('select[name=video]');
-	var $gallery = $('select[name=gallery]');
-	var $blog = $('select[name=blog]');
+    //dropdown function
+    var $linktype;
+    var $sub;
+    var $i;
+    var $typeid;
+    var $event = $('select[name=event]');
+    var $article = $('select[name=article]');
+    var $video = $('select[name=video]');
+    var $gallery = $('select[name=gallery]');
+    var $blog = $('select[name=blog]');
+    var $link = $('#link');
 
-	function hideshow(id, data) {
-		for($i=0;$i<$sub.length;$i++){
-			$sub.eq($i).prop("hidden", true);
-		}
-		$sub.eq(id).prop("hidden", false);
-		console.log(data.val());
-		$typeid = data.val();
+    function hideshow(id, data) {
+        for ($i = 0; $i < $sub.length; $i++) {
+            $sub.eq($i).prop("hidden", true);
+        }
+        $sub.eq(id).prop("hidden", false);
+        console.log(data.val());
+        $typeid = data.val();
 
-	}
-	
-	
-
-
-	$(document).ready(function () {
-		//jquery to dropdown
-		
-		$event.change(function(){
-			$("#typeid").val($event.val());
-		});
-		$article.change(function(){
-			$("#typeid").val($article.val());
-		});
-		$video.change(function(){
-			$("#typeid").val($video.val());
-		});
-		$gallery.change(function(){
-			$("#typeid").val($gallery.val());
-		});
-		$blog.change(function(){
-			$("#typeid").val($blog.val());
-		});
-		
-		
-		
-		
-		$sub = $(".drop");
-		for ($i = 0; $i < $sub.length; $i++) {
-			$sub.eq($i).prop("hidden", true);
-		}
-
-		//my changes
-		$linktype = $('select[name=linktype]');
-		$linktype.change(function () {
-			
-			switch ($linktype.val()) {
-			case "2":
-				{
-					hideshow(4,$('select[name=article]'));
-					$typeid = $('select[name=article]').val();
-				}
-				break;
-			case "3":
-				{
-					hideshow(0,$('select[name=event]'));
-					$typeid = $('select[name=event]').val();
-				}
-				break;
-			case "6":
-				{
-					hideshow(3,$('select[name=gallery]'));
-					$typeid = $('select[name=gallery]').val();
-				}
-				break;
-			case "8":
-				{
-					hideshow(2,$('select[name=video]'));
-					$typeid = $('select[name=video]').val();
-				}
-				break;
-			case "10":
-				{
-					hideshow(1,$('select[name=blog]'));
-					$typeid = $('select[name=blog]').val();
-				}
-				break;
-			default:
-				{
-
-				}
-			}
-
-		});
+    }
 
 
 
-		//avi code
-		//		var $linktype = $("select.linktype");
-		//		var $test = $("select.test");
-		//		var $question = $("select.question");
-		//		var $option = $("select.option");
-		//		var $pillar = $("select.pillar");
-		//		var new_base_url = "<?php echo site_url(); ?>";
-		//
-		//		$test.change(function () {
-		//			$.getJSON(new_base_url + '/site/getquestionbytest', {
-		//				test: $test.val(),
-		//				pillar: $pillar.val()
-		//			}, function (data) {
-		//				populate(data, $question);
-		//			});
-		//		});
-		//
-		//		$question.change(function () {
-		//			$.getJSON(new_base_url + '/site/getoptionbyquestion', {
-		//				question: $question.val()
-		//			}, function (data) {
-		//				populate(data, $option);
-		//			});
-		//		});
-		//
-		//
-	});
+
+    $(document).ready(function () {
+        //jquery to dropdown
+
+        $event.change(function () {
+            $("#typeid").val($event.val());
+        });
+        $article.change(function () {
+            $("#typeid").val($article.val());
+        });
+        $video.change(function () {
+            $("#typeid").val($video.val());
+        });
+        $gallery.change(function () {
+            $("#typeid").val($gallery.val());
+        });
+        $blog.change(function () {
+            $("#typeid").val($blog.val());
+        });
+        $link.change(function () {
+            $("#typeid").val($link.val());
+        });
+
+
+
+
+        $sub = $(".drop");
+        for ($i = 0; $i < $sub.length; $i++) {
+            $sub.eq($i).prop("hidden", true);
+        }
+
+        //my changes
+        $linktype = $('select[name=linktype]');
+        $linktype.change(function () {
+
+            switch ($linktype.val()) {
+            case "2":
+                {
+                    hideshow(4, $('select[name=article]'));
+                    $typeid = $('select[name=article]').val();
+                }
+                break;
+            case "3":
+                {
+                    hideshow(0, $('select[name=event]'));
+                    $typeid = $('select[name=event]').val();
+                }
+                break;
+            case "6":
+                {
+                    hideshow(3, $('select[name=gallery]'));
+                    $typeid = $('select[name=gallery]').val();
+                }
+                break;
+            case "8":
+                {
+                    hideshow(2, $('select[name=video]'));
+                    $typeid = $('select[name=video]').val();
+                }
+                break;
+            case "10":
+                {
+                    hideshow(1, $('select[name=blog]'));
+                    $typeid = $('select[name=blog]').val();
+                }
+                break;
+            case "17":
+                {
+                    hideshow(5, $('select[name=link]'));
+                    $typeid = $('select[name=link]').val();
+                }
+                break;
+            default:
+                {
+                    for ($i = 0; $i < $sub.length; $i++) {
+                        $sub.eq($i).prop("hidden", true);
+                    }
+                }
+            }
+
+        });
+
+
+
+        //avi code
+        //		var $linktype = $("select.linktype");
+        //		var $test = $("select.test");
+        //		var $question = $("select.question");
+        //		var $option = $("select.option");
+        //		var $pillar = $("select.pillar");
+        //		var new_base_url = "<?php echo site_url(); ?>";
+        //
+        //		$test.change(function () {
+        //			$.getJSON(new_base_url + '/site/getquestionbytest', {
+        //				test: $test.val(),
+        //				pillar: $pillar.val()
+        //			}, function (data) {
+        //				populate(data, $question);
+        //			});
+        //		});
+        //
+        //		$question.change(function () {
+        //			$.getJSON(new_base_url + '/site/getoptionbyquestion', {
+        //				question: $question.val()
+        //			}, function (data) {
+        //				populate(data, $option);
+        //			});
+        //		});
+        //
+        //
+    });
 </script>
-
-
-
-
-
-
