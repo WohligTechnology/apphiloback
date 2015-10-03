@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 02, 2015 at 03:05 PM
+-- Generation Time: Oct 03, 2015 at 06:58 AM
 -- Server version: 5.6.24
 -- PHP Version: 5.5.24
 
@@ -154,12 +154,12 @@ INSERT INTO `menu` (`id`, `name`, `description`, `keyword`, `url`, `linktype`, `
 (3, 'Menu', '', '', 'site/viewfrontmenu', 1, 0, 1, 4, 'icon-list'),
 (4, 'Dashboard', '', '', 'site/index', 1, 0, 1, 0, 'icon-dashboard'),
 (5, 'Gallery', '', '', 'site/viewgallery', 1, 0, 1, 7, 'icon-th'),
-(6, 'Config', '', '', 'site/viewconfig', 1, 0, 1, 18, 'icon-fire'),
+(6, 'Config', '', '', 'site/viewconfig', 1, 0, 1, 12, 'icon-fire'),
 (7, 'Videos', '', '', 'site/viewvideogallery', 1, 0, 1, 6, 'icon-camera'),
 (9, 'Events', '', '', 'site/viewevents', 1, 0, 1, 8, 'icon-bell-alt'),
-(12, 'Enquiry', '', '', 'site/viewenquiry', 1, 0, 1, 11, 'icon-coffee'),
-(13, 'Notification', '', '', 'site/viewnotification', 1, 0, 1, 12, 'icon-bell'),
-(15, 'Blog', '', '', 'site/viewblog', 1, 0, 1, 14, 'icon-leaf'),
+(12, 'Enquiry', '', '', 'site/viewenquiry', 1, 0, 1, 9, 'icon-coffee'),
+(13, 'Notification', '', '', 'site/viewnotification', 1, 0, 1, 10, 'icon-bell'),
+(15, 'Blog', '', '', 'site/viewblog', 1, 0, 1, 11, 'icon-leaf'),
 (18, 'Home Slider', '', '', 'site/viewslider', 1, 0, 1, 3, 'icon-gittip'),
 (19, 'Home', '', '', 'site/editarticles?id=1', 1, 0, 1, 2, 'icon-gittip');
 
@@ -296,14 +296,15 @@ CREATE TABLE IF NOT EXISTS `user` (
   `videonotification` varchar(50) NOT NULL,
   `blognotification` varchar(50) NOT NULL,
   `coverimage` varchar(255) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`id`, `name`, `password`, `email`, `accesslevel`, `timestamp`, `status`, `image`, `username`, `socialid`, `logintype`, `json`, `dob`, `street`, `address`, `city`, `state`, `pincode`, `facebook`, `twitter`, `google`, `country`, `instagram`, `contact`, `eventnotification`, `photonotification`, `videonotification`, `blognotification`, `coverimage`) VALUES
-(1, 'Admin', '0192023a7bbd73250516f069df18b500', 'admin@admin.com', 1, '2015-10-02 06:05:05', 1, 'user.png', '', '', '', '', NULL, NULL, 'Sion', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '9896251463', '0', '1', '0', '1', 'Screen_Shot_2015-08-21_at_1.04_.08_am_.png');
+(1, 'Admin', '0192023a7bbd73250516f069df18b500', 'admin@admin.com', 1, '2015-10-02 06:05:05', 1, 'user.png', '', '', '', '', NULL, NULL, 'Sion', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '9896251463', 'false', 'true', 'false', 'true', 'Screen_Shot_2015-08-21_at_1.04_.08_am_.png'),
+(2, 'wohlig', 'a63526467438df9566c508027d9cb06b', 'wohlig@wohlig.com', 1, '2015-10-02 13:37:45', 0, '', '', '', '', '', NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '', 'false', 'true', 'true', 'false', '');
 
 -- --------------------------------------------------------
 
@@ -518,7 +519,7 @@ CREATE TABLE IF NOT EXISTS `webapp_events` (
 
 INSERT INTO `webapp_events` (`id`, `status`, `title`, `timestamp`, `content`, `image`, `startdate`, `starttime`, `venue`) VALUES
 (1, 1, 'Sona Mohapatra', '2015-10-02 11:18:28', '<b>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry.</b><br>', 'Event-management11.png', '2015-10-17', '03:05:00', 'California, USA'),
-(2, 1, 'Company Event Hamburg March 2015', '2015-10-02 12:58:11', '<b>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry.</b>', '', '2015-10-24', '08:00:00', '<b>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry.</b>');
+(2, 1, 'Company Event Hamburg March 2015', '2015-10-02 12:58:11', '<b>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry.</b>', 'gallery-corporate_event-231.jpg', '2015-10-24', '08:00:00', 'Newyork');
 
 -- --------------------------------------------------------
 
@@ -575,11 +576,11 @@ INSERT INTO `webapp_frontmenu` (`id`, `order`, `parent`, `status`, `name`, `json
 (2, 2, 0, 1, 'Notification', '[{"label":"Meta Title","type":"text","classes":"","placeholder":"","value":""},{"label":"Meta Description","type":"text","classes":"","placeholder":"","value":""}]', '', '13', 'ln-bell', '', '', '', '', '', '0'),
 (3, 3, 0, 1, 'About', '[{"label":"Meta Title","type":"text","classes":"","placeholder":"","value":""},{"label":"Meta Description","type":"text","classes":"","placeholder":"","value":""}]', '', '2', 'ln-diamond3', '', '', '', '1', '', '0'),
 (4, 4, 0, 1, 'Team', '[{"label":"Meta Title","type":"text","classes":"","placeholder":"","value":""},{"label":"Meta Description","type":"text","classes":"","placeholder":"","value":""}]', '', '2', 'ln-users', '', '', '', '2', '', ''),
-(5, 5, 0, 1, 'Images', '[{"label":"Meta Title","type":"text","classes":"","placeholder":"","value":""},{"label":"Meta Description","type":"text","classes":"","placeholder":"","value":""}]', 'images_(1)2.jpg', '5', 'ln-picture', '', '', '', '', '1', '0'),
-(6, 6, 0, 1, 'Videos', '[{"label":"Meta Title","type":"text","classes":"","placeholder":"","value":""},{"label":"Meta Description","type":"text","classes":"","placeholder":"","value":""}]', '', '7', 'ln-film-play', '', '', '1', '', '', '0'),
-(7, 7, 0, 1, 'Blog', '[{"label":"Meta Title","type":"text","classes":"","placeholder":"","value":""},{"label":"Meta Description","type":"text","classes":"","placeholder":"","value":""}]', '', '10', 'ln-quote-open', '', '1', '', '', '', '0'),
+(5, 5, 0, 1, 'Images', '[{"label":"Meta Title","type":"text","classes":"","placeholder":"","value":""},{"label":"Meta Description","type":"text","classes":"","placeholder":"","value":""}]', '', '6', 'ln-picture', '', '', '', '', '1', '0'),
+(6, 6, 0, 1, 'Videos', '[{"label":"Meta Title","type":"text","classes":"","placeholder":"","value":""},{"label":"Meta Description","type":"text","classes":"","placeholder":"","value":""}]', '', '8', 'ln-film-play', '', '', '1', '', '', '0'),
+(7, 7, 0, 1, 'Blog', '[{"label":"Meta Title","type":"text","classes":"","placeholder":"","value":""},{"label":"Meta Description","type":"text","classes":"","placeholder":"","value":""}]', '', '10', 'ln-quote-open', '', '2', '', '', '', '0'),
 (8, 8, 0, 1, 'Social Feeds', '[{"label":"Meta Title","type":"text","classes":"","placeholder":"","value":""},{"label":"Meta Description","type":"text","classes":"","placeholder":"","value":""}]', '', '11', 'ln-chat', '', '', '', '', '', ''),
-(9, 9, 0, 1, 'Event', '[{"label":"Meta Title","type":"text","classes":"","placeholder":"","value":""},{"label":"Meta Description","type":"text","classes":"","placeholder":"","value":""}]', '', '3', 'ln-heart', '1', '', '', '', '', ''),
+(9, 9, 0, 1, 'Event', '[{"label":"Meta Title","type":"text","classes":"","placeholder":"","value":""},{"label":"Meta Description","type":"text","classes":"","placeholder":"","value":""}]', '', '3', 'ln-heart', '2', '', '', '', '', '0'),
 (10, 10, 0, 1, 'Contact us', '[{"label":"Meta Title","type":"text","classes":"","placeholder":"","value":""},{"label":"Meta Description","type":"text","classes":"","placeholder":"","value":""}]', '', '12', 'ln-phone2', '', '', '', '', '', ''),
 (11, 11, 0, 1, 'Profile', '[{"label":"Meta Title","type":"text","classes":"","placeholder":"","value":""},{"label":"Meta Description","type":"text","classes":"","placeholder":"","value":""}]', '', '15', 'ln-user', '', '', '', '', '', ''),
 (12, 12, 0, 1, 'Settings', '[{"label":"Meta Title","type":"text","classes":"","placeholder":"","value":""},{"label":"Meta Description","type":"text","classes":"","placeholder":"","value":""}]', '', '14', 'ln-gear2', '', '', '', '', '', '');
@@ -955,7 +956,7 @@ ALTER TABLE `type`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `userlog`
 --
