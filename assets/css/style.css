@@ -285,3 +285,7 @@ h6 {
 .createbuttonplacement {
     z-index: 1;
 }
+
+ul.side-nav.fixed li {
+    line-height: 44px;
+}
