@@ -7,11 +7,7 @@
     <form class="col s12" method="post" action="<?php echo site_url('site/edithomesubmit');?>" enctype="multipart/form-data">
         <input type="hidden" id="normal-field" class="form-control" name="id" value="<?php echo set_value('id',$before->id);?>" style="display:none;">
         <div class="row">
-            <textarea id="some-textarea" name="content" placeholder="Enter text ...">
-                <?php echo set_value( 'content',$before->content);?></textarea>
-            <script type="text/javascript">
-                $('#some-textarea').wysihtml5();
-            </script>
+            <textarea id="some-textarea" name="content" placeholder="Enter text ..."><?php echo set_value( 'content',$before->content);?></textarea>
         </div>
 
 

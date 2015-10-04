@@ -206,39 +206,6 @@
 
 
 
-		//avi code
-		//		var $linktype = $("select.linktype");
-		//		var $test = $("select.test");
-		//		var $question = $("select.question");
-		//		var $option = $("select.option");
-		//		var $pillar = $("select.pillar");
-		//		var new_base_url = "<?php echo site_url(); ?>";
-		//
-		//		$test.change(function () {
-		//			$.getJSON(new_base_url + '/site/getquestionbytest', {
-		//				test: $test.val(),
-		//				pillar: $pillar.val()
-		//			}, function (data) {
-		//				populate(data, $question);
-		//			});
-		//		});
-		//
-		//		$question.change(function () {
-		//			$.getJSON(new_base_url + '/site/getoptionbyquestion', {
-		//				question: $question.val()
-		//			}, function (data) {
-		//				populate(data, $option);
-		//			});
-		//		});
-		//
-		//
-				//Jquery to fill json
-				filljsoninput(".fieldjsoninput", ".fieldjson");
-				$(".jsonsubmit").click(function () {
-					$("#typeid").val($typeid);
-                    console.log($typeid);
-					jsonsubmit(".fieldjsoninput", ".fieldjson");
-//					$("form.jsonsubmit").submit();
-				});
+		
 	});
 </script>

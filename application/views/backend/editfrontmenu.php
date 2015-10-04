@@ -14,13 +14,6 @@
             </div>
         </div>
 
-        <!--
-           <div class="row">
-            <div class="input-field col s6">
-                <?php echo form_dropdown( 'parent',$parent,set_value( 'parent',$before->parent), 'class="chzn-select form-control" data-placeholder="Choose a Accesslevel..."'); ?>
-            </div>
-        </div> 
--->
         <div class="row">
             <div class="input-field col s6">
                 <label>Order</label>
@@ -32,15 +25,8 @@
                 <?php echo form_dropdown( 'status',$status,set_value( 'status',$before->status), 'class="chzn-select form-control" data-placeholder="Choose a Accesslevel..."'); ?>
             </div>
         </div>
-       
 
-        <div class="row" style="display:none">
-            <div class="input-field col s6">
-                <label>Link</label>
-                <input type="text" name="link" value="<?php echo set_value('link',$before->link);?>">
-            </div>
-        </div>
-           <div class="row">
+        <div class="row">
             <div class="input-field col s6">
                 <?php echo form_dropdown( 'linktype',$linktype,set_value( 'linktype',$before->linktype), 'class="chzn-select form-control" data-placeholder="Choose a Accesslevel..."'); ?>
             </div>
@@ -83,11 +69,11 @@
 
             </div>
         </div>
-     <div class="row">
-			<div class="input-field col s6">
-				<?php echo form_dropdown( 'link',$link,set_value( 'link',$before->link), 'class="chzn-select form-control" data-placeholder="Choose a Accesslevel..."'); ?>
-			</div>
-		</div>
+        <div class="row">
+            <div class="input-field col s6">
+                <?php echo form_dropdown( 'link',$link,set_value( 'link',$before->link), 'class="linear-icon form-control" data-placeholder="Choose a Accesslevel..."'); ?>
+            </div>
+        </div>
         <div class="row" style="display:none">
             <div class="file-field input-field col s12">
                 <div class="btn brown">
@@ -97,24 +83,17 @@
                 <div class="file-path-wrapper">
                     <input class="file-path validate" type="text" placeholder="Upload one or more files" value="<?php echo set_value('image',$before->image);?>">
                     <?php if($before->image == "") { } else { ?>
-                    <img src="<?php echo base_url('uploads')." / ".$before->image; ?>" width="140px" height="140px">
-                    <?php } ?>
+                        <img src="<?php echo base_url('uploads')." / ".$before->image; ?>" width="140px" height="140px">
+                        <?php } ?>
                 </div>
             </div>
         </div>
-        <div class="row" style="display:none">
-            <div class="input-field col s6">
-                <label for="json">Json</label>
-                <textarea name="json" class="fieldjsoninput">
-                    <?php echo set_value( 'json',$before->json);?></textarea>
-            </div>
-        </div>
-        <div class="fieldjson"></div>
+
         <div class=" form-group">
             <label class="col-sm-2 control-label">&nbsp;</label>
             <div class="col-sm-4">
                 <button type="submit" class="btn btn-primary jsonsubmit waves-effect waves-light green">Save</button>
-                <a href="<?php echo site_url("site/viewfrontmenu "); ?>" class="btn btn-secondary waves-effect waves-light red">Cancel</a>
+                <a href="<?php echo site_url(" site/viewfrontmenu "); ?>" class="btn btn-secondary waves-effect waves-light red">Cancel</a>
             </div>
         </div>
     </form>
@@ -214,40 +193,11 @@
 
         });
 
-
-
-        //avi code
-        //		var $linktype = $("select.linktype");
-        //		var $test = $("select.test");
-        //		var $question = $("select.question");
-        //		var $option = $("select.option");
-        //		var $pillar = $("select.pillar");
-        //		var new_base_url = "<?php echo site_url(); ?>";
-        //
-        //		$test.change(function () {
-        //			$.getJSON(new_base_url + '/site/getquestionbytest', {
-        //				test: $test.val(),
-        //				pillar: $pillar.val()
-        //			}, function (data) {
-        //				populate(data, $question);
-        //			});
-        //		});
-        //
-        //		$question.change(function () {
-        //			$.getJSON(new_base_url + '/site/getoptionbyquestion', {
-        //				question: $question.val()
-        //			}, function (data) {
-        //				populate(data, $option);
-        //			});
-        //		});
-        //
-        //
-        //Jquery to fill json
-        filljsoninput(".fieldjsoninput", ".fieldjson");
-        $(".jsonsubmit").click(function () {
-            $("#typeid").val($typeid);
-            jsonsubmit(".fieldjsoninput", ".fieldjson");
-            //					$("form.jsonsubmit").submit();
-        });
+        $linearcontainer = $("div.linear-icon ul.dropdown-content li");
+        for (var i = 0; i < $linearcontainer.length; i++) {
+            var oldcon = $linearcontainer.eq(i).html();
+            var icontxt=$linearcontainer.eq(i).text();
+            var newcontent = "<span class='"+icontxt+"'></span>"+oldcon;
+        }
     });
 </script>
