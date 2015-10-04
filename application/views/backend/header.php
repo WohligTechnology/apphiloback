@@ -21,32 +21,14 @@
 
 <body>
 	<header>
-		<div class="navbar-fixed">
-			<nav class="top-nav">
-				<div class="row">
-					<div class="col m12 l12 search">
-						<a href="<?php echo site_url('login/logout'); ?>" class="waves-effect waves-light btn red " style="float:right;"> <i class="large material-icons ">power_settings_new</i> Logout</a>
-						<!--
-                          <a href="<?php echo site_url('login/logout'); ?>" class="btn btn-primary">
-                                        <i class="fa fa-sign-out fa-fw"></i> Logout
-                                    </a>
--->
-						<a href="#" data-activates="slide-out" class="button-collapse top-nav full hide-on-large-only">
-							<i class="mdi-navigation-menu"></i></a>
-					</div>
-				</div>
-			</nav>
-		</div>
-
-
-		<?php   $menus = $this->menu_model->viewmenus(); 	  ?>
-			<ul id="slide-out" class="side-nav" style="width: 240px!important; left:0px!important">
-				<li style="height:50px;">
-					<div class=logo>
-						<a id="logo-container" href="#" class="brand-logo align-center">
-							<div style="color: #304ffe; font-size: 38px;"><span style="margin-left: -29px;">Business</span><span style="font-weight: 500;">App</span></div>
+			<nav class="blue darken-4">
+			
+			<?php   $menus = $this->menu_model->viewmenus(); 	  ?>
+			<ul id="slide-out" class="side-nav fixed" style="width: 240px !important; left:0px !important">
+				<li class="sub-menu logo">
+						<a id="logo-container" href="<?php echo site_url(); ?>" class="align-center blue-text text-darken-4" style="font-size: 28px;">
+                            Business<span style="font-weight: 500;">App</span>
 						</a>
-					</div>
 				</li>
 				<?php  
 				foreach($menus as $row)
@@ -72,7 +54,7 @@
 							echo ' active';
 					}
 					?> ">
-						<a class="waves-effect waves-teal" href="<?php 
+						<a class="waves-effect waves-default" href="<?php 
 						if($row->url == " ")
 							echo "javascript:; ";
 						else if($row->linktype == 1) echo site_url($row->url);
@@ -105,7 +87,7 @@
 										$page3=$pieces2[1];
 								?>
 									<li class="<?php if($page==$page3 || $page == strtolower($row2->name)) { echo 'active'; } ?> nopadding">
-										<a class="waves-effect waves-teal" href="<?php 
+										<a class="waves-effect waves-default" href="<?php 
 											if($row2->url == " ")
 												echo "javascript:; ";
 											else if($row2->linktype == 1) echo site_url($row2->url);
@@ -130,12 +112,17 @@
 					<?php }
 				?>
 			</ul>
+			
+				<div class="row">
+				<div class="col s6">
+						<a href="#" data-activates="slide-out" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+				</div>
+					<div class="col s6 offset-l6 m6 l6 search">
+						<a href="<?php echo site_url('login/logout'); ?>" class="waves-effect waves-light btn red " style="float:right; margin: 7px 0 0;"><i class="large material-icons"></i> Logout</a>
+					</div>
+				</div>
+			</nav>
+
+		
 	</header>
-	<script>
-		$('.button-collapse').sideNav({
-			menuWidth: 300, // Default is 240
-			edge: 'left', // Choose the horizontal origin
-			closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
-		});
-	</script>
 	<main>
