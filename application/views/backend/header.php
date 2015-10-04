@@ -26,7 +26,7 @@
 			<ul id="slide-out" class="side-nav fixed">
 				<li class="sub-menu logo">
 						<a id="logo-container" href="<?php echo site_url(); ?>" class="align-center blue-text text-darken-4" style="font-size: 28px;">
-                            Business<span style="font-weight: 500; color: #F44336;">App</span>
+                            Business<span style="font-weight: 400;">App</span>
 						</a>
 				</li>
 				<?php  

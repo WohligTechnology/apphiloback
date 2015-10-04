@@ -162,6 +162,7 @@ footer {
 ul.side-nav.fixed li.logo a {
     line-height: 64px;
     height: 64px;
+    font-weight: 300;
 }
 ul.side-nav.fixed li a {
     font-size: 13px;
