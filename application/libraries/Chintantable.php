@@ -17,19 +17,19 @@ class Chintantable {
         return $this->onlyelementjson;
     }
     public function query($pageno = 1, $maxlength = 20, $orderby = "", $orderorder = "", $search = "", $elements, $from, $where = " WHERE 1 ", $group = "", $having = "", $order = "", $baseurl = "http://localhost/puneetdemo/index.php/site/index", $options = array()) {
-        //        QUERY
-        //            1. SELECT
-        //            2. FROM
-        //            3. WHERE
-        //            4. GROUP
-        //            5. HAVING
-        //            6. ORDER
-        //            7. LIMIT
-        //        $element->field;
-        //        $element->alias;
-        //        $element->sort;
-        //        $element->filter;
-        //        $element->filterfunction;
+       /*         QUERY
+                    1. SELECT
+                    2. FROM
+                    3. WHERE
+                    4. GROUP
+                    5. HAVING
+                    6. ORDER
+                    7. LIMIT
+                $element->field;
+                $element->alias;
+                $element->sort;
+                $element->filter;
+                $element->filterfunction;*/
         if ($pageno == "") {
             $pageno = 1;
         }
@@ -95,17 +95,32 @@ class Chintantable {
         echo '<div class="chintantablepagination"><ul class="pagination"></ul></div>';
     }
     public function createsearch($title = "", $description = "") {
-        echo '<div class="loader"><div class="dots">Loading...</div></div>
+        echo '<div class="loader">
+    <div class="preloader-wrapper big active">
+        <div class="spinner-layer spinner-blue-only">
+            <div class="circle-clipper left">
+                <div class="circle"></div>
+            </div>
+            <div class="gap-patch">
+                <div class="circle"></div>
+            </div>
+            <div class="circle-clipper right">
+                <div class="circle"></div>
+            </div>
+        </div>
+    </div>
+    <h2 class="blue-text">Please wait...</h2>
+    </div>
 <div class="panel-body">
     <div class="row">
-        <div class="col s6">
+        <div class="col m6">
             <h5 class="panel-title">' . $title . '</h5>
         </div>
-        <div class="col s6">
+        <div class="col m6">
             <div class="row margintop15">
-                <div class="col s6"><input class="form-control chintantablesearch" type="text" placeholder="Search"></div>
-                <div class="col s3"><button class="btn purple chintantablesearchgo waves-effect waves-light" type="button">Go!</button></div>
-                <div class="col s3">
+                <div class="col s6 m6"><input class="form-control chintantablesearch" type="text" placeholder="Search"></div>
+                <div class="col s3 m3"><button class="btn blue darken-4 chintantablesearchgo waves-effect waves-light" type="button">Go!</button></div>
+                <div class="col s3 m3">
                 <select class="maxrow form-control">
                     <option value="10">10</option>
                     <option value="20">20</option>

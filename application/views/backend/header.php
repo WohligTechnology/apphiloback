@@ -24,10 +24,10 @@
 			<nav class="blue darken-4">
 			
 			<?php   $menus = $this->menu_model->viewmenus(); 	  ?>
-			<ul id="slide-out" class="side-nav fixed" style="width: 240px !important; left:0px !important">
+			<ul id="slide-out" class="side-nav fixed">
 				<li class="sub-menu logo">
 						<a id="logo-container" href="<?php echo site_url(); ?>" class="align-center blue-text text-darken-4" style="font-size: 28px;">
-                            Business<span style="font-weight: 500;">App</span>
+                            Business<span style="font-weight: 500; color: #F44336;">App</span>
 						</a>
 				</li>
 				<?php  
@@ -118,7 +118,7 @@
 						<a href="#" data-activates="slide-out" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
 				</div>
 					<div class="col s6 offset-l6 m6 l6 search">
-						<a href="<?php echo site_url('login/logout'); ?>" class="waves-effect waves-light btn red " style="float:right; margin: 7px 0 0;"><i class="large material-icons"></i> Logout</a>
+						<a href="<?php echo site_url('login/logout'); ?>" class="waves-effect waves-light btn red" style="float:right; margin: 7px 0 0;"><i class="material-icons left">power_settings_new</i> Logout</a>
 					</div>
 				</div>
 			</nav>

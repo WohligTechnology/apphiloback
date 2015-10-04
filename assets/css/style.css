@@ -20,9 +20,6 @@
     float: right;
     /*margin: 7px 7px 0 0;*/
 }
-.propericon {
-    padding-top: 5px;
-}
 .text-center {
     text-align: center;
 }
@@ -84,29 +81,10 @@ input[type="search"] {
     background-color: #FF5252;
     margin-top: -5px;
 }
-.btn i {
-    font-size: 1rem;
-    line-height: 1.6;
-}
 .tab-btn {
     padding: 0 5px;
     line-height: 2;
     height: 25px;
-}
-.red {
-    background-color: #FF5252;
-}
-.green {
-    background-color: #4CAF50;
-}
-.pink {
-    background-color: #F06292;
-}
-.purple {
-    background-color: #9c27b0;
-}
-.navy-blue {
-    background-color: #607D8B;
 }
 .dash-row {
     margin-right: 10px;
@@ -192,16 +170,29 @@ ul.side-nav.fixed li a {
     padding: 0;
 }
 .side-nav::-webkit-scrollbar-thumb {
-	-webkit-border-radius: 10px;
-	-webkit-background-clip: padding-box;
-	-moz-border-radius: 10px;
-	-moz-background-clip: padding;
-	border-radius: 10px;
-	background-clip: padding-box;
-	background: #EE6E73;
-	-webkit-box-shadow: inset 0 0 6px #F44336;
-	-moz-box-shadow: inset 0 0 6px #F44336;
-	box-shadow: inset 0 0 6px #F44336;
+    -webkit-border-radius: 10px;
+    -webkit-background-clip: padding-box;
+    -moz-border-radius: 10px;
+    -moz-background-clip: padding;
+    border-radius: 10px;
+    background-clip: padding-box;
+    background: #EE6E73;
+    -webkit-box-shadow: inset 0 0 6px #F44336;
+    -moz-box-shadow: inset 0 0 6px #F44336;
+    box-shadow: inset 0 0 6px #F44336;
+}
+.pad10 {
+    margin-left: 5px;
+}
+.pagination li.active,
+.side-nav li.active {
+    background-color: #0D47A1;
+}
+.side-nav li.active a {
+    color: #fff;
+}
+.less-pad {
+    padding: 0px 10px 0 11px;
 }
 @media only screen and (max-width: 992px) {
     header,
