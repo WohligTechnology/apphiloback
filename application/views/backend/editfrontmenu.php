@@ -195,9 +195,11 @@
 
         $linearcontainer = $("div.linear-icon ul.dropdown-content li");
         for (var i = 0; i < $linearcontainer.length; i++) {
-            var oldcon = $linearcontainer.eq(i).html();
-            var icontxt=$linearcontainer.eq(i).text();
+            console.log(i);
+            var oldcon = $linearcontainer.eq(i).children("span").html();
+            var icontxt=$linearcontainer.eq(i).children("span").text();
             var newcontent = "<span class='"+icontxt+"'></span>"+oldcon;
+            $linearcontainer.eq(i).children("span").html(newcontent);
         }
     });
 </script>
