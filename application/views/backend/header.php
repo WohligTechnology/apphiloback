@@ -3,15 +3,14 @@
 
 <head>
     <!--Let browser know website is optimized for mobile-->
-    <link rel="stylesheet" href="<?php echo base_url('assets').'/';?>bower_components/Materialize/bin/materialize.css">
+    <link rel="stylesheet" href="<?php echo base_url('assets').'/';?>bower_components/Materialize/dist/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="<?php echo base_url('assets').'/';?>css/style.css" rel="stylesheet">
     <link href="<?php echo base_url('assets').'/';?>css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="<?php echo base_url('assets').'/';?>css/linearfonts.css">
     
     <script src="<?php echo base_url('assets').'/';?>bower_components/jquery/dist/jquery.min.js"></script>
-    <script src="<?php echo base_url('assets').'/';?>bower_components/Materialize/bin/materialize.js"></script>
-    <script src="<?php echo base_url('assets').'/';?>bower_components/Materialize/js/sideNav.js"></script>
+    <script src="<?php echo base_url('assets').'/';?>bower_components/Materialize/dist/js/materialize.min.js"></script>
     <script src="<?php echo base_url('assets').'/';?>js/chintantable.js"></script>
     <script src="<?php echo base_url('assets').'/';?>js/formInit.js"></script>
     <script src="<?php echo base_url('assets').'/';?>tinymce/tinymce.min.js"></script>
