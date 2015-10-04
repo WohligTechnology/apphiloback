@@ -2,7 +2,6 @@
 <title>BusinessApp</title>
 
 <head>
-<<<<<<< HEAD
     <!--Let browser know website is optimized for mobile-->
     <link rel="stylesheet" href="<?php echo base_url('assets').'/';?>bower_components/Materialize/bin/materialize.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -17,35 +16,13 @@
     <script src="<?php echo base_url('assets').'/';?>js/formInit.js"></script>
     <script src="<?php echo base_url('assets').'/';?>tinymce/tinymce.min.js"></script>
 
-=======
-	<!--Let browser know website is optimized for mobile-->
-    <link href="<?php echo base_url('assets').'/';?>css/font-awesome.min.css" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="<?php echo base_url('assets').'/';?>bower_components/Materialize/dist/css/materialize.min.css">
-	<link href="<?php echo base_url('assets').'/';?>css/style.css" rel="stylesheet">
-
-	<script src="<?php echo base_url('assets').'/';?>bower_components/jquery/dist/jquery.min.js"></script>
-	<script src="<?php echo base_url('assets').'/';?>bower_components/Materialize/dist/js/materialize.min.js"></script>
-	<script src="<?php echo base_url('assets').'/';?>js/chintantable.js"></script>
-	<script src="<?php echo base_url('assets').'/';?>js/formInit.js"></script>
-	<script src="<?php echo base_url('assets').'/';?>tinymce/tinymce.min.js"></script>
->>>>>>> origin/master
 
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 
 <body>
-<<<<<<< HEAD
-    <header>
-        <nav class="blue darken-4">
 
-            <?php   $menus = $this->menu_model->viewmenus(); 	  ?>
-                <ul id="slide-out" class="side-nav fixed">
-                    <li class="sub-menu logo">
-                        <a id="logo-container" href="<?php echo site_url(); ?>" class="align-center blue-text text-darken-4" style="font-size: 28px;">
-                            Business<span style="font-weight: 500; color: #F44336;">App</span>
-=======
 	<header>
 			<nav class="blue darken-4">
 			
@@ -54,7 +31,6 @@
 				<li class="sub-menu logo">
 						<a id="logo-container" href="<?php echo site_url(); ?>" class="align-center blue-text text-darken-4" style="font-size: 28px;">
                             Business<span style="font-weight: 400;">App</span>
->>>>>>> origin/master
 						</a>
                     </li>
                     <?php  
