@@ -71,11 +71,11 @@ function generatejquery(url)
                         $(".drawchintantable thead tr th[data-field='" + element.alias + "']").html(element.header);
 
                         if (element.sort == "ASC") {
-                            $(".drawchintantable thead tr th[data-field='" + element.alias + "']").append("<button data-sort='DESC' class='btn chisorting fa fa-sort-asc pull-right blue darken-4 waves-effect waves-light z-depth-0'></button>");
+                            $(".drawchintantable thead tr th[data-field='" + element.alias + "']").append("<button data-sort='DESC' class='btn chisorting pull-right blue darken-4 waves-effect waves-light z-depth-0'><i class='fa fa-sort-asc'></i></button>");
                         } else if (element.sort == "DESC") {
-                            $(".drawchintantable thead tr th[data-field='" + element.alias + "']").append("<button data-sort='ASC' class='btn btn chisorting fa fa-sort-desc pull-right blue darken-4 waves-effect waves-light z-depth-0'></button>");
+                            $(".drawchintantable thead tr th[data-field='" + element.alias + "']").append("<button data-sort='ASC' class='btn chisorting pull-right blue darken-4 waves-effect waves-light z-depth-0'><i class='fa fa-sort-desc'></i></button>");
                         } else if (element.sort == "1") {
-                            $(".drawchintantable thead tr th[data-field='" + element.alias + "']").append("<button data-sort='ASC' class='btn btn chisorting fa fa-sort  pull-right blue darken-4 waves-effect waves-light z-depth-0'></button>");
+                            $(".drawchintantable thead tr th[data-field='" + element.alias + "']").append("<button data-sort='ASC' class='btn chisorting pull-right blue darken-4 waves-effect waves-light z-depth-0'><i class='fa fa-sort'></i></button>");
                         }
                     }
 
