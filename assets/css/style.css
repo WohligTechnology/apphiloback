@@ -194,6 +194,23 @@ ul.side-nav.fixed li a {
 .less-pad {
     padding: 0px 10px 0 11px;
 }
+.img-center {
+    height: 80px;
+    width: 80px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    overflow: hidden;
+    position: relative;
+}
+.img-center img {
+    max-height: 100%;
+    max-width: 100%;
+    text-align: center;
+    align-self: center;
+}
 @media only screen and (max-width: 992px) {
     header,
     main,
