@@ -3541,6 +3541,7 @@ public function createslider()
 $access=array("1");
 $this->checkaccess($access);
 $data["page"]="createslider";
+$data["activemenu"]="home slides";
 $data[ 'status' ] =$this->user_model->getstatusdropdown();
 $data["title"]="Create slider";
 $this->load->view("template",$data);
@@ -3590,7 +3591,7 @@ public function editslider()
 $access=array("1");
 $this->checkaccess($access);
 $data["page"]="editslider";
-$data["activemenu"]="home slider";
+$data["activemenu"]="home slides";
 $data[ 'status' ] =$this->user_model->getstatusdropdown();
 $data["title"]="Edit slider";
 $data["before"]=$this->slider_model->beforeedit($this->input->get("id"));
