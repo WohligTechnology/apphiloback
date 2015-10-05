@@ -37,7 +37,7 @@
 </div>
 <script>
     function drawtable(resultrow) {
-        var image = "<a href='<?php echo base_url('uploads').'/'; ?>" + resultrow.image + "' class='img-center' target='_blank'><img src='<?php echo base_url('uploads').'/'; ?>" + resultrow.image + "'></a>";
+        var image = "<a href='<?php echo base_url('uploads').'/'; ?>" + resultrow.image + "' class='img-center' ><img src='<?php echo base_url('uploads').'/'; ?>" + resultrow.image + "'></a>";
         if (resultrow.image == "") {
             image = "No Receipt Available";
         }

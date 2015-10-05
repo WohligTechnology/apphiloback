@@ -1,4 +1,8 @@
 $(document).ready(function () {
+    $(document).ready(function() {
+		$(".img-center").fancybox();
+	});
+
     $('select').material_select();
     $('.datepicker').pickadate({
         selectMonths: true, // Creates a dropdown to control month

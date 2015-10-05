@@ -9,13 +9,15 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="<?php echo base_url('assets').'/';?>css/style.css" rel="stylesheet">
     <link href="<?php echo base_url('assets').'/';?>css/font-awesome.min.css" rel="stylesheet">
+    <link href="<?php echo base_url('assets').'/';?>css/jquery.fancybox.css" rel="stylesheet">
     <link rel="stylesheet" href="<?php echo base_url('assets').'/';?>css/linearfonts.css">
     
     <script src="<?php echo base_url('assets').'/';?>bower_components/jquery/dist/jquery.min.js"></script>
     <script src="<?php echo base_url('assets').'/';?>bower_components/Materialize/dist/js/materialize.min.js"></script>
     <script src="<?php echo base_url('assets').'/';?>js/chintantable.js"></script>
-    <script src="<?php echo base_url('assets').'/';?>js/formInit.js"></script>
+    <script src="<?php echo base_url('assets').'/';?>js/jquery.fancybox.pack.js"></script>
     <script src="<?php echo base_url('assets').'/';?>tinymce/tinymce.min.js"></script>
+    <script src="<?php echo base_url('assets').'/';?>js/formInit.js"></script>
 
 
     <!--Let browser know website is optimized for mobile-->
@@ -63,7 +65,7 @@
 						else if($row->linktype == 1) echo site_url($row->url);
 						else if($row->linktype == 2) echo base_url($row->url);
 						else if($row->linktype == 3) echo ($row->url);						
-						?>" <?php if($row->linktype == 3) echo "target='_blank'"; ?>>
+						?>" <?php if($row->linktype == 3) echo ""; ?>>
 							<?php  
 							if($row->icon != "")
 							{  ?>
@@ -100,7 +102,7 @@
                                                 <?php  
 											if($row2->icon != "")
 											{  ?>
-                                                    <i class="<?php echo $row2->icon; ?>" <?php if($row2->linktype == 3) echo "target='_blank'"; ?>></i>
+                                                    <i class="<?php echo $row2->icon; ?>" <?php if($row2->linktype == 3) echo ""; ?>></i>
                                                     <?php	}
 											?>
                                                         <?php echo $row2->name;  ?>
