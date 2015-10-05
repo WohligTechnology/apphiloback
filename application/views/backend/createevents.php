@@ -61,7 +61,7 @@
                 </div>
                 <div class="row" style="display:none">
                 <div class="input-field col s6">
-                    <input type="time" id="starttime" name="starttime" value="<?php echo set_value('starttime');?>">
+                    <input type="text" id="starttime" name="starttime" value="<?php echo set_value('starttime');?>">
                      <label>starttime</label>
                 </div>
             </div>
