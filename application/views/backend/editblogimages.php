@@ -28,7 +28,7 @@
         </div>
 
         <div class="row">
-            <div class="file-field input-field col s12">
+            <div class="file-field input-field col s12 m6">
                 <div class="btn brown">
                     <span>Image</span>
                     <input name="image" type="file" multiple>

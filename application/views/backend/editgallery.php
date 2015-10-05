@@ -33,7 +33,7 @@
             </div>
         </div>
            <div class="row">
-            <div class="file-field input-field col s12">
+            <div class="file-field input-field col s12 m6">
                <?php if($before->image == "") { } else {
                     ?><span class="img-center big"><img src="<?php echo base_url('uploads')."/".$before->image; ?>"></span>
                     <?php } ?>
