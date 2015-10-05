@@ -91,7 +91,7 @@
                <div class="row">
             <div class="input-field col s6">
                 <label for="timestamp">Timestamp</label>
-                <input type="text" id="timestamp" name="timestamp" value="<?php echo set_value('timestamp',$before->timestamp);?>">
+                <input type="text" readonly="true" id="timestamp" name="timestamp" value="<?php echo set_value('timestamp',$before->timestamp);?>">
             </div>
         </div>
         <div class="row">
