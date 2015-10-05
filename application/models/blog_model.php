@@ -5,7 +5,7 @@ class blog_model extends CI_Model
 {
 public function create($name,$title,$json,$content,$url,$image)
 {
-$data=array("name" => $name,"title" => $title,"json" => $json,"content" => $content,"url" => $url,"image" => $image);
+$data=array("name" => $name,"title" => $title,"json" => $json,"content" => $content,"image" => $image);
 $query=$this->db->insert( "webapp_blog", $data );
 $id=$this->db->insert_id();
 if(!$query)
@@ -28,7 +28,7 @@ return $query;
 }
 public function edit($id,$name,$title,$json,$content,$timestamp,$url,$image)
 {
-$data=array("name" => $name,"title" => $title,"json" => $json,"content" => $content,"timestamp" => $timestamp,"url" => $url,"image" => $image);
+$data=array("name" => $name,"title" => $title,"json" => $json,"content" => $content,"timestamp" => $timestamp,"image" => $image);
 $this->db->where( "id", $id );
 $query=$this->db->update( "webapp_blog", $data );
 return 1;
