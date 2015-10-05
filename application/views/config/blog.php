@@ -2,7 +2,7 @@
     <div class="col s12">
         <h4 class="pad-left-15">Config -> Blog</h4>
     </div>
-    <div class="col s4">
+    <div class="col s12 m6">
         <div class="logintype cms">
             <div class="row checkbox">
                 <div class="col s6">

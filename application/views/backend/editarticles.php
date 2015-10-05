@@ -67,8 +67,6 @@
 
 								<div class="row">
 									<div class=" form-group col s12 m6">
-										<label class="col-sm-2 control-label">&nbsp;</label>
-										<div class="col-sm-4">
 											<button type="submit" class="btn btn-primary jsonsubmit waves-effect waves-light blue darken-4">Save</button>
 											<?php if($before->id == 1) {?>
 
@@ -78,7 +76,6 @@
 													<?php } ?>
 														<!--                <a href="<?php echo site_url('site/viewarticles'); ?>" class="btn btn-secondary waves-effect waves-light red">Cancel</a>-->
 										</div>
-									</div>
 								</div>
 	</form>
 </div>

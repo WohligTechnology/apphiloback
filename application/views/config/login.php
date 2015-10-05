@@ -3,13 +3,13 @@
 		<h4 class="pad-left-15">Config -> Login</h4>
 	</div>
 
-	<div class="col s4">
+	<div class="col s12 m6">
 		<div class="logintype normalLogin">
 			<div class="row checkbox">
-				<div class="col s6">
+				<div class="col s6 m6">
 					<label for="filled-in-box" class="form-checkbox">Email and Password Login</label>
 				</div>
-				<div class="col s6">
+				<div class="col s6 m6">
 					<div class="switch">
 						<label>
 							Off
@@ -20,16 +20,13 @@
 					</div>
 				</div>
 			</div>
-
-
 		</div>
 		<div class="logintype googleLogin">
-
 			<div class="row checkbox">
-				<div class="col s6">
+				<div class="col s6 m6">
 					<label for="filled-in-box" class="form-checkbox">Google Login</label>
 				</div>
-				<div class="col s6">
+				<div class="col s6 m6">
 					<div class="switch">
 						<label>
 							Off

@@ -4,14 +4,14 @@
     </div>
     <form class="col s12" method="post" action="<?php echo site_url('site/createnotificationsubmit');?>" enctype="multipart/form-data">
         <div class="row">
-            <div class="input-field col s6">
+            <div class="input-field col s12 m6">
                 <?php echo form_dropdown( 'linktype',$linktype,set_value( 'linktype')); ?>
                  <label>Link Type</label>
             </div>
         </div>
         <!--	Event-->
         <div class="row drop">
-            <div class="input-field col s6">
+            <div class="input-field col s12 m6">
                 <?php echo form_dropdown( 'event',$event,set_value( 'event')); ?>
                  <label>Event</label>
             </div>
@@ -28,7 +28,7 @@
 
         <!--	Gallery-->
         <div class="row drop">
-            <div class="input-field col s6">
+            <div class="input-field col s12 m6">
                 <?php echo form_dropdown( 'video',$video,set_value( 'video')); ?>
                  <label>Video</label>
 
@@ -37,7 +37,7 @@
 
         <!--	Video-->
         <div class="row drop">
-            <div class="input-field col s6">
+            <div class="input-field col s12 m6">
                 <?php echo form_dropdown( 'gallery',$gallery,set_value( 'gallery')); ?>
                  <label>Gallery</label>
 
@@ -46,7 +46,7 @@
 
         <!--	Article-->
         <div class="row drop">
-            <div class="input-field col s6">
+            <div class="input-field col s12 m6">
                 <?php echo form_dropdown( 'article',$article,set_value( 'article')); ?>
                  <label>Article</label>
 
@@ -54,7 +54,7 @@
         </div>
         <!--	External link-->
         <div class="row drop">
-            <div class="input-field col s6">
+            <div class="input-field col s12 m6">
                 <label for="link">External link</label>
                 <input type="text" id="link" name="link" value="<?php echo set_value('link');?>">
             </div>
@@ -62,7 +62,7 @@
 
 
         <div class="row">
-            <div class="input-field col s6">
+            <div class="input-field col s12 m6">
                 <?php echo form_dropdown( 'status',$status,set_value( 'status')); ?>
                  <label>Status</label>
             </div>
@@ -80,19 +80,16 @@
             </div>
         </div>
         <div class="row">
-            <div class="input-field col s6">
+            <div class="input-field col s12 m6">
                 <textarea id="content" name="content" class="materialize-textarea"></textarea>
                 <label for="content">Content</label>
             </div>
         </div>
         <div class="row">
-            <div class="col s6">
+            <div class="col s12 m6">
                     <div class=" form-group">
-            <label class="col-sm-2 control-label">&nbsp;</label>
-            <div class="col-sm-4">
                 <button type="submit" class="btn btn-primary waves-effect waves-light blue darken-4">Save</button>
                 <a href="<?php echo site_url('site/viewnotification'); ?>" class="btn btn-secondary waves-effect waves-light red">Cancel</a>
-            </div>
         </div>
             </div>
         </div>
