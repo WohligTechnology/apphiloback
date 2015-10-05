@@ -1,21 +1,27 @@
 html {
     font-family: "Lato", sans-serif;
 }
+
 .pad-left-30 {
     padding-left: 30px;
 }
+
 .pad-left-15 {
     padding-left: 15px;
 }
+
 .pad-left-20 {
     padding-left: 20px;
 }
+
 .mar-left-30 {
     margin-left: 30px;
 }
+
 .wid-25 {
     width: 25%;
 }
+
 .user {
     width: 42px;
     height: 42px;
@@ -23,9 +29,11 @@ html {
     float: right;
     /*margin: 7px 7px 0 0;*/
 }
+
 .text-center {
     text-align: center;
 }
+
 footer.page-footer {
     position: fixed;
     width: 100%;
@@ -35,15 +43,19 @@ footer.page-footer {
     padding-top: 0px;
     margin-top: 0px;
 }
+
 .border {
     border-bottom: 1px solid #ddd;
 }
+
 .text-center {
     text-align: center !important;
 }
+
 .block {
     display: block;
 }
+
 .search {
     box-sizing: border-box;
     padding: 0 0 0 30px;
@@ -52,6 +64,7 @@ footer.page-footer {
     line-height: 30px;
     width: 100%;
 }
+
 input[type="search"] {
     /*    background-color: rgba(255, 255, 255, 0.3);*/
     border-radius: 0px;
@@ -60,50 +73,62 @@ input[type="search"] {
     padding-left: 0;
     margin-right: 25px;
 }
+
 .input-field input[type=search] {
     padding-left: 10px;
     float: right;
     border-radius: 0px;
     margin-top: -5px;
 }
+
 .card-margin {
     margin: 18px 8px 0 25px;
 }
+
 .width-100 {
     width: 100%;
 }
+
 .tab-btn {
     padding: 0 5px;
 }
+
 .flo-right {
     float: right;
 }
+
 .logout-btn {
     padding: 3px 24px 0 24px;
     height: 40px;
     background-color: #FF5252;
     margin-top: -5px;
 }
+
 .tab-btn {
     padding: 0 5px;
     line-height: 2;
     height: 25px;
 }
+
 .dash-row {
     margin-right: 10px;
     margin-top: 15px;
 }
+
 .btn {
     border-radius: 0px;
 }
+
 .middle {
     padding-top: 10px;
 }
+
 .createbuttonplacement {
     position: fixed;
     bottom: 30px;
     right: 30px;
 }
+
 h1,
 h2,
 h3,
@@ -113,9 +138,11 @@ h6 {
     font-weight: 300;
     font-size: 2.4em;
 }
+
 .chisorting {
     padding: 0 10px;
 }
+
 .loader {
     background-color: white;
     position: fixed;
@@ -127,9 +154,11 @@ h6 {
     text-align: Center;
     padding: 20%;
 }
+
 .margintop15 {
     margin-top: 15px;
 }
+
 .projectname {
     color: rgb(31, 237, 247);
     font-size: -webkit-xxx-large;
@@ -138,40 +167,50 @@ h6 {
     margin-bottom: 16px;
     display: block;
 }
+
 .text-center {
     text-align: center;
 }
+
 .text-center > span {
     font-size: 38px;
     color: #fff;
 }
+
 .text-center > span.color {
     color: #f13232;
 }
+
 .createbuttonplacement {
     z-index: 1;
 }
+
 header,
 main,
 footer {
     padding-left: 240px;
 }
+
 .side-nav {
     width: 240px;
 }
+
 ul.side-nav.fixed li.logo a {
     line-height: 64px;
     height: 64px;
     font-weight: 300;
 }
+
 ul.side-nav.fixed li a {
     font-size: 13px;
     line-height: 44px;
     height: 44px;
 }
+
 .side-nav li {
     padding: 0;
 }
+
 .side-nav::-webkit-scrollbar-thumb {
     -webkit-border-radius: 10px;
     -webkit-background-clip: padding-box;
@@ -184,19 +223,24 @@ ul.side-nav.fixed li a {
     -moz-box-shadow: inset 0 0 6px #F44336;
     box-shadow: inset 0 0 6px #F44336;
 }
+
 .pad10 {
     margin-left: 5px;
 }
+
 .pagination li.active,
 .side-nav li.active {
     background-color: #0D47A1;
 }
+
 .side-nav li.active a {
     color: #fff;
 }
+
 .less-pad {
     padding: 0px 10px 0 11px;
 }
+
 .img-center {
     height: 80px;
     width: 80px;
@@ -208,16 +252,32 @@ ul.side-nav.fixed li a {
     overflow: hidden;
     position: relative;
 }
+
+.img-center.big {
+    width: 200px;
+    height: 200px;
+    padding-bottom: 10px;
+}
+
 .img-center img {
     max-height: 100%;
     max-width: 100%;
     text-align: center;
     align-self: center;
 }
+
 @media only screen and (max-width: 992px) {
     header,
     main,
     footer {
         padding-left: 0;
     }
+}
+
+.panel-body ul#nav-mobile li a {
+    padding: 15px;
+    background-color: #0D47A1;
+    color: white !important;
+    width: 100%;
+    margin-bottom: 10px;
 }

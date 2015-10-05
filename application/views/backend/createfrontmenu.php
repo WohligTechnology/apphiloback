@@ -76,7 +76,7 @@
 		</div>
 		<div class="row">
 			<div class="input-field col s6">
-				<?php echo form_dropdown( 'link',$link,set_value( 'link'), 'class="chzn-select form-control" data-placeholder="Choose a Accesslevel..."'); ?>
+				<?php echo form_dropdown( 'icon',$icon,set_value( 'icon'), 'class="linear-icon form-control" data-placeholder="Choose a Accesslevel..."'); ?>
 				 <label>Select Icon</label>
 			</div>
 		</div>

@@ -1,6 +1,15 @@
 $(document).ready(function () {
     $('select').material_select();
 
+    $linearcontainer = $("div.linear-icon ul.dropdown-content li");
+    for (var i = 0; i < $linearcontainer.length; i++) {
+        console.log(i);
+        var oldcon = $linearcontainer.eq(i).children("span").html();
+        var icontxt = $linearcontainer.eq(i).children("span").text();
+        var newcontent = "<span class='" + icontxt + "'></span> &nbsp;" + oldcon;
+        $linearcontainer.eq(i).children("span").html(newcontent);
+    }
+
     tinymce.init({
         selector: "textarea#some-textarea",
         theme: "modern",

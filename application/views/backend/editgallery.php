@@ -19,12 +19,6 @@
                 <input type="text" name="order" value="<?php echo set_value('order',$before->order);?>">
             </div>
         </div>
-           <div class="row">
-            <div class="input-field col s6">
-                <label>Timestamp</label>
-                <input type="text" name="timestamp" value="<?php echo set_value('timestamp',$before->timestamp);?>">
-            </div>
-        </div>
               <div class="row">
             <div class="input-field col s6">
                 <?php echo form_dropdown( 'status',$status,set_value( 'status',$before->status), 'class="chzn-select form-control" data-placeholder="Choose a Accesslevel..."'); ?>
@@ -40,15 +34,16 @@
         </div>
            <div class="row">
             <div class="file-field input-field col s12">
+               <?php if($before->image == "") { } else {
+                    ?><span class="img-center big"><img src="<?php echo base_url('uploads')."/".$before->image; ?>"></span>
+                    <?php } ?>
                 <div class="btn brown">
                     <span>Image</span>
                     <input name="image" type="file" multiple>
                 </div>
                 <div class="file-path-wrapper">
                     <input class="file-path validate" type="text" placeholder="Upload one or more files" value="<?php echo set_value('image',$before->image);?>">
-                    <?php if($before->image == "") { } else {
-                    ?><img src="<?php echo base_url('uploads')."/".$before->image; ?>" width="140px" height="140px">
-                    <?php } ?>
+                    
                 </div>
             </div>
         </div>

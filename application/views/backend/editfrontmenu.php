@@ -78,7 +78,7 @@
         </div>
         <div class="row">
             <div class="input-field col s6">
-                <?php echo form_dropdown( 'link',$link,set_value( 'link',$before->link), 'class="linear-icon form-control" data-placeholder="Choose a Accesslevel..."'); ?>
+                <?php echo form_dropdown( 'icon',$icon,set_value( 'icon',$before->icon), 'class="linear-icon form-control" data-placeholder="Choose a Accesslevel..."'); ?>
                  <label>Icon</label>
             </div>
         </div>
@@ -201,13 +201,6 @@
 
         });
 
-        $linearcontainer = $("div.linear-icon ul.dropdown-content li");
-        for (var i = 0; i < $linearcontainer.length; i++) {
-            console.log(i);
-            var oldcon = $linearcontainer.eq(i).children("span").html();
-            var icontxt=$linearcontainer.eq(i).children("span").text();
-            var newcontent = "<span class='"+icontxt+"'></span> &nbsp;"+oldcon;
-            $linearcontainer.eq(i).children("span").html(newcontent);
-        }
+        
     });
 </script>

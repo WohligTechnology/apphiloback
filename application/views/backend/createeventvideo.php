@@ -10,7 +10,7 @@
                      <label>Event</label>
                 </div>
             </div>
-             <div class="row">
+             <div class="row" style="display:none">
                 <div class="input-field col s6">
                     <?php echo form_dropdown( 'videogallery',$videogallery,set_value( 'videogallery'), 'class="chzn-select form-control" 	data-placeholder="Choose a Accesslevel..."'); ?>
                    <label>Video Gallery</label>

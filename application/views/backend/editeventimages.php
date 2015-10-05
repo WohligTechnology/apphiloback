@@ -6,7 +6,12 @@
 <div class="row">
     <form class="col s12" method="post" action="<?php echo site_url('site/editeventimagessubmit');?>" enctype="multipart/form-data">
         <input type="hidden" id="normal-field" class="form-control" name="id" value="<?php echo set_value('id',$before->id);?>" style="display:none;">
-
+   <div class="row">
+            <div class="input-field col s6">
+                <?php echo form_dropdown( 'event',$event,set_value( 'event',$before->event), 'class="chzn-select form-control" data-placeholder="Choose a Accesslevel..."'); ?>
+                 <label>Event</label>
+            </div>
+        </div>
         <div class="row">
             <div class="input-field col s6">
                 <label for="order">Order</label>
@@ -20,12 +25,7 @@
                  <label>Status</label>
             </div>
         </div>
-            <div class="row">
-            <div class="input-field col s6">
-                <?php echo form_dropdown( 'event',$event,set_value( 'event',$before->event), 'class="chzn-select form-control" data-placeholder="Choose a Accesslevel..."'); ?>
-                 <label>Event</label>
-            </div>
-        </div>
+         
 
         <div class="row">
             <div class="file-field input-field col s12">
