@@ -261,12 +261,15 @@ ul.side-nav.fixed li a {
         padding-left: 0;
     }
 }
-.dropdown-content li>a, .dropdown-content li>span {
+
+.dropdown-content li>a,
+.dropdown-content li>span {
     font-size: 1.2rem;
     color: #0D47A1;
     display: block;
     padding: 1rem 1rem;
 }
+
 .panel-body ul#nav-mobile li a {
     padding: 15px;
     background-color: #0D47A1;
@@ -279,38 +282,70 @@ ul.side-nav.fixed li a {
     background-color: white !important;
     color: #0D47A1;
 }
+
 th {
     line-height: 36px;
 }
-td, th {
+
+td,
+th {
     padding: 10px 5px;
     display: table-cell;
     text-align: left;
     vertical-align: middle;
     border-radius: 2px;
 }
-table.responsive-table td {
+
+table.responsive-table td,
+table.responsive-table th {
+    min-height: 57px;
     line-height: 36px;
 }
 
+input[type=text]:focus:not([readonly]),
+input[type=password]:focus:not([readonly]),
+input[type=email]:focus:not([readonly]),
+input[type=url]:focus:not([readonly]),
+input[type=time]:focus:not([readonly]),
+input[type=date]:focus:not([readonly]),
+input[type=datetime-local]:focus:not([readonly]),
+input[type=tel]:focus:not([readonly]),
+input[type=number]:focus:not([readonly]),
+input[type=search]:focus:not([readonly]),
+textarea.materialize-textarea:focus:not([readonly]) {
+    border-bottom: 1px solid #0D47A1;
+    box-shadow: 0 1px 0 0 #0D47A1;
+}
 
 ::-webkit-scrollbar {
     width: 8px;
-    border-radius:0px !important;
+    border-radius: 0px !important;
 }
- 
+
+
 /* Track */
+
 ::-webkit-scrollbar-track {
-    border:1px solid #eee;
-    border-radius:0px !important;
+    border: 1px solid #eee;
+    border-radius: 0px !important;
 }
- 
+
+
 /* Handle */
+
 ::-webkit-scrollbar-thumb {
     background: #ccc;
-    border-radius:0px !important;
+    border-radius: 0px !important;
 }
+
 ::-webkit-scrollbar-thumb:window-inactive {
     background: #ccc;
-    border-radius:0px !important;
+    border-radius: 0px !important;
+}
+
+@media only screen and (max-width: 992px) {
+    .img-center {
+        height: 32px;
+        width: 32px;
+    }
 }
