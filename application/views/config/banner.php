@@ -13,9 +13,7 @@
 		</div>
 		<div class="row">
 			<div class="input-field col s6">
-				<textarea id="textarea1" class="materialize-textarea" value="<?php echo set_value('title',$before->content);?>" name="content">
-					<?php echo set_value('content',$before->content);?>
-				</textarea>
+				<textarea id="textarea1" class="materialize-textarea" value="<?php echo set_value('title',$before->content);?>" name="content"><?php echo set_value('content',$before->content);?></textarea>
 				<label for="textarea1">Address</label>
 			</div>
 		</div>
@@ -33,9 +31,7 @@
 		</div>
 		<div class="row">
 			<div class="input-field col s12">
-				<textarea name="description" class="materialize-textarea" length="600">
-					<?php echo set_value( 'description',$before->description);?>
-				</textarea>
+				<textarea name="description" class="materialize-textarea" length="600"><?php echo set_value( 'description',$before->description);?></textarea>
 				<label>Map Embed Link</label>
 			</div>
 		</div>
