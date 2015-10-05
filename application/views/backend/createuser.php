@@ -81,9 +81,7 @@
 		</div>
 		<div class="row">
 			<div class="input-field col m6 s12">
-				<textarea name="address" class="materialize-textarea" length="120">
-					<?php echo set_value( 'address');?>
-				</textarea>
+				<textarea name="address" class="materialize-textarea" length="120"><?php echo set_value( 'address');?></textarea>
 				<label>Address</label>
 			</div>
 		</div>

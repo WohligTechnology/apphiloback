@@ -269,7 +269,9 @@ ul.side-nav.fixed li a {
     display: block;
     padding: 1rem 1rem;
 }
-
+.hidden {
+    display: none;
+}
 .panel-body ul#nav-mobile li a {
     padding: 10px 15px;
     color: #0D47A1;

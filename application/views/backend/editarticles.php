@@ -40,7 +40,7 @@
 								</div>
 
 
-								<div class="row">
+								<div class="row hidden" >
 									<div class="input-field col s12 m6">
 										<label>Timestamp</label>
 										<input type="text" readonly="true" name="timestamp" value="<?php echo set_value('timestamp',$before->timestamp);?>">
