@@ -213,7 +213,7 @@ class Site extends CI_Controller
         $elements[4]=new stdClass();
         $elements[4]->field="`user`.`logintype`";
         $elements[4]->sort="1";
-        $elements[4]->header="Logintype";
+        $elements[4]->header="Login Type";
         $elements[4]->alias="logintype";
         
         $elements[5]=new stdClass();
@@ -225,7 +225,7 @@ class Site extends CI_Controller
         $elements[6]=new stdClass();
         $elements[6]->field="`accesslevel`.`name`";
         $elements[6]->sort="1";
-        $elements[6]->header="Accesslevel";
+        $elements[6]->header="Access Level";
         $elements[6]->alias="accesslevelname";
        
         $elements[7]=new stdClass();
@@ -514,6 +514,7 @@ public function createarticles()
 $access=array("1");
 $this->checkaccess($access);
 $data["page"]="createarticles";
+$data["activemenu"]="pages";
 $data[ 'status' ] =$this->user_model->getstatusdropdown();
 $data["title"]="Create articles";
 $this->load->view("template",$data);
@@ -712,6 +713,7 @@ public function createfrontmenu()
 $access=array("1");
 $this->checkaccess($access);
 $data["page"]="createfrontmenu";
+$data["activemenu"]="navigations";
     $this->frontmenu_model->changestatusofexternallink();
 $data[ 'status' ] =$this->user_model->getstatusdropdown();
 $data[ 'parent' ] =$this->user_model->getfrontmenudropdown();
@@ -787,7 +789,7 @@ public function editfrontmenu()
 $access=array("1");
 $this->checkaccess($access);
 $data["page"]="editfrontmenu";
-$data["activemenu"]="navigation";
+$data["activemenu"]="navigations";
      $this->frontmenu_model->changestatusofexternallink();
 $data[ 'parent' ] =$this->user_model->getfrontmenudropdown();
 $data[ 'status' ] =$this->user_model->getstatusdropdown();
@@ -944,6 +946,7 @@ public function creategallery()
 $access=array("1");
 $this->checkaccess($access);
 $data["page"]="creategallery";
+$data["activemenu"]="image gallery";
 $data[ 'status' ] =$this->user_model->getstatusdropdown();
 $data["title"]="Create gallery";
 $this->load->view("template",$data);
@@ -993,7 +996,7 @@ public function editgallery()
 $access=array("1");
 $this->checkaccess($access);
 $data["page"]="editgallery";
-$data["activemenu"]="gallery";
+$data["activemenu"]="image gallery";
 $data["page2"]="block/galleryblock";
 $data[ 'status' ] =$this->user_model->getstatusdropdown();
 $data[ 'before1' ] =$this->input->get('id');
@@ -1376,6 +1379,7 @@ public function createvideogallery()
 $access=array("1");
 $this->checkaccess($access);
 $data["page"]="createvideogallery";
+$data["activemenu"]="video gallery";
 $data[ 'status' ] =$this->user_model->getstatusdropdown();
 $data[ 'videogallery' ] =$this->user_model->getvideogallerydropdown();
 $data["title"]="Create videogallery";
@@ -1418,7 +1422,7 @@ public function editvideogallery()
 $access=array("1");
 $this->checkaccess($access);
 $data["page"]="editvideogallery";
-$data["activemenu"]="videos";
+$data["activemenu"]="video gallery";
 $data["page2"]="block/videoblock";
 $data["before1"]=$this->input->get('id');
 $data["before2"]=$this->input->get('id');
@@ -2473,6 +2477,7 @@ public function createnotification()
 $access=array("1");
 $this->checkaccess($access);
 $data["page"]="createnotification";
+$data["activemenu"]="notifications";
 $this->notification_model->changestatusofexternallink();
 $data[ 'linktype' ] =$this->user_model->getlinktypedropdown();
 $data[ 'event' ] =$this->user_model->geteventsdropdown();
@@ -2558,6 +2563,7 @@ $data[ 'article' ] =$this->user_model->getarticledropdown();
 $data[ 'gallery' ] =$this->user_model->getgallerydropdown();
 $data[ 'status' ] =$this->user_model->getstatusdropdown();
 $data["title"]="Edit notification";
+$data["activemenu"]="notifications";
 $data["before"]=$this->notification_model->beforeedit($this->input->get("id"));
 $this->load->view("template",$data);
 }
@@ -2898,6 +2904,7 @@ public function createblog()
 $access=array("1");
 $this->checkaccess($access);
 $data["page"]="createblog";
+$data["activemenu"]="blogs";
 $data["title"]="Create blog";
 $this->load->view("template",$data);
 }
@@ -2970,6 +2977,7 @@ public function editblog()
 $access=array("1");
 $this->checkaccess($access);
 $data["page"]="editblog";
+$data["activemenu"]="blogs";
 //$data["page2"]="block/blogblock";
 $data["before1"]=$this->input->get('id');
 $data["before2"]=$this->input->get('id');
