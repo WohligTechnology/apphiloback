@@ -4,13 +4,13 @@
 	</div>
 	<form class="col s12" method="post" action="<?php echo site_url('site/createfrontmenusubmit');?>" enctype="multipart/form-data">
 		<div class="row">
-			<div class="input-field col s6">
+			<div class="input-field col m6 s12">
 				<label for="name">Name</label>
 				<input type="text" id="name" name="name" value="<?php echo set_value('name');?>">
 			</div>
 		</div>
 		<div class="row">
-			<div class="input-field col s6">
+			<div class="input-field col m6 s12">
 				<label for="order">Order</label>
 				<input type="text" id="order" name="order" value="<?php echo set_value('order');?>">
 			</div>
@@ -18,14 +18,14 @@
 
 
 		<div class="row">
-			<div class="input-field col s6">
+			<div class="input-field col m6 s12">
 				<?php echo form_dropdown( 'status',$status,set_value( 'status'), 'class="chzn-select form-control" data-placeholder="Choose a Accesslevel..."'); ?>
 				 <label>Status</label>
 			</div>
 		</div>
 
 		<div class="row">
-			<div class="input-field col s6">
+			<div class="input-field col m6 s12">
 				<?php echo form_dropdown('linktype',$linktype,set_value('linktype'), 'class="chzn-select form-control" data-placeholder="Choose a Accesslevel..."'); ?>
 				 <label>Link Type</label>
 			</div>
@@ -33,7 +33,7 @@
 
 		<!--	Event-->
 		<div class="row drop">
-			<div class="input-field col s6">
+			<div class="input-field col m6 s12">
 				<?php echo form_dropdown('event',$event,set_value('event'), 'class="chzn-select form-control" data-placeholder="Choose a Accesslevel..."'); ?>
 				 <label>Event</label>
 			</div>
@@ -41,7 +41,7 @@
 
 		<!--	Blog-->
 		<div class="row drop">
-			<div class="input-field col s6">
+			<div class="input-field col m6 s12">
 				<?php echo form_dropdown('blog',$blog,set_value('blog'), 'class="chzn-select form-control" data-placeholder="Choose a Accesslevel..."'); ?>
 				 <label>Blog</label>
 
@@ -50,7 +50,7 @@
 
 		<!--	Gallery-->
 		<div class="row drop">
-			<div class="input-field col s6">
+			<div class="input-field col m6 s12">
 				<?php echo form_dropdown('video',$video,set_value('video'), 'class="chzn-select form-control" 	data-placeholder="Choose a Accesslevel..."'); ?>
 				 <label>Video</label>
 
@@ -59,7 +59,7 @@
 
 		<!--	Video-->
 		<div class="row drop">
-			<div class="input-field col s6">
+			<div class="input-field col m6 s12">
 				<?php echo form_dropdown('gallery',$gallery,set_value('gallery'), 'class="chzn-select form-control" 	data-placeholder="Choose a Accesslevel..."'); ?>
 				 <label>Gallery</label>
 
@@ -68,14 +68,14 @@
 		
 		<!--	Article-->
 		<div class="row drop">
-			<div class="input-field col s6">
+			<div class="input-field col m6 s12">
 				<?php echo form_dropdown('article',$article,set_value('article'), 'class="chzn-select form-control" 	data-placeholder="Choose a Accesslevel..."'); ?>
 				 <label>Article</label>
 
 			</div>
 		</div>
 		<div class="row">
-			<div class="input-field col s6">
+			<div class="input-field col m6 s12">
 				<?php echo form_dropdown( 'icon',$icon,set_value( 'icon'), 'class="linear-icon form-control" data-placeholder="Choose a Accesslevel..."'); ?>
 				 <label>Select Icon</label>
 			</div>
@@ -84,7 +84,7 @@
 		<div class=" form-group">
 			<label class="col-sm-2 control-label">&nbsp;</label>
 			<div class="col-sm-4">
-				<button type="submit" class="btn btn-primary jsonsubmit waves-effect waves-light green">Save</button>
+				<button type="submit" class="btn btn-primary jsonsubmit waves-effect waves-light blue darken-4">Save</button>
 				<a href="<?php echo site_url('site/viewfrontmenu'); ?>" class="btn btn-secondary waves-effect waves-light red">Cancel</a>
 			</div>
 		</div>

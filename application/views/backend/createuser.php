@@ -89,10 +89,10 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="col s6">
+			<div class="col m3 s6">
 				<label for="filled-in-box" class="form-checkbox">Event Notification</label>
 			</div>
-			<div class="col s6">
+			<div class="col m3 s6">
 				<div class="switch">
 					<label>
 						Off
@@ -104,10 +104,10 @@
 		</div>
 
 		<div class="row">
-			<div class="col s6">
+			<div class="col m3 s6">
 				<label for="filled-in-box" class="form-checkbox">Photo Notification</label>
 			</div>
-			<div class="col s6">
+			<div class="col m3 s6">
 				<div class="switch">
 					<label>
 						Off
@@ -119,10 +119,10 @@
 		</div>
 
 		<div class="row">
-			<div class="col s6">
+			<div class="col m3 s6">
 				<label for="filled-in-box" class="form-checkbox">Video Notification</label>
 			</div>
-			<div class="col s6">
+			<div class="col m3 s6">
 				<div class="switch">
 					<label>
 						Off
@@ -134,10 +134,10 @@
 		</div>
 
 		<div class="row">
-			<div class="col s6">
+			<div class="col m3 s6">
 				<label for="filled-in-box" class="form-checkbox">Blog Notification</label>
 			</div>
-			<div class="col s6">
+			<div class="col m3 s6">
 				<div class="switch">
 					<label>
 						Off
@@ -151,8 +151,8 @@
 		<div class=" form-group">
 			<label class="col-sm-2 control-label">&nbsp;</label>
 			<div class="col-sm-4">
-				<button type="submit" class="btn btn-primary waves-effect waves-light green">Save</button>
-				<a href="<?php echo site_url('site/viewusers'); ?>" class="btn btn-secondary waves-effect waves-light red">Cancel</a>
+				<button type="submit" class="btn btn-primary waves-effect waves-light blue darken-4">Save</button>
+				<a href="<?php echo site_url('site/viewusers'); ?>" class="waves-effect waves-light btn red">Cancel</a>
 			</div>
 		</div>
 	</form>
