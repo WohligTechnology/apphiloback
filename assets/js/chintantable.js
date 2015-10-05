@@ -50,8 +50,11 @@ function generatejquery(url) {
                 }
 
                 $(".chintantablepagination ul.pagination li a").click(function () {
-                    pageno = parseInt($(this).attr("data-page"));
-                    fillchintandata();
+                    var liattr = $(this).parent("li").hasClass("disabled");
+                    if (!liattr) {
+                        pageno = parseInt($(this).attr("data-page"));
+                        fillchintandata();
+                    }
                     return false;
 
                 });
