@@ -32,12 +32,12 @@
                 $('#some-textarea').wysihtml5();
             </script>
         </div> 
-           <div class="row">
-            <textarea id="some-textarea1" name="venue" placeholder="Venue"><?php echo set_value( 'venue');?></textarea>
-            <script type="text/javascript">
-                $('#some-textarea1').wysihtml5();
-            </script>
-        </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <label for="venue">Venue</label>
+                    <input type="text" id="venue" name="venue" value="<?php echo set_value('venue');?>">
+                </div>
+            </div>
               <div class="row">
                 <div class="input-field col s6">
                      <input type="date" class="datepicker" name="startdate" value="<?php echo set_value('startdate');?>">
