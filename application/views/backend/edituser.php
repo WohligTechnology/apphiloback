@@ -242,11 +242,15 @@
 
 													<?php } ?>
 														<div class=" form-group">
-															<label class="col-sm-2 control-label">&nbsp;</label>
-															<div class="col-sm-4">
-																<button type="submit" class="btn btn-primary waves-effect waves-light blue darken-4">Save</button>
-																<a href="<?php echo site_url('site/viewusers'); ?>" class="btn btn-secondary waves-effect waves-light red">Cancel</a>
+															<div class="row">
+																<div class="col m12">
+																	<button type="submit" class="btn btn-primary waves-effect waves-light blue darken-4">Save</button>
+																	<a href="<?php echo site_url('site/viewusers'); ?>" class="btn btn-secondary waves-effect waves-light red">Cancel</a>
+																</div>
 															</div>
 														</div>
+
+
+
 	</form>
 </div>
