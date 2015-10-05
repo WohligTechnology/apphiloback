@@ -20,7 +20,7 @@ $query=$this->db->get("webapp_blog")->row();
 return $query;
 }
 function getsingleblog($id){
-    $query=$this->db->query("SELECT `id`, `name`, `title`, `json`, `content` FROM `webapp_blog` WHERE `id`='$id'")->row();
+    $query=$this->db->query("SELECT `id`, `name`, `title`, `json`, `content`,`timestamp` FROM `webapp_blog` WHERE `id`='$id'")->row();
 $query->blogimage=$this->db->query("SELECT `id`, `blog`, `status`, `order`, `image` FROM `webapp_blogimages` WHERE `status`=1 AND `blog`='$id'")->result();
    
 $query->blogvideo=$this->db->query("SELECT `id`, `blog`, `status`, `order`, `video` FROM `webapp_blogvideo` WHERE `status`=1 AND `blog`='$id'")->result();
