@@ -252,6 +252,7 @@ ul.side-nav.fixed li a {
     max-width: 100%;
     text-align: center;
     align-self: center;
+    margin: 0 auto;
 }
 
 @media only screen and (max-width: 992px) {
