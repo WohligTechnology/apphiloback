@@ -5,6 +5,8 @@ class events_model extends CI_Model
 {
 public function create($status,$title,$timestamp,$content,$venue,$image,$startdate,$starttime)
 {
+$startdate = new DateTime($startdate);
+$startdate=$startdate->format('Y-m-d');
 $data=array("status" => $status,"title" => $title,"content" => $content,"venue" => $venue,"image" => $image,"startdate" => $startdate,"starttime" => $starttime);
 $query=$this->db->insert( "webapp_events", $data );
 $id=$this->db->insert_id();
@@ -29,6 +31,8 @@ return $query;
 }
 public function edit($id,$status,$title,$timestamp,$content,$venue,$image,$startdate,$starttime)
 {
+    $startdate = new DateTime($startdate);
+$startdate=$startdate->format('Y-m-d');
 $data=array("status" => $status,"title" => $title,"timestamp" => $timestamp,"content" => $content,"venue" => $venue,"image" => $image,"startdate" => $startdate,"starttime" => $starttime);
 $this->db->where( "id", $id );
 $query=$this->db->update( "webapp_events", $data );

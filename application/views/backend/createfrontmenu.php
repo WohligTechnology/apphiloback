@@ -20,12 +20,14 @@
 		<div class="row">
 			<div class="input-field col s6">
 				<?php echo form_dropdown( 'status',$status,set_value( 'status'), 'class="chzn-select form-control" data-placeholder="Choose a Accesslevel..."'); ?>
+				 <label>Status</label>
 			</div>
 		</div>
 
 		<div class="row">
 			<div class="input-field col s6">
 				<?php echo form_dropdown('linktype',$linktype,set_value('linktype'), 'class="chzn-select form-control" data-placeholder="Choose a Accesslevel..."'); ?>
+				 <label>Link Type</label>
 			</div>
 		</div>
 
@@ -33,6 +35,7 @@
 		<div class="row drop">
 			<div class="input-field col s6">
 				<?php echo form_dropdown('event',$event,set_value('event'), 'class="chzn-select form-control" data-placeholder="Choose a Accesslevel..."'); ?>
+				 <label>Event</label>
 			</div>
 		</div>
 
@@ -40,6 +43,7 @@
 		<div class="row drop">
 			<div class="input-field col s6">
 				<?php echo form_dropdown('blog',$blog,set_value('blog'), 'class="chzn-select form-control" data-placeholder="Choose a Accesslevel..."'); ?>
+				 <label>Blog</label>
 
 			</div>
 		</div>
@@ -48,6 +52,7 @@
 		<div class="row drop">
 			<div class="input-field col s6">
 				<?php echo form_dropdown('video',$video,set_value('video'), 'class="chzn-select form-control" 	data-placeholder="Choose a Accesslevel..."'); ?>
+				 <label>Video</label>
 
 			</div>
 		</div>
@@ -56,6 +61,7 @@
 		<div class="row drop">
 			<div class="input-field col s6">
 				<?php echo form_dropdown('gallery',$gallery,set_value('gallery'), 'class="chzn-select form-control" 	data-placeholder="Choose a Accesslevel..."'); ?>
+				 <label>Gallery</label>
 
 			</div>
 		</div>
@@ -64,39 +70,14 @@
 		<div class="row drop">
 			<div class="input-field col s6">
 				<?php echo form_dropdown('article',$article,set_value('article'), 'class="chzn-select form-control" 	data-placeholder="Choose a Accesslevel..."'); ?>
+				 <label>Article</label>
 
-			</div>
-		</div>
-		
-		
-		<div class="row" style="display:none">
-			<div class="input-field col s6">
-				<label for="typeid">Id selected</label>
-				<input type="text" id="typeid" name="typeid" value="<?php echo set_value('typeid');?>">
 			</div>
 		</div>
 		<div class="row">
 			<div class="input-field col s6">
 				<?php echo form_dropdown( 'link',$link,set_value( 'link'), 'class="chzn-select form-control" data-placeholder="Choose a Accesslevel..."'); ?>
-			</div>
-		</div>
-		<div class="row" style="display:none">
-			<div class="file-field input-field col s12">
-				<div class="btn brown">
-					<span>Image</span>
-					<input name="image" type="file" multiple>
-				</div>
-				<div class="file-path-wrapper">
-					<input class="file-path validate" type="text" placeholder="Upload one or more files" value="<?php echo set_value('image');?>">
-				</div>
-			</div>
-		</div>
-		<div class="row" style="display:none">
-			<div class="input-field col s12">
-				<textarea name="json" class="materialize-textarea fieldjsoninput" length="120">
-					<?php echo json_encode($fieldjson,true); ?>
-				</textarea>
-				<label>Json</label>
+				 <label>Select Icon</label>
 			</div>
 		</div>
 		<div class="fieldjson"></div>

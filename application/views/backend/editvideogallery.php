@@ -28,16 +28,9 @@
         <div class="row">
             <div class="input-field col s6">
                 <?php echo form_dropdown( 'status',$status,set_value( 'status',$before->status), 'class="chzn-select form-control" data-placeholder="Choose a Accesslevel..."'); ?>
+                 <label>Status</label>
             </div>
         </div>
-        
-              <div class="row" style="display:none">
-                <div class="input-field col s6">
-                    <label for="json">Json</label>
-    <textarea name="json" class="fieldjsoninput"><?php echo set_value( 'json',$before->json);?></textarea>
-                </div>
-            </div>
-            <div class="fieldjson"></div>
                <div class="row">
             <div class="input-field col s6">
                 <label>Timestamp</label>
@@ -54,14 +47,3 @@
         </div>
     </form>
 </div>
-   
-   <script type="text/javascript">
-    $(document).ready(function () {
-        //        console.log($(".fieldjsoninput").val());
-        filljsoninput(".fieldjsoninput", ".fieldjson");
-        $(".jsonsubmit").click(function () {
-            jsonsubmit(".fieldjsoninput", ".fieldjson");
-            //return false;
-        });
-    });
-</script>

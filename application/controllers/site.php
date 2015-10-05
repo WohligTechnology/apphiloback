@@ -163,8 +163,8 @@ class Site extends CI_Controller
 			$data['alerterror']="New user could not be created.";
 			else
 			$data['alertsuccess']="User created Successfully.";
-//			$data['redirect']="site/viewusers";
-//			$this->load->view("redirect",$data);
+			$data['redirect']="site/viewusers";
+			$this->load->view("redirect",$data);
 		}
 	}
     function viewusers()
@@ -588,6 +588,7 @@ $data["page"]="editarticles";
 $data[ 'status' ] =$this->user_model->getstatusdropdown();
 $data["title"]="Edit articles";
 $data["before"]=$this->articles_model->beforeedit($this->input->get("id"));
+    print_r($data["before"]);
 $this->load->view("template",$data);
 }
 public function editarticlessubmit()

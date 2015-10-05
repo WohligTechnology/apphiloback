@@ -1,16 +1,9 @@
 <section class="row offset-s4">
     <div class="col s12">
-        <h4 class="pad-left-15">Blog Config</h4>
+        <h4 class="pad-left-15">Config -> Blog</h4>
     </div>
     <div class="col s4">
         <div class="logintype cms">
-            <!--
-            <div class="checkbox">
-                <input type="checkbox" class="filled-in class1" name="cms" id="filled-in-box" />
-                <label for="filled-in-box">CMS</label>
-            </div>
--->
-
             <div class="row checkbox">
                 <div class="col s6">
                     <label for="filled-in-box" class="form-checkbox">CMS</label>
@@ -70,12 +63,6 @@
                     </div>
                 </div>
             </div>
-            <!--
-            <div class="checkbox">
-                <input type="checkbox" class="filled-in class1" name="tumblr" id="filled-in-box" />
-                <label for="filled-in-box">Tumblr</label>
-            </div>
--->
             <div class="sublogintype" style=" min-height: 110px;">
                 <div class="input-field col s12">
                     <label for="appid">Tumblr User Name</label>

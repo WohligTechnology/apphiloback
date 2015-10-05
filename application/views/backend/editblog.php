@@ -25,12 +25,6 @@
                 $('#some-textarea').wysihtml5();
             </script>
             </div>
-              <div class="row" style="display:none">
-                <div class="input-field col s6">
-                    <label for="json">Json</label>
-    <textarea name="json" class="fieldjsoninput"><?php echo set_value( 'json',$before->json);?></textarea>
-                </div>
-            </div>
              <div class="row">
             <div class="file-field input-field col s12">
                 <div class="btn brown">
@@ -51,7 +45,6 @@
                 <input type="text" name="url" value="<?php echo set_value('url',$before->url);?>">
             </div>
         </div>
-            <div class="fieldjson"></div>
                <div class="row">
             <div class="input-field col s6">
                 <label>Timestamp</label>
@@ -68,14 +61,3 @@
         </div>
     </form>
 </div>
-
-<script type="text/javascript">
-    $(document).ready(function () {
-        //        console.log($(".fieldjsoninput").val());
-        filljsoninput(".fieldjsoninput", ".fieldjson");
-        $(".jsonsubmit").click(function () {
-            jsonsubmit(".fieldjsoninput", ".fieldjson");
-            //return false;
-        });
-    });
-</script>

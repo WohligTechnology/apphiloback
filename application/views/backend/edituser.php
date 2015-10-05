@@ -55,12 +55,14 @@
         <div class="row">
             <div class="input-field col s6">
                 <?php echo form_dropdown( 'status',$status,set_value( 'status',$before->status), 'class="chzn-select form-control" data-placeholder="Choose a Accesslevel..."'); ?>
+                 <label>Status</label>
             </div>
         </div>
 
         <div class="row">
             <div class="input-field col s6">
-                <?php echo form_dropdown( 'accesslevel',$accesslevel,set_value( 'accesslevel',$before->accesslevel), 'class="chzn-select form-control" data-placeholder="Choose a Accesslevel..."'); ?>
+                <?php echo form_dropdown( 'accesslevel',$accesslevel,set_value( 'accesslevel',$before->accesslevel), 'class="chzn-select form-control" data-placeholder="Choose a Accesslevel..."'); ?> 
+                <label>Access Level</label>
             </div>
         </div>
         <div class="row">
@@ -91,38 +93,151 @@
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="input-field col s6">
-                <label for="json">Json</label>
-                <input type="text" name="json" id="json" value="<?php echo set_value('json',$before->json);?>">
-            </div>
-        </div>
 
         <div class="row">
             <div class="input-field col s12">
                 <textarea name="address" class="materialize-textarea" length="120"><?php echo set_value( 'address',$before->address);?></textarea><label>Address</label>
             </div>
         </div>
-         <div class="row">
-            <div class="input-field col s6">
-                <?php echo form_dropdown( 'eventnotification',$eventnotification,set_value( 'eventnotification',$before->eventnotification), 'class="chzn-select form-control" data-placeholder="Choose a Accesslevel..."'); ?>
-            </div>
-        </div>
-         <div class="row">
-            <div class="input-field col s6">
-                <?php echo form_dropdown( 'photonotification',$photonotification,set_value( 'photonotification',$before->photonotification), 'class="chzn-select form-control" data-placeholder="Choose a Accesslevel..."'); ?>
-            </div>
-        </div>
-         <div class="row">
-            <div class="input-field col s6">
-                <?php echo form_dropdown( 'videonotification',$videonotification,set_value( 'videonotification',$before->videonotification), 'class="chzn-select form-control" data-placeholder="Choose a Accesslevel..."'); ?>
-            </div>
-        </div>
-         <div class="row">
-            <div class="input-field col s6">
-                <?php echo form_dropdown( 'blognotification',$blognotification,set_value( 'blognotification',$before->blognotification), 'class="chzn-select form-control" data-placeholder="Choose a Accesslevel..."'); ?>
-            </div>
-        </div>
+
+<!--        EVENT NOTIFICATION-->
+         <?php if($before->eventnotification == "true") {?>
+     <div class="row">
+                <div class="col s6">
+                    <label for="filled-in-box" class="form-checkbox">Event Notification</label>
+                </div>
+                <div class="col s6">
+                    <div class="switch">
+                        <label>
+                            Off
+                            <input type="checkbox" name="eventnotification" value="true" checked>
+                            <span class="lever"></span> On
+                        </label>
+                    </div>
+                </div>
+            </div>  
+   <?php }
+     else { ?>
+     <div class="row">
+                <div class="col s6">
+                    <label for="filled-in-box" class="form-checkbox">Event Notification</label>
+                </div>
+                <div class="col s6">
+                    <div class="switch">
+                        <label>
+                            Off
+                            <input type="checkbox" name="eventnotification" value="true">
+                            <span class="lever"></span> On
+                        </label>
+                    </div>
+                </div>
+            </div>  
+        
+<?php } ?>
+        
+<!--               PHOTO NOTIFICATION-->
+                     <?php if($before->photonotification == "true") {?>
+     <div class="row">
+                <div class="col s6">
+                    <label for="filled-in-box" class="form-checkbox">Photo Notification</label>
+                </div>
+                <div class="col s6">
+                    <div class="switch">
+                        <label>
+                            Off
+                            <input type="checkbox" name="photonotification" value="true" checked>
+                            <span class="lever"></span> On
+                        </label>
+                    </div>
+                </div>
+            </div>  
+   <?php }
+     else { ?>
+     <div class="row">
+                <div class="col s6">
+                    <label for="filled-in-box" class="form-checkbox">Photo Notification</label>
+                </div>
+                <div class="col s6">
+                    <div class="switch">
+                        <label>
+                            Off
+                            <input type="checkbox" name="photonotification" value="true">
+                            <span class="lever"></span> On
+                        </label>
+                    </div>
+                </div>
+            </div>  
+        
+<?php } ?>
+<!--               VIDEO NOTIFICATION-->
+                        <?php if($before->videonotification == "true") {?>
+     <div class="row">
+                <div class="col s6">
+                    <label for="filled-in-box" class="form-checkbox">Video Notification</label>
+                </div>
+                <div class="col s6">
+                    <div class="switch">
+                        <label>
+                            Off
+                            <input type="checkbox" name="videonotification" value="true" checked>
+                            <span class="lever"></span> On
+                        </label>
+                    </div>
+                </div>
+            </div>  
+   <?php }
+     else { ?>
+     <div class="row">
+                <div class="col s6">
+                    <label for="filled-in-box" class="form-checkbox">Video Notification</label>
+                </div>
+                <div class="col s6">
+                    <div class="switch">
+                        <label>
+                            Off
+                            <input type="checkbox" name="videonotification" value="true">
+                            <span class="lever"></span> On
+                        </label>
+                    </div>
+                </div>
+            </div>  
+        
+<?php } ?>
+<!--               BLOG NOTIFICATION-->
+        
+                      <?php if($before->blognotification == "true") {?>
+     <div class="row">
+                <div class="col s6">
+                    <label for="filled-in-box" class="form-checkbox">Blog Notification</label>
+                </div>
+                <div class="col s6">
+                    <div class="switch">
+                        <label>
+                            Off
+                            <input type="checkbox" name="blognotification" value="true" checked>
+                            <span class="lever"></span> On
+                        </label>
+                    </div>
+                </div>
+            </div>  
+   <?php }
+     else { ?>
+     <div class="row">
+                <div class="col s6">
+                    <label for="filled-in-box" class="form-checkbox">Blog Notification</label>
+                </div>
+                <div class="col s6">
+                    <div class="switch">
+                        <label>
+                            Off
+                            <input type="checkbox" name="blognotification" value="true">
+                            <span class="lever"></span> On
+                        </label>
+                    </div>
+                </div>
+            </div>  
+        
+<?php } ?>
         <div class=" form-group">
             <label class="col-sm-2 control-label">&nbsp;</label>
             <div class="col-sm-4">

@@ -23,18 +23,21 @@
         <div class="row">
             <div class="input-field col s6">
                 <?php echo form_dropdown( 'status',$status,set_value( 'status',$before->status), 'class="chzn-select form-control" data-placeholder="Choose a Accesslevel..."'); ?>
+                 <label>Status</label>
             </div>
         </div>
 
         <div class="row">
             <div class="input-field col s6">
                 <?php echo form_dropdown( 'linktype',$linktype,set_value( 'linktype',$before->linktype), 'class="chzn-select form-control" data-placeholder="Choose a Accesslevel..."'); ?>
+                 <label>Link Type</label>
             </div>
         </div>
         <!--	Event-->
         <div class="row drop">
             <div class="input-field col s6">
                 <?php echo form_dropdown( 'event',$event,set_value( 'event',$before->event), 'class="chzn-select form-control" data-placeholder="Choose a Accesslevel..."'); ?>
+                 <label>Event</label>
             </div>
         </div>
 
@@ -42,6 +45,7 @@
         <div class="row drop">
             <div class="input-field col s6">
                 <?php echo form_dropdown( 'blog',$blog,set_value( 'blog',$before->blog), 'class="chzn-select form-control" data-placeholder="Choose a Accesslevel..."'); ?>
+                 <label>Blog</label>
 
             </div>
         </div>
@@ -50,6 +54,7 @@
         <div class="row drop">
             <div class="input-field col s6">
                 <?php echo form_dropdown( 'video',$video,set_value( 'video',$before->video), 'class="chzn-select form-control" data-placeholder="Choose a Accesslevel..."'); ?>
+                 <label>Video</label>
 
             </div>
         </div>
@@ -58,6 +63,7 @@
         <div class="row drop">
             <div class="input-field col s6">
                 <?php echo form_dropdown( 'gallery',$gallery,set_value( 'gallery',$before->gallery), 'class="chzn-select form-control" data-placeholder="Choose a Accesslevel..."'); ?>
+                 <label>Gallery</label>
 
             </div>
         </div>
@@ -66,12 +72,14 @@
         <div class="row drop">
             <div class="input-field col s6">
                 <?php echo form_dropdown( 'article',$article,set_value( 'article',$before->article), 'class="chzn-select form-control" data-placeholder="Choose a Accesslevel..."'); ?>
+                 <label>Article</label>
 
             </div>
         </div>
         <div class="row">
             <div class="input-field col s6">
                 <?php echo form_dropdown( 'link',$link,set_value( 'link',$before->link), 'class="linear-icon form-control" data-placeholder="Choose a Accesslevel..."'); ?>
+                 <label>Icon</label>
             </div>
         </div>
         <div class="row" style="display:none">
@@ -93,7 +101,7 @@
             <label class="col-sm-2 control-label">&nbsp;</label>
             <div class="col-sm-4">
                 <button type="submit" class="btn btn-primary jsonsubmit waves-effect waves-light green">Save</button>
-                <a href="<?php echo site_url(" site/viewfrontmenu "); ?>" class="btn btn-secondary waves-effect waves-light red">Cancel</a>
+                <a href="<?php echo site_url("site/viewfrontmenu"); ?>" class="btn btn-secondary waves-effect waves-light red">Cancel</a>
             </div>
         </div>
     </form>
@@ -198,7 +206,7 @@
             console.log(i);
             var oldcon = $linearcontainer.eq(i).children("span").html();
             var icontxt=$linearcontainer.eq(i).children("span").text();
-            var newcontent = "<span class='"+icontxt+"'></span>"+oldcon;
+            var newcontent = "<span class='"+icontxt+"'></span> &nbsp;"+oldcon;
             $linearcontainer.eq(i).children("span").html(newcontent);
         }
     });

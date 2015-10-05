@@ -1,6 +1,6 @@
 <div class="row offset-s3">
     <div class="col s12">
-        <h4 class="pad-left-15">Login Config</h4>
+        <h4 class="pad-left-15">Config -> Login</h4>
     </div>
 
     <div class="col s4">

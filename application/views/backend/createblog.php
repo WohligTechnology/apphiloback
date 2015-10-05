@@ -16,12 +16,6 @@
                     <input type="text" id="title" name="title" value="<?php echo set_value('title');?>">
                 </div>
             </div>
-            <div class="row" style="display:none">
-                <div class="input-field col s6">
-                    <label for="json">Json</label>
-    <textarea name="json" class="fieldjsoninput"><?php echo json_encode($fieldjson,true); ?></textarea>
-                </div>
-            </div>
             <div class="row">
             <textarea id="some-textarea" name="content" placeholder="Enter text ..."><?php echo set_value( 'content');?></textarea>
             <script type="text/javascript">
@@ -55,11 +49,3 @@
         </form>
 </div>
 
-    <script type="text/javascript">
-        $(document).ready(function () {
-            filljsoninput(".fieldjsoninput", ".fieldjson");
-            $(".jsonsubmit").click(function () {
-                jsonsubmit(".fieldjsoninput", ".fieldjson");
-            });
-        });
-    </script>

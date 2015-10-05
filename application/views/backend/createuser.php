@@ -49,6 +49,7 @@
             <div class="row">
                 <div class="input-field col s6">
                     <?php echo form_dropdown( 'status',$status,set_value( 'status'), 'class="chzn-select form-control" 	data-placeholder="Choose a Accesslevel..."'); ?>
+                     <label>Status</label>
                 </div>
             </div>
             <div class="row">
@@ -76,12 +77,7 @@
             <div class="row">
                 <div class="input-field col s6">
                     <?php echo form_dropdown( 'accesslevel',$accesslevel,set_value( 'accesslevel'), 'class="chzn-select form-control" 	data-placeholder="Choose a Accesslevel..."'); ?>
-                </div>
-            </div>
-            <div class="row">
-                <div class="input-field col s6">
-                    <label for="json">Json</label>
-                    <input type="text" name="json" id="json" value="<?php echo set_value('json');?>">
+                     <label>Access Level</label>
                 </div>
             </div>
             <div class="row">
@@ -148,30 +144,7 @@
                     </div>
                 </div>
             </div>
-<!--
-            <div class="row">
-                <div class="input-field col s6">
-                    <?php echo form_dropdown( 'eventnotification',$eventnotification,set_value( 'eventnotification'), 'class="chzn-select form-control" 	data-placeholder="Choose a Accesslevel..."'); ?>
-                </div>
-            </div>
--->
-<!--
-            <div class="row">
-                <div class="input-field col s6">
-                    <?php echo form_dropdown( 'photonotification',$photonotification,set_value( 'photonotification'), 'class="chzn-select form-control" 	data-placeholder="Choose a Accesslevel..."'); ?>
-                </div>
-            </div>
-            <div class="row">
-                <div class="input-field col s6">
-                    <?php echo form_dropdown( 'videonotification',$videonotification,set_value( 'videonotification'), 'class="chzn-select form-control" 	data-placeholder="Choose a Accesslevel..."'); ?>
-                </div>
-            </div>
-            <div class="row">
-                <div class="input-field col s6">
-                    <?php echo form_dropdown( 'blognotification',$blognotification,set_value( 'blognotification'), 'class="chzn-select form-control" 	data-placeholder="Choose a Accesslevel..."'); ?>
-                </div>
-            </div>
--->
+
             <div class=" form-group">
                 <label class="col-sm-2 control-label">&nbsp;</label>
                 <div class="col-sm-4">

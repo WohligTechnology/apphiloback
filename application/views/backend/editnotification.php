@@ -9,6 +9,7 @@
              <div class="row">
             <div class="input-field col s6">
                 <?php echo form_dropdown( 'linktype',$linktype,set_value( 'linktype',$before->linktype), 'class="chzn-select form-control" data-placeholder="Choose a Accesslevel..."'); ?>
+                 <label>Link Type</label>
             </div>
         </div>
           
@@ -16,6 +17,7 @@
         <div class="row drop">
             <div class="input-field col s6">
                 <?php echo form_dropdown( 'event',$event,set_value( 'event',$before->event), 'class="chzn-select form-control" data-placeholder="Choose a Accesslevel..."'); ?>
+                 <label>Event</label>
             </div>
         </div>
 
@@ -23,6 +25,7 @@
         <div class="row drop">
             <div class="input-field col s6">
                 <?php echo form_dropdown( 'blog',$blog,set_value( 'blog',$before->blog), 'class="chzn-select form-control" data-placeholder="Choose a Accesslevel..."'); ?>
+                 <label>Blog</label>
 
             </div>
         </div>
@@ -31,6 +34,7 @@
         <div class="row drop">
             <div class="input-field col s6">
                 <?php echo form_dropdown( 'video',$video,set_value( 'video',$before->video), 'class="chzn-select form-control" data-placeholder="Choose a Accesslevel..."'); ?>
+                 <label>Video</label>
 
             </div>
         </div>
@@ -39,6 +43,7 @@
         <div class="row drop">
             <div class="input-field col s6">
                 <?php echo form_dropdown( 'gallery',$gallery,set_value( 'gallery',$before->gallery), 'class="chzn-select form-control" data-placeholder="Choose a Accesslevel..."'); ?>
+                 <label>Gallery</label>
 
             </div>
         </div>
@@ -47,6 +52,7 @@
         <div class="row drop">
             <div class="input-field col s6">
                 <?php echo form_dropdown( 'article',$article,set_value( 'article',$before->article), 'class="chzn-select form-control" data-placeholder="Choose a Accesslevel..."'); ?>
+                 <label>Article</label>
 
             </div>
         </div>
@@ -61,6 +67,7 @@
         <div class="row">
             <div class="input-field col s6">
                 <?php echo form_dropdown( 'status',$status,set_value( 'status',$before->status), 'class="chzn-select form-control" data-placeholder="Choose a Accesslevel..."'); ?>
+                 <label>Status</label>
             </div>
         </div>
         <div class="row">
@@ -202,34 +209,5 @@
             }
 
         });
-
-
-
-        //avi code
-        //		var $linktype = $("select.linktype");
-        //		var $test = $("select.test");
-        //		var $question = $("select.question");
-        //		var $option = $("select.option");
-        //		var $pillar = $("select.pillar");
-        //		var new_base_url = "<?php echo site_url(); ?>";
-        //
-        //		$test.change(function () {
-        //			$.getJSON(new_base_url + '/site/getquestionbytest', {
-        //				test: $test.val(),
-        //				pillar: $pillar.val()
-        //			}, function (data) {
-        //				populate(data, $question);
-        //			});
-        //		});
-        //
-        //		$question.change(function () {
-        //			$.getJSON(new_base_url + '/site/getoptionbyquestion', {
-        //				question: $question.val()
-        //			}, function (data) {
-        //				populate(data, $option);
-        //			});
-        //		});
-        //
-        //
     });
 </script>
