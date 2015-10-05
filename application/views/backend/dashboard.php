@@ -13,8 +13,8 @@
 -->
 
 
-        <div class="col m3">
-            <div class="card red darken-1 mar-left-30 ">
+        <div class="col l3 m6 s12">
+            <div class="card red darken-1">
                 <div class="card-content white-text text-center">
                     <i class="large mdi-action-account-child block"></i>
                     <span class="card-title"><?php echo $usercount;?> Users</span>
