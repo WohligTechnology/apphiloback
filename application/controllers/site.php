@@ -1650,6 +1650,7 @@ public function viewevents()
 $access=array("1");
 $this->checkaccess($access);
 $data["page"]="viewevents";
+$data["activemenu"]="events";
 $data["base_url"]=site_url("site/vieweventsjson");
 $data["title"]="View events";
 $this->load->view("template",$data);
@@ -1706,7 +1707,7 @@ $access=array("1");
 $this->checkaccess($access);
 $data["page"]="createevents";
 $data[ 'status' ] =$this->user_model->getstatusdropdown();
-
+$data["activemenu"]="events";
 $data["title"]="Create events";
 $this->load->view("template",$data);
 }
@@ -1910,6 +1911,7 @@ public function createeventvideo()
 $access=array("1");
 $this->checkaccess($access);
 $data["page"]="createeventvideo";
+$data["activemenu"]="events";
 $data["page2"]="block/eventblock";
 $data["before1"]=$this->input->get('id');
 $data["before2"]=$this->input->get('id');
@@ -1958,6 +1960,7 @@ public function editeventvideo()
 $access=array("1");
 $this->checkaccess($access);
 $data["page"]="editeventvideo";
+$data["activemenu"]="events";
 $data["page2"]="block/eventblock";
 $data["before1"]=$this->input->get('eventid');
 $data["before2"]=$this->input->get('eventid');
@@ -2056,7 +2059,6 @@ $elements[4]->field="`webapp_eventimages`.`image`";
 $elements[4]->sort="1";
 $elements[4]->header="Image";
 $elements[4]->alias="image";
-    
 $elements[5]=new stdClass();
 $elements[5]->field="`webapp_eventimages`.`event`";
 $elements[5]->sort="1";
@@ -2085,6 +2087,7 @@ public function createeventimages()
 $access=array("1");
 $this->checkaccess($access);
 $data["page"]="createeventimages";
+$data["activemenu"]="events";
 $data["page2"]="block/eventblock";
 $data["before1"]=$this->input->get('id');
 $data["before2"]=$this->input->get('id');
@@ -2164,6 +2167,7 @@ public function editeventimages()
 $access=array("1");
 $this->checkaccess($access);
 $data["page"]="editeventimages";
+$data["activemenu"]="events";
 $data["page2"]="block/eventblock";
 $data["before1"]=$this->input->get('eventid');
 $data["before2"]=$this->input->get('eventid');
