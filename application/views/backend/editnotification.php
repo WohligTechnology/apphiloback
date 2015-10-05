@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col s12">
-    <h4 class="pad-left-15">Edit Notification</h4>
+    <h4 class="pad-left-15">Edit Notifications</h4>
     </div>
 </div>
 <div class="row">
@@ -72,7 +72,7 @@
         </div>
         <div class="row">
             <div class="file-field input-field col s12">
-                <div class="btn brown">
+                <div class="btn blue darken-4">
                     <span>Image</span>
                     <input name="image" type="file" multiple>
                 </div>
@@ -94,13 +94,18 @@
                 <input type="text" id="timestamp" name="timestamp" value="<?php echo set_value('timestamp',$before->timestamp);?>">
             </div>
         </div>
-        <div class=" form-group">
+        <div class="row">
+            <div class="col s6">
+                        <div class=" form-group">
             <label class="col-sm-2 control-label">&nbsp;</label>
             <div class="col-sm-4">
-                <button type="submit" class="btn btn-primary waves-effect waves-light green">Save</button>
+                <button type="submit" class="btn btn-primary waves-effect waves-light blue darken-4">Save</button>
                 <a href="<?php echo site_url("site/viewnotification"); ?>" class="btn btn-secondary waves-effect waves-light red">Cancel</a>
             </div>
         </div>
+            </div>
+        </div>
+
     </form>
 </div>
 <script type="text/javascript">
