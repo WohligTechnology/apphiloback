@@ -38,37 +38,31 @@
             <textarea id="some-textarea" name="content" placeholder="Enter text ..."><?php echo set_value( 'content',$before->content);?></textarea>
             </div>
         </div>
-         <?php if($before->id == 1) {?>
-    
-   <?php }
-     else { ?>
+
+
    <div class="row">
             <div class="input-field col s6">
                 <label>Timestamp</label>
                 <input type="text" name="timestamp" value="<?php echo set_value('timestamp',$before->timestamp);?>">
             </div>
         </div>
-<?php } ?>
 
-  <?php if($before->id == 1) {?>
-    
-   <?php }
-     else { ?>
+
     <div class="row">
             <div class="file-field input-field col s12">
+               <span class="img-center big">
+                <img src="<?php echo base_url('uploads').'/'.$before->image; ?>" ></span>
                 <div class="btn brown">
                     <span>Image</span>
-                    <input name="image" type="file" multiple>
+                    <input name="image" type="file" multiple >
                 </div>
                 <div class="file-path-wrapper">
                     <input class="file-path validate" type="text" placeholder="Upload one or more files" value="<?php echo set_value('image',$before->image);?>">
                     <?php if($before->image == "") { } else { ?>
-                    <img src="<?php echo base_url('uploads')." / ".$before->image; ?>" width="140px" height="140px">
                     <?php } ?>
                 </div>
             </div>
         </div>
-<?php } ?>
 
 <div class="row">
         <div class=" form-group col s6">

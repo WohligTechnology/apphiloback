@@ -562,6 +562,7 @@ public function home()
     $access=array("1");
     $this->checkaccess($access);
     $data["page"]="editarticles";
+    $data["activemenu"]="home";  
     $data[ 'status' ] =$this->user_model->getstatusdropdown();
     $data["title"]="Edit Home";
     $data["before"]=$this->articles_model->beforeedit(1);
@@ -573,6 +574,7 @@ public function editarticles()
 $access=array("1");
 $this->checkaccess($access);
 $data["page"]="editarticles";
+$data["activemenu"]="pages";
 $data[ 'status' ] =$this->user_model->getstatusdropdown();
 $data["title"]="Edit Article";
 $data["before"]=$this->articles_model->beforeedit($this->input->get("id"));
@@ -783,6 +785,7 @@ public function editfrontmenu()
 $access=array("1");
 $this->checkaccess($access);
 $data["page"]="editfrontmenu";
+$data["activemenu"]="navigation";
      $this->frontmenu_model->changestatusofexternallink();
 $data[ 'parent' ] =$this->user_model->getfrontmenudropdown();
 $data[ 'status' ] =$this->user_model->getstatusdropdown();
@@ -988,6 +991,7 @@ public function editgallery()
 $access=array("1");
 $this->checkaccess($access);
 $data["page"]="editgallery";
+$data["activemenu"]="gallery";
 $data["page2"]="block/galleryblock";
 $data[ 'status' ] =$this->user_model->getstatusdropdown();
 $data[ 'before1' ] =$this->input->get('id');
@@ -1411,6 +1415,7 @@ public function editvideogallery()
 $access=array("1");
 $this->checkaccess($access);
 $data["page"]="editvideogallery";
+$data["activemenu"]="videos";
 $data["page2"]="block/videoblock";
 $data["before1"]=$this->input->get('id');
 $data["before2"]=$this->input->get('id');
@@ -1469,6 +1474,7 @@ public function viewvideogalleryvideo()
 $access=array("1");
 $this->checkaccess($access);
 $data["page"]="viewvideogalleryvideo";
+$data["activemenu"]="videos";
 $data["page2"]="block/videoblock";
 $data["before1"]=$this->input->get('id');
 $data["before2"]=$this->input->get('id');
@@ -1579,6 +1585,7 @@ public function editvideogalleryvideo()
 $access=array("1");
 $this->checkaccess($access);
 $data["page"]="editvideogalleryvideo";
+$data["activemenu"]="videos";
 $data["page2"]="block/videoblock";
 $data["before1"]=$this->input->get('videoid');
 $data["before2"]=$this->input->get('videoid');
@@ -1745,6 +1752,7 @@ public function editevents()
 $access=array("1");
 $this->checkaccess($access);
 $data["page"]="editevents";
+$data["activemenu"]="events";
 $data["page2"]="block/eventblock";
 $data["before1"]=$this->input->get('id');
 $data["before2"]=$this->input->get('id');
@@ -1822,6 +1830,7 @@ public function vieweventvideo()
 $access=array("1");
 $this->checkaccess($access);
 $data["page"]="vieweventvideo";
+$data["activemenu"]="events";
 $data["page2"]="block/eventblock";
 $data["before1"]=$this->input->get('id');
 $data["before2"]=$this->input->get('id');
@@ -2002,6 +2011,7 @@ public function vieweventimages()
 $access=array("1");
 $this->checkaccess($access);
 $data["page"]="vieweventimages";
+$data["activemenu"]="events";
 $data["page2"]="block/eventblock";
 $data["before1"]=$this->input->get('id');
 $data["before2"]=$this->input->get('id');
@@ -2354,6 +2364,7 @@ public function editenquiry()
 $access=array("1");
 $this->checkaccess($access);
 $data["page"]="editenquiry";
+$data["activemenu"]="enquiry";
 $data["user"]=$this->user_model->getuserdropdown();
 $data["title"]="Edit enquiry";
 $data["before"]=$this->enquiry_model->beforeedit($this->input->get("id"));
@@ -3576,6 +3587,7 @@ public function editslider()
 $access=array("1");
 $this->checkaccess($access);
 $data["page"]="editslider";
+$data["activemenu"]="home slider";
 $data[ 'status' ] =$this->user_model->getstatusdropdown();
 $data["title"]="Edit slider";
 $data["before"]=$this->slider_model->beforeedit($this->input->get("id"));
@@ -3974,7 +3986,7 @@ $this->load->view("redirect",$data);
 {
 $access=array("1");
 $this->checkaccess($access);
-$data["page"]="edithome";
+$data["page"]="edithome";      
 $data["title"]="Edit home";
 $data["before"]=$this->slider_model->beforeedithome("1");
 $this->load->view("template",$data);

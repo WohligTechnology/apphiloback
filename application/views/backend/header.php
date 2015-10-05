@@ -25,7 +25,6 @@
 
 	<header>
 			<nav class="blue darken-4">
-			
 			<?php   $menus = $this->menu_model->viewmenus(); 	  ?>
 			<ul id="slide-out" class="side-nav fixed">
 				<li class="sub-menu logo">
@@ -46,7 +45,7 @@
 						$page2=$pieces[1];
 					$submenus = $this->menu_model->getsubmenus($row->id);
 					?>
-                        <li class="<?php if($page==$page2 || $page == strtolower($row->name)) { echo 'active'; } //echo $page2;
+                        <li class="<?php if($page==$page2 || $activemenu == strtolower($row->name) || $page == strtolower($row->name)) { echo 'active'; } //echo $page2;
 					if(count($submenus > 0)) 
 					{ 
 						$pages =  $this->menu_model->getpages($row->id);
