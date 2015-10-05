@@ -2,7 +2,7 @@
     <div class="col s12">
         <div class="col s12 drawchintantable">
            <?php $this->chintantable->createsearch("List of Enquiry");?>
-            <table class="highlight">
+            <table class="highlight responsive-table">
                 <thead>
                     <tr>
                         <th data-field="id">ID</th>
