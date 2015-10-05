@@ -9,7 +9,7 @@
                             <th data-field="id">Id</th>
                             <th data-field="name">Name</th>
                             <th data-field="email">Item Name</th>
-                            <th data-field="login type">Login Type</th>
+                            <th data-field="logintype">Login Type</th>
                             <th data-field="accesslevelname">Item Name</th>
                             <th data-field="">Action</th>
             
