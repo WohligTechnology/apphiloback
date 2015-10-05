@@ -556,13 +556,25 @@ $data["redirect"]="site/viewarticles";
 $this->load->view("redirect",$data);
 }
 }
+    
+public function home()
+{
+    $access=array("1");
+    $this->checkaccess($access);
+    $data["page"]="editarticles";
+    $data[ 'status' ] =$this->user_model->getstatusdropdown();
+    $data["title"]="Edit Home";
+    $data["before"]=$this->articles_model->beforeedit(1);
+    $this->load->view("template",$data);
+}
+    
 public function editarticles()
 {
 $access=array("1");
 $this->checkaccess($access);
 $data["page"]="editarticles";
 $data[ 'status' ] =$this->user_model->getstatusdropdown();
-$data["title"]="Edit articles";
+$data["title"]="Edit Article";
 $data["before"]=$this->articles_model->beforeedit($this->input->get("id"));
 $this->load->view("template",$data);
 }

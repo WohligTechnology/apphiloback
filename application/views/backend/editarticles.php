@@ -1,15 +1,8 @@
 <div class="row">
-
-    <?php if($before->id == 1) {?>
     <div class="col s12">
-        <h4 class="pad-left-15">Edit Home</h4>
+        <h4 class="pad-left-15"><?php echo $title;?></h4>
     </div>
-   <?php }
-     else { ?>
-    <div class="col s12">
-    <h4 class="pad-left-15">Edit Articles</h4>
 </div>
-<?php } ?>
 
 
 </div>

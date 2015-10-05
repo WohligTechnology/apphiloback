@@ -2,7 +2,7 @@
     <div class="col s12">
         <div class="row">
             <div class="col s12 drawchintantable">
-               <?php $this->chintantable->createsearch("List of Gallery Image");?>
+               <?php $this->chintantable->createsearch("List of Gallery Images");?>
                 <table class="highlight responsive-table">
                     <thead>
                         <tr>
@@ -32,7 +32,7 @@
 </div>
 <script>
     function drawtable(resultrow) {
-        var image = "<a href='<?php echo base_url('uploads').'/'; ?>" + resultrow.image + "' target='_blank'><img src='<?php echo base_url('uploads').'/'; ?>" + resultrow.image + "' width='80px' height='80px'></a>";
+        var image = "<a href='<?php echo base_url('uploads').'/'; ?>" + resultrow.image + "' class='img-center' target='_blank'><img src='<?php echo base_url('uploads').'/'; ?>" + resultrow.image + "' width='80px' height='80px'></a>";
         if (resultrow.image == "") {
             image = "No Receipt Available";
         }

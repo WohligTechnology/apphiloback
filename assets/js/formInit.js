@@ -1,6 +1,9 @@
 $(document).ready(function () {
     $('select').material_select();
-
+    $('.datepicker').pickadate({
+        selectMonths: true, // Creates a dropdown to control month
+        selectYears: 15 // Creates a dropdown of 15 years to control year
+    });
     $linearcontainer = $("div.linear-icon ul.dropdown-content li");
     for (var i = 0; i < $linearcontainer.length; i++) {
         console.log(i);

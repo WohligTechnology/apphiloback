@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<title>BusinessApp</title>
+<title><?php echo $title;?> - BusinessApp</title>
 
 <head>
     <!--Let browser know website is optimized for mobile-->
