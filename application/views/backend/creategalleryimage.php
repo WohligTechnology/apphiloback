@@ -29,7 +29,7 @@
             </div>
             <div class="row">
                 <div class="file-field input-field col s12">
-                    <div class="btn brown">
+                    <div class="btn blue darken-4">
                         <span>Image</span>
                         <input name="image" type="file" multiple>
                     </div>
@@ -38,14 +38,18 @@
                     </div>
                 </div>
             </div>
-          
-            <div class=" form-group">
+          <div class="row">
+              <div class="col s6">
+                     <div class=" form-group">
                 <label class="col-sm-2 control-label">&nbsp;</label>
                 <div class="col-sm-4">
-                    <button type="submit" class="btn btn-primary waves-effect waves-light green">Save</button>
+                    <button type="submit" class="btn btn-primary waves-effect waves-light blue darken-4">Save</button>
                     <a href="<?php echo site_url("site/viewgalleryimage?id=").$this->input->get('id'); ?>" class="btn btn-secondary waves-effect waves-light red">Cancel</a>
                 </div>
             </div>
+              </div>
+          </div>
+         
         </form>
 </div>
 
