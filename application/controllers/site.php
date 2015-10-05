@@ -2335,6 +2335,7 @@ public function createenquiry()
 $access=array("1");
 $this->checkaccess($access);
 $data["page"]="createenquiry";
+$data["activemenu"]="enquiries";
 $data["user"]=$this->user_model->getuserdropdown();
 $data["title"]="Create enquiry";
 $this->load->view("template",$data);
@@ -2378,7 +2379,7 @@ public function editenquiry()
 $access=array("1");
 $this->checkaccess($access);
 $data["page"]="editenquiry";
-$data["activemenu"]="enquiry";
+$data["activemenu"]="enquiries";
 $data["user"]=$this->user_model->getuserdropdown();
 $data["title"]="Edit enquiry";
 $data["before"]=$this->enquiry_model->beforeedit($this->input->get("id"));
@@ -3812,8 +3813,8 @@ public function editconfig()
         }
             break;  
         case 8: {
-            $data["page"]="events";
-            $data["title"]="Events";
+            $data["page"]="configevents";
+            $data["title"]="Config Events";
         }
             break;   
         case 9: {
@@ -3859,6 +3860,7 @@ public function editconfig()
             break;     
     }
     $data[ 'type' ] =$this->user_model->gettypedropdown();
+    $data[ 'activemenu' ] ="config";
     $data["before"]=$this->config_model->beforeedit($this->input->get("id"));
     $this->load->view("templateconfig",$data);
 }
