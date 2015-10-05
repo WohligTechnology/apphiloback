@@ -29,7 +29,7 @@
                <div class="row">
             <div class="input-field col s6">
                 <label>Timestamp</label>
-                <input type="text" name="timestamp" value="<?php echo set_value('timestamp',$before->timestamp);?>">
+                <input type="text" readonly="true" name="timestamp" value="<?php echo set_value('timestamp',$before->timestamp);?>">
             </div>
         </div>
            <div class="row">
@@ -37,7 +37,7 @@
                <?php if($before->image == "") { } else {
                     ?><span class="img-center big"><img src="<?php echo base_url('uploads')."/".$before->image; ?>"></span>
                     <?php } ?>
-                <div class="btn brown">
+                <div class="btn blue darken-4">
                     <span>Image</span>
                     <input name="image" type="file" multiple>
                 </div>
@@ -47,13 +47,18 @@
                 </div>
             </div>
         </div>
-        <div class=" form-group">
+        <div class="row">
+            <div class="col s6">
+                  <div class=" form-group">
             <label class="col-sm-2 control-label">&nbsp;</label>
             <div class="col-sm-4">
-                <button type="submit" class="btn btn-primary jsonsubmit waves-effect waves-light green">Save</button>
+                <button type="submit" class="btn btn-primary jsonsubmit waves-effect waves-light blue darken-4">Save</button>
                 <a href="<?php echo site_url('site/viewgallery'); ?>" class="btn btn-secondary waves-effect waves-light red">Cancel</a>
             </div>
         </div>
+            </div>
+        </div>
+      
     </form>
 </div>
 
