@@ -6,12 +6,12 @@
 
         <div class="row">
             <div class="input-field col s6">
-                <?php echo form_dropdown( 'notification',$notification,set_value( 'notification'), 'class="chzn-select form-control" 	data-placeholder="Choose a Accesslevel..."'); ?>
+                <?php echo form_dropdown( 'notification',$notification,set_value( 'notification')); ?>
             </div>
         </div>
         <div class="row">
             <div class="input-field col s6">
-                <?php echo form_dropdown( 'user',$user,set_value( 'user'), 'class="chzn-select form-control" 	data-placeholder="Choose a Accesslevel..."'); ?>
+                <?php echo form_dropdown( 'user',$user,set_value( 'user')); ?>
             </div>
         </div>
 
@@ -54,13 +54,13 @@ Create Notificationuser </h3>
                             <div class=" form-group">
                                 <label class="col-sm-2 control-label" for="normal-field">Notification</label>
                                 <div class="col-sm-4">
-                                    <?php echo form_dropdown( "notification",$notification,set_value( 'notification'), "class='chzn-select form-control'");?>
+                                    <?php echo form_dropdown( "notification",$notification,set_value( 'notification'));?>
                                 </div>
                             </div>
                             <div class=" form-group">
                                 <label class="col-sm-2 control-label" for="normal-field">User</label>
                                 <div class="col-sm-4">
-                                    <?php echo form_dropdown( "user",$user,set_value( 'user'), "class='chzn-select form-control'");?>
+                                    <?php echo form_dropdown( "user",$user,set_value( 'user'));?>
                                 </div>
                             </div>
                             <div class="form-group">

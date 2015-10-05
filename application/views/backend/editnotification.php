@@ -8,7 +8,7 @@
         <input type="hidden" id="normal-field" class="form-control" name="id" value="<?php echo set_value('id',$before->id);?>" style="display:none;">
              <div class="row">
             <div class="input-field col s6">
-                <?php echo form_dropdown( 'linktype',$linktype,set_value( 'linktype',$before->linktype), 'class="chzn-select form-control" data-placeholder="Choose a Accesslevel..."'); ?>
+                <?php echo form_dropdown( 'linktype',$linktype,set_value( 'linktype',$before->linktype)); ?>
                  <label>Link Type</label>
             </div>
         </div>
@@ -16,7 +16,7 @@
         <!--	Event-->
         <div class="row drop">
             <div class="input-field col s6">
-                <?php echo form_dropdown( 'event',$event,set_value( 'event',$before->event), 'class="chzn-select form-control" data-placeholder="Choose a Accesslevel..."'); ?>
+                <?php echo form_dropdown( 'event',$event,set_value( 'event',$before->event)); ?>
                  <label>Event</label>
             </div>
         </div>
@@ -24,7 +24,7 @@
         <!--	Blog-->
         <div class="row drop">
             <div class="input-field col s6">
-                <?php echo form_dropdown( 'blog',$blog,set_value( 'blog',$before->blog), 'class="chzn-select form-control" data-placeholder="Choose a Accesslevel..."'); ?>
+                <?php echo form_dropdown( 'blog',$blog,set_value( 'blog',$before->blog)); ?>
                  <label>Blog</label>
 
             </div>
@@ -33,7 +33,7 @@
         <!--	Gallery-->
         <div class="row drop">
             <div class="input-field col s6">
-                <?php echo form_dropdown( 'video',$video,set_value( 'video',$before->video), 'class="chzn-select form-control" data-placeholder="Choose a Accesslevel..."'); ?>
+                <?php echo form_dropdown( 'video',$video,set_value( 'video',$before->video)); ?>
                  <label>Video</label>
 
             </div>
@@ -42,7 +42,7 @@
         <!--	Video-->
         <div class="row drop">
             <div class="input-field col s6">
-                <?php echo form_dropdown( 'gallery',$gallery,set_value( 'gallery',$before->gallery), 'class="chzn-select form-control" data-placeholder="Choose a Accesslevel..."'); ?>
+                <?php echo form_dropdown( 'gallery',$gallery,set_value( 'gallery',$before->gallery)); ?>
                  <label>Gallery</label>
 
             </div>
@@ -51,7 +51,7 @@
         <!--	Article-->
         <div class="row drop">
             <div class="input-field col s6">
-                <?php echo form_dropdown( 'article',$article,set_value( 'article',$before->article), 'class="chzn-select form-control" data-placeholder="Choose a Accesslevel..."'); ?>
+                <?php echo form_dropdown( 'article',$article,set_value( 'article',$before->article)); ?>
                  <label>Article</label>
 
             </div>
@@ -66,7 +66,7 @@
 
         <div class="row">
             <div class="input-field col s6">
-                <?php echo form_dropdown( 'status',$status,set_value( 'status',$before->status), 'class="chzn-select form-control" data-placeholder="Choose a Accesslevel..."'); ?>
+                <?php echo form_dropdown( 'status',$status,set_value( 'status',$before->status)); ?>
                  <label>Status</label>
             </div>
         </div>

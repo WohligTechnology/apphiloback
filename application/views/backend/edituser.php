@@ -69,7 +69,7 @@
 			<div class="file-field input-field col m6 s12">
 				<span class="img-center big">
 								                    	<?php if($before->image == "") { } else {
-									                    ?><img src="<?php echo base_url('uploads')."/".$before->image; ?>" width="140px" height="140px">
+									                    ?><img src="<?php echo base_url('uploads')."/".$before->image; ?>">
 															<?php } ?>
 															</span>
 				<div class="btn blue darken-4">
@@ -85,7 +85,7 @@
 			<div class="file-field input-field col m6 s12">
 				<span class="img-center big">
 								<?php if($before->coverimage == "") { } else {
-                    ?><img src="<?php echo base_url('uploads')."/".$before->coverimage; ?>" width="140px" height="140px">
+                    ?><img src="<?php echo base_url('uploads')."/".$before->coverimage; ?>" >
 						<?php } ?>
 				</span>
 				<div class="btn blue darken-4">

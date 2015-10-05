@@ -22,12 +22,12 @@
 
         <div class="row">
             <div class="input-field col s6">
-                <?php echo form_dropdown( 'status',$status,set_value( 'status',$before->status), 'class="chzn-select form-control" data-placeholder="Choose a Accesslevel..."'); ?>
+                <?php echo form_dropdown( 'status',$status,set_value( 'status',$before->status)); ?>
             </div>
         </div>
             <div class="row">
             <div class="input-field col s6">
-                <?php echo form_dropdown( 'blog',$blog,set_value( 'blog',$before->blog), 'class="chzn-select form-control" data-placeholder="Choose a Accesslevel..."'); ?>
+                <?php echo form_dropdown( 'blog',$blog,set_value( 'blog',$before->blog)); ?>
             </div>
         </div>
         <div class=" form-group">

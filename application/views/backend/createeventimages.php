@@ -5,13 +5,13 @@
         <form class="col s12" method="post" action="<?php echo site_url('site/createeventimagessubmit');?>" enctype="multipart/form-data">
                <div class="row">
                 <div class="input-field col s6">
-                    <?php echo form_dropdown( 'event',$event,set_value( 'event',$this->input->get('id')), 'class="chzn-select form-control" 	data-placeholder="Choose a Accesslevel..."'); ?>
+                    <?php echo form_dropdown( 'event',$event,set_value( 'event',$this->input->get('id'))); ?>
                      <label>Event</label>
                 </div>
             </div>
                <div class="row">
                 <div class="input-field col s6">
-                    <?php echo form_dropdown( 'status',$status,set_value( 'status'), 'class="chzn-select form-control" 	data-placeholder="Choose a Accesslevel..."'); ?>
+                    <?php echo form_dropdown( 'status',$status,set_value( 'status')); ?>
                      <label>Status</label>
                 </div>
             </div> 

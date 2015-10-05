@@ -104,7 +104,7 @@
                 <div class=" form-group" style="display:none">
                     <label class="col-sm-2 control-label" for="normal-field">Type</label>
                     <div class="col-sm-4">
-                        <?php echo form_dropdown( "type",$type,set_value( 'type',$before->type),"class='chzn-select form-control'");?>
+                        <?php echo form_dropdown( "type",$type,set_value( 'type',$before->type));?>
                     </div>
                 </div>
                 <div class="row">

@@ -45,21 +45,21 @@
 							"2" => "Base URL",
 							"3" => "External URL"
 							);
-							echo form_dropdown('linktype',$linktype,set_value('linktype'),'class="chzn-select form-control"'); 
+							echo form_dropdown('linktype',$linktype,set_value('linktype')); 
 						  ?>
 						</div>
 					</div>
 					<div class=" form-group">
 					  <label class="col-sm-2 control-label">Parent Menu</label>
 					  <div class="col-sm-4">
-						<?php 	 echo form_dropdown('parentmenu',$parentmenu,set_value('parentmenu'),'class="chzn-select form-control" 	');
+						<?php 	 echo form_dropdown('parentmenu',$parentmenu,set_value('parentmenu')');
 						?>
 					  </div>
 					</div>
 					<div class=" form-group">
 					  <label class="col-sm-2 control-label">Menu Access</label>
 					  <div class="col-sm-4">
-						<?php   echo form_multiselect('menuaccess[]',$accesslevel,set_value('menuaccess'),'id="select2" class="chzn-select myselect2 form-control populate placeholder select2-offscreen" ');	 ?>
+						<?php   echo form_multiselect('menuaccess[]',$accesslevel,set_value('menuaccess'),'id="select2" class="myselect2 form-control populate placeholder select2-offscreen" ');	 ?>
 					  </div>
 					</div>
 					<div class=" form-group">
@@ -70,7 +70,7 @@
 						"1" => "Yes",
 						"2" => "No",
 						);
-						echo form_dropdown('isactive',$isactive,set_value('isactive'),'class="chzn-select form-control" 	');
+						echo form_dropdown('isactive',$isactive,set_value('isactive'));
 						?>
 					  </div>
 					</div>

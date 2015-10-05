@@ -178,7 +178,7 @@
 
 			<div class="row" style="display:none">
 				<div class="input-field col s6">
-					<?php echo form_dropdown( 'type',$type,set_value( 'type',$before->type), 'class="chzn-select form-control" data-placeholder="Choose a Accesslevel..."'); ?>
+					<?php echo form_dropdown( 'type',$type,set_value( 'type',$before->type)); ?>
 				</div>
 			</div>
 			<div class="row">

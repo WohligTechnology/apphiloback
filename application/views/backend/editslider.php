@@ -13,7 +13,7 @@
 
 		<div class="row">
 			<div class="input-field col m6 s12">
-				<?php echo form_dropdown( 'status',$status,set_value( 'status',$before->status), 'class="chzn-select form-control" data-placeholder="Choose a Accesslevel..."'); ?>
+				<?php echo form_dropdown( 'status',$status,set_value( 'status',$before->status)); ?>
 					<label>Status</label>
 			</div>
 		</div>
@@ -22,7 +22,7 @@
 			<div class="file-field input-field col m6 s12">
 				<span class="img-center big">
                    			<?php if($before->image == "") { } else {
-                    ?><img src="<?php echo base_url('uploads')."/".$before->image; ?>" width="140px" height="140px">
+                    ?><img src="<?php echo base_url('uploads')."/".$before->image; ?>">
 						<?php } ?></span>
 				<div class="btn blue darken-4">
 					<span>Image</span>

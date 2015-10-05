@@ -9,7 +9,7 @@
 
          <div class="row">
             <div class="input-field col s6">
-                <?php echo form_dropdown( 'user',$user,set_value( 'user',$before->user), 'class="chzn-select form-control" data-placeholder="Choose a Accesslevel..."'); ?>
+                <?php echo form_dropdown( 'user',$user,set_value( 'user',$before->user)); ?>
                  <label>User</label>
             </div>
         </div>

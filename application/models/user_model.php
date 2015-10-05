@@ -34,6 +34,31 @@ class User_model extends CI_Model
     
     public function create($name, $email, $password, $accesslevel, $status, $socialid, $logintype, $image, $json, $contact, $address, $eventnotification, $photonotification, $videonotification, $blognotification, $coverimage)
     {
+        
+        if ($eventnotification == "") {
+            $eventnotification = "false";
+        } else {
+            $eventnotification = "true";
+        }
+        
+        if ($photonotification == "") {
+            $photonotification = "false";
+        } else {
+            $photonotification = "true";
+        }
+        
+        if ($videonotification == "") {
+            $videonotification = "false";
+        } else {
+            $videonotification = "true";
+        }
+        
+        if ($blognotification == "") {
+            $blognotification = "false";
+        } else {
+            $blognotification = "true";
+        }
+        
         $data  = array(
             'name' => $name,
             'email' => $email,
@@ -46,10 +71,10 @@ class User_model extends CI_Model
             'logintype' => $logintype,
             'contact' => $contact,
             'address' => $address,
-            'eventnotification' => "false",
-            'photonotification' => "false",
-            'videonotification' => "false",
-            'blognotification' => "false",
+            'eventnotification' => $eventnotification,
+            'photonotification' => $photonotification,
+            'videonotification' => $videonotification,
+            'blognotification' => $blognotification,
             'coverimage' => $coverimage
         );
         $query = $this->db->insert('user', $data);

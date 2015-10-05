@@ -9,19 +9,19 @@
 
          <div class="row">
             <div class="input-field col s6">
-                <?php echo form_dropdown( 'event',$event,set_value( 'event',$before->event), 'class="chzn-select form-control" data-placeholder="Choose a Accesslevel..."'); ?>
+                <?php echo form_dropdown( 'event',$event,set_value( 'event',$before->event)); ?>
                  <label>Event</label>
             </div>
         </div> 
             <div class="row" style="display:none">
             <div class="input-field col s6">
-                <?php echo form_dropdown( 'videogallery',$videogallery,set_value( 'videogallery',$before->videogallery), 'class="chzn-select form-control" data-placeholder="Choose a Accesslevel..."'); ?>
+                <?php echo form_dropdown( 'videogallery',$videogallery,set_value( 'videogallery',$before->videogallery)); ?>
                  <label>Video Gallery</label>
             </div>
         </div>  
            <div class="row">
             <div class="input-field col s6">
-                <?php echo form_dropdown( 'status',$status,set_value( 'status',$before->status), 'class="chzn-select form-control" data-placeholder="Choose a Accesslevel..."'); ?>
+                <?php echo form_dropdown( 'status',$status,set_value( 'status',$before->status)); ?>
                  <label>Status</label>
             </div>
         </div>

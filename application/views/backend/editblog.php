@@ -45,12 +45,7 @@
                 </div>
             </div>
         </div>
-              <div class="row">
-            <div class="input-field col s6">
-                <label>Video Url</label>
-                <input type="text" name="url" value="<?php echo set_value('url',$before->url);?>">
-            </div>
-        </div>
+              
                <div class="row">
             <div class="input-field col s6">
                 <label>Timestamp</label>

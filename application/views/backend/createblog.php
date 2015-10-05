@@ -37,12 +37,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="input-field col s6">
-                    <label for="url">Video Url</label>
-                    <input type="text" id="url" name="url" value="<?php echo set_value('url');?>">
-                </div>
-            </div>
+            
             <div class="row">
                 <div class="col s6">
                         <div class=" form-group">

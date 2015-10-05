@@ -8,7 +8,7 @@
         <input type="hidden" id="normal-field" class="form-control" name="id" value="<?php echo set_value('id',$before->id);?>" style="display:none;">
           <div class="row">
             <div class="input-field col s6">
-                <?php echo form_dropdown( 'gallery',$gallery,set_value( 'gallery',$before->gallery), 'class="chzn-select form-control" data-placeholder="Choose a Accesslevel..."'); ?>
+                <?php echo form_dropdown( 'gallery',$gallery,set_value( 'gallery',$before->gallery)); ?>
                  <label>Gallery</label>
             </div>
         </div>
@@ -27,7 +27,7 @@
 
         <div class="row">
             <div class="input-field col s6">
-                <?php echo form_dropdown( 'status',$status,set_value( 'status',$before->status), 'class="chzn-select form-control" data-placeholder="Choose a Accesslevel..."'); ?>
+                <?php echo form_dropdown( 'status',$status,set_value( 'status',$before->status)); ?>
                  <label>Status</label>
             </div>
         </div>
