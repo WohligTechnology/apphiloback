@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col s12">
+<!--    <div class="col s12">-->
         <div class="col s12 drawchintantable">
             <?php $this->chintantable->createsearch("List of Articles");?>
             <table class="highlight">
@@ -22,8 +22,7 @@
 
 
 
-    </div>
-    <div class="createbuttonplacement"><a class="btn-floating btn-large waves-effect waves-light blue darken-4" href="<?php echo site_url("site/createarticles"); ?>"><i class="material-icons">add</i></a>
+    <div class="createbuttonplacement"><a class="btn-floating btn-large waves-effect waves-light blue darken-4 tooltipped" href="<?php echo site_url("site/createarticles"); ?>"data-position="top" data-delay="50" data-tooltip="Create"><i class="material-icons">add</i></a>
     </div>
 
 </div>

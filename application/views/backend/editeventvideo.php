@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col s12">
-    <h4 class="pad-left-15">Edit Eventvideo</h4>
+    <h4 class="pad-left-15">Edit Event Video</h4>
     </div>
 </div>
 <div class="row">
