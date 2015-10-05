@@ -42,6 +42,7 @@ class Site extends CI_Controller
             $data[ 'blognotification' ] =$this->user_model->getblognotificationdropdown();
 //        $data['category']=$this->category_model->getcategorydropdown();
 		$data[ 'page' ] = 'createuser';
+		$data[ 'activemenu' ] = 'users';
 		$data[ 'title' ] = 'Create User';
 		$this->load->view( 'template', $data );	
 	}
@@ -263,13 +264,14 @@ class Site extends CI_Controller
 		$data[ 'status' ] =$this->user_model->getstatusdropdown();
 		$data['accesslevel']=$this->user_model->getaccesslevels();
 		$data[ 'logintype' ] =$this->user_model->getlogintypedropdown();
-           $data[ 'eventnotification' ] =$this->user_model->geteventnotificationdropdown();
-            $data[ 'photonotification' ] =$this->user_model->getphotonotificationdropdown();
-            $data[ 'videonotification' ] =$this->user_model->getvideonotificationdropdown();
-            $data[ 'blognotification' ] =$this->user_model->getblognotificationdropdown();
+        $data[ 'eventnotification' ] =$this->user_model->geteventnotificationdropdown();
+        $data[ 'photonotification' ] =$this->user_model->getphotonotificationdropdown();
+        $data[ 'videonotification' ] =$this->user_model->getvideonotificationdropdown();
+        $data[ 'blognotification' ] =$this->user_model->getblognotificationdropdown();
 		$data['before']=$this->user_model->beforeedit($this->input->get('id'));
 		$data['page']='edituser';
-//		$data['page2']='block/userblock';
+		$data['activemenu']='users';
+        
 		$data['title']='Edit User';
 		$this->load->view('template',$data);
 	}
@@ -631,7 +633,7 @@ $data["alertsuccess"]="articles Updated Successfully.";
 $data["redirect"]="site/viewarticles";
     }
     else{
-    $data["redirect"]="site/editarticles?id=1";
+    $data["redirect"]="site/home?id=1";
     }
 $this->load->view("redirect",$data);
 }
@@ -1064,6 +1066,7 @@ public function viewgalleryimage()
 $access=array("1");
 $this->checkaccess($access);
 $data["page"]="viewgalleryimage";
+$data["activemenu"]="gallery";
 $data["page2"]="block/galleryblock";
 $data[ 'status' ] =$this->user_model->getstatusdropdown();
 $data[ 'before1' ] =$this->input->get('id');

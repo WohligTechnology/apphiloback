@@ -34,7 +34,7 @@
         </div>
         <div class="row">
             <div class="input-field col s6">
-                <label for="socialid">SocialId</label>
+                <label for="socialid">Social Id</label>
                 <input type="text" id="socialid" name="socialid" value="<?php echo set_value('socialid',$before->socialid);?>">
             </div>
         </div>
@@ -47,21 +47,21 @@
 
         <div class="row">
             <div class="input-field col s6">
-                <label for="logintype">logintype</label>
-                <input type="text" id="logintype" name="logintype" value="<?php echo set_value('logintype',$before->logintype);?>">
+                <label for="logintype">Login Type</label>
+                <input type="text" id="logintype" readonly="true" name="logintype" value="<?php echo set_value('logintype',$before->logintype);?>">
             </div>
         </div>
 
         <div class="row">
             <div class="input-field col s6">
-                <?php echo form_dropdown( 'status',$status,set_value( 'status',$before->status), 'class="chzn-select form-control" data-placeholder="Choose a Accesslevel..."'); ?>
+                <?php echo form_dropdown( 'status',$status,set_value( 'status',$before->status)); ?>
                  <label>Status</label>
             </div>
         </div>
 
         <div class="row">
             <div class="input-field col s6">
-                <?php echo form_dropdown( 'accesslevel',$accesslevel,set_value( 'accesslevel',$before->accesslevel), 'class="chzn-select form-control" data-placeholder="Choose a Accesslevel..."'); ?> 
+                <?php echo form_dropdown( 'accesslevel',$accesslevel,set_value( 'accesslevel',$before->accesslevel)); ?> 
                 <label>Access Level</label>
             </div>
         </div>
