@@ -1069,7 +1069,7 @@ public function viewgalleryimage()
 $access=array("1");
 $this->checkaccess($access);
 $data["page"]="viewgalleryimage";
-$data["activemenu"]="gallery";
+$data["activemenu"]="image gallery";
 $data["page2"]="block/galleryblock";
 $data[ 'status' ] =$this->user_model->getstatusdropdown();
 $data[ 'before1' ] =$this->input->get('id');
@@ -1137,6 +1137,7 @@ public function creategalleryimage()
 $access=array("1");
 $this->checkaccess($access);
 $data["page"]="creategalleryimage";
+$data["activemenu"]="image gallery";
 $data["page2"]="block/galleryblock";
 $data[ 'status' ] =$this->user_model->getstatusdropdown();
 $data[ 'gallery' ] =$this->user_model->getgallerydropdown();
@@ -1218,6 +1219,7 @@ $access=array("1");
 $this->checkaccess($access);
 $data["page"]="editgalleryimage";
 $data["page2"]="block/galleryblock";
+$data["activemenu"]="image gallery";
 $data[ 'status' ] =$this->user_model->getstatusdropdown();
 $getgallery=$this->galleryimage_model->beforeedit($this->input->get("gallery"));
 $getid=$this->galleryimage_model->beforeedit($this->input->get("id"));
@@ -1481,7 +1483,7 @@ public function viewvideogalleryvideo()
 $access=array("1");
 $this->checkaccess($access);
 $data["page"]="viewvideogalleryvideo";
-$data["activemenu"]="videos";
+$data["activemenu"]="video gallery";
 $data["page2"]="block/videoblock";
 $data["before1"]=$this->input->get('id');
 $data["before2"]=$this->input->get('id');
@@ -1547,6 +1549,7 @@ public function createvideogalleryvideo()
 $access=array("1");
 $this->checkaccess($access);
 $data["page"]="createvideogalleryvideo";
+$data["activemenu"]="video gallery";
 $data["page2"]="block/videoblock";
 $data["before1"]=$this->input->get('id');
 $data["before2"]=$this->input->get('id');
@@ -1592,7 +1595,7 @@ public function editvideogalleryvideo()
 $access=array("1");
 $this->checkaccess($access);
 $data["page"]="editvideogalleryvideo";
-$data["activemenu"]="videos";
+$data["activemenu"]="video gallery";
 $data["page2"]="block/videoblock";
 $data["before1"]=$this->input->get('videoid');
 $data["before2"]=$this->input->get('videoid');
