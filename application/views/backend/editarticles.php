@@ -31,7 +31,7 @@
 							</div>
 							<?php } ?>
 								<div class="row">
-									<div class="col s12 ">
+									<div class="col s12 m6">
 										<label>Content</label>
 										<textarea id="some-textarea" name="content" placeholder="Enter text ...">
 											<?php echo set_value( 'content',$before->content);?>
