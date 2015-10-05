@@ -3,6 +3,7 @@
 <title><?php echo $title;?> - BusinessApp</title>
 
 <head>
+	<link rel="shortcut icon" href="<?php echo base_url('assets').'/';?>img/favicon.png" type="image/png"/>
     <!--Let browser know website is optimized for mobile-->
     <link rel="stylesheet" href="<?php echo base_url('assets').'/';?>bower_components/Materialize/dist/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">

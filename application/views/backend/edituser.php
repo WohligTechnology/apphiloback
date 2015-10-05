@@ -67,29 +67,33 @@
 		</div>
 		<div class="row">
 			<div class="file-field input-field col m6 s12">
+				<span class="img-center big">
+								                    	<?php if($before->image == "") { } else {
+									                    ?><img src="<?php echo base_url('uploads')." / ".$before->image; ?>" width="140px" height="140px">
+															<?php } ?>
+															</span>
 				<div class="btn blue darken-4">
 					<span>Image</span>
 					<input name="image" type="file" multiple>
 				</div>
 				<div class="file-path-wrapper">
 					<input class="file-path validate" type="text" placeholder="Upload one or more files" value="<?php echo set_value('image',$before->image);?>">
-					<?php if($before->image == "") { } else {
-                    ?><img src="<?php echo base_url('uploads')." / ".$before->image; ?>" width="140px" height="140px">
-						<?php } ?>
 				</div>
 			</div>
 		</div>
 		<div class="row">
 			<div class="file-field input-field col m6 s12">
+				<span class="img-center big">
+								<?php if($before->coverimage == "") { } else {
+                    ?><img src="<?php echo base_url('uploads')." / ".$before->coverimage; ?>" width="140px" height="140px">
+						<?php } ?>
+				</span>
 				<div class="btn blue darken-4">
 					<span>Cover Image</span>
 					<input name="coverimage" type="file" multiple>
 				</div>
 				<div class="file-path-wrapper">
 					<input class="file-path validate" type="text" placeholder="Upload one or more files" value="<?php echo set_value('coverimage',$before->coverimage);?>">
-					<?php if($before->coverimage == "") { } else {
-                    ?><img src="<?php echo base_url('uploads')." / ".$before->coverimage; ?>" width="140px" height="140px">
-						<?php } ?>
 				</div>
 			</div>
 		</div>
