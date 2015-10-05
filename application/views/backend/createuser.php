@@ -41,8 +41,14 @@
 		</div>
 		<div class="row">
 			<div class="input-field col m6 s12">
-				<label for="logintype">logintype</label>
-				<input type="text" id="logintype" name="logintype" value="<?php echo set_value('logintype');?>">
+			<select id="logintype" name="logintype" id="" value="<?php echo set_value('logintype');?>">
+			    <option value="Email">Email</option>
+			    <option value="Facebook">Facebook</option>
+			    <option value="Google">Google</option>
+			    <option value="Twitter">Twitter</option>
+			    <option value="Instagram">Instagram</option>
+			</select>
+				<label for="logintype">Login Type</label>
 			</div>
 		</div>
 		<div class="row">

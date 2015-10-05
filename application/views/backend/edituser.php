@@ -47,8 +47,14 @@
 
 		<div class="row">
 			<div class="input-field col m6 s12">
+			<select id="logintype" name="logintype" placeholder="Login Type" id="" value="<?php echo set_value('logintype',$before->logintype);?>">
+			    <option value="Email">Email</option>
+			    <option value="Facebook">Facebook</option>
+			    <option value="Google">Google</option>
+			    <option value="Twitter">Twitter</option>
+			    <option value="Instagram">Instagram</option>
+			</select>
 				<label for="logintype">Login Type</label>
-				<input type="text" id="logintype" readonly="true" name="logintype" value="<?php echo set_value('logintype',$before->logintype);?>">
 			</div>
 		</div>
 

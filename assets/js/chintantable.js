@@ -49,6 +49,10 @@ function generatejquery(url) {
                     $(".chintantablepagination ul.pagination").append('<li class="disabled"><a href="#" data-page="' + (data.pageno) + '"><span aria-hidden="true">&raquo;</span></a></li>');
                 }
 
+                 $(".chintantablepagination ul.pagination li").click(function() {
+                     $(this).children("a").trigger("click");
+                 });
+                
                 $(".chintantablepagination ul.pagination li a").click(function () {
                     var liattr = $(this).parent("li").hasClass("disabled");
                     if (!liattr) {
