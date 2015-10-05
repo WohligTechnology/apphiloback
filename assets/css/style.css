@@ -274,7 +274,12 @@ ul.side-nav.fixed li a {
         padding-left: 0;
     }
 }
-
+.dropdown-content li>a, .dropdown-content li>span {
+    font-size: 1.2rem;
+    color: #0D47A1;
+    display: block;
+    padding: 1rem 1rem;
+}
 .panel-body ul#nav-mobile li a {
     padding: 15px;
     background-color: #0D47A1;
@@ -296,4 +301,7 @@ td, th {
     text-align: left;
     vertical-align: middle;
     border-radius: 2px;
+}
+table.responsive-table td {
+    line-height: 36px;
 }
