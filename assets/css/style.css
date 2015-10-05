@@ -271,13 +271,18 @@ ul.side-nav.fixed li a {
 }
 
 .panel-body ul#nav-mobile li a {
-    padding: 15px;
-    background-color: #0D47A1;
-    color: white !important;
+    padding: 10px 15px;
+    color: #0D47A1;
+    background-color: white;
+    border: 1px solid #0D47A1;
     width: 100%;
     margin-bottom: 10px;
 }
 
+.panel-body ul#nav-mobile li a.active {
+    color: white;
+    background-color: #0D47A1;
+}
 .chisorting {
     background-color: white !important;
     color: #0D47A1;
