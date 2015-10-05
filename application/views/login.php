@@ -35,6 +35,12 @@
         .padding-top {
             padding-top: 10%;
         }
+        @media only screen and (max-width: 1050px) {
+            body {
+                    background-position: top center;
+                    background-size: auto;
+            }
+        }
     </style>
 
     <!--[if IE]>
