@@ -579,7 +579,7 @@ $this->checkaccess($access);
 $data["page"]="editarticles";
 $data["activemenu"]="pages";
 $data[ 'status' ] =$this->user_model->getstatusdropdown();
-$data["title"]="Edit Article";
+$data["title"]="Edit Page";
 $data["before"]=$this->articles_model->beforeedit($this->input->get("id"));
 $this->load->view("template",$data);
 }
