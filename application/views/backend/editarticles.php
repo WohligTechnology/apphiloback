@@ -31,8 +31,8 @@
 							</div>
 							<?php } ?>
 								<div class="row">
-									<div class="col s12 m6">
-										<p>Getting Started </p>
+									<div class="col s12 ">
+										<label>Content</label>
 										<textarea id="some-textarea" name="content" placeholder="Enter text ...">
 											<?php echo set_value( 'content',$before->content);?>
 										</textarea>
