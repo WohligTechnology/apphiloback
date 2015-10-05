@@ -357,3 +357,6 @@ textarea.materialize-textarea:focus:not([readonly]) {
         width: 32px;
     }
 }
+.pagination li {
+    vertical-align: middle;
+}
