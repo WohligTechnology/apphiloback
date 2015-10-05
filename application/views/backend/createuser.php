@@ -1,6 +1,8 @@
 <div class="row">
-<h4 class="pad-left-15">Create User</h4>
-	<form class="" method="post" action="<?php echo site_url('site/createusersubmit');?>" enctype="multipart/form-data">
+	<div class="col s12">
+		<h4 class="pad-left-15">Create User</h4>
+	</div>
+	<form class="col s12" method="post" action="<?php echo site_url('site/createusersubmit');?>" enctype="multipart/form-data">
 		<div class="row">
 			<div class="input-field col m6 s12">
 				<label for="name">Name</label>

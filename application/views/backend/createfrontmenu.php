@@ -1,8 +1,8 @@
 <div class="row">
-	<div>
+	<div class="col 12">
 		<h4 class="pad-left-15">Create Menu</h4>
 	</div>
-	<form method="post" action="<?php echo site_url('site/createfrontmenusubmit');?>" enctype="multipart/form-data">
+	<form class="col s12" method="post" action="<?php echo site_url('site/createfrontmenusubmit');?>" enctype="multipart/form-data">
 		<div class="row">
 			<div class="input-field col m6 s12">
 				<label for="name">Name</label>

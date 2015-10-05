@@ -1,6 +1,7 @@
-<h4 class="pad-left-15">Edit Slider</h4>
 <div class="row">
-	<form class="" method="post" action="<?php echo site_url('site/editslidersubmit');?>" enctype="multipart/form-data">
+	<div class="col s12">
+		<h4 class="pad-left-15">Edit Slider</h4></div>
+	<form class="col s12" method="post" action="<?php echo site_url('site/editslidersubmit');?>" enctype="multipart/form-data">
 		<input type="hidden" id="normal-field" class="form-control" name="id" value="<?php echo set_value('id',$before->id);?>" style="display:none;">
 
 		<div class="row">
@@ -19,15 +20,16 @@
 
 		<div class="row">
 			<div class="file-field input-field col m6 s12">
+				<span class="img-center big">
+                   			<?php if($before->image == "") { } else {
+                    ?><img src="<?php echo base_url('uploads')." / ".$before->image; ?>" width="140px" height="140px">
+						<?php } ?></span>
 				<div class="btn blue darken-4">
 					<span>Image</span>
 					<input name="image" type="file" multiple>
 				</div>
 				<div class="file-path-wrapper">
 					<input class="file-path validate" type="text" placeholder="Upload one or more files" value="<?php echo set_value('image',$before->image);?>">
-					<?php if($before->image == "") { } else {
-                    ?><img src="<?php echo base_url('uploads')." / ".$before->image; ?>" width="140px" height="140px">
-						<?php } ?>
 				</div>
 			</div>
 		</div>

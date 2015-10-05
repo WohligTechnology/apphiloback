@@ -1,8 +1,10 @@
 <div class="row">
-	<h4 class="pad-left-15">Edit Menu</h4>
+	<div class="col s12">
+		<h4 class="pad-left-15">Edit Menu</h4>
+	</div>
 </div>
 <div class="row">
-	<form method="post" action="<?php echo site_url('site/editfrontmenusubmit');?>" enctype="multipart/form-data">
+	<form class="col s12" method="post" action="<?php echo site_url('site/editfrontmenusubmit');?>" enctype="multipart/form-data">
 		<input type="hidden" id="normal-field" class="form-control" name="id" value="<?php echo set_value('id',$before->id);?>" style="display:none;">
 
 		<div class="row">
