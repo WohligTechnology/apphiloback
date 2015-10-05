@@ -1,19 +1,21 @@
 <div class="row">
     <div class="col s12">
-        <div class="col s12 drawchintantable">
-           <?php $this->chintantable->createsearch("Config ");?>
-            <table class="highlight responsive-table">
-                <thead>
-                    <tr>
-                                    <th data-field="title">Title</th>
-                                    <th data-field="action">Action</th>
-
-                    </tr>
-                </thead>
-                <tbody>
-
-                </tbody>
-            </table>
+        <div class="row">
+            <div class="col s12 drawchintantable">
+               <?php $this->chintantable->createsearch("Config ");?>
+                <table class="highlight responsive-table">
+                    <thead>
+                        <tr>
+                                        <th data-field="title">Title</th>
+                                        <th data-field="action">Action</th>
+            
+                        </tr>
+                    </thead>
+                    <tbody>
+            
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>

@@ -1,22 +1,24 @@
 <div class="row">
     <div class="col s12">
-        <div class="col s12 drawchintantable">
-           <?php $this->chintantable->createsearch("List of Video Gallery Video");?>
-            <table class="highlight responsive-table">
-                <thead>
-                    <tr>
-                        <th data-field="id">ID</th>
-                        <th data-field="videogallery">Video Gallery</th>
-                        <th data-field="order">Order</th>
-                        <th data-field="status">Status</th>
-                        <th data-field="action">Action</th>
-
-                    </tr>
-                </thead>
-                <tbody>
-
-                </tbody>
-            </table>
+        <div class="row">
+            <div class="col s12 drawchintantable">
+               <?php $this->chintantable->createsearch("List of Video Gallery Video");?>
+                <table class="highlight responsive-table">
+                    <thead>
+                        <tr>
+                            <th data-field="id">ID</th>
+                            <th data-field="videogallery">Video Gallery</th>
+                            <th data-field="order">Order</th>
+                            <th data-field="status">Status</th>
+                            <th data-field="action">Action</th>
+            
+                        </tr>
+                    </thead>
+                    <tbody>
+            
+                    </tbody>
+                </table>
+            </div>
         </div>
         <?php $this->chintantable->createpagination();?>
 

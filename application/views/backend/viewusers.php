@@ -1,24 +1,26 @@
 <div class="row">
     <div class="col s12">
-        <div class="col s12 drawchintantable">
-             <?php $this->chintantable->createsearch("List of User");?>
-            <table class="highlight responsive-table">
-                <thead>
-                    <tr>
-                        <th data-field="id">Name</th>
-                        <th data-field="name">Name</th>
-                        <th data-field="email">Item Name</th>
-                        <th data-field="logintype">Item Name</th>
-                        <th data-field="accesslevelname">Item Name</th>
-<!--                        <th data-field="status">Item Name</th>-->
-                        <th data-field="">Action</th>
-
-                    </tr>
-                </thead>
-                <tbody>
-
-                </tbody>
-            </table>
+        <div class="row">
+            <div class="col s12 drawchintantable">
+                 <?php $this->chintantable->createsearch("List of User");?>
+                <table class="highlight responsive-table">
+                    <thead>
+                        <tr>
+                            <th data-field="id">Name</th>
+                            <th data-field="name">Name</th>
+                            <th data-field="email">Item Name</th>
+                            <th data-field="logintype">Item Name</th>
+                            <th data-field="accesslevelname">Item Name</th>
+            <!--                        <th data-field="status">Item Name</th>-->
+                            <th data-field="">Action</th>
+            
+                        </tr>
+                    </thead>
+                    <tbody>
+            
+                    </tbody>
+                </table>
+            </div>
         </div>
         <?php $this->chintantable->createpagination();?>
 
