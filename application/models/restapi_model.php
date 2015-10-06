@@ -17,7 +17,7 @@ return  1;
         return $query;
     }    
     public function signup($username,$email,$password,$dob){
-		$data=array("username" => $username,"email" => $email,"password" => md5($password),"eventnotification" => 'false',"photonotification" => 'false',"videonotification" => 'false',"blognotification" => 'false',"dob" => $dob,"logintype" => "Email");
+		$data=array("name" => $username,"email" => $email,"password" => md5($password),"eventnotification" => 'false',"photonotification" => 'false',"videonotification" => 'false',"blognotification" => 'false',"dob" => $dob,"logintype" => "Email","accesslevel" => "3");
 		$query=$this->db->insert( "user", $data );
 		$id=$this->db->insert_id();
 	    $newdata=$this->db->query("SELECT * FROM `user` WHERE `id`='$id'")->row();
@@ -204,7 +204,7 @@ return  1;
         $oldpassword = md5($oldpassword);
         $newpassword = md5($newpassword);
         $confirmpassword = md5($confirmpassword);
-        if ($newpassword == $confirmpassword) {
+        if ($newpassword === $confirmpassword) {
             $useridquery = $this->db->query("SELECT `id` FROM `user` WHERE `password`='$oldpassword'");
             if ($useridquery->num_rows() == 0) {
                 return 0;
