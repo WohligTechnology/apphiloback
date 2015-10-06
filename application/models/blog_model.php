@@ -3,9 +3,9 @@ if ( !defined( "BASEPATH" ) )
 exit( "No direct script access allowed" );
 class blog_model extends CI_Model
 {
-public function create($name,$title,$json,$content,$url,$image)
+public function create($title,$json,$content,$url,$image)
 {
-$data=array("name" => $name,"title" => $title,"json" => $json,"content" => $content,"image" => $image);
+$data=array("title" => $title,"json" => $json,"content" => $content,"image" => $image);
 $query=$this->db->insert( "webapp_blog", $data );
 $id=$this->db->insert_id();
 if(!$query)
@@ -26,9 +26,9 @@ $query->blogimage=$this->db->query("SELECT `id`, `blog`, `status`, `order`, `ima
 $query->blogvideo=$this->db->query("SELECT `id`, `blog`, `status`, `order`, `video` FROM `webapp_blogvideo` WHERE `status`=1 AND `blog`='$id'")->result();
 return $query;
 }
-public function edit($id,$name,$title,$json,$content,$timestamp,$url,$image)
+public function edit($id,$title,$json,$content,$timestamp,$url,$image)
 {
-$data=array("name" => $name,"title" => $title,"json" => $json,"content" => $content,"timestamp" => $timestamp,"image" => $image);
+$data=array("title" => $title,"json" => $json,"content" => $content,"timestamp" => $timestamp,"image" => $image);
 $this->db->where( "id", $id );
 $query=$this->db->update( "webapp_blog", $data );
 return 1;

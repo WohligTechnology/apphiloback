@@ -26,52 +26,44 @@ return  1;
 		else
 		return $newdata;
     }
-    public function signin($username,$password){
+    public function signin($username,$password)
+    {
+        
      $password=md5($password);
         $query=$this->db->query("SELECT `id` FROM `user` WHERE `email`='$username' AND `password`= '$password'");
         if($query->num_rows > 0)
         {
             $user=$query->row();
             $user=$user->id;
-            
-		   $newdata=$this->db->query("SELECT * FROM `user` WHERE `id`='$user'")->row();
-//            $newdata = array(
-//                'username'     => $username,
-//                'password' => $password,
-//                'logged_in' => true,
-//                'id'=> $user
-//            );
-		   
+            $query1 = $this->db->query("UPDATE `user` SET `forgotpassword`='' WHERE `email`='$username'");
+		   $newdata=$this->db->query("SELECT `id`, `name`, `email`, `accesslevel`, `timestamp`, `status`, `image`, `username`, `socialid`, `logintype`, `json`, `dob`, `street`, `address`, `city`, `state`, `pincode`, `facebook`, `twitter`, `google`, `country`, `instagram`, `contact`, `eventnotification`, `photonotification`, `videonotification`, `blognotification`, `coverimage`, `forgotpassword` FROM `user` WHERE `id`='$user'")->row();
             $this->session->set_userdata($newdata);
             //print_r($newdata);
             return $newdata;
         }
-        else
-        return false;
+        else if($query->num_rows==0)
+        {
+            $query3=$this->db->query("SELECT `id` FROM `user` WHERE `email`='$username' AND `forgotpassword`= '$password'");
+            if($query3->num_rows > 0)
+                {
+                    $user=$query3->row();
+                    $user=$user->id;
+                    $query1 = $this->db->query("UPDATE `user` SET `forgotpassword`='',`password`='$password' WHERE `email`='$username'");
+                    $newdata=$this->db->query("SELECT `id`, `name`, `email`, `accesslevel`, `timestamp`, `status`, `image`, `username`, `socialid`, `logintype`, `json`, `dob`, `street`, `address`, `city`, `state`, `pincode`, `facebook`, `twitter`, `google`, `country`, `instagram`, `contact`, `eventnotification`, `photonotification`, `videonotification`, `blognotification`, `coverimage`, `forgotpassword` FROM `user` WHERE `id`='$user'")->row();
+
+                    $this->session->set_userdata($newdata);
+                    //print_r($newdata);
+                    return $newdata;
+                }
+                else
+                return false;
+        }
+       
     }
     
     public function getappconfig(){
     $query=$this->db->query("SELECT `id`, `title`, `content`, `text`, `type`, `image` FROM `config`")->result();
        return $query;
-    }
-      public function changepassword($id, $oldpassword, $newpassword, $confirmpassword) {
-        $oldpassword = md5($oldpassword);
-        $newpassword = md5($newpassword);
-        $confirmpassword = md5($confirmpassword);
-        if ($newpassword == $confirmpassword) {
-            $useridquery = $this->db->query("SELECT `id` FROM `user` WHERE `password`='$oldpassword'");
-            if ($useridquery->num_rows() == 0) {
-                return 0;
-            } else {
-                $query = $useridquery->row();
-                $userid = $query->id;
-                $updatequery = $this->db->query("UPDATE `user` SET `password`='$newpassword' WHERE `id`='$userid'");
-                return 1;
-            }
-        } else {
-//            echo "New password and confirm password do not match!!!";
-			return -1;
-        }
     }
     
     public function profilesubmit($id,$name,$email,$password,$dob,$contact)
@@ -208,6 +200,25 @@ return  1;
         $query=$this->db->query("UPDATE `user` SET `eventnotification`='$event',`photonotification`='$photo',`videonotification`='$video',`blognotification`='$blog' WHERE `id`='$id'"); 
         return $query;
         }
+     public function changepassword($id, $oldpassword, $newpassword, $confirmpassword) {
+        $oldpassword = md5($oldpassword);
+        $newpassword = md5($newpassword);
+        $confirmpassword = md5($confirmpassword);
+        if ($newpassword == $confirmpassword) {
+            $useridquery = $this->db->query("SELECT `id` FROM `user` WHERE `password`='$oldpassword'");
+            if ($useridquery->num_rows() == 0) {
+                return 0;
+            } else {
+                $query = $useridquery->row();
+                $userid = $query->id;
+                $updatequery = $this->db->query("UPDATE `user` SET `password`='$newpassword' WHERE `id`='$userid'");
+                return 1;
+            }
+        } else {
+//            echo "New password and confirm password do not match!!!";
+			return -1;
+        }
+    }
     
     
 }

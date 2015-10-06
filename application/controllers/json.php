@@ -1052,21 +1052,6 @@ $this->load->view("json",$data);
 $data["message"]=$this->restapi_model->getappconfig();
  $this->load->view("json",$data);
  }
-  public function changepassword() {
-       $data = json_decode(file_get_contents('php://input'), true);
-        $id=$data['id'];
-        $oldpassword=$data['oldpassword'];
-        $newpassword=$data['newpassword'];
-        $confirmpassword=$data['confirmpassword'];
-       if(empty($data))
-        {
-		$data['message']=0;
-		}
-	    else{
-        $data["message"] = $this->restapi_model->changepassword($id,$oldpassword,$newpassword,$confirmpassword);
-        }
-        $this->load->view("json", $data);
-    } 
  public function profilesubmit() {
        $data = json_decode(file_get_contents('php://input'), true);
          $id=$data['id'];
@@ -1102,57 +1087,57 @@ $data["message"]=$this->restapi_model->getappconfig();
         $this->load->view("json", $data);
     }
  
-  public function forgotpassword()
-    {
-        $data = json_decode(file_get_contents('php://input'), true);
-         $email=$data['email'];
-        $email=$this->input->get_post('email');
-        $userid=$this->user_model->getidbyemail($email);
-		$this->load->helper('string');
-        $randompassword=random_string('alnum',8);
-		$data['message']=$this->user_model->forgotpasswordsubmit($randompassword,$userid);
-        if($userid=="")
-        {
-            $data['message']="Not A Valid Email.";
-            $this->load->view("json",$data);
-        }
-        else
-        {
-        $this->load->library('email');
-        $this->email->from('jagruti@wohlig.com', 'Blazen');
-        $this->email->to($email);
-        $this->email->subject('Welcome to Blazen');   
-            
-        $message = "<html>
-
-      <body>
-    <div style='text-align:center;   width: 50%; margin: 0 auto;'>
-        <h4 style='font-size:1.5em;padding-bottom: 5px;color: #e82a96;'>One Stop Barter</h4>
-        <p style='font-size: 1em;padding-bottom: 10px;'>Your password is:</p>
-        <p style='font-size: 1em;padding-bottom: 10px;'>$randompassword</p>
-    </div>
-    <div style='text-align:center;position: relative;'>
-        <p style=' position: absolute; top: 8%;left: 50%; transform: translatex(-50%); font-size: 1em;margin: 0; letter-spacing:2px; font-weight: bold;'>
-            Thank You
-        </p>
-    </div>
-</body>
-
-</html>";
-        $this->email->message($message);
-        $this->email->send();
-//        $data["message"] = $this->email->print_debugger();
-        if(empty($data))
-        {
-		$data['message']=0;
-		}
-	    else{
-        $data["message"] = 'true';
-        }
-        $this->load->view("json", $data);
-        
-    }
-    }
+//  public function forgotpassword()
+//    {
+//        $data = json_decode(file_get_contents('php://input'), true);
+//         $email=$data['email'];
+//        $email=$this->input->get_post('email');
+//        $userid=$this->user_model->getidbyemail($email);
+//		$this->load->helper('string');
+//        $randompassword=random_string('alnum',8);
+//		$data['message']=$this->user_model->forgotpasswordsubmit($randompassword,$userid);
+//        if($userid=="")
+//        {
+//            $data['message']="Not A Valid Email.";
+//            $this->load->view("json",$data);
+//        }
+//        else
+//        {
+//        $this->load->library('email');
+//        $this->email->from('jagruti@wohlig.com', 'Blazen');
+//        $this->email->to($email);
+//        $this->email->subject('Welcome to Blazen');   
+//            
+//        $message = "<html>
+//
+//      <body>
+//    <div style='text-align:center;   width: 50%; margin: 0 auto;'>
+//        <h4 style='font-size:1.5em;padding-bottom: 5px;color: #e82a96;'>One Stop Barter</h4>
+//        <p style='font-size: 1em;padding-bottom: 10px;'>Your password is:</p>
+//        <p style='font-size: 1em;padding-bottom: 10px;'>$randompassword</p>
+//    </div>
+//    <div style='text-align:center;position: relative;'>
+//        <p style=' position: absolute; top: 8%;left: 50%; transform: translatex(-50%); font-size: 1em;margin: 0; letter-spacing:2px; font-weight: bold;'>
+//            Thank You
+//        </p>
+//    </div>
+//</body>
+//
+//</html>";
+//        $this->email->message($message);
+//        $this->email->send();
+////        $data["message"] = $this->email->print_debugger();
+//        if(empty($data))
+//        {
+//		$data['message']=0;
+//		}
+//	    else{
+//        $data["message"] = 'true';
+//        }
+//        $this->load->view("json", $data);
+//        
+//    }
+//    }
     public function searchelementold(){
         $searchelement=$this->input->get('searchelement');
         $data['articletitle']=$this->restapi_model->searcharticletitle($searchelement);
@@ -1214,4 +1199,57 @@ $data["message"]=$this->restapi_model->getappconfig();
         $data['message']=$this->restapi_model->changesetting($id,$event,$photo,$video,$blog);
         $this->load->view("json", $data); 
  }
+   public function forgotpassword()
+    {
+        $email=$this->input->get_post('email');
+        $userid=$this->user_model->getidbyemail($email);
+		$this->load->helper('string');
+        $randompassword=random_string('alnum',8);
+		$data['message']=$this->user_model->forgotpasswordsubmit($randompassword,$userid);
+        if($userid=="")
+        {
+            $data['message']="Not A Valid Email.";
+            $this->load->view("json",$data);
+        }
+        else
+        {
+        $this->load->library('email');
+        $this->email->from('vigwohlig@gmail.com', 'Business App');
+        $this->email->to($email);
+        $this->email->subject('Welcome to Business App');   
+            
+        $message = "<html>
+
+      <body>
+    <div style='text-align:center;   width: 50%; margin: 0 auto;'>
+        <h4 style='font-size:1.5em;padding-bottom: 5px;color: #e82a96;'>Business App</h4>
+        <p style='font-size: 1em;padding-bottom: 10px;'>Your password is:</p>
+        <p style='font-size: 1em;padding-bottom: 10px;'>$randompassword</p>
+    </div>
+    <div style='text-align:center;position: relative;'>
+        <p style=' position: absolute; top: 8%;left: 50%; transform: translatex(-50%); font-size: 1em;margin: 0; letter-spacing:2px; font-weight: bold;'>
+            Thank You
+        </p>
+    </div>
+</body>
+
+</html>";
+        $this->email->message($message);
+        $this->email->send();
+//        $data["message"] = $this->email->print_debugger();
+        $data["message"] = 'true';
+        $this->load->view("json", $data);
+        
+    }
+    }
+    public function changepassword() {
+        $data = json_decode(file_get_contents('php://input'), true);
+        $id=$data['id'];
+        $oldpassword=$data['oldpassword'];
+        $newpassword=$data['newpassword'];
+        $confirmpassword=$data['confirmpassword'];
+        $data["message"] = $this->restapi_model->changepassword($id,$oldpassword,$newpassword,$confirmpassword);
+        $this->load->view("json", $data);
+    }
+
 } ?>

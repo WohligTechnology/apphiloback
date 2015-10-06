@@ -95,99 +95,103 @@
 </div>
 
 <script type="text/javascript">
-	//dropdown function
-	var $linktype;
-	var $sub;
-	var $i;
-	var $typeid;
-	var $event = $('select[name=event]');;
-	var $article = $('select[name=article]');;
-	var $video = $('select[name=video]');;
-	var $gallery = $('select[name=gallery]');;
-	var $blog = $('select[name=blog]');;
+    //dropdown function
+    var $linktype;
+    var $sub;
+    var $i;
+    var $typeid;
+    var $event = $('select[name=event]');
+    var $article = $('select[name=article]');
+    var $video = $('select[name=video]');
+    var $gallery = $('select[name=gallery]');
+    var $blog = $('select[name=blog]');
+    var $link = $('#link');
 
-	function hideshow(id) {
-		for ($i = 0; $i < $sub.length; $i++) {
-			$sub.eq($i).prop("hidden", true);
-		}
-		$sub.eq(id).prop("hidden", false);
+    function hideshow(id, data) {
+        for ($i = 0; $i < $sub.length; $i++) {
+            $sub.eq($i).prop("hidden", true);
+        }
+        $sub.eq(id).prop("hidden", false);
+        console.log(data.val());
+        $typeid = data.val();
 
-	}
-
-
-	$(document).ready(function () {
-		//jquery to dropdown
-
-
-		$event.change(function () {
-			$("#typeid").val($event.val());
-		});
-
-		$article.change(function () {
-			$("#typeid").val($article.val());
-		});
-
-		$gallery.change(function () {
-			$("#typeid").val($gallery.val());
-		});
-
-		$video.change(function () {
-			$("#typeid").val($video.val());
-		});
-
-		$blog.change(function () {
-			$("#typeid").val($blog.val());
-		});
+    }
 
 
-		$sub = $(".drop");
-		for ($i = 0; $i < $sub.length; $i++) {
-			$sub.eq($i).prop("hidden", true);
-		}
-
-		//my changes
-		$linktype = $('select[name=linktype]');
-		$linktype.change(function () {
-
-			switch ($linktype.val()) {
-			case "2":
-				{
-					hideshow(4);
-					$typeid = $('select[name=article]').val();
-				}
-				break;
-			case "3":
-				{
-					hideshow(0);
-					$typeid = $('select[name=event]').val();
-				}
-				break;
-			case "6":
-				{
-					hideshow(3);
-					$typeid = $('select[name=gallery]').val();
-				}
-				break;
-			case "8":
-				{
-					hideshow(2);
-					$typeid = $('select[name=video]').val();
-				}
-				break;
-			case "10":
-				{
-					hideshow(1);
-					$typeid = $('select[name=blog]').val();
-				}
-				break;
-			default:
-				{
-
-				}
-			}
-
-		});
 
 
-	});
+    $(document).ready(function () {
+        //jquery to dropdown
+        console.log("on deady");
+        $event.change(function () {
+            $("#typeid").val($event.val());
+        });
+        $article.change(function () {
+            $("#typeid").val($article.val());
+        });
+        $video.change(function () {
+            $("#typeid").val($video.val());
+        });
+        $gallery.change(function () {
+            $("#typeid").val($gallery.val());
+        });
+        $blog.change(function () {
+            $("#typeid").val($blog.val());
+        });
+        $link.change(function () {
+            $("#typeid").val($link.val());
+        });
+
+        $sub = $(".drop");
+        for ($i = 0; $i < $sub.length; $i++) {
+            $sub.eq($i).prop("hidden", true);
+        }
+
+        //my changes
+        $linktype = $('select[name=linktype]');
+        $linktype.change(function () {
+            console.log("on change");
+            switch ($linktype.val()) {
+            case "2":
+                {
+                    hideshow(4, $('select[name=article]'));
+                    $typeid = $('select[name=article]').val();
+                }
+                break;
+            case "3":
+                {
+                    hideshow(0, $('select[name=event]'));
+                    $typeid = $('select[name=event]').val();
+                }
+                break;
+            case "6":
+                {
+                    hideshow(3, $('select[name=gallery]'));
+                    $typeid = $('select[name=gallery]').val();
+                }
+                break;
+            case "8":
+                {
+                    hideshow(2, $('select[name=video]'));
+                    $typeid = $('select[name=video]').val();
+                }
+                break;
+            case "10":
+                {
+                    hideshow(1, $('select[name=blog]'));
+                    $typeid = $('select[name=blog]').val();
+                }
+                break;
+            default:
+                {
+                    console.log("in deault");
+                    for ($i = 0; $i < $sub.length; $i++) {
+                        $sub.eq($i).prop("hidden", true);
+                    }
+                }
+            }
+
+        });
+
+    });
 </script>

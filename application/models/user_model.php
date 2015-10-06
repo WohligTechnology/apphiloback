@@ -1158,15 +1158,15 @@ class User_model extends CI_Model
         $userid = $query->id;
         return $userid;
     }
-    function forgotpasswordsubmit($password, $userid)
+    function forgotpasswordsubmit($newpassword, $userid)
     {
-        $password = md5($password);
-        $query    = $this->db->query("UPDATE `user` SET `password`='$password' WHERE `id`='$userid'");
-        
+        $newpassword = md5($newpassword);
+        $query = $this->db->query("UPDATE `user` SET `forgotpassword`='$newpassword' WHERE `id`='$userid'");
         if (!$query)
             return 0;
         else
             return 1;
     }
+ 
 }
 ?>

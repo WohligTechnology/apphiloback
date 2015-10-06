@@ -2864,10 +2864,10 @@ $elements[0]->sort="1";
 $elements[0]->header="ID";
 $elements[0]->alias="id";
 $elements[1]=new stdClass();
-$elements[1]->field="`webapp_blog`.`name`";
+$elements[1]->field="`webapp_blog`.`content`";
 $elements[1]->sort="1";
-$elements[1]->header="Name";
-$elements[1]->alias="name";
+$elements[1]->header="content";
+$elements[1]->alias="content";
 $elements[2]=new stdClass();
 $elements[2]->field="`webapp_blog`.`title`";
 $elements[2]->sort="1";
@@ -2878,11 +2878,6 @@ $elements[3]->field="`webapp_blog`.`json`";
 $elements[3]->sort="1";
 $elements[3]->header="Json";
 $elements[3]->alias="json";
-$elements[4]=new stdClass();
-$elements[4]->field="`webapp_blog`.`content`";
-$elements[4]->sort="1";
-$elements[4]->header="Content";
-$elements[4]->alias="content";
     
 $elements[5]=new stdClass();
 $elements[5]->field="DATE_FORMAT(`webapp_blog`.`timestamp`,'%a, %b %d %Y %h:%i %p')";
@@ -2933,7 +2928,6 @@ $this->load->view("template",$data);
 }
 else
 {
-$name=$this->input->get_post("name");
 $title=$this->input->get_post("title");
 $json=$this->input->get_post("json");
 $content=$this->input->get_post("content");
@@ -2972,7 +2966,7 @@ $url=$this->input->get_post("url");
                 }
                 
 			}
-if($this->blog_model->create($name,$title,$json,$content,$url,$image)==0)
+if($this->blog_model->create($title,$json,$content,$url,$image)==0)
 $data["alerterror"]="New blog could not be created.";
 else
 $data["alertsuccess"]="blog created Successfully.";
@@ -3014,7 +3008,6 @@ $this->load->view("template",$data);
 else
 {
 $id=$this->input->get_post("id");
-$name=$this->input->get_post("name");
 $title=$this->input->get_post("title");
 $json=$this->input->get_post("json");
 $content=$this->input->get_post("content");
@@ -3062,7 +3055,7 @@ $content=$this->input->get_post("content");
                 $image=$image->image;
             }
             
-if($this->blog_model->edit($id,$name,$title,$json,$content,$timestamp,$url,$image)==0)
+if($this->blog_model->edit($id,$title,$json,$content,$timestamp,$url,$image)==0)
 $data["alerterror"]="New blog could not be Updated.";
 else
 $data["alertsuccess"]="blog Updated Successfully.";

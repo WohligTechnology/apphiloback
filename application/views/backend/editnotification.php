@@ -135,7 +135,7 @@
 
     $(document).ready(function () {
         //jquery to dropdown
-
+        console.log("on deady");
         $event.change(function () {
             $("#typeid").val($event.val());
         });
@@ -155,9 +155,6 @@
             $("#typeid").val($link.val());
         });
 
-
-
-
         $sub = $(".drop");
         for ($i = 0; $i < $sub.length; $i++) {
             $sub.eq($i).prop("hidden", true);
@@ -166,7 +163,7 @@
         //my changes
         $linktype = $('select[name=linktype]');
         $linktype.change(function () {
-
+            console.log("on change");
             switch ($linktype.val()) {
             case "2":
                 {
@@ -206,6 +203,7 @@
                 break;
             default:
                 {
+                    console.log("in deault");
                     for ($i = 0; $i < $sub.length; $i++) {
                         $sub.eq($i).prop("hidden", true);
                     }
@@ -213,5 +211,6 @@
             }
 
         });
+
     });
 </script>
