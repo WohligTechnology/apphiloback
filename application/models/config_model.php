@@ -51,12 +51,12 @@ public function edit($id,$title,$content,$text,$image,$type,$description)
     
     // GALLERY
     
-    if($id==6 && $text=="Drop down no"){
+    if($id==6 && $text==""){
     $data=array("access" => 0);
     $this->db->where( "menu", 5 );
     $query=$this->db->update( "menuaccess", $data );
     } 
-    else if($id==6 && $text=="Drop down yes"){
+    else if($id==6 && $text=="true"){
     $data=array("access" => 1);
     $this->db->where( "menu", 5 );
     $query=$this->db->update( "menuaccess", $data );
@@ -64,12 +64,12 @@ public function edit($id,$title,$content,$text,$image,$type,$description)
     
     //VIDEOS
     
-    else if($id==7 && $text=="Drop down no"){
+    else if($id==7 && $text==""){
     $data=array("access" => 0);
     $this->db->where( "menu", 7 );
     $query=$this->db->update( "menuaccess", $data );
     }
-    else if($id==7 && $text=="Drop down yes"){
+    else if($id==7 && $text=="true"){
     $data=array("access" => 1);
     $this->db->where( "menu", 7 );
     $query=$this->db->update( "menuaccess", $data );
@@ -77,12 +77,12 @@ public function edit($id,$title,$content,$text,$image,$type,$description)
     
     // EVENTS
     
-    else if($id==8 && $text=="Drop down no"){
+    else if($id==8 && $text==""){
     $data=array("access" => 0);
     $this->db->where( "menu", 9 );
     $query=$this->db->update( "menuaccess", $data );
     }
-    else if($id==8 && $text=="Drop down yes"){
+    else if($id==8 && $text=="true"){
     $data=array("access" => 1);
     $this->db->where( "menu", 9 );
     $query=$this->db->update( "menuaccess", $data );
@@ -97,6 +97,7 @@ $this->db->where( "id", $id );
 $query=$this->db->update( "config", $data );
 return 1;
 }
+
 public function delete($id)
 {
 $query=$this->db->query("DELETE FROM `config` WHERE `id`='$id'");
