@@ -1237,7 +1237,7 @@ $data["message"]=$this->restapi_model->getappconfig();
         $this->email->message($message);
         $this->email->send();
 //        $data["message"] = $this->email->print_debugger();
-        $data["message"] = 'true';
+        $data["message"] = true;
         $this->load->view("json", $data);
         
     }
