@@ -4,12 +4,6 @@
     </div>
         <form class="col s12" method="post" action="<?php echo site_url('site/createblogsubmit');?>" enctype="multipart/form-data">
 
-            <div class="row">
-                <div class="input-field col s12 m6">
-                    <label for="name">Name</label>
-                    <input type="text" id="name" name="name" value="<?php echo set_value('name');?>">
-                </div>
-            </div> 
                 <div class="row">
                 <div class="input-field col s12 m6">
                     <label for="title">Title</label>

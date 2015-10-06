@@ -29,7 +29,7 @@
           
         <div class="row">
             <div class="input-field col s12 m6">
-                <label for="title">Title</label>
+                <label for="title">Subject</label>
                 <input type="text" id="title" name="title" value="<?php echo set_value('title',$before->title);?>">
             </div>
         </div> 
@@ -41,7 +41,7 @@
         </div>
            <div class="row">
                  <div class="col s12 m6">
-                       <label>Content</label>
+                       <label>Comment</label>
                         <textarea id="some-textarea" name="content" placeholder="Enter text ..."><?php echo set_value( 'content',$before->content);?></textarea>
             <script type="text/javascript">
                 $('#some-textarea').wysihtml5();
@@ -52,8 +52,7 @@
 <div class="row">
     <div class="col s12 m6">
         <div class=" form-group">
-                <button type="submit" class="btn btn-primary waves-effect waves-light blue darken-4">Save</button>
-                <a href="<?php echo site_url("site/viewenquiry"); ?>" class="btn btn-secondary waves-effect waves-light red">Cancel</a>
+                <a href="<?php echo site_url("site/viewenquiry"); ?>" class="btn btn-secondary waves-effect waves-light blue darken-4">Back</a>
             </div>
     </div>
 </div>
