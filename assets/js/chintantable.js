@@ -55,7 +55,8 @@ function generatejquery(url) {
                 
                 $(".chintantablepagination ul.pagination li a").click(function () {
                     var liattr = $(this).parent("li").hasClass("disabled");
-                    if (!liattr) {
+                    var liactive = $(this).parent("li").hasClass("active");
+                    if (!liattr && !liactive) {
                         pageno = parseInt($(this).attr("data-page"));
                         fillchintandata();
                     }
