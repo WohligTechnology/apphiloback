@@ -687,10 +687,10 @@ $elements[0]->header="ID";
 $elements[0]->alias="id";
 
 $elements[1]=new stdClass();
-$elements[1]->field="`webapp_notification`.`videogallery`";
+$elements[1]->field="`webapp_notification`.`video`";
 $elements[1]->sort="1";
-$elements[1]->header="Video Gallery";
-$elements[1]->alias="videogallery";
+$elements[1]->header="Video";
+$elements[1]->alias="video";
 
 $elements[2]=new stdClass();
 $elements[2]->field="`webapp_notification`.`event`";
@@ -699,22 +699,22 @@ $elements[2]->header="event";
 $elements[2]->alias="event";
 
 $elements[3]=new stdClass();
-$elements[3]->field="`webapp_notification`.`videogalleryvideo`";
+$elements[3]->field="`webapp_notification`.`gallery`";
 $elements[3]->sort="1";
-$elements[3]->header="Video Gallery Video";
-$elements[3]->alias="videogalleryvideo";
+$elements[3]->header="Gallery";
+$elements[3]->alias="gallery";
 
 $elements[4]=new stdClass();
-$elements[4]->field="`webapp_notification`.`galleryimage`";
+$elements[4]->field="`webapp_notification`.`article`";
 $elements[4]->sort="1";
-$elements[4]->header="Gallery Image";
-$elements[4]->alias="galleryimage";
+$elements[4]->header="article";
+$elements[4]->alias="article";
 
 $elements[5]=new stdClass();
-$elements[5]->field="`webapp_notification`.`article`";
+$elements[5]->field="`webapp_notification`.`blog`";
 $elements[5]->sort="1";
-$elements[5]->header="article";
-$elements[5]->alias="article";
+$elements[5]->header="blog";
+$elements[5]->alias="blog";
 
 $elements[6]=new stdClass();
 $elements[6]->field="`webapp_notification`.`status`";
@@ -775,6 +775,12 @@ $elements[15]->field="`webapp_notificationuser`.`timestamp_receive`";
 $elements[15]->sort="1";
 $elements[15]->header="Timestamp Received";
 $elements[15]->alias="timestamp_receive";
+    
+$elements[16]=new stdClass();
+$elements[16]->field="`webapp_notification`.`linktype`";
+$elements[16]->sort="1";
+$elements[16]->header="linktype";
+$elements[16]->alias="linktype";
 
 $search=$this->input->get_post("search");
 $pageno=$this->input->get_post("pageno");
