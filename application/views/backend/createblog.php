@@ -1,4 +1,4 @@
-s12 m6<div class="row">
+<div class="row">
     <div class="col s12">
     <h4 class="pad-left-15">Create Blog</h4>
     </div>
