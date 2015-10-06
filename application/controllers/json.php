@@ -873,10 +873,10 @@ $elements[0]->header="ID";
 $elements[0]->alias="id";
 
 $elements[1]=new stdClass();
-$elements[1]->field="`webapp_blog`.`name`";
+$elements[1]->field="`webapp_blog`.`content`";
 $elements[1]->sort="1";
-$elements[1]->header="Name";
-$elements[1]->alias="name";
+$elements[1]->header="Content";
+$elements[1]->alias="content";
 
 $elements[2]=new stdClass();
 $elements[2]->field="`webapp_blog`.`title`";
@@ -889,12 +889,6 @@ $elements[3]->field="`webapp_blog`.`json`";
 $elements[3]->sort="1";
 $elements[3]->header="Json";
 $elements[3]->alias="json";
-
-$elements[4]=new stdClass();
-$elements[4]->field="`webapp_blog`.`content`";
-$elements[4]->sort="1";
-$elements[4]->header="Content";
-$elements[4]->alias="content";
 
 $elements[5]=new stdClass();
 $elements[5]->field="date(`webapp_blog`.`timestamp`)";
