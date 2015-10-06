@@ -5,7 +5,7 @@
     <form class="col s12" method="post" action="<?php echo site_url('site/createnotificationsubmit');?>" enctype="multipart/form-data">
         <div class="row">
             <div class="input-field col s12 m6">
-                <?php echo form_dropdown( 'linktype',$linktype,set_value( 'linktype')); ?>
+                <?php echo form_dropdown('linktype',$linktype,set_value( 'linktype')); ?>
                  <label>Link Type</label>
             </div>
         </div>
@@ -19,7 +19,7 @@
 
         <!--	Blog-->
         <div class="row drop">
-            <div class="input-field col s6">
+            <div class="input-field col s12 m6">
                 <?php echo form_dropdown( 'blog',$blog,set_value( 'blog')); ?>
                  <label>Blog</label>
 
@@ -49,7 +49,6 @@
             <div class="input-field col s12 m6">
                 <?php echo form_dropdown( 'article',$article,set_value( 'article')); ?>
                  <label>Article</label>
-
             </div>
         </div>
         <!--	External link-->
@@ -124,7 +123,7 @@
 
     $(document).ready(function () {
         //jquery to dropdown
-
+        console.log("on deady");
         $event.change(function () {
             $("#typeid").val($event.val());
         });
@@ -144,9 +143,6 @@
             $("#typeid").val($link.val());
         });
 
-
-
-
         $sub = $(".drop");
         for ($i = 0; $i < $sub.length; $i++) {
             $sub.eq($i).prop("hidden", true);
@@ -155,7 +151,7 @@
         //my changes
         $linktype = $('select[name=linktype]');
         $linktype.change(function () {
-
+            console.log("on change");
             switch ($linktype.val()) {
             case "2":
                 {
@@ -195,6 +191,7 @@
                 break;
             default:
                 {
+                    console.log("in deault");
                     for ($i = 0; $i < $sub.length; $i++) {
                         $sub.eq($i).prop("hidden", true);
                     }
