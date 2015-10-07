@@ -32,7 +32,6 @@ $config =
 'Google' => array (
 				'enabled' => true,
 				'keys'    => array ( 'id' => '774201901098-4l1iufsi9tegjdm5oj8s0g1519mm1kq5.apps.googleusercontent.com', 'secret' => 'Q_-ui4gdqWJvFH1UknGE0CyO' )
-                
 			),//google
 			
 			//facebook
@@ -46,7 +45,7 @@ $config =
 			//twitter
 'Twitter' => array (
 				'enabled' => true,
-				'keys'    => array ( 'key' => '', 'secret' =>'' )
+				'keys'    => array ( 'key' => '33vWD8ADW7VcZhxLkaVsUeqwI', 'secret' =>'lr8dK6i23oSKbhDojbb9zHIOOyW55yq8mfbTCsf3HkDPrsbqaL' )
 			),
 //twitter
 

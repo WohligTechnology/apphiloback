@@ -1772,6 +1772,7 @@ $data["before3"]=$this->input->get('id');
 $data["title"]="Edit events";
 $data[ 'status' ] =$this->user_model->getstatusdropdown();
 $data["before"]=$this->events_model->beforeedit($this->input->get("id"));
+$data['exp']=explode(":",$data["before"]->starttime);
 $this->load->view("templatewith2",$data);
 }
 public function editeventssubmit()

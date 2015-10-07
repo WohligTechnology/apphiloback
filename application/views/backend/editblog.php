@@ -18,9 +18,6 @@
                      
                <label>Content</label>
                   <textarea id="some-textarea" name="content" placeholder="Enter text ..."><?php echo set_value( 'content',$before->content);?></textarea>
-            <script type="text/javascript">
-                $('#some-textarea').wysihtml5();
-            </script>
             </div>
               </div>
              <div class="row">

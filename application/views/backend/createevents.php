@@ -58,10 +58,6 @@
             </div>
         </div>
 
-        <div class="input-field col s12 m6" style="display:none">
-            <input type="text" id="starttime" name="starttime" value="<?php echo set_value('starttime');?>">
-            <label>starttime</label>
-        </div>
         <div class="row" style="display:none">
             <div class="input-field col s12 m6">
                 <input type="text" id="starttime" name="starttime" value="<?php echo set_value('starttime');?>">

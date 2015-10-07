@@ -39,7 +39,7 @@ return 1;
 }
     public function edithome($id,$content)
 {
-$data=array("content" => $content);
+$data=array("content" => $content,"status" => 1);
 $this->db->where( "id", $id );
 $query=$this->db->update( "home", $data );
 return 1;
