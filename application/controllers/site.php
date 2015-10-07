@@ -4017,7 +4017,7 @@ $data["alerterror"]="New home could not be Updated.";
 else
 $data["alertsuccess"]="home Updated Successfully.";
 $data["redirect"]="site/edithome";
-$this->load->view("redirect",$data);
+$this->load->view("redirect2",$data);
 
 }
 
