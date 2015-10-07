@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 06, 2015 at 12:29 PM
+-- Generation Time: Oct 07, 2015 at 09:49 AM
 -- Server version: 5.6.24
 -- PHP Version: 5.5.24
 
@@ -62,7 +62,7 @@ CREATE TABLE IF NOT EXISTS `config` (
 
 INSERT INTO `config` (`id`, `title`, `content`, `text`, `type`, `image`, `description`) VALUES
 (4, 'Login', '                                                                                                                                                                                                [{"name":"email","value":true},{"name":"Google","value":true,"appid":"dfdf","secret":"fdfdf"},{"name":"Facebook","value":true,"appid":"","secret":""},{"name":"twitter","value":false,"appid":"","secret":""},{"name":"instagram","value":true,"appid":"","secret":""}]                                                                                                                                                                ', '[{"name":"email","value":true},{"name":"Google","value":false,"appid":"fsdfds","secret":"fsdsfdfs"},{"name":"Facebook","value":false,"appid":"dssdf","secret":"fsdfsd"},{"name":"twitter","value":false,"appid":"","secret":""},{"name":"instagram","value":false,"appid":"","secret":""}]', '2', '', '0'),
-(5, 'Blogs', '                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        want Blog1222ttgsd                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ', '[{"name":"cms","value":true},{"name":"wordpress","value":false,"appid":""},{"name":"tumblr","value":false,"appid":""}]', '1', '', '0'),
+(5, 'Blogs', '                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                want Blog1222ttgsd                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ', '[{"name":"cms","value":true},{"name":"wordpress","value":false,"appid":""},{"name":"tumblr","value":false,"appid":""}]', '1', '', '0'),
 (6, 'Gallery', '																																			Gallery Content                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                																												', 'true', '3', '', '0'),
 (7, 'Videos', '																				want Video Gallery                                                                                                                                                                                                																', 'true', '3', '', '0'),
 (8, 'Events', '					Event content  for evtn                                                                                                                                                                                                                                                                                           				', 'true', '3', '', '0'),
@@ -102,7 +102,7 @@ INSERT INTO `linktype` (`id`, `name`, `status`, `order`, `link`) VALUES
 (13, 'Notifications', '1', '', 'notification'),
 (14, 'settings', '1', '', 'setting'),
 (15, 'Profile', '1', '', 'profile'),
-(17, 'External Link', '0', '', '');
+(17, 'External Link', '1', '', '');
 
 -- --------------------------------------------------------
 
@@ -374,14 +374,14 @@ CREATE TABLE IF NOT EXISTS `webapp_articles` (
   `content` text NOT NULL,
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `image` varchar(255) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `webapp_articles`
 --
 
 INSERT INTO `webapp_articles` (`id`, `status`, `title`, `json`, `content`, `timestamp`, `image`) VALUES
-(1, 0, '0', '0', '<p><strong>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry.</strong></p>', '2015-10-02 12:06:32', '77.jpg'),
+(1, 0, '0', '0', '<p><strong>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry.7</strong></p>', '2015-10-02 12:06:32', 'client1.jpg'),
 (2, 1, 'About', '[{"placeholder":"","value":"","label":"Meta Title","type":"text","options":"","classes":""},{"placeholder":"","value":"","label":"Meta Description","type":"text","options":"","classes":""}]', '<b>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry.</b>', '2015-10-02 12:06:32', 'images_(5).jpg'),
 (3, 1, 'Team', '[{"placeholder":"","value":"","label":"Meta Title","type":"text","options":"","classes":""},{"placeholder":"","value":"","label":"Meta Description","type":"text","options":"","classes":""}]', '<b>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry.</b>', '2015-10-02 12:07:19', 'images_(6).jpg'),
 (4, 2, 'tttttwwttttt', '0', '<p>jjjjjjjjjj</p>', '2015-10-05 07:50:50', '121.png'),
@@ -402,7 +402,7 @@ CREATE TABLE IF NOT EXISTS `webapp_blog` (
   `content` text NOT NULL,
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `image` varchar(255) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `webapp_blog`
@@ -410,7 +410,8 @@ CREATE TABLE IF NOT EXISTS `webapp_blog` (
 
 INSERT INTO `webapp_blog` (`id`, `title`, `json`, `content`, `timestamp`, `image`) VALUES
 (1, 'Project Management', '[{"placeholder":"","value":"","label":"Meta Title","type":"text","options":"","classes":""},{"placeholder":"","value":"","label":"Meta Description","type":"text","options":"","classes":""}]', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry.', '2015-10-02 11:20:37', ''),
-(2, 'Presentation Skills', '[{"placeholder":"","value":"","label":"Meta Title","type":"text","options":"","classes":""},{"placeholder":"","value":"","label":"Meta Description","type":"text","options":"","classes":""}]', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry.', '2015-10-02 11:20:19', '');
+(2, 'Presentation Skills', '0', '<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry.3</p>', '2015-10-02 11:20:19', ''),
+(4, '', '0', '<p>rreeeeeeeeee</p>', '2015-10-07 07:38:36', '');
 
 -- --------------------------------------------------------
 
@@ -518,7 +519,7 @@ CREATE TABLE IF NOT EXISTS `webapp_events` (
   `startdate` date NOT NULL,
   `starttime` time NOT NULL,
   `venue` text NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `webapp_events`
@@ -526,9 +527,7 @@ CREATE TABLE IF NOT EXISTS `webapp_events` (
 
 INSERT INTO `webapp_events` (`id`, `status`, `title`, `timestamp`, `content`, `image`, `startdate`, `starttime`, `venue`) VALUES
 (1, 1, 'Sona Mohapatra', '2015-10-02 11:18:28', '<b>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry.</b><br>', 'Event-management11.png', '2015-10-17', '03:05:00', 'California, USA'),
-(2, 1, 'Company Event Hamburg March 2015', '2015-10-02 12:58:11', '<p><strong>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry.</strong></p>', 'gallery-corporate_event-231.jpg', '0000-00-00', '08:00:00', 'Newyork'),
-(8, 1, 'werr', '2015-10-05 07:15:25', '<p>trtae</p>', '', '2015-10-06', '17:05:00', 'retrae'),
-(9, 2, 'aaaaaaaabbbb', '2015-10-05 08:10:04', '<p>aaaabbbbb</p>', 'image72.jpg', '2015-10-22', '08:05:00', 'aaaabbbbbbbbbbb');
+(2, 1, 'Company Event Hamburg March 2015', '2015-10-02 12:58:11', '<p><strong>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry.</strong></p>', 'gallery-corporate_event-231.jpg', '0000-00-00', '08:00:00', 'Newyork');
 
 -- --------------------------------------------------------
 
@@ -543,7 +542,7 @@ CREATE TABLE IF NOT EXISTS `webapp_eventvideo` (
   `status` int(11) NOT NULL,
   `order` int(11) NOT NULL,
   `url` varchar(255) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `webapp_eventvideo`
@@ -980,12 +979,12 @@ ALTER TABLE `userlog`
 -- AUTO_INCREMENT for table `webapp_articles`
 --
 ALTER TABLE `webapp_articles`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `webapp_blog`
 --
 ALTER TABLE `webapp_blog`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `webapp_blogimages`
 --
@@ -1010,12 +1009,12 @@ ALTER TABLE `webapp_eventimages`
 -- AUTO_INCREMENT for table `webapp_events`
 --
 ALTER TABLE `webapp_events`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT for table `webapp_eventvideo`
 --
 ALTER TABLE `webapp_eventvideo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `webapp_frontmenu`
 --
