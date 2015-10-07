@@ -995,6 +995,12 @@ $elements[11]->sort="1";
 $elements[11]->header="linktype";
 $elements[11]->alias="linktype";
 
+$elements[12]=new stdClass();
+$elements[12]->field="`linktype`.`link`";
+$elements[12]->sort="1";
+$elements[12]->header="linktypelink";
+$elements[12]->alias="linktypelink";
+
 $search=$this->input->get_post("search");
 $pageno=$this->input->get_post("pageno");
 $orderby=$this->input->get_post("orderby");
@@ -1008,7 +1014,7 @@ if($orderby=="")
 $orderby="id";
 $orderorder="DESC";
 }
-$data["message"]=$this->chintantable->query($pageno,$maxrow,$orderby,$orderorder,$search,$elements,"FROM `webapp_notification`",$where);
+$data["message"]=$this->chintantable->query($pageno,$maxrow,$orderby,$orderorder,$search,$elements,"FROM `webapp_notification` LEFT OUTER JOIN `linktype` ON `linktype`.`id`=`webapp_notification`.`linktype`",$where);
 $this->load->view("json",$data);
 }
 
