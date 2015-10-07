@@ -212,5 +212,6 @@
 
         });
 
+        $("select[name=linktype]").trigger("change");
     });
 </script>

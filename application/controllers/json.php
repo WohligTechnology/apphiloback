@@ -412,7 +412,12 @@ public function getsingleevents()
 {
       $data = json_decode(file_get_contents('php://input'), true);
 		$id=$data['id'];
-$data["message"]=$this->events_model->getsingleevents($id);
+        if(empty($data)){
+            $data["message"]=0;
+            }
+            else{
+            $data["message"]=$this->events_model->getsingleevents($id);
+            }
 $this->load->view("json",$data);
 }
  
@@ -705,7 +710,12 @@ public function getsingleblog()
 {
 $data = json_decode(file_get_contents('php://input'), true);
 $id=$data['id'];
+if(empty($data)){
+$data["message"]=0;
+}
+else{
 $data["message"]=$this->blog_model->getsingleblog($id);
+}
 $this->load->view("json",$data);
 }
   public function authenticate() {
@@ -770,7 +780,13 @@ $data["message"]=$this->restapi_model->getappconfig();
  public function searchelement(){
       $data = json_decode(file_get_contents('php://input'), true);
         $searchelement=$data['searchelement'];
+        if(empty($data))
+        {
+        $data['message']=0;
+        }
+        else{
         $data['message']=$this->restapi_model->searchelement($searchelement);
+        }
         $this->load->view("json", $data); 
  }
   public function profileimageupload(){
@@ -810,12 +826,18 @@ $data["message"]=$this->restapi_model->getappconfig();
  }
  public function changesetting(){
       $data = json_decode(file_get_contents('php://input'), true);
+
         $id=$data['id'];
         $event=$data['eventnotification'];
         $photo=$data['photonotification'];
         $video=$data['videonotification'];
         $blog=$data['blognotification'];
+        if(empty($data)){
+            $data['message']=0;
+        }
+        else{
         $data['message']=$this->restapi_model->changesetting($id,$event,$photo,$video,$blog);
+        }
         $this->load->view("json", $data); 
  }
    public function forgotpassword()
@@ -867,8 +889,16 @@ $data["message"]=$this->restapi_model->getappconfig();
         $oldpassword=$data['oldpassword'];
         $newpassword=$data['newpassword'];
         $confirmpassword=$data['confirmpassword'];
+         if(empty($data))
+        {
+        $data['message']=0;
+        }
+        else{
         $data["message"] = $this->restapi_model->changepassword($id,$oldpassword,$newpassword,$confirmpassword);
-        $this->load->view("json", $data);
+        }
+        $this->load->view("json",$data);
+        
+        
     }
 
 } ?>
