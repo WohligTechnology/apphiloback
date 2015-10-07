@@ -633,11 +633,14 @@ else
 $data["alertsuccess"]="articles Updated Successfully.";
     if($id!=1){
 $data["redirect"]="site/viewarticles";
+
+$this->load->view("redirect",$data);
     }
     else{
     $data["redirect"]="site/home?id=1";
+
+$this->load->view("redirect2",$data);
     }
-$this->load->view("redirect",$data);
 }
 }
 public function deletearticles()

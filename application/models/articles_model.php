@@ -25,9 +25,16 @@ return $query;
 }
 public function edit($id,$status,$title,$json,$content,$timestamp,$image)
 {
-$data=array("status" => $status,"title" => $title,"json" => $json,"content" => $content,"timestamp" => $timestamp,"image" => $image);
+	$data=array("status" => $status,"title" => $title,"json" => $json,"content" => $content,"timestamp" => $timestamp,"image" => $image);
 $this->db->where( "id", $id );
 $query=$this->db->update( "webapp_articles", $data );
+	if($id==1){
+$data=array("status" => 1,"title" => "Home");
+$this->db->where( "id", $id );
+$query=$this->db->update( "webapp_articles", $data );
+
+	}
+
 return 1;
 }
 public function delete($id)
