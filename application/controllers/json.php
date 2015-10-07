@@ -909,21 +909,19 @@ $data["message"]=$this->restapi_model->getappconfig();
     $photonotification=$this->input->get_post('photo');
     $videonotification=$this->input->get_post('video');
     $blognotification=$this->input->get_post('blog');
-    if($eventnotification== true && $photonotification==true && $videonotification==true && $blognotification==true){
-    $where="WHERE 1";
+    if($eventnotification== "false"){
+    $where.=" `webapp_notification`.`linktype` NOT IN (3,4) AND";
     }
-    else if($eventnotification== false){
-    $where="WHERE `webapp_notification`.`linktype` NOT IN (3,4)";
-    }
-     else if($photonotification== false){
-    $where="WHERE `webapp_notification`.`linktype` NOT IN (5,6)";
+    if($photonotification== "false"){
+    $where.=" `webapp_notification`.`linktype` NOT IN (5,6) AND";
     } 
-    else if($videonotification== false){
-    $where="WHERE `webapp_notification`.`linktype` NOT IN (7,8)";
+    if($videonotification== "false"){
+    $where.=" `webapp_notification`.`linktype` NOT IN (7,8) AND";
     }
-    else if($blognotification== false){
-    $where="WHERE `webapp_notification`.`linktype` NOT IN (9,10)";
+    if($blognotification== "false"){
+    $where.=" `webapp_notification`.`linktype` NOT IN (9,10) AND";
     }
+    $where = " WHERE $where 1 ";
 $elements=array();
 $elements[0]=new stdClass();
 $elements[0]->field="`webapp_notification`.`id`";
@@ -1010,7 +1008,7 @@ if($orderby=="")
 $orderby="id";
 $orderorder="DESC";
 }
-$data["message"]=$this->chintantable->query($pageno,$maxrow,$orderby,$orderorder,$search,$elements,"FROM `webapp_notification`"," $where");
+$data["message"]=$this->chintantable->query($pageno,$maxrow,$orderby,$orderorder,$search,$elements,"FROM `webapp_notification`",$where);
 $this->load->view("json",$data);
 }
 
