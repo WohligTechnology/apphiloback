@@ -117,7 +117,7 @@ if($maxrow=="")
 }
 if($orderby=="`webapp_gallery`.`order`")
 {
-$orderby="id";
+$orderby="order";
 $orderorder="ASC";
 }
 $data["message"]=$this->chintantable->query($pageno,$maxrow,$orderby,$orderorder,$search,$elements,"FROM `webapp_gallery`","WHERE `webapp_gallery`.`status`=1");
@@ -403,7 +403,7 @@ if($maxrow=="")
 if($orderby=="")
 {
 $orderby="id";
-$orderorder="ASC";
+$orderorder="DESC";
 }
 $data["message"]=$this->chintantable->query($pageno,$maxrow,$orderby,$orderorder,$search,$elements,"FROM `webapp_events`","WHERE `webapp_events`.`status`=1");
 $this->load->view("json",$data);
@@ -701,7 +701,7 @@ if($maxrow=="")
 if($orderby=="")
 {
 $orderby="id";
-$orderorder="ASC";
+$orderorder="DESC";
 }
 $data["message"]=$this->chintantable->query($pageno,$maxrow,$orderby,$orderorder,$search,$elements,"FROM `webapp_blog`");
 $this->load->view("json",$data);
@@ -900,5 +900,118 @@ $data["message"]=$this->restapi_model->getappconfig();
         
         
     }
+
+    // NOTIFICATIONS API
+
+    function getallnotification()
+{
+    $eventnotification=$this->input->get_post('event');
+    $photonotification=$this->input->get_post('photo');
+    $videonotification=$this->input->get_post('video');
+    $blognotification=$this->input->get_post('blog');
+    if($eventnotification== true && $photonotification==true && $videonotification==true && $blognotification==true){
+    $where="WHERE 1";
+    }
+    else if($eventnotification== false){
+    $where="WHERE `webapp_notification`.`linktype` NOT IN (3,4)";
+    }
+     else if($photonotification== false){
+    $where="WHERE `webapp_notification`.`linktype` NOT IN (5,6)";
+    } 
+    else if($videonotification== false){
+    $where="WHERE `webapp_notification`.`linktype` NOT IN (7,8)";
+    }
+    else if($blognotification== false){
+    $where="WHERE `webapp_notification`.`linktype` NOT IN (9,10)";
+    }
+$elements=array();
+$elements[0]=new stdClass();
+$elements[0]->field="`webapp_notification`.`id`";
+$elements[0]->sort="1";
+$elements[0]->header="ID";
+$elements[0]->alias="id";
+
+$elements[1]=new stdClass();
+$elements[1]->field="`webapp_notification`.`video`";
+$elements[1]->sort="1";
+$elements[1]->header="Video";
+$elements[1]->alias="video";
+
+$elements[2]=new stdClass();
+$elements[2]->field="`webapp_notification`.`event`";
+$elements[2]->sort="1";
+$elements[2]->header="event";
+$elements[2]->alias="event";
+
+$elements[3]=new stdClass();
+$elements[3]->field="`webapp_notification`.`gallery`";
+$elements[3]->sort="1";
+$elements[3]->header="Gallery";
+$elements[3]->alias="gallery";
+
+$elements[4]=new stdClass();
+$elements[4]->field="`webapp_notification`.`article`";
+$elements[4]->sort="1";
+$elements[4]->header="article";
+$elements[4]->alias="article";
+
+$elements[5]=new stdClass();
+$elements[5]->field="`webapp_notification`.`blog`";
+$elements[5]->sort="1";
+$elements[5]->header="blog";
+$elements[5]->alias="blog";
+
+$elements[6]=new stdClass();
+$elements[6]->field="`webapp_notification`.`status`";
+$elements[6]->sort="1";
+$elements[6]->header="Status";
+$elements[6]->alias="status";
+
+$elements[7]=new stdClass();
+$elements[7]->field="`webapp_notification`.`link`";
+$elements[7]->sort="1";
+$elements[7]->header="Link";
+$elements[7]->alias="link";
+
+$elements[8]=new stdClass();
+$elements[8]->field="`webapp_notification`.`image`";
+$elements[8]->sort="1";
+$elements[8]->header="Image";
+$elements[8]->alias="image";
+
+$elements[9]=new stdClass();
+$elements[9]->field="`webapp_notification`.`timestamp`";
+$elements[9]->sort="1";
+$elements[9]->header="Timestamp";
+$elements[9]->alias="timestamp";
+
+$elements[10]=new stdClass();
+$elements[10]->field="`webapp_notification`.`content`";
+$elements[10]->sort="1";
+$elements[10]->header="Content";
+$elements[10]->alias="content";
+    
+$elements[11]=new stdClass();
+$elements[11]->field="`webapp_notification`.`linktype`";
+$elements[11]->sort="1";
+$elements[11]->header="linktype";
+$elements[11]->alias="linktype";
+
+$search=$this->input->get_post("search");
+$pageno=$this->input->get_post("pageno");
+$orderby=$this->input->get_post("orderby");
+$orderorder=$this->input->get_post("orderorder");
+$maxrow=$this->input->get_post("maxrow");
+if($maxrow=="")
+{
+}
+if($orderby=="")
+{
+$orderby="id";
+$orderorder="DESC";
+}
+$data["message"]=$this->chintantable->query($pageno,$maxrow,$orderby,$orderorder,$search,$elements,"FROM `webapp_notification`"," $where");
+$this->load->view("json",$data);
+}
 
 } ?>

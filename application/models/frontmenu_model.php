@@ -40,6 +40,10 @@ return $query;
     $data=array("status" => 0);
 $this->db->where( "id", 17 );
 $query=$this->db->update( "linktype", $data );
+
+ $data=array("status" => 0);
+$this->db->where( "id", 18 );
+$query=$this->db->update( "linktype", $data );
     }
    
 }
