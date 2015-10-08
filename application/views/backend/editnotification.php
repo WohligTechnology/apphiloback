@@ -34,7 +34,7 @@
         <div class="row drop">
             <div class="input-field col s12 m6">
                 <?php echo form_dropdown( 'video',$video,set_value( 'video',$before->video)); ?>
-                 <label>Video</label>
+                 <label>Video Gallery</label>
 
             </div>
         </div>
@@ -43,7 +43,7 @@
         <div class="row drop">
             <div class="input-field col s12 m6">
                 <?php echo form_dropdown( 'gallery',$gallery,set_value( 'gallery',$before->gallery)); ?>
-                 <label>Gallery</label>
+                 <label>Image Gallery</label>
 
             </div>
         </div>
@@ -52,7 +52,7 @@
         <div class="row drop">
             <div class="input-field col s12 m6">
                 <?php echo form_dropdown( 'article',$article,set_value( 'article',$before->article)); ?>
-                 <label>Article</label>
+                 <label>Page</label>
 
             </div>
         </div>

@@ -52,7 +52,7 @@
 		<div class="row drop">
 			<div class="input-field col m6 s12">
 				<?php echo form_dropdown('video',$video,set_value('video')); ?>
-					<label>Video</label>
+					<label>Video Gallery</label>
 
 			</div>
 		</div>
@@ -61,7 +61,7 @@
 		<div class="row drop">
 			<div class="input-field col m6 s12">
 				<?php echo form_dropdown('gallery',$gallery,set_value('gallery')); ?>
-					<label>Gallery</label>
+					<label>Image Gallery</label>
 
 			</div>
 		</div>
@@ -70,7 +70,7 @@
 		<div class="row drop">
 			<div class="input-field col m6 s12">
 				<?php echo form_dropdown('article',$article,set_value('article')); ?>
-					<label>Article</label>
+					<label>Page</label>
 
 			</div>
 		</div>
