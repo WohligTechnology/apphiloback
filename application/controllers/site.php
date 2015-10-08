@@ -3926,7 +3926,7 @@ public function editconfigsubmit()
 			case "instagram" : {
 				$controllerfile=read_file($urlcontrollertest);
 				$mnutext = explode("//instagram",$controllerfile);
-				$googletext = "'Google' => array (
+				$googletext = "'Instagram' => array (
 				'enabled' => true,
 				'keys'    => array ( 'id' => '".$newtext[$i]->appid."', 'secret' => '".$newtext[$i]->secret."' )
 			),";
