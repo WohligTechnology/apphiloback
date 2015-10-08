@@ -77,11 +77,11 @@ function generatejquery(url) {
                     $(".drawchintantable thead tr th[data-field='" + element.alias + "']").html(element.header);
 
                     if (element.sort == "ASC") {
-                        $(".drawchintantable thead tr th[data-field='" + element.alias + "']").append("<button data-sort='DESC' class=' chisorting text-blue waves-effect waves-blue z-depth-0'><i class='fa fa-sort-asc'>keyboard arrow down</i></button>");
+                        $(".drawchintantable thead tr th[data-field='" + element.alias + "']").append("<button data-sort='DESC' class='btn chisorting text-blue waves-effect waves-blue z-depth-0'><i class='material-icons'>keyboard_arrow_down</i></button>");
                     } else if (element.sort == "DESC") {
-                        $(".drawchintantable thead tr th[data-field='" + element.alias + "']").append("<button data-sort='ASC' class=' chisorting text-blue waves-effect waves-blue z-depth-0'><i class='fa fa-sort-desc'>keyboard arrow up</i></button>");
+                        $(".drawchintantable thead tr th[data-field='" + element.alias + "']").append("<button data-sort='ASC' class='btn chisorting text-blue waves-effect waves-blue z-depth-0'><i class='material-icons'>keyboard_arrow_up</i></button>");
                     } else if (element.sort == "1") {
-                        $(".drawchintantable thead tr th[data-field='" + element.alias + "']").append("<button data-sort='ASC' class=' chisorting text-blue waves-effect waves-blue z-depth-0'><i class='fa fa-sort'>keyboard arrow down</i></button>");
+                        $(".drawchintantable thead tr th[data-field='" + element.alias + "']").append("<button data-sort='ASC' class='btn chisorting text-blue waves-effect waves-blue z-depth-0'><i class='material-icons'>swap_vert</i></button>");
                     }
                 }
 
