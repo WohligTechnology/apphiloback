@@ -779,6 +779,7 @@ $data["message"]=$this->restapi_model->getappconfig();
  } 
  public function searchelement(){
       $data = json_decode(file_get_contents('php://input'), true);
+      
         $searchelement=$data['searchelement'];
         if(empty($data))
         {

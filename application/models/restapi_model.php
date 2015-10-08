@@ -111,7 +111,7 @@ return  1;
     public function searchelement($searchelement){
      $query['article']=$this->db->query("SELECT `id`, `status`, `title`, `json`, `content`, `timestamp`, `image` FROM `webapp_articles` WHERE `title` LIKE '%$searchelement%'")->result();
                 $query['events']=$this->db->query("SELECT `id`, `status`, `title`, `timestamp`, `content`, `image`, `startdate`, `starttime` FROM `webapp_events` WHERE `title` LIKE '%$searchelement%'")->result();
-           $query['blog']=$this->db->query("SELECT `id`, `name`, `title`, `json`, `content`, `timestamp` FROM `webapp_blog` WHERE `name` LIKe '%$searchelement%' OR `title` LIKE '%$searchelement%'")->result();
+           $query['blog']=$this->db->query("SELECT `id`, `title`, `json`, `content`, `timestamp` FROM `webapp_blog` WHERE `title` LIKE '%$searchelement%'")->result();
           $query['gallery']=$this->db->query("SELECT `id`, `order`, `status`, `name`, `json`, `timestamp`, `image` FROM `webapp_gallery` WHERE `name` LIKE '%$searchelement%'")->result();
           $query['videogallery']=$this->db->query("SELECT `id`, `order`, `status`, `name`, `json`, `timestamp` FROM `webapp_videogallery` WHERE `name` LIKE '%$searchelement%'")->result();
         return $query;
