@@ -65,8 +65,9 @@
 											<?php if($before->image == "") { } else { ?>
 												<?php } ?>
 										</div>
+										 <div class="md4"><a class="waves-effect waves-light btn red clearimg input-field ">Clear Image</a></div>
 									</div>
-									 <div class="md4"><a class="waves-effect waves-light btn red clearimg input-field ">Clear Image</a></div>
+									
 								</div>
         <?php } ?>
 								<div class="row">

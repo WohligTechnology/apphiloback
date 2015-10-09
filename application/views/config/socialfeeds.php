@@ -71,9 +71,7 @@
             
             	<div class="row" style="display:none">
 				<div class="input-field col s12">
-					<textarea name="text" class="materialize-textarea logindata" id="textid">
-						<?php echo set_value( 'text',$before->text);?>
-					</textarea>
+					<textarea name="text" class="materialize-textarea logindata" id="textid"><?php echo set_value( 'text',$before->text);?></textarea>
 					<label>Text</label>
 				</div>
 			</div>
@@ -88,42 +86,21 @@
     </div>
     <script>
          var $logintype = '';
-//        var $demo = 0;
-//        $('.class1').click(function () {
-//            var $this = $(this);
-//            console.log($this);
-//            if ($this.is(".class1")) {
-//                if ($this.is(":checked")) {
-//                    $(".class1").not($this).prop({
-//                        disabled: true,
-//                        checked: false
-//                    });
-//                } else {
-//                    $(".class1").prop("disabled", false);
-//                }
-//            }
-//        });
-//        var $logint = {};
         $(document).ready(function () {
+
+
+            var inidata=$(".logindata").val();
+            inidata=JSON.parse(inidata);
+
+            for(var i=0;i<inidata.length;i++)
+            {
+                $(".logintype input[name="+inidata[i].name+"]").val(inidata[i].value);
+            }
 
 
 
            
             var $logintype = $(".logintype");
-//            console.log(JSON.parse($("#textid").val()).length);
-//            var alldata = JSON.parse($("#textid").val());
-//            for (var i = 0; i < JSON.parse($("#textid").val()).length; i++) {
-//                var $checkbox = $logintype.eq(i).find(".checkbox").find("input[type=checkbox]");
-//                var $inputs = $logintype.eq(i).find(".sublogintype").find("input");
-//
-//                $inputs.eq(0).val(alldata[i].appid);
-//
-//                if (alldata[i].value == true) {
-//                    $checkbox.prop("checked", true);
-//                }
-//
-//            }
-
 
             $("button.loginsubmit").click(function () {
                 var sendjson = [];
@@ -138,7 +115,6 @@
                 console.log(sendjson);
 
                 $(".logindata").val(JSON.stringify(sendjson));
-                //$("form.loginform").submit();
             });
 
 

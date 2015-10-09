@@ -47,8 +47,9 @@
                     ?>
                     <?php } ?>
                 </div>
+                 <div class="md4"><a class="waves-effect waves-light btn red clearimg input-field ">Clear Image</a></div>
             </div>
-             <div class="md4"><a class="waves-effect waves-light btn red clearimg input-field ">Clear Image</a></div>
+            
         </div>
           <div class="row">
                 <div class="input-field col s12 m8">

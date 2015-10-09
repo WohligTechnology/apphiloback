@@ -84,8 +84,9 @@
                     ?>
                     <?php } ?>
                 </div>
+                  <div class="md4"><a class="waves-effect waves-light btn red clearimg input-field ">Clear Image</a></div>
             </div>
-             <div class="md4"><a class="waves-effect waves-light btn red clearimg input-field ">Clear Image</a></div>
+           
         </div>
         	<div class="row">
 							<div class="input-field col s12 m6"><textarea id="content" name="content" value="<?php echo set_value('content',$before->content);?>" class="materialize-textarea"><?php echo set_value('content',$before->content);?></textarea><label for="content">Content</label>
