@@ -385,3 +385,6 @@ textarea.materialize-textarea:focus:not([readonly]) {
 .pagination li {
     vertical-align: middle;
 }
+.toast {
+    text-transform: capitalize;
+}
