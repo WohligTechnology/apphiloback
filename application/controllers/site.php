@@ -555,9 +555,9 @@ $content=$this->input->get_post("content");
 							$image=$uploaddata['file_name'];
 						}
 if($this->articles_model->create($status,$title,$json,$content,$image)==0)
-$data["alerterror"]="New articles could not be created.";
+$data["alerterror"]="New Page could not be created.";
 else
-$data["alertsuccess"]="articles created Successfully.";
+$data["alertsuccess"]="Page created Successfully.";
 $data["redirect"]="site/viewarticles";
 $this->load->view("redirect",$data);
 }
@@ -630,9 +630,9 @@ $timestamp=$this->input->get_post("timestamp");
 							$image=$image->image;
 						}
 if($this->articles_model->edit($id,$status,$title,$json,$content,$timestamp,$image)==0)
-$data["alerterror"]="New articles could not be Updated.";
+$data["alerterror"]="New Page could not be Updated.";
 else
-$data["alertsuccess"]="articles Updated Successfully.";
+$data["alertsuccess"]="Page Updated Successfully.";
     if($id!=1){
 $data["redirect"]="site/viewarticles";
 
@@ -783,9 +783,9 @@ $typeid=$this->input->get_post("typeid");
 							$image=$uploaddata['file_name'];
 						}
 if($this->frontmenu_model->create($order,$parent,$status,$name,$json,$image,$linktype,$icon,$event,$blog,$video,$article,$gallery,$typeid)==0)
-$data["alerterror"]="New frontmenu could not be created.";
+$data["alerterror"]="New Navigation could not be created.";
 else
-$data["alertsuccess"]="frontmenu created Successfully.";
+$data["alertsuccess"]="Navigation created Successfully.";
 $data["redirect"]="site/viewfrontmenu";
 $this->load->view("redirect",$data);
 }
@@ -871,9 +871,9 @@ $gallery=$this->input->get_post("gallery");
 							$image=$image->image;
 						}
 if($this->frontmenu_model->edit($id,$order,$parent,$status,$name,$json,$image,$linktype,$icon,$event,$blog,$video,$article,$gallery,$typeid)==0)
-$data["alerterror"]="New frontmenu could not be Updated.";
+$data["alerterror"]="New Navigation could not be Updated.";
 else
-$data["alertsuccess"]="frontmenu Updated Successfully.";
+$data["alertsuccess"]="Navigation Updated Successfully.";
 $data["redirect"]="site/viewfrontmenu";
 $this->load->view("redirect",$data);
 }
@@ -990,9 +990,9 @@ $json=$this->input->get_post("json");
 							$image=$uploaddata['file_name'];
 						}
 if($this->gallery_model->create($order,$status,$name,$json,$image)==0)
-$data["alerterror"]="New gallery could not be created.";
+$data["alerterror"]="New Image Gallery could not be created.";
 else
-$data["alertsuccess"]="gallery created Successfully.";
+$data["alertsuccess"]="Image Gallery created Successfully.";
 $data["redirect"]="site/viewgallery";
 $this->load->view("redirect",$data);
 }
@@ -1055,9 +1055,9 @@ $timestamp=$this->input->get_post("timestamp");
 							$image=$image->image;
 						}
 if($this->gallery_model->edit($id,$order,$status,$name,$json,$timestamp,$image)==0)
-$data["alerterror"]="New gallery could not be Updated.";
+$data["alerterror"]="New Image Gallery could not be Updated.";
 else
-$data["alertsuccess"]="gallery Updated Successfully.";
+$data["alertsuccess"]="Image Gallery Updated Successfully.";
 $data["redirect"]="site/viewgallery";
 $this->load->view("redirect",$data);
 }
@@ -1212,9 +1212,9 @@ $alt=$this->input->get_post("alt");
                 
 			}
 if($this->galleryimage_model->create($gallery,$order,$status,$image,$alt)==0)
-$data["alerterror"]="New galleryimage could not be created.";
+$data["alerterror"]="New Image Gallery Image could not be created.";
 else
-$data["alertsuccess"]="galleryimage created Successfully.";
+$data["alertsuccess"]="Image Gallery Image created Successfully.";
 $data["redirect"]="site/viewgalleryimage?id=".$gallery;
 $this->load->view("redirect2",$data);
 }
@@ -1306,9 +1306,9 @@ $alt=$this->input->get_post("alt");
             }
             
 if($this->galleryimage_model->edit($id,$gallery,$order,$status,$image,$alt)==0)
-$data["alerterror"]="New galleryimage could not be Updated.";
+$data["alerterror"]="New Image Gallery Image could not be Updated.";
 else
-$data["alertsuccess"]="galleryimage Updated Successfully.";
+$data["alertsuccess"]="Image Gallery Image Updated Successfully.";
 $data["redirect"]="site/viewgalleryimage?id=".$gallery;
 $this->load->view("redirect2",$data);
 }
@@ -1418,9 +1418,9 @@ $name=$this->input->get_post("name");
 $json=$this->input->get_post("json");
 $subtitle=$this->input->get_post("subtitle");
 if($this->videogallery_model->create($order,$status,$name,$json,$subtitle)==0)
-$data["alerterror"]="New videogallery could not be created.";
+$data["alerterror"]="New Video Gallery could not be created.";
 else
-$data["alertsuccess"]="videogallery created Successfully.";
+$data["alertsuccess"]="Video Gallery created Successfully.";
 $data["redirect"]="site/viewvideogallery";
 $this->load->view("redirect",$data);
 }
@@ -1469,9 +1469,9 @@ $json=$this->input->get_post("json");
     $timestamp=$this->input->get_post("timestamp");
      $subtitle=$this->input->get_post("subtitle");
 if($this->videogallery_model->edit($id,$order,$status,$name,$json,$timestamp,$subtitle)==0)
-$data["alerterror"]="New videogallery could not be Updated.";
+$data["alerterror"]="New Video Gallery could not be Updated.";
 else
-$data["alertsuccess"]="videogallery Updated Successfully.";
+$data["alertsuccess"]="Video Gallery Updated Successfully.";
 $data["redirect"]="site/viewvideogallery";
 $this->load->view("redirect",$data);
 }
@@ -1589,9 +1589,9 @@ $videogallery=$this->input->get_post("videogallery");
 $url=$this->input->get_post("url");
 $alt=$this->input->get_post("alt");
 if($this->videogalleryvideo_model->create($order,$status,$videogallery,$url,$alt)==0)
-$data["alerterror"]="New videogalleryvideo could not be created.";
+$data["alerterror"]="New Video Gallery Video could not be created.";
 else
-$data["alertsuccess"]="videogalleryvideo created Successfully.";
+$data["alertsuccess"]="Video Gallery Video created Successfully.";
 $data["redirect"]="site/viewvideogalleryvideo?id=".$videogallery;
 $this->load->view("redirect2",$data);
 }
@@ -1639,9 +1639,9 @@ $videogallery=$this->input->get_post("videogallery");
 $url=$this->input->get_post("url");
     $alt=$this->input->get_post("alt");
 if($this->videogalleryvideo_model->edit($id,$order,$status,$videogallery,$url,$alt)==0)
-$data["alerterror"]="New videogalleryvideo could not be Updated.";
+$data["alerterror"]="New Video Gallery Video could not be Updated.";
 else
-$data["alertsuccess"]="videogalleryvideo Updated Successfully.";
+$data["alertsuccess"]="Video Gallery Video Updated Successfully.";
 $data["redirect"]="site/viewvideogalleryvideo?id=".$videogallery;
 $this->load->view("redirect2",$data);
 }
@@ -1757,9 +1757,9 @@ $starttime=$this->input->get_post("starttime");
 							$image=$uploaddata['file_name'];
 						}
 if($this->events_model->create($status,$title,$timestamp,$content,$venue,$image,$startdate,$starttime)==0)
-$data["alerterror"]="New events could not be created.";
+$data["alerterror"]="New Event could not be created.";
 else
-$data["alertsuccess"]="events created Successfully.";
+$data["alertsuccess"]="Event created Successfully.";
 $data["redirect"]="site/viewevents";
 $this->load->view("redirect",$data);
 }
@@ -1828,9 +1828,9 @@ $starttime=$this->input->get_post("starttime");
 							$image=$image->image;
 						}
 if($this->events_model->edit($id,$status,$title,$timestamp,$content,$venue,$image,$startdate,$starttime)==0)
-$data["alerterror"]="New events could not be Updated.";
+$data["alerterror"]="New Event could not be Updated.";
 else
-$data["alertsuccess"]="events Updated Successfully.";
+$data["alertsuccess"]="Event Updated Successfully.";
 $data["redirect"]="site/viewevents";
 $this->load->view("redirect",$data);
 }
@@ -1958,9 +1958,9 @@ $status=$this->input->get_post("status");
 $order=$this->input->get_post("order");
 $url=$this->input->get_post("url");
 if($this->eventvideo_model->create($event,$videogallery,$status,$order,$url)==0)
-$data["alerterror"]="New eventvideo could not be created.";
+$data["alerterror"]="New Event Video could not be created.";
 else
-$data["alertsuccess"]="eventvideo created Successfully.";
+$data["alertsuccess"]="Event Video created Successfully.";
 $data["redirect"]="site/vieweventvideo?id=".$event;
 $this->load->view("redirect2",$data);
 }
@@ -2011,9 +2011,9 @@ $status=$this->input->get_post("status");
 $order=$this->input->get_post("order");
     $url=$this->input->get_post("url");
 if($this->eventvideo_model->edit($id,$event,$videogallery,$status,$order,$url)==0)
-$data["alerterror"]="New eventvideo could not be Updated.";
+$data["alerterror"]="New Event Video could not be Updated.";
 else
-$data["alertsuccess"]="eventvideo Updated Successfully.";
+$data["alertsuccess"]="Event Video Updated Successfully.";
 $data["redirect"]="site/vieweventvideo?id=".$event;
 $this->load->view("redirect2",$data);
 }
@@ -2165,9 +2165,9 @@ $order=$this->input->get_post("order");
                 
 			}
 if($this->eventimages_model->create($event,$status,$order,$image)==0)
-$data["alerterror"]="New eventimages could not be created.";
+$data["alerterror"]="New Event Images could not be created.";
 else
-$data["alertsuccess"]="eventimages created Successfully.";
+$data["alertsuccess"]="Event Image created Successfully.";
 $data["redirect"]="site/vieweventimages?id=".$event;
 $this->load->view("redirect2",$data);
 }
@@ -2257,9 +2257,9 @@ $order=$this->input->get_post("order");
             }
             
 if($this->eventimages_model->edit($id,$event,$status,$order,$image)==0)
-$data["alerterror"]="New eventimages could not be Updated.";
+$data["alerterror"]="New Event Image could not be Updated.";
 else
-$data["alertsuccess"]="eventimages Updated Successfully.";
+$data["alertsuccess"]="Event Images Updated Successfully.";
 $data["redirect"]="site/vieweventimages?id=".$event;
 $this->load->view("redirect2",$data);
 }
