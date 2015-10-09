@@ -61,7 +61,7 @@
 						<div class="row">
 							<div class="col s12">
 								<button type="submit" class="btn btn-primary blue darken-4">Save</button>
-								<a href="<?php echo site_url(" site/viewconfig "); ?>" class="btn btn-secondary red">Cancel</a>
+								<a href="<?php echo site_url("site/viewconfig"); ?>" class="btn btn-secondary red">Cancel</a>
 							</div>
 						</div>
 					</div>
