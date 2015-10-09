@@ -11,7 +11,6 @@
                             <th data-field="email">Email</th>
                             <th data-field="timestamp">Timestamp</th>
                             <th data-field="action">Action</th>
-            
                         </tr>
                     </thead>
                     <tbody>
@@ -21,9 +20,6 @@
             </div>
         </div>
         <?php $this->chintantable->createpagination();?>
-
-
-
     </div>
 </div>
 <script>

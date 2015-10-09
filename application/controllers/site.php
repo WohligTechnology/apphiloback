@@ -25,6 +25,7 @@ class Site extends CI_Controller
 		$access = array("1");
 		$this->checkaccess($access);
 		$data[ 'page' ] = 'dashboard';
+        $data["base_url"]=site_url("site/viewenquiryjson");
         $data[ 'usercount' ] = $this->user_model->getusercount();
 		$data[ 'enquirycount' ] = $this->enquiry_model->total();
 		$data[ 'title' ] = 'Welcome';
@@ -1703,7 +1704,7 @@ $maxrow=20;
 if($orderby=="")
 {
 $orderby="id";
-$orderorder="ASC";
+$orderorder="DESC";
 }
 $data["message"]=$this->chintantable->query($pageno,$maxrow,$orderby,$orderorder,$search,$elements,"FROM `webapp_events` LEFT OUTER JOIN `statuses` ON `statuses`.`id`=`webapp_events`.`status`");
 $this->load->view("json",$data);
@@ -2330,7 +2331,7 @@ $maxrow=20;
 if($orderby=="")
 {
 $orderby="id";
-$orderorder="ASC";
+$orderorder="DESC";
 }
 $data["message"]=$this->chintantable->query($pageno,$maxrow,$orderby,$orderorder,$search,$elements,"FROM `webapp_enquiry` LEFT OUTER JOIN `user` ON `user`.`id`=`webapp_enquiry`.`user`");
 $this->load->view("json",$data);
@@ -2480,7 +2481,7 @@ $maxrow=20;
 if($orderby=="")
 {
 $orderby="id";
-$orderorder="ASC";
+$orderorder="DESC";
 }
 $data["message"]=$this->chintantable->query($pageno,$maxrow,$orderby,$orderorder,$search,$elements,"FROM `webapp_notification` LEFT OUTER JOIN `statuses` ON `statuses`.`id`=`webapp_notification`.`status`");
 $this->load->view("json",$data);
@@ -2902,7 +2903,7 @@ $maxrow=20;
 if($orderby=="")
 {
 $orderby="id";
-$orderorder="ASC";
+$orderorder="DESC";
 }
 $data["message"]=$this->chintantable->query($pageno,$maxrow,$orderby,$orderorder,$search,$elements,"FROM `webapp_blog`");
 $this->load->view("json",$data);
