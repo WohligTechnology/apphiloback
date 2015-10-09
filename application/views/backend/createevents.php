@@ -44,7 +44,7 @@
         <div class="row">
             <div class="input-field col s12 m6">
                 <input type="date" class="datepicker" name="startdate" value="<?php echo set_value('startdate');?>">
-                <label>startdate</label>
+                <label>Start Date</label>
             </div>
         </div>
         <div class="row">
