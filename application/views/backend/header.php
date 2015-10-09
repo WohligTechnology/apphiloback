@@ -3,13 +3,13 @@
 <title><?php echo $title;?> - BusinessApp</title>
 <head>
 	<link rel="shortcut icon" href="<?php echo base_url('assets').'/';?>img/favicon.png" type="image/png"/>
-	<link rel="stylesheet" href="<?php echo base_url('assets').'/';?>bower_components/Materialize/dist/css/materialize.min.css">
+	<link rel="stylesheet" href="<?php echo base_url('assets').'/';?>css/materialize.min.css">
     
     <link href="<?php echo base_url('assets').'/';?>css/jquery.fancybox.css" rel="stylesheet">
     <link rel="stylesheet" href="<?php echo base_url('assets').'/';?>css/linearfonts.css">
 	<link href="<?php echo base_url('assets').'/';?>css/style.css" rel="stylesheet">
-    <script src="<?php echo base_url('assets').'/';?>bower_components/jquery/dist/jquery.min.js"></script>
-    <script src="<?php echo base_url('assets').'/';?>bower_components/Materialize/dist/js/materialize.min.js"></script>
+    <script src="<?php echo base_url('assets').'/';?>js/jquery.min.js"></script>
+    <script src="<?php echo base_url('assets').'/';?>js/materialize.min.js"></script>
     <script src="<?php echo base_url('assets').'/';?>js/chintantable.js"></script>
    	<script src="<?php echo base_url('assets').'/';?>js/jquery.fancybox.pack.js"></script>
     <script src="<?php echo base_url('assets').'/';?>tinymce/tinymce.min.js"></script>

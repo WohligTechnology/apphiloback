@@ -36,7 +36,8 @@
              <div class="row">
             <div class="file-field input-field col s12 m8">
                                   <span class="img-center big image1">
-                <img src="<?php echo base_url('uploads').'/'.$before->image; ?>" ></span>
+                                   <?php if($before->image != "") { ?>
+                <img src="<?php echo base_url('uploads').'/'.$before->image; ?>" >   <?php } ?></span>
                 <div class="btn blue darken-4">
                     <span>Image</span>
                     <input name="image" type="file" multiple>

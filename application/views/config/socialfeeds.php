@@ -4,16 +4,7 @@
     </div>
 
     <div class="col s12 m6">
-        <!--	GOOGLE-->
-        <div class="logintype googleLogin">
-            <div class="row">
-                <div class="input-field col s12">
-                    <label for="appid">Google Page Url</label>
-                    <input type="text" id="appid" name="googleappid">
-                </div>
-            </div>
-        </div>
-
+     
         <!--		FACEBOOK-->
         <div class="logintype facebookLogin">
             <div class="row">
@@ -41,6 +32,16 @@
                 </div>
             </div>
         </div>
+           <!-- GOOGLE-->
+        <div class="logintype googleplusLogin">
+            <div class="row">
+                <div class="input-field col s12">
+                    <label for="appid">Google+ Page Url</label>
+                    <input type="text" id="appid" name="googleplusappid">
+                </div>
+            </div>
+        </div>
+
 
         <!--		YOUTUBE-->
         <div class="logintype youtubeLogin">
