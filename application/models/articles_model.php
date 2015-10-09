@@ -46,5 +46,13 @@ return $query;
     $query=$this->db->query("SELECT `image` FROM `webapp_articles` WHERE `id`='$id'")->row();
 		return $query;
     }
+         public function cleararticleimage($id){
+         $data = array(
+            'image' => ''
+        );
+        $this->db->where('id', $id);
+        $query = $this->db->update('webapp_articles', $data);
+        return $query;
+    }
 }
 ?>

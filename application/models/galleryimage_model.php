@@ -36,5 +36,14 @@ public function delete($id)
 $query=$this->db->query("DELETE FROM `webapp_galleryimage` WHERE `id`='$id'");
 return $query;
 }
+    
+         public function cleargalleryimage1($id){
+         $data = array(
+            'image' => ''
+        );
+        $this->db->where('id', $id);
+        $query = $this->db->update('webapp_galleryimage', $data);
+        return $query;
+    }
 }
 ?>

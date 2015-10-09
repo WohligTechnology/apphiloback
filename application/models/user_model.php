@@ -1165,6 +1165,22 @@ class User_model extends CI_Model
         else
             return 1;
     }
+      public function clearuserimage($id){
+         $data = array(
+            'image' => ''
+        );
+        $this->db->where('id', $id);
+        $query = $this->db->update('user', $data);
+        return $query;
+    }  
+    public function clearcoverimage($id){
+         $data = array(
+            'coverimage' => ''
+        );
+        $this->db->where('id', $id);
+        $query = $this->db->update('user', $data);
+        return $query;
+    }
  
 }
 ?>

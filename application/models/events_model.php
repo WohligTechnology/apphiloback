@@ -50,5 +50,13 @@ return $query;
 $query=$this->db->query("SELECT `image` FROM `webapp_events` WHERE `id`='$id'")->row();
 return $query;
 }
+     public function cleareventimage($id){
+         $data = array(
+            'image' => ''
+        );
+        $this->db->where('id', $id);
+        $query = $this->db->update('webapp_events', $data);
+        return $query;
+    }
 }
 ?>

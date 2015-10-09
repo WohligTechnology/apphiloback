@@ -45,5 +45,13 @@ return $query;
 		$query=$this->db->query("SELECT `image` FROM `webapp_gallery` WHERE `id`='$id'")->row();
 		return $query;
 	}
+    public function cleargalleryimage($id){
+         $data = array(
+            'image' => ''
+        );
+        $this->db->where('id', $id);
+        $query = $this->db->update('webapp_gallery', $data);
+        return $query;
+    }
 }
 ?>

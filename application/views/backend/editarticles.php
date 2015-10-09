@@ -46,25 +46,29 @@
 										<input type="text" readonly="true" name="timestamp" value="<?php echo set_value('timestamp',$before->timestamp);?>">
 									</div>
 								</div>
+                            	<?php if($before->id == 1) {?>
 
+						<?php }
+     else { ?>
 
 								<div class="row">
 									<div class="file-field input-field col s12 m6">
 									
-										<span class="img-center big">
+										<span class="img-center big image1">
                 <img src="<?php echo base_url('uploads').'/'.$before->image; ?>" ></span>
 										<div class="btn blue darken-4">
 											<span>Image</span>
 											<input name="image" type="file" multiple>
 										</div>
 										<div class="file-path-wrapper">
-											<input class="file-path validate" type="text" placeholder="Upload one or more files" value="<?php echo set_value('image',$before->image);?>">
+											<input class="file-path validate image1" type="text" placeholder="Upload one or more files" value="<?php echo set_value('image',$before->image);?>">
 											<?php if($before->image == "") { } else { ?>
 												<?php } ?>
 										</div>
 									</div>
+									 <div class="md4"><a class="waves-effect waves-light btn red clearimg input-field ">Clear Image</a></div>
 								</div>
-
+        <?php } ?>
 								<div class="row">
 									<div class=" form-group col s12 m6">
 											<button type="submit" class="btn btn-primary jsonsubmit waves-effect waves-light blue darken-4">Save</button>
@@ -79,3 +83,19 @@
 								</div>
 	</form>
 </div>
+<script>
+    $(document).ready(function () {
+        $(".clearimg").click(function () {
+            if (confirm("Are you sure want to clear Image!") == true) {
+                $.get("<?php echo site_url('site/cleararticleimage?id='.$before->id);?>", function (data) {
+                    $("input.image1").val("");
+                    $("span.image1").html("");
+                });                          
+                    
+                
+            } else {
+                return 0;
+            }
+        });
+    });
+</script>

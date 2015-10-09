@@ -54,5 +54,14 @@ return $query;
 		$query=$this->db->query("SELECT `image` FROM `slider` WHERE `id`='$id'")->row();
 		return $query;
 	}
+    
+           public function clearsliderimage($id){
+         $data = array(
+            'image' => ''
+        );
+        $this->db->where('id', $id);
+        $query = $this->db->update('slider', $data);
+        return $query;
+    }
 }
 ?>

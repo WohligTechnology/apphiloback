@@ -36,5 +36,13 @@ public function delete($id)
 $query=$this->db->query("DELETE FROM `webapp_eventimages` WHERE `id`='$id'");
 return $query;
 }
+     public function cleareventimage1($id){
+         $data = array(
+            'image' => ''
+        );
+        $this->db->where('id', $id);
+        $query = $this->db->update('webapp_eventimages', $data);
+        return $query;
+    }
 }
 ?>

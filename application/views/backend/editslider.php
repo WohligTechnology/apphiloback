@@ -20,7 +20,7 @@
 
 		<div class="row">
 			<div class="file-field input-field col m6 s12">
-				<span class="img-center big">
+				<span class="img-center big image1">
                    			<?php if($before->image == "") { } else {
                     ?><img src="<?php echo base_url('uploads')."/".$before->image; ?>">
 						<?php } ?></span>
@@ -29,9 +29,10 @@
 					<input name="image" type="file" multiple>
 				</div>
 				<div class="file-path-wrapper">
-					<input class="file-path validate" type="text" placeholder="Upload one or more files" value="<?php echo set_value('image',$before->image);?>">
+					<input class="file-path validate image1" type="text" placeholder="Upload one or more files" value="<?php echo set_value('image',$before->image);?>">
 				</div>
 			</div>
+					 <div class="md4"><a class="waves-effect waves-light btn red clearimg input-field ">Clear Image</a></div>
 		</div>
 		<div class=" form-group">
 			<div class="row">
@@ -43,3 +44,19 @@
 		</div>
 	</form>
 </div>
+<script>
+    $(document).ready(function () {
+        $(".clearimg").click(function () {
+            if (confirm("Are you sure want to clear Image!") == true) {
+                $.get("<?php echo site_url('site/clearsliderimage?id='.$before->id);?>", function (data) {
+                    $("input.image1").val("");
+                    $("span.image1").html("");
+                });                          
+                    
+                
+            } else {
+                return 0;
+            }
+        });
+    });
+</script>

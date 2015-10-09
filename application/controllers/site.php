@@ -7,7 +7,7 @@ class Site extends CI_Controller
 		
 		$this->is_logged_in();
 	}
-	function is_logged_in( )
+	function is_logged_in()
 	{
 		$is_logged_in = $this->session->userdata( 'logged_in' );
 		if ( $is_logged_in !== 'true' || !isset( $is_logged_in ) ) {
@@ -3832,8 +3832,8 @@ public function editconfig()
         }
             break;  
         case 12: {
-            $data["page"]="editconfigtext";
-            $data["title"]="Title";
+            $data["page"]="socialfeeds";
+            $data["title"]="Social Feeds";
         }
             break;  
         case 13: {
@@ -4024,6 +4024,49 @@ $data["redirect"]="site/edithome";
 $this->load->view("redirect2",$data);
 
 }
+    // CLEAR IMAGE
+    public function cleargalleryimage(){
+    $id=$this->input->get_post("id");
+    $this->gallery_model->cleargalleryimage($id);
+    } 
+    public function cleargalleryimage1(){
+    $id=$this->input->get_post("id");
+    $this->galleryimage_model->cleargalleryimage1($id);
+    } 
+    
+    public function clearuserimage(){
+    $id=$this->input->get_post("id");
+    $this->user_model->clearuserimage($id);
+    } 
+    
+    public function clearcoverimage(){
+    $id=$this->input->get_post("id");
+    $this->user_model->clearcoverimage($id);
+    }
+    public function cleareventimage(){
+    $id=$this->input->get_post("id");
+    $this->events_model->cleareventimage($id);
+    }
+    public function cleararticleimage(){
+    $id=$this->input->get_post("id");
+    $this->articles_model->cleararticleimage($id);
+    } 
+    public function cleareventimage1(){
+    $id=$this->input->get_post("id");
+    $this->eventimages_model->cleareventimage1($id);
+    } 
+    public function clearsliderimage(){
+    $id=$this->input->get_post("id");
+    $this->slider_model->clearsliderimage($id);
+    }
+    public function clearnotificationimage(){
+    $id=$this->input->get_post("id");
+    $this->notification_model->clearnotificationimage($id);
+    } 
+    public function clearblogimage(){
+    $id=$this->input->get_post("id");
+    $this->blog_model->clearblogimage($id);
+    }
 
 }
 ?>

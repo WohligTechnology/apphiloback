@@ -42,5 +42,13 @@ return $query;
     $query=$this->db->query("SELECT `image` FROM `webapp_blog` WHERE `id`='$id'")->row();
 		return $query;
     }
+      public function clearblogimage($id){
+         $data = array(
+            'image' => ''
+        );
+        $this->db->where('id', $id);
+        $query = $this->db->update('webapp_blog', $data);
+        return $query;
+    }
 }
 ?>

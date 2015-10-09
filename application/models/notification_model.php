@@ -46,5 +46,13 @@ $data=array("status" => 1);
 $this->db->where( "id", 18 );
 $query=$this->db->update( "linktype", $data );
     }
+       public function clearnotificationimage($id){
+         $data = array(
+            'image' => ''
+        );
+        $this->db->where('id', $id);
+        $query = $this->db->update('webapp_notification', $data);
+        return $query;
+    }
 }
 ?>
