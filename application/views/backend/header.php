@@ -4,7 +4,6 @@
 <head>
 	<link rel="shortcut icon" href="<?php echo base_url('assets').'/';?>img/favicon.png" type="image/png"/>
 	<link rel="stylesheet" href="<?php echo base_url('assets').'/';?>css/materialize.min.css">
-    
     <link href="<?php echo base_url('assets').'/';?>css/jquery.fancybox.css" rel="stylesheet">
     <link rel="stylesheet" href="<?php echo base_url('assets').'/';?>css/linearfonts.css">
 	<link href="<?php echo base_url('assets').'/';?>css/style.css" rel="stylesheet">

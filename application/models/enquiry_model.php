@@ -36,5 +36,11 @@ public function delete($id)
 $query=$this->db->query("DELETE FROM `webapp_enquiry` WHERE `id`='$id'");
 return $query;
 }
+
+public function total()
+{
+$query=$this->db->query("SELECT count(*) as `count` FROM `webapp_enquiry`")->row();
+return $query->count;
+}
 }
 ?>

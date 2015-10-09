@@ -22,10 +22,11 @@ class Site extends CI_Controller
 	}
 	public function index()
 	{
-		$access = array("1","2");
+		$access = array("1");
 		$this->checkaccess($access);
 		$data[ 'page' ] = 'dashboard';
-		$data[ 'usercount' ] = $this->user_model->getusercount();
+        $data[ 'usercount' ] = $this->user_model->getusercount();
+		$data[ 'enquirycount' ] = $this->enquiry_model->total();
 		$data[ 'title' ] = 'Welcome';
 		$this->load->view( 'template', $data );	
 	}
