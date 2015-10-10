@@ -5,7 +5,7 @@
     <form class="col s12" method="post" action="<?php echo site_url('site/createnotificationsubmit');?>" enctype="multipart/form-data">
         <div class="row">
             <div class="input-field col s12 m6">
-                <?php echo form_dropdown('linktype',$linktype,set_value( 'linktype')); ?>
+                <?php echo form_dropdown('linktype',$linktype,set_value( 'linktype',$showdropdown)); ?>
                  <label>Link Type</label>
             </div>
         </div>

@@ -2494,6 +2494,7 @@ $data["page"]="createnotification";
 $data["activemenu"]="notifications";
 $this->notification_model->changestatusofexternallink();
 $data[ 'linktype' ] =$this->user_model->getlinktypedropdown();
+$data[ 'showdropdown' ] =18;
 $data[ 'event' ] =$this->user_model->geteventsdropdown();
 $data[ 'blog' ] =$this->user_model->getblogdropdown();
 $data[ 'video' ] =$this->user_model->getvideogallerydropdown(); 
