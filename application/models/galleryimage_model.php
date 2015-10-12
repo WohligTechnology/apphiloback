@@ -1,7 +1,7 @@
 <?php
 if ( !defined( "BASEPATH" ) )
 exit( "No direct script access allowed" );
-class galleryimage_model extends CI_Model
+class GalleryImage_Model extends CI_Model
 {
 public function create($gallery,$order,$status,$image,$alt)
 {
@@ -13,13 +13,13 @@ return  0;
 else
 return  $id;
 }
-public function beforeedit($id)
+public function beforeEdit($id)
 {
 $this->db->where("id",$id);
 $query=$this->db->get("webapp_galleryimage")->row();
 return $query;
 }
-function getsinglegalleryimage($id){
+function getSingleGalleryImage($id){
 $this->db->where("id",$id);
 $query=$this->db->get("webapp_galleryimage")->row();
 return $query;
@@ -37,7 +37,7 @@ $query=$this->db->query("DELETE FROM `webapp_galleryimage` WHERE `id`='$id'");
 return $query;
 }
     
-         public function cleargalleryimage1($id){
+         public function clearGalleryImage1($id){
          $data = array(
             'image' => ''
         );

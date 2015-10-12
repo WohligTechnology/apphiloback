@@ -1,7 +1,7 @@
 <?php
 if ( !defined( "BASEPATH" ) )
 exit( "No direct script access allowed" );
-class frontmenu_model extends CI_Model
+class FrontMenu_Model extends CI_Model
 {
 public function create($order,$parent,$status,$name,$json,$image,$linktype,$icon,$event,$blog,$video,$article,$gallery,$typeid)
 {
@@ -13,13 +13,13 @@ return  0;
 else
 return  $id;
 }
-public function beforeedit($id)
+public function beforeEdit($id)
 {
 $this->db->where("id",$id);
 $query=$this->db->get("webapp_frontmenu")->row();
 return $query;
 }
-function getsinglefrontmenu($id){
+function getSingleFrontMenu($id){
 $this->db->where("id",$id);
 $query=$this->db->get("webapp_frontmenu")->row();
 return $query;
@@ -36,7 +36,7 @@ public function delete($id)
 $query=$this->db->query("DELETE FROM `webapp_frontmenu` WHERE `id`='$id'");
 return $query;
 }
-    public function changestatusofexternallink(){
+    public function changeStatusOfExternalLink(){
     $data=array("status" => 0);
 $this->db->where( "id", 17 );
 $query=$this->db->update( "linktype", $data );

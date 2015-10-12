@@ -74,7 +74,7 @@
 
         <div class="hidden123">
 
-            <form class='form-horizontal tasi-form loginform' method='post' action='<?php echo site_url("site/editconfigsubmit");?>' enctype='multipart/form-data'>
+            <form class='form-horizontal tasi-form loginform' method='post' action='<?php echo site_url("site/editConfigSubmit");?>' enctype='multipart/form-data'>
                 <input type="hidden" id="normal-field" class="form-control" name="id" value="<?php echo set_value('id',$before->id);?>" style="display:none;">
 
                 <div class="form-group" style="display:none">

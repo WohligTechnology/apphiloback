@@ -1,7 +1,7 @@
 <?php
 if ( !defined( "BASEPATH" ) )
 exit( "No direct script access allowed" );
-class events_model extends CI_Model
+class Events_Model extends CI_Model
 {
 public function create($status,$title,$timestamp,$content,$venue,$image,$startdate,$starttime)
 {
@@ -15,13 +15,13 @@ return  0;
 else
 return  $id;
 }
-public function beforeedit($id)
+public function beforeEdit($id)
 {
 $this->db->where("id",$id);
 $query=$this->db->get("webapp_events")->row();
 return $query;
 }
-function getsingleevents($id){
+function getSingleEvents($id){
 $query=$this->db->query("SELECT `id`, `status`, `title`, date(`timestamp`) as `timestamp`, `content`,`image`,`venue` FROM `webapp_events` WHERE `status`=1 AND `id`='$id'")->row();
 $query->eventimages=$this->db->query("SELECT `id`, `event`, `status`, `order`, `image` FROM `webapp_eventimages` WHERE `event`='$id' 
 AND `status`=1")->result();
@@ -45,12 +45,12 @@ $query=$this->db->query("DELETE FROM `webapp_eventvideo` WHERE `event`='$id'");
 $query=$this->db->query("DELETE FROM `webapp_eventimages` WHERE `event`='$id'");
 return $query;
 }
-    public function getimagebyid($id)
+    public function getImageById($id)
 {
 $query=$this->db->query("SELECT `image` FROM `webapp_events` WHERE `id`='$id'")->row();
 return $query;
 }
-     public function cleareventimage($id){
+     public function clearEventImage($id){
          $data = array(
             'image' => ''
         );

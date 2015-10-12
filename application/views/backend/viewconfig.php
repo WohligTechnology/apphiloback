@@ -28,7 +28,7 @@
             } else if (resultrow.type == 3) {
                 resultrow.type = "Drop Down";
             }
-            return "<tr><td>" + resultrow.title + "</td><td><a class='btn btn-primary btn-xs waves-effect waves-light blue darken-4 tooltipped' href='<?php echo site_url('site/editconfig?id=');?>" + resultrow.id + "'><i class='material-icons'>mode_edit</i></a></td></tr>";
+            return "<tr><td>" + resultrow.title + "</td><td><a class='btn btn-primary btn-xs waves-effect waves-light blue darken-4 tooltipped' href='<?php echo site_url('site/editConfig?id=');?>" + resultrow.id + "'><i class='material-icons'>mode_edit</i></a></td></tr>";
     }
     generatejquery('<?php echo $base_url;?>');
 </script>

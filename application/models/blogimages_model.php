@@ -1,7 +1,7 @@
 <?php
 if ( !defined( "BASEPATH" ) )
 exit( "No direct script access allowed" );
-class blogimages_model extends CI_Model
+class BlogImages_Model extends CI_Model
 {
 public function create($blog,$status,$order,$image)
 {
@@ -13,13 +13,13 @@ return  0;
 else
 return  $id;
 }
-public function beforeedit($id)
+public function beforeEdit($id)
 {
 $this->db->where("id",$id);
 $query=$this->db->get("webapp_blogimages")->row();
 return $query;
 }
-function getsingleblogimages($id){
+function getSingleBlogImages($id){
 $this->db->where("id",$id);
 $query=$this->db->get("webapp_blogimages")->row();
 return $query;

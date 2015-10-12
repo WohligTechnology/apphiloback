@@ -1,7 +1,7 @@
 <?php
 if ( !defined( "BASEPATH" ) )
 exit( "No direct script access allowed" );
-class blogvideo_model extends CI_Model
+class BlogVideo_Model extends CI_Model
 {
 public function create($blog,$status,$order,$video)
 {
@@ -13,13 +13,13 @@ return  0;
 else
 return  $id;
 }
-public function beforeedit($id)
+public function beforeEdit($id)
 {
 $this->db->where("id",$id);
 $query=$this->db->get("webapp_blogvideo")->row();
 return $query;
 }
-function getsingleblogvideo($id){
+function getSingleBlogVideo($id){
 $this->db->where("id",$id);
 $query=$this->db->get("webapp_blogvideo")->row();
 return $query;

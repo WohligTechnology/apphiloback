@@ -1,7 +1,7 @@
 <div class="row">
 	<div class="col s12">
 		<h4 class="pad-left-15">Edit Slider</h4></div>
-	<form class="col s12" method="post" action="<?php echo site_url('site/editslidersubmit');?>" enctype="multipart/form-data">
+	<form class="col s12" method="post" action="<?php echo site_url('site/editSliderSubmit');?>" enctype="multipart/form-data">
 		<input type="hidden" id="normal-field" class="form-control" name="id" value="<?php echo set_value('id',$before->id);?>" style="display:none;">
 
 		<div class="row">
@@ -39,7 +39,7 @@
 			<div class="row">
 				<div class="col m6 s12">
 					<button type="submit" class="btn btn-primary waves-effect waves-light blue darken-4">Save</button>
-					<a href="<?php echo site_url('site/viewslider'); ?>" class="btn btn-secondary waves-effect waves-light red">Cancel</a>
+					<a href="<?php echo site_url('site/viewSlider'); ?>" class="btn btn-secondary waves-effect waves-light red">Cancel</a>
 				</div>
 			</div>
 		</div>
@@ -49,7 +49,7 @@
     $(document).ready(function () {
         $(".clearimg").click(function () {
             if (confirm("Are you sure want to clear Image!") == true) {
-                $.get("<?php echo site_url('site/clearsliderimage?id='.$before->id);?>", function (data) {
+                $.get("<?php echo site_url('site/clearSliderImage?id='.$before->id);?>", function (data) {
                     $("input.image1").val("");
                     $("span.image1").html("");
                 });                          

@@ -19,7 +19,7 @@
 <body>
 	<header>
 			<nav class="blue darken-4">
-			<?php   $menus = $this->menu_model->viewmenus(); 	  ?>
+			<?php   $menus = $this->menu_model->viewMenus(); 	  ?>
 			<ul id="slide-out" class="side-nav fixed">
 				<li class="sub-menu logo">
 						<a id="logo-container" href="<?php echo site_url(); ?>" class="align-center blue-text text-darken-4" style="font-size: 28px;">
@@ -37,12 +37,12 @@
 					}
 					else
 						$page2=$pieces[1];
-					$submenus = $this->menu_model->getsubmenus($row->id);
+					$submenus = $this->menu_model->getSubMenus($row->id);
 					?>
                         <li class="<?php if($page==$page2 || $activemenu == strtolower($row->name) || $page == strtolower($row->name)) { echo 'active'; } //echo $page2;
 					if(count($submenus > 0)) 
 					{ 
-						$pages =  $this->menu_model->getpages($row->id);
+						$pages =  $this->menu_model->getPages($row->id);
 						//echo $page2; 
 						//print_r($pages);
 						echo ' sub-menu'; 

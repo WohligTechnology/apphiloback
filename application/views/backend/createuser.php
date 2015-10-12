@@ -2,7 +2,7 @@
 	<div class="col s12">
 		<h4 class="pad-left-15">Create User</h4>
 	</div>
-	<form class="col s12" method="post" action="<?php echo site_url('site/createusersubmit');?>" enctype="multipart/form-data">
+	<form class="col s12" method="post" action="<?php echo site_url('site/createUserSubmit');?>" enctype="multipart/form-data">
 		<div class="row">
 			<div class="input-field col m6 s12">
 				<label for="name">Name</label>
@@ -155,7 +155,7 @@
 			<div class="row">
 				<div class="col m6 s12">
 					<button type="submit" class="btn btn-primary waves-effect waves-light blue darken-4">Save</button>
-					<a href="<?php echo site_url('site/viewusers'); ?>" class="waves-effect waves-light btn red">Cancel</a>
+					<a href="<?php echo site_url('site/viewUsers'); ?>" class="waves-effect waves-light btn red">Cancel</a>
 				</div>
 			</div>
 		</div>

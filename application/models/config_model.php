@@ -1,7 +1,7 @@
 <?php
 if ( !defined( "BASEPATH" ) )
 exit( "No direct script access allowed" );
-class config_model extends CI_Model
+class Config_Model extends CI_Model
 {
 public function create($title,$content,$text,$type)
 {
@@ -13,13 +13,13 @@ return  0;
 else
 return  $id;
 }
-public function beforeedit($id)
+public function beforeEdit($id)
 {
 $this->db->where("id",$id);
 $query=$this->db->get("config")->row();
 return $query;
 }
-function getsingleconfig($id){
+function getSingleConfig($id){
 $this->db->where("id",$id);
 $query=$this->db->get("config")->row();
 return $query;
@@ -103,7 +103,7 @@ public function delete($id)
 $query=$this->db->query("DELETE FROM `config` WHERE `id`='$id'");
 return $query;
 }
-    public function geteditpage($id){
+    public function getEditPage($id){
     $query=$this->db->query("SELECT `type` FROM `config` WHERE `id`='$id'")->row();
         $type=$query->type;
         return $type;

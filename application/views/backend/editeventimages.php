@@ -4,7 +4,7 @@
     </div>
 </div>
 <div class="row">
-    <form class="col s12" method="post" action="<?php echo site_url('site/editeventimagessubmit');?>" enctype="multipart/form-data">
+    <form class="col s12" method="post" action="<?php echo site_url('site/editEventImagesSubmit');?>" enctype="multipart/form-data">
         <input type="hidden" id="normal-field" class="form-control" name="id" value="<?php echo set_value('id',$before->id);?>" style="display:none;">
    <div class="row">
             <div class="input-field col s6">
@@ -52,7 +52,7 @@
             <label class="col-sm-2 control-label">&nbsp;</label>
             <div class="col-sm-4">
                 <button type="submit" class="btn btn-primary waves-effect waves-light blue darken-4">Save</button>
-                <a href="<?php echo site_url("site/vieweventimages?id=").$this->input->get('eventid'); ?>" class="btn btn-secondary waves-effect waves-light red">Cancel</a>
+                <a href="<?php echo site_url("site/viewEventImages?id=").$this->input->get('eventid'); ?>" class="btn btn-secondary waves-effect waves-light red">Cancel</a>
             </div>
         </div>
             </div>
@@ -64,7 +64,7 @@
     $(document).ready(function () {
         $(".clearimg").click(function () {
             if (confirm("Are you sure want to clear Image!") == true) {
-                $.get("<?php echo site_url('site/cleareventimage1?id='.$before->id);?>", function (data) {
+                $.get("<?php echo site_url('site/clearEventImage1?id='.$before->id);?>", function (data) {
                     $("input.image1").val("");
                     $("span.image1").html("");
                 });                          

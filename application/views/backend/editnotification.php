@@ -4,7 +4,7 @@
     </div>
 </div>
 <div class="row">
-    <form class="col s12" method="post" action="<?php echo site_url('site/editnotificationsubmit');?>" enctype="multipart/form-data">
+    <form class="col s12" method="post" action="<?php echo site_url('site/editNotificationSubmit');?>" enctype="multipart/form-data">
         <input type="hidden" id="normal-field" class="form-control" name="id" value="<?php echo set_value('id',$before->id);?>" style="display:none;">
              <div class="row">
             <div class="input-field col s12 m6">
@@ -105,7 +105,7 @@
             <div class="col s12 m6">
                         <div class=" form-group">
                 <button type="submit" class="btn btn-primary waves-effect blue darken-4">Save</button>
-                <a href="<?php echo site_url("site/viewnotification"); ?>" class="btn btn-secondary waves-effect waves-light red">Cancel</a>
+                <a href="<?php echo site_url("site/viewNotification"); ?>" class="btn btn-secondary waves-effect waves-light red">Cancel</a>
         </div>
             </div>
         </div>
@@ -141,7 +141,7 @@
     $(document).ready(function () {
           $(".clearimg").click(function () {
             if (confirm("Are you sure want to clear Image!") == true) {
-                $.get("<?php echo site_url('site/clearnotificationimage?id='.$before->id);?>", function (data) {
+                $.get("<?php echo site_url('site/clearNotificationImage?id='.$before->id);?>", function (data) {
                     $("input.image1").val("");
                     $("span.image1").html("");
                 });                          

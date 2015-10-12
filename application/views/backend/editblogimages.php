@@ -4,7 +4,7 @@
     </div>
 </div>
 <div class="row">
-    <form class="col s12" method="post" action="<?php echo site_url('site/editblogimagessubmit');?>" enctype="multipart/form-data">
+    <form class="col s12" method="post" action="<?php echo site_url('site/editBlogImagesSubmit');?>" enctype="multipart/form-data">
         <input type="hidden" id="normal-field" class="form-control" name="id" value="<?php echo set_value('id',$before->id);?>" style="display:none;">
 
         <div class="row">
@@ -45,7 +45,7 @@
             <label class="col-sm-2 control-label">&nbsp;</label>
             <div class="col-sm-4">
                 <button type="submit" class="btn btn-primary waves-effect waves-light green">Save</button>
-                <a href="<?php echo site_url("site/viewblogimages?id=").$this->input->get('blogid'); ?>" class="btn btn-secondary waves-effect waves-light red">Cancel</a>
+                <a href="<?php echo site_url("site/viewBlogImages?id=").$this->input->get('blogid'); ?>" class="btn btn-secondary waves-effect waves-light red">Cancel</a>
             </div>
         </div>
     </form>

@@ -1,7 +1,7 @@
 <?php
 if ( !defined( "BASEPATH" ) )
 exit( "No direct script access allowed" );
-class notificationuser_model extends CI_Model
+class NotificationUser_Model extends CI_Model
 {
 public function create($notification,$user,$timestamp,$timestamp_receive)
 {
@@ -13,13 +13,13 @@ return  0;
 else
 return  $id;
 }
-public function beforeedit($id)
+public function beforeEdit($id)
 {
 $this->db->where("id",$id);
 $query=$this->db->get("webapp_notificationuser")->row();
 return $query;
 }
-function getsinglenotificationuser($id){
+function getSingleNotificationUser($id){
 $this->db->where("id",$id);
 $query=$this->db->get("webapp_notificationuser")->row();
 return $query;

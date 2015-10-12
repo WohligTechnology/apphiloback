@@ -1,7 +1,7 @@
 <?php
 if ( !defined( "BASEPATH" ) )
 exit( "No direct script access allowed" );
-class articles_model extends CI_Model
+class Articles_Model extends CI_Model
 {
 public function create($status,$title,$json,$content,$image)
 {
@@ -13,13 +13,13 @@ return  0;
 else
 return  $id;
 }
-public function beforeedit($id)
+public function beforeEdit($id)
 {
 $this->db->where("id",$id);
 $query=$this->db->get("webapp_articles")->row();
 return $query;
 }
-function getsinglearticles($id){
+function getSingleArticles($id){
 $query=$this->db->query("SELECT `id`, `status`, `title`, `json`, `content`,`timestamp`,`image` FROM `webapp_articles` WHERE `status`=1 AND `id`='$id'")->row();
 return $query;
 }
@@ -42,11 +42,11 @@ public function delete($id)
 $query=$this->db->query("DELETE FROM `webapp_articles` WHERE `id`='$id'");
 return $query;
 }
-    public function getimagebyid($id){
+    public function getImageById($id){
     $query=$this->db->query("SELECT `image` FROM `webapp_articles` WHERE `id`='$id'")->row();
 		return $query;
     }
-         public function cleararticleimage($id){
+         public function clearArticleImage($id){
          $data = array(
             'image' => ''
         );

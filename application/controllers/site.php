@@ -14,7 +14,7 @@ class Site extends CI_Controller
 			redirect( base_url() . 'index.php/login', 'refresh' );
 		} //$is_logged_in !== 'true' || !isset( $is_logged_in )
 	}
-	function checkaccess($access)
+	function checkAccess($access)
 	{
 		$accesslevel=$this->session->userdata('accesslevel');
 		if(!in_array($accesslevel,$access))
@@ -23,35 +23,35 @@ class Site extends CI_Controller
 	public function index()
 	{
 		$access = array("1");
-		$this->checkaccess($access);
+		$this->checkAccess($access);
 		$data[ 'page' ] = 'dashboard';
-        $data["base_url"]=site_url("site/viewenquiryjson");
-        $data[ 'usercount' ] = $this->user_model->getusercount();
-		$data[ 'enquirycount' ] = $this->enquiry_model->total();
+        $data["base_url"]=site_url("site/viewEnquiryJson");
+        $data[ 'usercount' ] = $this->User_Model->getUserCount();
+		$data[ 'enquirycount' ] = $this->Enquiry_Model->total();
 		$data[ 'title' ] = 'Dashboard';
 		$this->load->view( 'template', $data );	
 	}
-	public function createuser()
+	public function createUser()
 	{
 		$access = array("1");
-		$this->checkaccess($access);
-		$data['accesslevel']=$this->user_model->getaccesslevels();
-		$data[ 'status' ] =$this->user_model->getstatusdropdown();
-		$data[ 'logintype' ] =$this->user_model->getlogintypedropdown();
-           $data[ 'eventnotification' ] =$this->user_model->geteventnotificationdropdown();
-            $data[ 'photonotification' ] =$this->user_model->getphotonotificationdropdown();
-            $data[ 'videonotification' ] =$this->user_model->getvideonotificationdropdown();
-            $data[ 'blognotification' ] =$this->user_model->getblognotificationdropdown();
+		$this->checkAccess($access);
+		$data['accesslevel']=$this->User_Model->getAccessLevels();
+		$data[ 'status' ] =$this->User_Model->getStatusDropDown();
+		$data[ 'logintype' ] =$this->User_Model->getLogintypeDropDown();
+           $data[ 'eventnotification' ] =$this->User_Model->getEventNotificationDropDown();
+            $data[ 'photonotification' ] =$this->User_Model->getPhotoNotificationDropDown();
+            $data[ 'videonotification' ] =$this->User_Model->getVideoNotificationDropDown();
+            $data[ 'blognotification' ] =$this->User_Model->getBlogNotificationDropDown();
 //        $data['category']=$this->category_model->getcategorydropdown();
 		$data[ 'page' ] = 'createuser';
 		$data[ 'activemenu' ] = 'users';
 		$data[ 'title' ] = 'Create User';
 		$this->load->view( 'template', $data );	
 	}
-	function createusersubmit()
+	function createUserSubmit()
 	{
 		$access = array("1");
-		$this->checkaccess($access);
+		$this->checkAccess($access);
 		$this->form_validation->set_rules('name','Name','trim|required|max_length[30]');
 		$this->form_validation->set_rules('email','Email','trim|required|valid_email|is_unique[user.email]');
 		$this->form_validation->set_rules('password','Password','trim|required|min_length[6]|max_length[30]');
@@ -64,14 +64,14 @@ class Site extends CI_Controller
 		if($this->form_validation->run() == FALSE)	
 		{
 			$data['alerterror'] = validation_errors();
-			$data['accesslevel']=$this->user_model->getaccesslevels();
-            $data[ 'status' ] =$this->user_model->getstatusdropdown();
-            $data[ 'logintype' ] =$this->user_model->getlogintypedropdown();
-            $data[ 'eventnotification' ] =$this->user_model->geteventnotificationdropdown();
-            $data[ 'photonotification' ] =$this->user_model->getphotonotificationdropdown();
-            $data[ 'videonotification' ] =$this->user_model->getvideonotificationdropdown();
-            $data[ 'blognotification' ] =$this->user_model->getblognotificationdropdown();
-            $data[ 'page' ] = 'createuser';
+			$data['accesslevel']=$this->User_Model->getAccessLevels();
+            $data[ 'status' ] =$this->User_Model->getStatusDropDown();
+            $data[ 'logintype' ] =$this->User_Model->getLogintypeDropDown();
+            $data[ 'eventnotification' ] =$this->User_Model->getEventNotificationDropDown();
+            $data[ 'photonotification' ] =$this->User_Model->getPhotoNotificationDropDown();
+            $data[ 'videonotification' ] =$this->User_Model->getVideoNotificationDropDown();
+            $data[ 'blognotification' ] =$this->User_Model->getBlogNotificationDropDown();
+            $data[ 'page' ] = 'createUser';
             $data[ 'title' ] = 'Create User';
             $this->load->view( 'template', $data );	
 		}
@@ -113,7 +113,7 @@ class Site extends CI_Controller
                 $this->image_lib->initialize($config_r);
                 if(!$this->image_lib->resize())
                 {
-                    echo "Failed." . $this->image_lib->display_errors();
+                    $data['alerterror']="Failed." . $this->image_lib->display_errors();
                     //return false;
                 }  
                 else
@@ -149,7 +149,7 @@ class Site extends CI_Controller
                 $this->image_lib->initialize($config_r);
                 if(!$this->image_lib->resize())
                 {
-                    echo "Failed." . $this->image_lib->display_errors();
+                    $data['alerterror']="Failed." . $this->image_lib->display_errors();
                     //return false;
                 }  
                 else
@@ -162,28 +162,28 @@ class Site extends CI_Controller
                 
 			}
             
-			if($this->user_model->create($name,$email,$password,$accesslevel,$status,$socialid,$logintype,$image,$json,$contact,$address,$eventnotification,$photonotification,$videonotification,$blognotification,$coverimage)==0)
-			$data['alerterror']="New user could not be created.";
+			if($this->User_Model->create($name,$email,$password,$accesslevel,$status,$socialid,$logintype,$image,$json,$contact,$address,$eventnotification,$photonotification,$videonotification,$blognotification,$coverimage)==0)
+			$data['alerterror']="New User Could Not Be Created.";
 			else
-			$data['alertsuccess']="User created Successfully.";
-			$data['redirect']="site/viewusers";
+			$data['alertsuccess']="User Created Successfully.";
+			$data['redirect']="site/viewUsers";
 			$this->load->view("redirect",$data);
 		}
 	}
-    function viewusers()
+    function viewUsers()
 	{
 		$access = array("1");
-		$this->checkaccess($access);
-		$data['page']='viewusers';
-        $data['base_url'] = site_url("site/viewusersjson");
+		$this->checkAccess($access);
+		$data['page']='viewUsers';
+        $data['base_url'] = site_url("site/viewUsersJson");
         
 		$data['title']='View Users';
 		$this->load->view('template',$data);
 	} 
-    function viewusersjson()
+    function viewUsersJson()
 	{
 		$access = array("1");
-		$this->checkaccess($access);
+		$this->checkAccess($access);
         
         
         $elements=array();
@@ -259,28 +259,28 @@ class Site extends CI_Controller
 	} 
     
     
-	function edituser()
+	function editUser()
 	{
 		$access = array("1");
-		$this->checkaccess($access);
-		$data[ 'status' ] =$this->user_model->getstatusdropdown();
-		$data['accesslevel']=$this->user_model->getaccesslevels();
-		$data[ 'logintype' ] =$this->user_model->getlogintypedropdown();
-        $data[ 'eventnotification' ] =$this->user_model->geteventnotificationdropdown();
-        $data[ 'photonotification' ] =$this->user_model->getphotonotificationdropdown();
-        $data[ 'videonotification' ] =$this->user_model->getvideonotificationdropdown();
-        $data[ 'blognotification' ] =$this->user_model->getblognotificationdropdown();
-		$data['before']=$this->user_model->beforeedit($this->input->get('id'));
-		$data['page']='edituser';
+		$this->checkAccess($access);
+		$data[ 'status' ] =$this->User_Model->getStatusDropDown();
+		$data['accesslevel']=$this->User_Model->getAccessLevels();
+		$data[ 'logintype' ] =$this->User_Model->getLogintypeDropDown();
+        $data[ 'eventnotification' ] =$this->User_Model->getEventNotificationDropDown();
+        $data[ 'photonotification' ] =$this->User_Model->getPhotoNotificationDropDown();
+        $data[ 'videonotification' ] =$this->User_Model->getVideoNotificationDropDown();
+        $data[ 'blognotification' ] =$this->User_Model->getBlogNotificationDropDown();
+		$data['before']=$this->User_Model->beforeEdit($this->input->get('id'));
+		$data['page']='editUser';
 		$data['activemenu']='users';
         
 		$data['title']='Edit User';
 		$this->load->view('template',$data);
 	}
-	function editusersubmit()
+	function editUserSubmit()
 	{
 		$access = array("1");
-		$this->checkaccess($access);
+		$this->checkAccess($access);
 		
 		$this->form_validation->set_rules('name','Name','trim|required|max_length[30]');
 		$this->form_validation->set_rules('email','Email','trim|required|valid_email');
@@ -294,15 +294,15 @@ class Site extends CI_Controller
 		if($this->form_validation->run() == FALSE)	
 		{
 			$data['alerterror'] = validation_errors();
-			$data[ 'status' ] =$this->user_model->getstatusdropdown();
-			$data['accesslevel']=$this->user_model->getaccesslevels();
-            $data[ 'logintype' ] =$this->user_model->getlogintypedropdown();
-                  $data[ 'eventnotification' ] =$this->user_model->geteventnotificationdropdown();
-            $data[ 'photonotification' ] =$this->user_model->getphotonotificationdropdown();
-            $data[ 'videonotification' ] =$this->user_model->getvideonotificationdropdown();
-            $data[ 'blognotification' ] =$this->user_model->getblognotificationdropdown();
-			$data['before']=$this->user_model->beforeedit($this->input->post('id'));
-			$data['page']='edituser';
+			$data[ 'status' ] =$this->User_Model->getStatusDropDown();
+			$data['accesslevel']=$this->User_Model->getAccessLevels();
+            $data[ 'logintype' ] =$this->User_Model->getLogintypeDropDown();
+                  $data[ 'eventnotification' ] =$this->User_Model->getEventNotificationDropDown();
+            $data[ 'photonotification' ] =$this->User_Model->getPhotoNotificationDropDown();
+            $data[ 'videonotification' ] =$this->User_Model->getVideoNotificationDropDown();
+            $data[ 'blognotification' ] =$this->User_Model->getBlogNotificationDropDown();
+			$data['before']=$this->User_Model->beforeEdit($this->input->post('id'));
+			$data['page']='editUser';
 //			$data['page2']='block/userblock';
 			$data['title']='Edit User';
 			$this->load->view('template',$data);
@@ -348,7 +348,7 @@ class Site extends CI_Controller
                 $this->image_lib->initialize($config_r);
                 if(!$this->image_lib->resize())
                 {
-                    echo "Failed." . $this->image_lib->display_errors();
+                    $data['alerterror']="Failed." . $this->image_lib->display_errors();
                     //return false;
                 }  
                 else
@@ -363,7 +363,7 @@ class Site extends CI_Controller
             
             if($image=="")
             {
-            $image=$this->user_model->getuserimagebyid($id);
+            $image=$this->User_Model->getUserImageById($id);
                // print_r($image);
                 $image=$image->image;
             }
@@ -393,7 +393,7 @@ class Site extends CI_Controller
                 $this->image_lib->initialize($config_r);
                 if(!$this->image_lib->resize())
                 {
-                    echo "Failed." . $this->image_lib->display_errors();
+                   $data['alerterror']="Failed." . $this->image_lib->display_errors();
                     //return false;
                 }  
                 else
@@ -408,59 +408,59 @@ class Site extends CI_Controller
             
             if($coverimage=="")
             {
-            $coverimage=$this->user_model->getcoverimagebyid($id);
+            $coverimage=$this->User_Model->getCoverImageById($id);
                // print_r($coverimage);
                 $coverimage=$coverimage->coverimage;
             }
             
-			if($this->user_model->edit($id,$name,$email,$password,$accesslevel,$status,$socialid,$logintype,$image,$json,$contact,$address,$eventnotification,$photonotification,$videonotification,$blognotification,$coverimage)==0)
-			$data['alerterror']="User Editing was unsuccesful";
+			if($this->User_Model->edit($id,$name,$email,$password,$accesslevel,$status,$socialid,$logintype,$image,$json,$contact,$address,$eventnotification,$photonotification,$videonotification,$blognotification,$coverimage)==0)
+			$data['alerterror']="User Editing Was Unsuccesful";
 			else
-			$data['alertsuccess']="User edited Successfully.";
+			$data['alertsuccess']="User Edited Successfully.";
 			
-			$data['redirect']="site/viewusers";
+			$data['redirect']="site/viewUsers";
 			//$data['other']="template=$template";
 			$this->load->view("redirect",$data);
 			
 		}
 	}
 	
-	function deleteuser()
+	function deleteUser()
 	{
 		$access = array("1");
-		$this->checkaccess($access);
-		$this->user_model->deleteuser($this->input->get('id'));
-//		$data['table']=$this->user_model->viewusers();
+		$this->checkAccess($access);
+		$this->User_Model->deleteUser($this->input->get('id'));
+//		$data['table']=$this->User_Model->viewUsers();
 		$data['alertsuccess']="User Deleted Successfully";
-		$data['redirect']="site/viewusers";
+		$data['redirect']="site/viewUsers";
 			//$data['other']="template=$template";
 		$this->load->view("redirect",$data);
 	}
-	function changeuserstatus()
+	function changeUserStatus()
 	{
 		$access = array("1");
-		$this->checkaccess($access);
-		$this->user_model->changestatus($this->input->get('id'));
-		$data['table']=$this->user_model->viewusers();
+		$this->checkAccess($access);
+		$this->User_Model->changeStatus($this->input->get('id'));
+		$data['table']=$this->User_Model->viewUsers();
 		$data['alertsuccess']="Status Changed Successfully";
-		$data['redirect']="site/viewusers";
+		$data['redirect']="site/viewUsers";
         $data['other']="template=$template";
         $this->load->view("redirect",$data);
 	}
     
     
     
-    public function viewarticles()
+    public function viewArticles()
 {
 $access=array("1");
-$this->checkaccess($access);
-$data["page"]="viewarticles";
-$data[ 'status' ] =$this->user_model->getstatusdropdown();
-$data["base_url"]=site_url("site/viewarticlesjson");
+$this->checkAccess($access);
+$data["page"]="viewArticles";
+$data[ 'status' ] =$this->User_Model->getStatusDropDown();
+$data["base_url"]=site_url("site/viewArticlesjson");
 $data["title"]="View Pages";
 $this->load->view("template",$data);
 }
-function viewarticlesjson()
+function viewArticlesjson()
 {
 $elements=array();
 $elements[0]=new stdClass();
@@ -511,20 +511,20 @@ $data["message"]=$this->chintantable->query($pageno,$maxrow,$orderby,$orderorder
 $this->load->view("json",$data);
 }
 
-public function createarticles()
+public function createArticles()
 {
 $access=array("1");
-$this->checkaccess($access);
-$data["page"]="createarticles";
+$this->checkAccess($access);
+$data["page"]="createArticles";
 $data["activemenu"]="pages";
-$data[ 'status' ] =$this->user_model->getstatusdropdown();
+$data[ 'status' ] =$this->User_Model->getStatusDropDown();
 $data["title"]="Create Page";
 $this->load->view("template",$data);
 }
-public function createarticlessubmit() 
+public function createArticlesSubmit() 
 {
 $access=array("1");
-$this->checkaccess($access);
+$this->checkAccess($access);
 $this->form_validation->set_rules("status","Status","trim");
 $this->form_validation->set_rules("title","Title","trim");
 $this->form_validation->set_rules("json","Json","trim");
@@ -532,8 +532,8 @@ $this->form_validation->set_rules("content","Content","trim");
 if($this->form_validation->run()==FALSE)
 {
 $data["alerterror"]=validation_errors();
-$data["page"]="createarticles";
-$data[ 'status' ] =$this->user_model->getstatusdropdown();
+$data["page"]="createArticles";
+$data[ 'status' ] =$this->User_Model->getStatusDropDown();
 $data["title"]="Create Page";
 $this->load->view("template",$data);
 }
@@ -553,11 +553,11 @@ $content=$this->input->get_post("content");
 							$uploaddata = $this->upload->data();
 							$image=$uploaddata['file_name'];
 						}
-if($this->articles_model->create($status,$title,$json,$content,$image)==0)
-$data["alerterror"]="New Page could not be created.";
+if($this->Articles_Model->create($status,$title,$json,$content,$image)==0)
+$data["alerterror"]="New Page Could Not Be Created.";
 else
-$data["alertsuccess"]="Page created Successfully.";
-$data["redirect"]="site/viewarticles";
+$data["alertsuccess"]="Page Created Successfully.";
+$data["redirect"]="site/viewArticles";
 $this->load->view("redirect",$data);
 }
 }
@@ -565,30 +565,30 @@ $this->load->view("redirect",$data);
 public function home()
 {
     $access=array("1");
-    $this->checkaccess($access);
-    $data["page"]="editarticles";
+    $this->checkAccess($access);
+    $data["page"]="editArticles";
     $data["activemenu"]="home";  
-    $data[ 'status' ] =$this->user_model->getstatusdropdown();
+    $data[ 'status' ] =$this->User_Model->getStatusDropDown();
     $data["title"]="Edit Home";
-    $data["before"]=$this->articles_model->beforeedit(1);
+    $data["before"]=$this->Articles_Model->beforeEdit(1);
     $this->load->view("template",$data);
 }
     
-public function editarticles()
+public function editArticles()
 {
 $access=array("1");
-$this->checkaccess($access);
-$data["page"]="editarticles";
+$this->checkAccess($access);
+$data["page"]="editArticles";
 $data["activemenu"]="pages";
-$data[ 'status' ] =$this->user_model->getstatusdropdown();
+$data[ 'status' ] =$this->User_Model->getStatusDropDown();
 $data["title"]="Edit Page";
-$data["before"]=$this->articles_model->beforeedit($this->input->get("id"));
+$data["before"]=$this->Articles_Model->beforeEdit($this->input->get("id"));
 $this->load->view("template",$data);
 }
-public function editarticlessubmit()
+public function editArticlessubmit()
 {
 $access=array("1");
-$this->checkaccess($access);
+$this->checkAccess($access);
 $this->form_validation->set_rules("id","ID","trim");
 $this->form_validation->set_rules("status","Status","trim");
 $this->form_validation->set_rules("title","Title","trim");
@@ -597,10 +597,10 @@ $this->form_validation->set_rules("content","Content","trim");
 if($this->form_validation->run()==FALSE)
 {
 $data["alerterror"]=validation_errors();
-$data["page"]="editarticles";
-$data[ 'status' ] =$this->user_model->getstatusdropdown();
+$data["page"]="editArticles";
+$data[ 'status' ] =$this->User_Model->getStatusDropDown();
 $data["title"]="Edit Page";
-$data["before"]=$this->articles_model->beforeedit($this->input->get("id"));
+$data["before"]=$this->Articles_Model->beforeEdit($this->input->get("id"));
 $this->load->view("template",$data);
 }
 else
@@ -624,16 +624,16 @@ $timestamp=$this->input->get_post("timestamp");
 
 						if($image=="")
 						{
-						$image=$this->articles_model->getimagebyid($id);
+						$image=$this->Articles_Model->getImageById($id);
 						   // print_r($image);
 							$image=$image->image;
 						}
-if($this->articles_model->edit($id,$status,$title,$json,$content,$timestamp,$image)==0)
-$data["alerterror"]="New Page could not be Updated.";
+if($this->Articles_Model->edit($id,$status,$title,$json,$content,$timestamp,$image)==0)
+$data["alerterror"]="New Page Could Not Be Updated.";
 else
 $data["alertsuccess"]="Page Updated Successfully.";
     if($id!=1){
-$data["redirect"]="site/viewarticles";
+$data["redirect"]="site/viewArticles";
 
 $this->load->view("redirect",$data);
     }
@@ -644,25 +644,25 @@ $this->load->view("redirect2",$data);
     }
 }
 }
-public function deletearticles()
+public function deleteArticles()
 {
 $access=array("1");
-$this->checkaccess($access);
-$this->articles_model->delete($this->input->get("id"));
-$data["redirect"]="site/viewarticles";
+$this->checkAccess($access);
+$this->Articles_Model->delete($this->input->get("id"));
+$data["redirect"]="site/viewArticles";
 $this->load->view("redirect",$data);
 }
-public function viewfrontmenu()
+public function viewFrontmenu()
 {
 $access=array("1");
-$this->checkaccess($access);
-$data["page"]="viewfrontmenu";
-$data[ 'status' ] =$this->user_model->getstatusdropdown();
-$data["base_url"]=site_url("site/viewfrontmenujson");
+$this->checkAccess($access);
+$data["page"]="viewFrontmenu";
+$data[ 'status' ] =$this->User_Model->getStatusDropDown();
+$data["base_url"]=site_url("site/viewFrontmenuJson");
 $data["title"]="View Navigation";
 $this->load->view("template",$data);
 }
-function viewfrontmenujson()
+function viewFrontmenuJson()
 {
 $elements=array();
 $elements[0]=new stdClass();
@@ -713,29 +713,29 @@ $data["message"]=$this->chintantable->query($pageno,$maxrow,$orderby,$orderorder
 $this->load->view("json",$data);
 }
 
-public function createfrontmenu()
+public function createFrontMenu()
 {
 $access=array("1");
-$this->checkaccess($access);
-$data["page"]="createfrontmenu";
+$this->checkAccess($access);
+$data["page"]="createFrontMenu";
 $data["activemenu"]="navigations";
-    $this->frontmenu_model->changestatusofexternallink();
-$data[ 'status' ] =$this->user_model->getstatusdropdown();
-$data[ 'parent' ] =$this->user_model->getfrontmenudropdown();
-$data[ 'linktype' ] =$this->user_model->getlinktypedropdown();
-$data[ 'event' ] =$this->user_model->geteventsdropdown();
-$data[ 'blog' ] =$this->user_model->getblogdropdown();
-$data[ 'video' ] =$this->user_model->getvideogallerydropdown(); 
-$data[ 'article' ] =$this->user_model->getarticledropdown();   
-$data[ 'gallery' ] =$this->user_model->getgallerydropdown();
-$data[ 'icon' ] =$this->user_model->getlinkdropdown();
+    $this->FrontMenu_Model->changeStatusOfExternalLink();
+$data[ 'status' ] =$this->User_Model->getStatusDropDown();
+$data[ 'parent' ] =$this->User_Model->getFrontMenuDropDown();
+$data[ 'linktype' ] =$this->User_Model->getLinkTypeDropDown();
+$data[ 'event' ] =$this->User_Model->getEventsDropDown();
+$data[ 'blog' ] =$this->User_Model->getBlogDropDown();
+$data[ 'video' ] =$this->User_Model->getVideoGalleryDropDown(); 
+$data[ 'article' ] =$this->User_Model->getArticleDropDown();   
+$data[ 'gallery' ] =$this->User_Model->getGalleryDropDown();
+$data[ 'icon' ] =$this->User_Model->getLinkDropDown();
 $data["title"]="Create Navigation";
 $this->load->view("template",$data);
 }
-public function createfrontmenusubmit() 
+public function createFrontMenusubmit() 
 {
 $access=array("1");
-$this->checkaccess($access);
+$this->checkAccess($access);
 $this->form_validation->set_rules("order","Order","trim");
 $this->form_validation->set_rules("parent","Parent","trim");
 $this->form_validation->set_rules("status","Status","trim");
@@ -744,15 +744,15 @@ $this->form_validation->set_rules("json","Json","trim");
 if($this->form_validation->run()==FALSE)
 {
 $data["alerterror"]=validation_errors();
-$data["page"]="createfrontmenu";
-$data[ 'status' ] =$this->user_model->getstatusdropdown();
-$data[ 'parent' ] =$this->user_model->getfrontmenudropdown();
-    $data[ 'event' ] =$this->user_model->geteventsdropdown();
-$data[ 'blog' ] =$this->user_model->getblogdropdown();
-$data[ 'video' ] =$this->user_model->getvideodropdown();
-$data[ 'article' ] =$this->user_model->getarticledropdown();
-$data[ 'gallery' ] =$this->user_model->getgallerydropdown();
-$data[ 'icon' ] =$this->user_model->getlinkdropdown();
+$data["page"]="createFrontMenu";
+$data[ 'status' ] =$this->User_Model->getStatusDropDown();
+$data[ 'parent' ] =$this->User_Model->getFrontMenuDropDown();
+    $data[ 'event' ] =$this->User_Model->getEventsDropDown();
+$data[ 'blog' ] =$this->User_Model->getBlogDropDown();
+$data[ 'video' ] =$this->User_Model->getVideoDropDown();
+$data[ 'article' ] =$this->User_Model->getArticleDropDown();
+$data[ 'gallery' ] =$this->User_Model->getGalleryDropDown();
+$data[ 'icon' ] =$this->User_Model->getLinkDropDown();
 $data["title"]="Create Navigation";
 $this->load->view("template",$data);
 }
@@ -781,38 +781,38 @@ $typeid=$this->input->get_post("typeid");
 							$uploaddata = $this->upload->data();
 							$image=$uploaddata['file_name'];
 						}
-if($this->frontmenu_model->create($order,$parent,$status,$name,$json,$image,$linktype,$icon,$event,$blog,$video,$article,$gallery,$typeid)==0)
+if($this->FrontMenu_Model->create($order,$parent,$status,$name,$json,$image,$linktype,$icon,$event,$blog,$video,$article,$gallery,$typeid)==0)
 $data["alerterror"]="New Navigation could not be created.";
 else
 $data["alertsuccess"]="Navigation created Successfully.";
-$data["redirect"]="site/viewfrontmenu";
+$data["redirect"]="site/viewFrontmenu";
 $this->load->view("redirect",$data);
 }
 }
-public function editfrontmenu()
+public function editFrontMenu()
 {
 $access=array("1");
-$this->checkaccess($access);
-$data["page"]="editfrontmenu";
+$this->checkAccess($access);
+$data["page"]="editFrontMenu";
 $data["activemenu"]="navigations";
-     $this->frontmenu_model->changestatusofexternallink();
-$data[ 'parent' ] =$this->user_model->getfrontmenudropdown();
-$data[ 'status' ] =$this->user_model->getstatusdropdown();
-$data[ 'linktype' ] =$this->user_model->getlinktypedropdown();
-    $data[ 'event' ] =$this->user_model->geteventsdropdown();
-$data[ 'blog' ] =$this->user_model->getblogdropdown();
-$data[ 'video' ] =$this->user_model->getvideodropdown();
-$data[ 'article' ] =$this->user_model->getarticledropdown();
-$data[ 'gallery' ] =$this->user_model->getgallerydropdown();
-$data[ 'icon' ] =$this->user_model->getlinkdropdown();
+     $this->FrontMenu_Model->changeStatusOfExternalLink();
+$data[ 'parent' ] =$this->User_Model->getFrontMenuDropDown();
+$data[ 'status' ] =$this->User_Model->getStatusDropDown();
+$data[ 'linktype' ] =$this->User_Model->getLinkTypeDropDown();
+    $data[ 'event' ] =$this->User_Model->getEventsDropDown();
+$data[ 'blog' ] =$this->User_Model->getBlogDropDown();
+$data[ 'video' ] =$this->User_Model->getVideoDropDown();
+$data[ 'article' ] =$this->User_Model->getArticleDropDown();
+$data[ 'gallery' ] =$this->User_Model->getGalleryDropDown();
+$data[ 'icon' ] =$this->User_Model->getLinkDropDown();
 $data["title"]="Edit Navigation";
-$data["before"]=$this->frontmenu_model->beforeedit($this->input->get("id"));
+$data["before"]=$this->FrontMenu_Model->beforeEdit($this->input->get("id"));
 $this->load->view("template",$data);
 }
-public function editfrontmenusubmit()
+public function editFrontMenuSubmit()
 {
 $access=array("1");
-$this->checkaccess($access);
+$this->checkAccess($access);
 $this->form_validation->set_rules("id","ID","trim");
 $this->form_validation->set_rules("order","Order","trim");
 $this->form_validation->set_rules("parent","Parent","trim");
@@ -822,17 +822,17 @@ $this->form_validation->set_rules("json","Json","trim");
 if($this->form_validation->run()==FALSE)
 {
 $data["alerterror"]=validation_errors();
-$data[ 'status' ] =$this->user_model->getstatusdropdown();
-$data["page"]="editfrontmenu";
-$data[ 'parent' ] =$this->user_model->getfrontmenudropdown();
-$data[ 'event' ] =$this->user_model->geteventsdropdown();
-$data[ 'blog' ] =$this->user_model->getblogdropdown();
-$data[ 'video' ] =$this->user_model->getvideodropdown();
-$data[ 'article' ] =$this->user_model->getarticledropdown();
-$data[ 'gallery' ] =$this->user_model->getgallerydropdown();
-$data[ 'icon' ] =$this->user_model->getlinkdropdown();
+$data[ 'status' ] =$this->User_Model->getStatusDropDown();
+$data["page"]="editFrontMenu";
+$data[ 'parent' ] =$this->User_Model->getFrontMenuDropDown();
+$data[ 'event' ] =$this->User_Model->getEventsDropDown();
+$data[ 'blog' ] =$this->User_Model->getBlogDropDown();
+$data[ 'video' ] =$this->User_Model->getVideoDropDown();
+$data[ 'article' ] =$this->User_Model->getArticleDropDown();
+$data[ 'gallery' ] =$this->User_Model->getGalleryDropDown();
+$data[ 'icon' ] =$this->User_Model->getLinkDropDown();
 $data["title"]="Edit Navigation";
-$data["before"]=$this->frontmenu_model->beforeedit($this->input->get("id"));
+$data["before"]=$this->FrontMenu_Model->beforeEdit($this->input->get("id"));
 $this->load->view("template",$data);
 }
 else
@@ -865,37 +865,37 @@ $gallery=$this->input->get_post("gallery");
 
 						if($image=="")
 						{
-						$image=$this->gallery_model->getimagebyid($id);
+						$image=$this->Gallery_Model->getImageById($id);
 						   // print_r($image);
 							$image=$image->image;
 						}
-if($this->frontmenu_model->edit($id,$order,$parent,$status,$name,$json,$image,$linktype,$icon,$event,$blog,$video,$article,$gallery,$typeid)==0)
-$data["alerterror"]="New Navigation could not be Updated.";
+if($this->FrontMenu_Model->edit($id,$order,$parent,$status,$name,$json,$image,$linktype,$icon,$event,$blog,$video,$article,$gallery,$typeid)==0)
+$data["alerterror"]="New Navigation Could Not Be Updated.";
 else
 $data["alertsuccess"]="Navigation Updated Successfully.";
-$data["redirect"]="site/viewfrontmenu";
+$data["redirect"]="site/viewFrontmenu";
 $this->load->view("redirect",$data);
 }
 }
-public function deletefrontmenu()
+public function deleteFrontMenu()
 {
 $access=array("1");
-$this->checkaccess($access);
-$this->frontmenu_model->delete($this->input->get("id"));
-$data["redirect"]="site/viewfrontmenu";
+$this->checkAccess($access);
+$this->FrontMenu_Model->delete($this->input->get("id"));
+$data["redirect"]="site/viewFrontmenu";
 $this->load->view("redirect",$data);
 }
-public function viewgallery()
+public function viewGallery()
 {
 $access=array("1");
-$this->checkaccess($access);
-$data["page"]="viewgallery";
-$data[ 'status' ] =$this->user_model->getstatusdropdown();
-$data["base_url"]=site_url("site/viewgalleryjson");
+$this->checkAccess($access);
+$data["page"]="viewGallery";
+$data[ 'status' ] =$this->User_Model->getStatusDropDown();
+$data["base_url"]=site_url("site/viewGalleryJson");
 $data["title"]="View Image Gallery";
 $this->load->view("template",$data);
 }
-function viewgalleryjson()
+function viewGalleryJson()
 {
 $elements=array();
 $elements[0]=new stdClass();
@@ -946,20 +946,20 @@ $data["message"]=$this->chintantable->query($pageno,$maxrow,$orderby,$orderorder
 $this->load->view("json",$data);
 }
 
-public function creategallery()
+public function createGallery()
 {
 $access=array("1");
-$this->checkaccess($access);
-$data["page"]="creategallery";
+$this->checkAccess($access);
+$data["page"]="createGallery";
 $data["activemenu"]="image gallery";
-$data[ 'status' ] =$this->user_model->getstatusdropdown();
+$data[ 'status' ] =$this->User_Model->getStatusDropDown();
 $data["title"]="Create Image Gallery";
 $this->load->view("template",$data);
 }
-public function creategallerysubmit() 
+public function createGallerySubmit() 
 {
 $access=array("1");
-$this->checkaccess($access);
+$this->checkAccess($access);
 $this->form_validation->set_rules("order","Order","trim");
 $this->form_validation->set_rules("status","Status","trim");
 $this->form_validation->set_rules("name","Name","trim");
@@ -967,8 +967,8 @@ $this->form_validation->set_rules("json","Json","trim");
 if($this->form_validation->run()==FALSE)
 {
 $data["alerterror"]=validation_errors();
-$data[ 'status' ] =$this->user_model->getstatusdropdown();
-$data["page"]="creategallery";
+$data[ 'status' ] =$this->User_Model->getStatusDropDown();
+$data["page"]="createGallery";
 $data["title"]="Create Image Gallery";
 $this->load->view("template",$data);
 }
@@ -988,32 +988,32 @@ $json=$this->input->get_post("json");
 							$uploaddata = $this->upload->data();
 							$image=$uploaddata['file_name'];
 						}
-if($this->gallery_model->create($order,$status,$name,$json,$image)==0)
+if($this->Gallery_Model->create($order,$status,$name,$json,$image)==0)
 $data["alerterror"]="New Image Gallery could not be created.";
 else
 $data["alertsuccess"]="Image Gallery created Successfully.";
-$data["redirect"]="site/viewgallery";
+$data["redirect"]="site/viewGallery";
 $this->load->view("redirect",$data);
 }
 }
-public function editgallery()
+public function editGallery()
 {
 $access=array("1");
-$this->checkaccess($access);
-$data["page"]="editgallery";
+$this->checkAccess($access);
+$data["page"]="editGallery";
 $data["activemenu"]="image gallery";
 $data["page2"]="block/galleryblock";
-$data[ 'status' ] =$this->user_model->getstatusdropdown();
+$data[ 'status' ] =$this->User_Model->getStatusDropDown();
 $data[ 'before1' ] =$this->input->get('id');
 $data[ 'before2' ] =$this->input->get('id');
 $data["title"]="Edit Image Gallery";
-$data["before"]=$this->gallery_model->beforeedit($this->input->get("id"));
+$data["before"]=$this->Gallery_Model->beforeEdit($this->input->get("id"));
 $this->load->view("templatewith2",$data);
 }
-public function editgallerysubmit()
+public function editGallerySubmit()
 {
 $access=array("1");
-$this->checkaccess($access);
+$this->checkAccess($access);
 $this->form_validation->set_rules("id","ID","trim");
 $this->form_validation->set_rules("order","Order","trim");
 $this->form_validation->set_rules("status","Status","trim");
@@ -1022,10 +1022,10 @@ $this->form_validation->set_rules("json","Json","trim");
 if($this->form_validation->run()==FALSE)
 {
 $data["alerterror"]=validation_errors();
-$data["page"]="editgallery";
-$data[ 'status' ] =$this->user_model->getstatusdropdown();
+$data["page"]="editGallery";
+$data[ 'status' ] =$this->User_Model->getStatusDropDown();
 $data["title"]="Edit Image Gallery";
-$data["before"]=$this->gallery_model->beforeedit($this->input->get("id"));
+$data["before"]=$this->Gallery_Model->beforeEdit($this->input->get("id"));
 $this->load->view("template",$data);
 }
 else
@@ -1049,42 +1049,42 @@ $timestamp=$this->input->get_post("timestamp");
 
 						if($image=="")
 						{
-						$image=$this->gallery_model->getimagebyid($id);
+						$image=$this->Gallery_Model->getImageById($id);
 						   // print_r($image);
 							$image=$image->image;
 						}
-if($this->gallery_model->edit($id,$order,$status,$name,$json,$timestamp,$image)==0)
-$data["alerterror"]="New Image Gallery could not be Updated.";
+if($this->Gallery_Model->edit($id,$order,$status,$name,$json,$timestamp,$image)==0)
+$data["alerterror"]="New Image Gallery Could Not Be Updated.";
 else
 $data["alertsuccess"]="Image Gallery Updated Successfully.";
-$data["redirect"]="site/viewgallery";
+$data["redirect"]="site/viewGallery";
 $this->load->view("redirect",$data);
 }
 }
-public function deletegallery()
+public function deleteGallery()
 {
 $access=array("1");
-$this->checkaccess($access);
-$this->gallery_model->delete($this->input->get("id"));
-$data["redirect"]="site/viewgallery";
+$this->checkAccess($access);
+$this->Gallery_Model->delete($this->input->get("id"));
+$data["redirect"]="site/viewGallery";
 $this->load->view("redirect",$data);
 }
-public function viewgalleryimage()
+public function viewGalleryImage()
 {
 $access=array("1");
-$this->checkaccess($access);
-$data["page"]="viewgalleryimage";
+$this->checkAccess($access);
+$data["page"]="viewGalleryImage";
 $data["activemenu"]="image gallery";
 $data["page2"]="block/galleryblock";
-$data[ 'status' ] =$this->user_model->getstatusdropdown();
+$data[ 'status' ] =$this->User_Model->getStatusDropDown();
 $data[ 'before1' ] =$this->input->get('id');
 $data[ 'before2' ] =$this->input->get('id');
-$data[ 'gallery' ] =$this->user_model->getgallerydropdown();
-$data["base_url"]=site_url("site/viewgalleryimagejson?id=".$this->input->get('id'));
+$data[ 'gallery' ] =$this->User_Model->getGalleryDropDown();
+$data["base_url"]=site_url("site/viewGalleryImageJson?id=".$this->input->get('id'));
 $data["title"]="View Image Gallery";
 $this->load->view("templatewith2",$data);
 }
-function viewgalleryimagejson()
+function viewGalleryImageJson()
 {
  $id=$this->input->get('id');   
 $elements=array();
@@ -1137,35 +1137,35 @@ $data["message"]=$this->chintantable->query($pageno,$maxrow,$orderby,$orderorder
 $this->load->view("json",$data);
 }
 
-public function creategalleryimage()
+public function createGalleryImage()
 {
 $access=array("1");
-$this->checkaccess($access);
-$data["page"]="creategalleryimage";
+$this->checkAccess($access);
+$data["page"]="createGalleryImage";
 $data["activemenu"]="image gallery";
 $data["page2"]="block/galleryblock";
-$data[ 'status' ] =$this->user_model->getstatusdropdown();
-$data[ 'gallery' ] =$this->user_model->getgallerydropdown();
+$data[ 'status' ] =$this->User_Model->getStatusDropDown();
+$data[ 'gallery' ] =$this->User_Model->getGalleryDropDown();
 $data[ 'before1' ] =$this->input->get('id');
 $data[ 'before2' ] =$this->input->get('id');
 $data["title"]="Create Image Gallery";
 $this->load->view("templatewith2",$data);
 }
-public function creategalleryimagesubmit() 
+public function createGalleryImageSubmit() 
 {
 $access=array("1");
-$this->checkaccess($access);
+$this->checkAccess($access);
 $this->form_validation->set_rules("gallery","Gallery","trim");
 $this->form_validation->set_rules("order","Order","trim");
 $this->form_validation->set_rules("status","Status","trim");
-$data[ 'gallery' ] =$this->user_model->getgallerydropdown();
+$data[ 'gallery' ] =$this->User_Model->getGalleryDropDown();
 $this->form_validation->set_rules("image","Image","trim");
 if($this->form_validation->run()==FALSE)
 {
 $data["alerterror"]=validation_errors();
-$data["page"]="creategalleryimage";
-$data[ 'gallery' ] =$this->user_model->getgallerydropdown();
-$data[ 'status' ] =$this->user_model->getstatusdropdown();
+$data["page"]="createGalleryImage";
+$data[ 'gallery' ] =$this->User_Model->getGalleryDropDown();
+$data[ 'status' ] =$this->User_Model->getStatusDropDown();
 $data["title"]="Create Image Gallery";
 $this->load->view("template",$data);
 }
@@ -1198,7 +1198,7 @@ $alt=$this->input->get_post("alt");
                 $this->image_lib->initialize($config_r);
                 if(!$this->image_lib->resize())
                 {
-                    echo "Failed." . $this->image_lib->display_errors();
+                   $data['alerterror']="Failed." . $this->image_lib->display_errors();
                     //return false;
                 }  
                 else
@@ -1210,35 +1210,35 @@ $alt=$this->input->get_post("alt");
                 }
                 
 			}
-if($this->galleryimage_model->create($gallery,$order,$status,$image,$alt)==0)
+if($this->GalleryImage_Model->create($gallery,$order,$status,$image,$alt)==0)
 $data["alerterror"]="New Image Gallery Image could not be created.";
 else
 $data["alertsuccess"]="Image Gallery Image created Successfully.";
-$data["redirect"]="site/viewgalleryimage?id=".$gallery;
+$data["redirect"]="site/viewGalleryImage?id=".$gallery;
 $this->load->view("redirect2",$data);
 }
 }
-public function editgalleryimage()
+public function editGalleryImage()
 {
 $access=array("1");
-$this->checkaccess($access);
-$data["page"]="editgalleryimage";
+$this->checkAccess($access);
+$data["page"]="editGalleryImage";
 $data["page2"]="block/galleryblock";
 $data["activemenu"]="image gallery";
-$data[ 'status' ] =$this->user_model->getstatusdropdown();
-$getgallery=$this->galleryimage_model->beforeedit($this->input->get("gallery"));
-$getid=$this->galleryimage_model->beforeedit($this->input->get("id"));
+$data[ 'status' ] =$this->User_Model->getStatusDropDown();
+$getgallery=$this->GalleryImage_Model->beforeEdit($this->input->get("gallery"));
+$getid=$this->GalleryImage_Model->beforeEdit($this->input->get("id"));
 $data[ 'before1' ] =$this->input->get('galleryid');
 $data[ 'before2' ] =$this->input->get('galleryid');
-$data[ 'gallery' ] =$this->user_model->getgallerydropdown();
+$data[ 'gallery' ] =$this->User_Model->getGalleryDropDown();
 $data["title"]="Edit Image Gallery";
-$data["before"]=$this->galleryimage_model->beforeedit($this->input->get("id"));
+$data["before"]=$this->GalleryImage_Model->beforeEdit($this->input->get("id"));
 $this->load->view("templatewith2",$data);
 }
-public function editgalleryimagesubmit()
+public function editGalleryImagesubmit()
 {
 $access=array("1");
-$this->checkaccess($access);
+$this->checkAccess($access);
 $this->form_validation->set_rules("id","ID","trim");
 $this->form_validation->set_rules("gallery","Gallery","trim");
 $this->form_validation->set_rules("order","Order","trim");
@@ -1247,11 +1247,11 @@ $this->form_validation->set_rules("image","Image","trim");
 if($this->form_validation->run()==FALSE)
 {
 $data["alerterror"]=validation_errors();
-$data["page"]="editgalleryimage";
-$data[ 'gallery' ] =$this->user_model->getgallerydropdown();
-$data[ 'status' ] =$this->user_model->getstatusdropdown();
+$data["page"]="editGalleryImage";
+$data[ 'gallery' ] =$this->User_Model->getGalleryDropDown();
+$data[ 'status' ] =$this->User_Model->getStatusDropDown();
 $data["title"]="Edit Image Gallery";
-$data["before"]=$this->galleryimage_model->beforeedit($this->input->get("id"));
+$data["before"]=$this->GalleryImage_Model->beforeEdit($this->input->get("id"));
 $this->load->view("template",$data);
 }
 else
@@ -1284,7 +1284,7 @@ $alt=$this->input->get_post("alt");
                 $this->image_lib->initialize($config_r);
                 if(!$this->image_lib->resize())
                 {
-                    echo "Failed." . $this->image_lib->display_errors();
+                   $data['alerterror']="Failed." . $this->image_lib->display_errors();
                     //return false;
                 }  
                 else
@@ -1299,37 +1299,37 @@ $alt=$this->input->get_post("alt");
             
             if($image=="")
             {
-            $image=$this->user_model->getgalleryimagebyid($id);
+            $image=$this->User_Model->getGalleryImageById($id);
                // print_r($image);
                 $image=$image->image;
             }
             
-if($this->galleryimage_model->edit($id,$gallery,$order,$status,$image,$alt)==0)
-$data["alerterror"]="New Image Gallery Image could not be Updated.";
+if($this->GalleryImage_Model->edit($id,$gallery,$order,$status,$image,$alt)==0)
+$data["alerterror"]="New Image Gallery Image Could Not Be Updated.";
 else
 $data["alertsuccess"]="Image Gallery Image Updated Successfully.";
-$data["redirect"]="site/viewgalleryimage?id=".$gallery;
+$data["redirect"]="site/viewGalleryImage?id=".$gallery;
 $this->load->view("redirect2",$data);
 }
 }
-public function deletegalleryimage()
+public function deleteGalleryImage()
 {
 $access=array("1");
-$this->checkaccess($access);
-$this->galleryimage_model->delete($this->input->get("id"));
-$data["redirect"]="site/viewgalleryimage?id=".$this->input->get('galleryid');
+$this->checkAccess($access);
+$this->GalleryImage_Model->delete($this->input->get("id"));
+$data["redirect"]="site/viewGalleryImage?id=".$this->input->get('galleryid');
 $this->load->view("redirect2",$data);
 }
-public function viewvideogallery()
+public function viewVideoGallery()
 {
 $access=array("1");
-$this->checkaccess($access);
-$data["page"]="viewvideogallery";
-$data["base_url"]=site_url("site/viewvideogalleryjson");
+$this->checkAccess($access);
+$data["page"]="viewVideoGallery";
+$data["base_url"]=site_url("site/viewVideoGalleryJson");
 $data["title"]="View Video Gallery";
 $this->load->view("template",$data);
 }
-function viewvideogalleryjson()
+function viewVideoGalleryJson()
 {
 $elements=array();
 $elements[0]=new stdClass();
@@ -1381,21 +1381,21 @@ $data["message"]=$this->chintantable->query($pageno,$maxrow,$orderby,$orderorder
 $this->load->view("json",$data);
 }
 
-public function createvideogallery()
+public function createVideoGallery()
 {
 $access=array("1");
-$this->checkaccess($access);
-$data["page"]="createvideogallery";
+$this->checkAccess($access);
+$data["page"]="createVideoGallery";
 $data["activemenu"]="video gallery";
-$data[ 'status' ] =$this->user_model->getstatusdropdown();
-$data[ 'videogallery' ] =$this->user_model->getvideogallerydropdown();
+$data[ 'status' ] =$this->User_Model->getStatusDropDown();
+$data[ 'videogallery' ] =$this->User_Model->getVideoGalleryDropDown();
 $data["title"]="Create Video Gallery";
 $this->load->view("template",$data);
 }
-public function createvideogallerysubmit() 
+public function createVideoGallerySubmit() 
 {
 $access=array("1");
-$this->checkaccess($access);
+$this->checkAccess($access);
 $this->form_validation->set_rules("order","Order","trim");
 $this->form_validation->set_rules("status","Status","trim");
 $this->form_validation->set_rules("name","Name","trim");
@@ -1403,9 +1403,9 @@ $this->form_validation->set_rules("json","Json","trim");
 if($this->form_validation->run()==FALSE)
 {
 $data["alerterror"]=validation_errors();
-$data["page"]="createvideogallery";
-$data[ 'videogallery' ] =$this->user_model->getvideogallerydropdown();
-$data[ 'status' ] =$this->user_model->getstatusdropdown();
+$data["page"]="createVideoGallery";
+$data[ 'videogallery' ] =$this->User_Model->getVideoGalleryDropDown();
+$data[ 'status' ] =$this->User_Model->getStatusDropDown();
 $data["title"]="Create Video Gallery";
 $this->load->view("template",$data);
 }
@@ -1416,33 +1416,33 @@ $status=$this->input->get_post("status");
 $name=$this->input->get_post("name");
 $json=$this->input->get_post("json");
 $subtitle=$this->input->get_post("subtitle");
-if($this->videogallery_model->create($order,$status,$name,$json,$subtitle)==0)
+if($this->VideoGallery_Model->create($order,$status,$name,$json,$subtitle)==0)
 $data["alerterror"]="New Video Gallery could not be created.";
 else
 $data["alertsuccess"]="Video Gallery created Successfully.";
-$data["redirect"]="site/viewvideogallery";
+$data["redirect"]="site/viewVideoGallery";
 $this->load->view("redirect",$data);
 }
 }
-public function editvideogallery()
+public function editVideoGallery()
 {
 $access=array("1");
-$this->checkaccess($access);
-$data["page"]="editvideogallery";
+$this->checkAccess($access);
+$data["page"]="editVideoGallery";
 $data["activemenu"]="video gallery";
 $data["page2"]="block/videoblock";
 $data["before1"]=$this->input->get('id');
 $data["before2"]=$this->input->get('id');
-$data[ 'videogallery' ] =$this->user_model->getvideogallerydropdown();
-$data[ 'status' ] =$this->user_model->getstatusdropdown();
+$data[ 'videogallery' ] =$this->User_Model->getVideoGalleryDropDown();
+$data[ 'status' ] =$this->User_Model->getStatusDropDown();
 $data["title"]="Edit Video Gallery";
-$data["before"]=$this->videogallery_model->beforeedit($this->input->get("id"));
+$data["before"]=$this->VideoGallery_Model->beforeEdit($this->input->get("id"));
 $this->load->view("templatewith2",$data);
 }
-public function editvideogallerysubmit()
+public function editVideoGallerySubmit()
 {
 $access=array("1");
-$this->checkaccess($access);
+$this->checkAccess($access);
 $this->form_validation->set_rules("id","ID","trim");
 $this->form_validation->set_rules("order","Order","trim");
 $this->form_validation->set_rules("status","Status","trim");
@@ -1451,11 +1451,11 @@ $this->form_validation->set_rules("json","Json","trim");
 if($this->form_validation->run()==FALSE)
 {
 $data["alerterror"]=validation_errors();
-$data[ 'videogallery' ] =$this->user_model->getvideogallerydropdown();
-$data[ 'status' ] =$this->user_model->getstatusdropdown();
-$data["page"]="editvideogallery";
+$data[ 'videogallery' ] =$this->User_Model->getVideoGalleryDropDown();
+$data[ 'status' ] =$this->User_Model->getStatusDropDown();
+$data["page"]="editVideoGallery";
 $data["title"]="Edit Video Gallery";
-$data["before"]=$this->videogallery_model->beforeedit($this->input->get("id"));
+$data["before"]=$this->VideoGallery_Model->beforeEdit($this->input->get("id"));
 $this->load->view("template",$data);
 }
 else
@@ -1467,36 +1467,36 @@ $name=$this->input->get_post("name");
 $json=$this->input->get_post("json");
     $timestamp=$this->input->get_post("timestamp");
      $subtitle=$this->input->get_post("subtitle");
-if($this->videogallery_model->edit($id,$order,$status,$name,$json,$timestamp,$subtitle)==0)
-$data["alerterror"]="New Video Gallery could not be Updated.";
+if($this->VideoGallery_Model->edit($id,$order,$status,$name,$json,$timestamp,$subtitle)==0)
+$data["alerterror"]="New Video Gallery Could Not Be Updated.";
 else
 $data["alertsuccess"]="Video Gallery Updated Successfully.";
-$data["redirect"]="site/viewvideogallery";
+$data["redirect"]="site/viewVideoGallery";
 $this->load->view("redirect",$data);
 }
 }
-public function deletevideogallery()
+public function deleteVideoGallery()
 {
 $access=array("1");
-$this->checkaccess($access);
-$this->videogallery_model->delete($this->input->get("id"));
-$data["redirect"]="site/viewvideogallery";
+$this->checkAccess($access);
+$this->VideoGallery_Model->delete($this->input->get("id"));
+$data["redirect"]="site/viewVideoGallery";
 $this->load->view("redirect",$data);
 }
-public function viewvideogalleryvideo()
+public function viewVideoGalleryVideo()
 {
 $access=array("1");
-$this->checkaccess($access);
-$data["page"]="viewvideogalleryvideo";
+$this->checkAccess($access);
+$data["page"]="viewVideoGalleryVideo";
 $data["activemenu"]="video gallery";
 $data["page2"]="block/videoblock";
 $data["before1"]=$this->input->get('id');
 $data["before2"]=$this->input->get('id');
-$data["base_url"]=site_url("site/viewvideogalleryvideojson?id=").$this->input->get('id');
+$data["base_url"]=site_url("site/viewVideoGalleryVideoJson?id=").$this->input->get('id');
 $data["title"]="View Video Gallery Video";
 $this->load->view("templatewith2",$data);
 }
-function viewvideogalleryvideojson()
+function viewVideoGalleryVideoJson()
 {
 $id=$this->input->get('id');
 $elements=array();
@@ -1549,24 +1549,24 @@ $data["message"]=$this->chintantable->query($pageno,$maxrow,$orderby,$orderorder
 $this->load->view("json",$data);
 }
 
-public function createvideogalleryvideo()
+public function createVideoGalleryVideo()
 {
 $access=array("1");
-$this->checkaccess($access);
-$data["page"]="createvideogalleryvideo";
+$this->checkAccess($access);
+$data["page"]="createVideoGalleryVideo";
 $data["activemenu"]="video gallery";
 $data["page2"]="block/videoblock";
 $data["before1"]=$this->input->get('id');
 $data["before2"]=$this->input->get('id');
-$data[ 'status' ] =$this->user_model->getstatusdropdown();
-$data[ 'videogallery' ] =$this->user_model->getvideogallerydropdown();
+$data[ 'status' ] =$this->User_Model->getStatusDropDown();
+$data[ 'videogallery' ] =$this->User_Model->getVideoGalleryDropDown();
 $data["title"]="Create Video Gallery Video";
 $this->load->view("templatewith2",$data);
 }
-public function createvideogalleryvideosubmit() 
+public function createVideoGalleryVideoSubmit() 
 {
 $access=array("1");
-$this->checkaccess($access);
+$this->checkAccess($access);
 $this->form_validation->set_rules("order","Order","trim");
 $this->form_validation->set_rules("status","Status","trim");
 $this->form_validation->set_rules("videogallery","Video Gallery","trim");
@@ -1574,9 +1574,9 @@ $this->form_validation->set_rules("url","Url","trim");
 if($this->form_validation->run()==FALSE)
 {
 $data["alerterror"]=validation_errors();
-$data["page"]="createvideogalleryvideo";
-$data[ 'status' ] =$this->user_model->getstatusdropdown();
-$data[ 'videogallery' ] =$this->user_model->getvideogallerydropdown();
+$data["page"]="createVideoGalleryVideo";
+$data[ 'status' ] =$this->User_Model->getStatusDropDown();
+$data[ 'videogallery' ] =$this->User_Model->getVideoGalleryDropDown();
 $data["title"]="Create Video Gallery Video";
 $this->load->view("template",$data);
 }
@@ -1587,33 +1587,33 @@ $status=$this->input->get_post("status");
 $videogallery=$this->input->get_post("videogallery");
 $url=$this->input->get_post("url");
 $alt=$this->input->get_post("alt");
-if($this->videogalleryvideo_model->create($order,$status,$videogallery,$url,$alt)==0)
-$data["alerterror"]="New Video Gallery Video could not be created.";
+if($this->VideoGalleryVideo_Model->create($order,$status,$videogallery,$url,$alt)==0)
+$data["alerterror"]="New Video Gallery Video Could Not Be created.";
 else
 $data["alertsuccess"]="Video Gallery Video created Successfully.";
-$data["redirect"]="site/viewvideogalleryvideo?id=".$videogallery;
+$data["redirect"]="site/viewVideoGalleryVideo?id=".$videogallery;
 $this->load->view("redirect2",$data);
 }
 }
-public function editvideogalleryvideo()
+public function editVideoGalleryVideo()
 {
 $access=array("1");
-$this->checkaccess($access);
-$data["page"]="editvideogalleryvideo";
+$this->checkAccess($access);
+$data["page"]="editVideoGalleryVideo";
 $data["activemenu"]="video gallery";
 $data["page2"]="block/videoblock";
 $data["before1"]=$this->input->get('videoid');
 $data["before2"]=$this->input->get('videoid');
-$data[ 'status' ] =$this->user_model->getstatusdropdown();
-$data[ 'videogallery' ] =$this->user_model->getvideogallerydropdown();
+$data[ 'status' ] =$this->User_Model->getStatusDropDown();
+$data[ 'videogallery' ] =$this->User_Model->getVideoGalleryDropDown();
 $data["title"]="Edit Video Gallery Video";
-$data["before"]=$this->videogalleryvideo_model->beforeedit($this->input->get("id"));
+$data["before"]=$this->VideoGalleryVideo_Model->beforeEdit($this->input->get("id"));
 $this->load->view("templatewith2",$data);
 }
-public function editvideogalleryvideosubmit()
+public function editVideoGalleryVideoSubmit()
 {
 $access=array("1");
-$this->checkaccess($access);
+$this->checkAccess($access);
 $this->form_validation->set_rules("id","ID","trim");
 $this->form_validation->set_rules("order","Order","trim");
 $this->form_validation->set_rules("status","Status","trim");
@@ -1622,11 +1622,11 @@ $this->form_validation->set_rules("url","Url","trim");
 if($this->form_validation->run()==FALSE)
 {
 $data["alerterror"]=validation_errors();
-$data[ 'videogallery' ] =$this->user_model->getvideogallerydropdown();
-$data["page"]="editvideogalleryvideo";
-$data[ 'status' ] =$this->user_model->getstatusdropdown();
+$data[ 'videogallery' ] =$this->User_Model->getVideoGalleryDropDown();
+$data["page"]="editVideoGalleryVideo";
+$data[ 'status' ] =$this->User_Model->getStatusDropDown();
 $data["title"]="Edit Video Gallery Video";
-$data["before"]=$this->videogalleryvideo_model->beforeedit($this->input->get("id"));
+$data["before"]=$this->VideoGalleryVideo_Model->beforeEdit($this->input->get("id"));
 $this->load->view("template",$data);
 }
 else
@@ -1636,34 +1636,34 @@ $order=$this->input->get_post("order");
 $status=$this->input->get_post("status");
 $videogallery=$this->input->get_post("videogallery");
 $url=$this->input->get_post("url");
-    $alt=$this->input->get_post("alt");
-if($this->videogalleryvideo_model->edit($id,$order,$status,$videogallery,$url,$alt)==0)
-$data["alerterror"]="New Video Gallery Video could not be Updated.";
+$alt=$this->input->get_post("alt");
+if($this->VideoGalleryVideo_Model->edit($id,$order,$status,$videogallery,$url,$alt)==0)
+$data["alerterror"]="New Video Gallery Video Could Not Be Updated.";
 else
 $data["alertsuccess"]="Video Gallery Video Updated Successfully.";
-$data["redirect"]="site/viewvideogalleryvideo?id=".$videogallery;
+$data["redirect"]="site/viewVideoGalleryVideo?id=".$videogallery;
 $this->load->view("redirect2",$data);
 }
 }
-public function deletevideogalleryvideo()
+public function deleteVideoGalleryVideo()
 {
 $access=array("1");
-$this->checkaccess($access);
-$this->videogalleryvideo_model->delete($this->input->get("id"));
-$data["redirect"]="site/viewvideogalleryvideo?id=".$this->input->get('videoid');
+$this->checkAccess($access);
+$this->VideoGalleryVideo_Model->delete($this->input->get("id"));
+$data["redirect"]="site/viewVideoGalleryVideo?id=".$this->input->get('videoid');
 $this->load->view("redirect2",$data);
 }
-public function viewevents()
+public function viewEvents()
 {
 $access=array("1");
-$this->checkaccess($access);
-$data["page"]="viewevents";
+$this->checkAccess($access);
+$data["page"]="viewEvents";
 $data["activemenu"]="events";
-$data["base_url"]=site_url("site/vieweventsjson");
+$data["base_url"]=site_url("site/viewEventsJson");
 $data["title"]="View Events";
 $this->load->view("template",$data);
 }
-function vieweventsjson()
+function viewEventsJson()
 {
 $elements=array();
 $elements[0]=new stdClass();
@@ -1709,20 +1709,20 @@ $data["message"]=$this->chintantable->query($pageno,$maxrow,$orderby,$orderorder
 $this->load->view("json",$data);
 }
 
-public function createevents()
+public function createEvents()
 {
 $access=array("1");
-$this->checkaccess($access);
-$data["page"]="createevents";
-$data[ 'status' ] =$this->user_model->getstatusdropdown();
+$this->checkAccess($access);
+$data["page"]="createEvents";
+$data[ 'status' ] =$this->User_Model->getStatusDropDown();
 $data["activemenu"]="events";
 $data["title"]="Create Event";
 $this->load->view("template",$data);
 }
-public function createeventssubmit() 
+public function createEventsSubmit() 
 {
 $access=array("1");
-$this->checkaccess($access);
+$this->checkAccess($access);
 $this->form_validation->set_rules("status","Status","trim");
 $this->form_validation->set_rules("title","Title","trim");
 $this->form_validation->set_rules("timestamp","Timestamp","trim");
@@ -1730,8 +1730,8 @@ $this->form_validation->set_rules("content","Content","trim");
 if($this->form_validation->run()==FALSE)
 {
 $data["alerterror"]=validation_errors();
-$data["page"]="createevents";
-$data[ 'status' ] =$this->user_model->getstatusdropdown();
+$data["page"]="createEvents";
+$data[ 'status' ] =$this->User_Model->getStatusDropDown();
 $data["title"]="Create Event";
 $this->load->view("template",$data);
 }
@@ -1755,34 +1755,34 @@ $starttime=$this->input->get_post("starttime");
 							$uploaddata = $this->upload->data();
 							$image=$uploaddata['file_name'];
 						}
-if($this->events_model->create($status,$title,$timestamp,$content,$venue,$image,$startdate,$starttime)==0)
+if($this->Events_Model->create($status,$title,$timestamp,$content,$venue,$image,$startdate,$starttime)==0)
 $data["alerterror"]="New Event could not be created.";
 else
 $data["alertsuccess"]="Event created Successfully.";
-$data["redirect"]="site/viewevents";
+$data["redirect"]="site/viewEvents";
 $this->load->view("redirect",$data);
 }
 }
-public function editevents()
+public function editEvents()
 {
 $access=array("1");
-$this->checkaccess($access);
-$data["page"]="editevents";
+$this->checkAccess($access);
+$data["page"]="editEvents";
 $data["activemenu"]="events";
 $data["page2"]="block/eventblock";
 $data["before1"]=$this->input->get('id');
 $data["before2"]=$this->input->get('id');
 $data["before3"]=$this->input->get('id');
 $data["title"]="Edit Event";
-$data[ 'status' ] =$this->user_model->getstatusdropdown();
-$data["before"]=$this->events_model->beforeedit($this->input->get("id"));
+$data[ 'status' ] =$this->User_Model->getStatusDropDown();
+$data["before"]=$this->Events_Model->beforeEdit($this->input->get("id"));
 $data['exp']=explode(":",$data["before"]->starttime);
 $this->load->view("templatewith2",$data);
 }
-public function editeventssubmit()
+public function editEventsSubmit()
 {
 $access=array("1");
-$this->checkaccess($access);
+$this->checkAccess($access);
 $this->form_validation->set_rules("id","ID","trim");
 $this->form_validation->set_rules("status","Status","trim");
 $this->form_validation->set_rules("title","Title","trim");
@@ -1791,10 +1791,10 @@ $this->form_validation->set_rules("content","Content","trim");
 if($this->form_validation->run()==FALSE)
 {
 $data["alerterror"]=validation_errors();
-$data[ 'status' ] =$this->user_model->getstatusdropdown();
-$data["page"]="editevents";
+$data[ 'status' ] =$this->User_Model->getStatusDropDown();
+$data["page"]="editEvents";
 $data["title"]="Edit Event";
-$data["before"]=$this->events_model->beforeedit($this->input->get("id"));
+$data["before"]=$this->Events_Model->beforeEdit($this->input->get("id"));
 $this->load->view("template",$data);
 }
 else
@@ -1822,41 +1822,41 @@ $starttime=$this->input->get_post("starttime");
 
 						if($image=="")
 						{
-						$image=$this->events_model->getimagebyid($id);
+						$image=$this->Events_Model->getImageById($id);
 						   // print_r($image);
 							$image=$image->image;
 						}
-if($this->events_model->edit($id,$status,$title,$timestamp,$content,$venue,$image,$startdate,$starttime)==0)
-$data["alerterror"]="New Event could not be Updated.";
+if($this->Events_Model->edit($id,$status,$title,$timestamp,$content,$venue,$image,$startdate,$starttime)==0)
+$data["alerterror"]="New Event Could Not Be Updated.";
 else
 $data["alertsuccess"]="Event Updated Successfully.";
-$data["redirect"]="site/viewevents";
+$data["redirect"]="site/viewEvents";
 $this->load->view("redirect",$data);
 }
 }
-public function deleteevents()
+public function deleteEvents()
 {
 $access=array("1");
-$this->checkaccess($access);
-$this->events_model->delete($this->input->get("id"));
-$data["redirect"]="site/viewevents";
+$this->checkAccess($access);
+$this->Events_Model->delete($this->input->get("id"));
+$data["redirect"]="site/viewEvents";
 $this->load->view("redirect",$data);
 }
-public function vieweventvideo()
+public function viewEventVideo()
 {
 $access=array("1");
-$this->checkaccess($access);
-$data["page"]="vieweventvideo";
+$this->checkAccess($access);
+$data["page"]="viewEventVideo";
 $data["activemenu"]="events";
 $data["page2"]="block/eventblock";
 $data["before1"]=$this->input->get('id');
 $data["before2"]=$this->input->get('id');
 $data["before3"]=$this->input->get('id');
-$data["base_url"]=site_url("site/vieweventvideojson?id=").$this->input->get('id');
+$data["base_url"]=site_url("site/viewEventVideoJson?id=").$this->input->get('id');
 $data["title"]="View Event Videos";
 $this->load->view("templatewith2",$data);
 }
-function vieweventvideojson()
+function viewEventVideoJson()
 {
 $id=$this->input->get('id');
 $elements=array();
@@ -1915,26 +1915,26 @@ $data["message"]=$this->chintantable->query($pageno,$maxrow,$orderby,$orderorder
 $this->load->view("json",$data);
 }
 
-public function createeventvideo()
+public function createEventVideo()
 {
 $access=array("1");
-$this->checkaccess($access);
-$data["page"]="createeventvideo";
+$this->checkAccess($access);
+$data["page"]="createEventVideo";
 $data["activemenu"]="events";
 $data["page2"]="block/eventblock";
 $data["before1"]=$this->input->get('id');
 $data["before2"]=$this->input->get('id');
 $data["before3"]=$this->input->get('id');
-$data[ 'status' ] =$this->user_model->getstatusdropdown();
-$data[ 'event' ] =$this->user_model->geteventsdropdown();
-$data[ 'videogallery' ] =$this->user_model->getvideogallerydropdown();
+$data[ 'status' ] =$this->User_Model->getStatusDropDown();
+$data[ 'event' ] =$this->User_Model->getEventsDropDown();
+$data[ 'videogallery' ] =$this->User_Model->getVideoGalleryDropDown();
 $data["title"]="Create Event Video";
 $this->load->view("templatewith2",$data);
 }
-public function createeventvideosubmit() 
+public function createEventVideoSubmit() 
 {
 $access=array("1");
-$this->checkaccess($access);
+$this->checkAccess($access);
 $this->form_validation->set_rules("event","event","trim");
 $this->form_validation->set_rules("videogallery","Video Gallery","trim");
 $this->form_validation->set_rules("status","Status","trim");
@@ -1942,10 +1942,10 @@ $this->form_validation->set_rules("order","Order","trim");
 if($this->form_validation->run()==FALSE)
 {
 $data["alerterror"]=validation_errors();
-$data["page"]="createeventvideo";
-$data[ 'status' ] =$this->user_model->getstatusdropdown();
-$data[ 'videogallery' ] =$this->user_model->getvideogallerydropdown();
-$data[ 'event' ] =$this->user_model->geteventsdropdown();
+$data["page"]="createEventVideo";
+$data[ 'status' ] =$this->User_Model->getStatusDropDown();
+$data[ 'videogallery' ] =$this->User_Model->getVideoGalleryDropDown();
+$data[ 'event' ] =$this->User_Model->getEventsDropDown();
 $data["title"]="Create Event Video";
 $this->load->view("template",$data);
 }
@@ -1956,35 +1956,35 @@ $videogallery=$this->input->get_post("videogallery");
 $status=$this->input->get_post("status");
 $order=$this->input->get_post("order");
 $url=$this->input->get_post("url");
-if($this->eventvideo_model->create($event,$videogallery,$status,$order,$url)==0)
+if($this->EventVideo_Model->create($event,$videogallery,$status,$order,$url)==0)
 $data["alerterror"]="New Event Video could not be created.";
 else
 $data["alertsuccess"]="Event Video created Successfully.";
-$data["redirect"]="site/vieweventvideo?id=".$event;
+$data["redirect"]="site/viewEventVideo?id=".$event;
 $this->load->view("redirect2",$data);
 }
 }
-public function editeventvideo()
+public function editEventVideo()
 {
 $access=array("1");
-$this->checkaccess($access);
-$data["page"]="editeventvideo";
+$this->checkAccess($access);
+$data["page"]="editEventVideo";
 $data["activemenu"]="events";
 $data["page2"]="block/eventblock";
 $data["before1"]=$this->input->get('eventid');
 $data["before2"]=$this->input->get('eventid');
 $data["before3"]=$this->input->get('eventid');
-$data[ 'videogallery' ] =$this->user_model->getvideogallerydropdown();
-$data[ 'event' ] =$this->user_model->geteventsdropdown();
-$data[ 'status' ] =$this->user_model->getstatusdropdown();
+$data[ 'videogallery' ] =$this->User_Model->getVideoGalleryDropDown();
+$data[ 'event' ] =$this->User_Model->getEventsDropDown();
+$data[ 'status' ] =$this->User_Model->getStatusDropDown();
 $data["title"]="Edit Event Video";
-$data["before"]=$this->eventvideo_model->beforeedit($this->input->get("id"));
+$data["before"]=$this->EventVideo_Model->beforeEdit($this->input->get("id"));
 $this->load->view("templatewith2",$data);
 }
-public function editeventvideosubmit()
+public function editEventVideoSubmit()
 {
 $access=array("1");
-$this->checkaccess($access);
+$this->checkAccess($access);
 $this->form_validation->set_rules("id","ID","trim");
 $this->form_validation->set_rules("event","event","trim");
 $this->form_validation->set_rules("videogallery","Video Gallery","trim");
@@ -1993,12 +1993,12 @@ $this->form_validation->set_rules("order","Order","trim");
 if($this->form_validation->run()==FALSE)
 {
 $data["alerterror"]=validation_errors();
-$data["page"]="editeventvideo";
-$data[ 'videogallery' ] =$this->user_model->getvideogallerydropdown();
-$data[ 'status' ] =$this->user_model->getstatusdropdown();
-$data[ 'event' ] =$this->user_model->geteventsdropdown();
+$data["page"]="editEventVideo";
+$data[ 'videogallery' ] =$this->User_Model->getVideoGalleryDropDown();
+$data[ 'status' ] =$this->User_Model->getStatusDropDown();
+$data[ 'event' ] =$this->User_Model->getEventsDropDown();
 $data["title"]="Edit Event Video";
-$data["before"]=$this->eventvideo_model->beforeedit($this->input->get("id"));
+$data["before"]=$this->EventVideo_Model->beforeEdit($this->input->get("id"));
 $this->load->view("template",$data);
 }
 else
@@ -2009,37 +2009,37 @@ $videogallery=$this->input->get_post("videogallery");
 $status=$this->input->get_post("status");
 $order=$this->input->get_post("order");
     $url=$this->input->get_post("url");
-if($this->eventvideo_model->edit($id,$event,$videogallery,$status,$order,$url)==0)
-$data["alerterror"]="New Event Video could not be Updated.";
+if($this->EventVideo_Model->edit($id,$event,$videogallery,$status,$order,$url)==0)
+$data["alerterror"]="New Event Video Could Not Be Updated.";
 else
 $data["alertsuccess"]="Event Video Updated Successfully.";
-$data["redirect"]="site/vieweventvideo?id=".$event;
+$data["redirect"]="site/viewEventVideo?id=".$event;
 $this->load->view("redirect2",$data);
 }
 }
-public function deleteeventvideo()
+public function deleteEventVideo()
 {
 $access=array("1");
-$this->checkaccess($access);
-$this->eventvideo_model->delete($this->input->get("id"));
-$data["redirect"]="site/vieweventvideo?id=".$this->input->get('eventid');
+$this->checkAccess($access);
+$this->EventVideo_Model->delete($this->input->get("id"));
+$data["redirect"]="site/viewEventVideo?id=".$this->input->get('eventid');
 $this->load->view("redirect2",$data);
 }
-public function vieweventimages()
+public function viewEventImages()
 {
 $access=array("1");
-$this->checkaccess($access);
-$data["page"]="vieweventimages";
+$this->checkAccess($access);
+$data["page"]="viewEventImages";
 $data["activemenu"]="events";
 $data["page2"]="block/eventblock";
 $data["before1"]=$this->input->get('id');
 $data["before2"]=$this->input->get('id');
 $data["before3"]=$this->input->get('id');
-$data["base_url"]=site_url("site/vieweventimagesjson?id=").$this->input->get('id');
+$data["base_url"]=site_url("site/viewEventImagesJson?id=").$this->input->get('id');
 $data["title"]="View Event Images";
 $this->load->view("templatewith2",$data);
 }
-function vieweventimagesjson()
+function viewEventImagesJson()
 {
 $id=$this->input->get('id');
 $elements=array();
@@ -2091,25 +2091,25 @@ $data["message"]=$this->chintantable->query($pageno,$maxrow,$orderby,$orderorder
 $this->load->view("json",$data);
 }
 
-public function createeventimages()
+public function createEventImages()
 {
 $access=array("1");
-$this->checkaccess($access);
-$data["page"]="createeventimages";
+$this->checkAccess($access);
+$data["page"]="createEventImages";
 $data["activemenu"]="events";
 $data["page2"]="block/eventblock";
 $data["before1"]=$this->input->get('id');
 $data["before2"]=$this->input->get('id');
 $data["before3"]=$this->input->get('id');
-$data[ 'event' ] =$this->user_model->geteventsdropdown();
-$data[ 'status' ] =$this->user_model->getstatusdropdown();
+$data[ 'event' ] =$this->User_Model->getEventsDropDown();
+$data[ 'status' ] =$this->User_Model->getStatusDropDown();
 $data["title"]="Create Event Image";
 $this->load->view("templatewith2",$data);
 }
-public function createeventimagessubmit() 
+public function createEventImagesSubmit() 
 {
 $access=array("1");
-$this->checkaccess($access);
+$this->checkAccess($access);
 $this->form_validation->set_rules("event","event","trim");
 $this->form_validation->set_rules("status","Status","trim");
 $this->form_validation->set_rules("order","Order","trim");
@@ -2117,9 +2117,9 @@ $this->form_validation->set_rules("image","Image","trim");
 if($this->form_validation->run()==FALSE)
 {
 $data["alerterror"]=validation_errors();
-$data[ 'status' ] =$this->user_model->getstatusdropdown();
-$data["page"]="createeventimages";
-$data[ 'event' ] =$this->user_model->geteventsdropdown();
+$data[ 'status' ] =$this->User_Model->getStatusDropDown();
+$data["page"]="createEventImages";
+$data[ 'event' ] =$this->User_Model->getEventsDropDown();
 $data["title"]="Create Event Image";
 $this->load->view("template",$data);
 }
@@ -2151,7 +2151,7 @@ $order=$this->input->get_post("order");
                 $this->image_lib->initialize($config_r);
                 if(!$this->image_lib->resize())
                 {
-                    echo "Failed." . $this->image_lib->display_errors();
+                   $data['alerterror']="Failed." . $this->image_lib->display_errors();
                     //return false;
                 }  
                 else
@@ -2163,34 +2163,34 @@ $order=$this->input->get_post("order");
                 }
                 
 			}
-if($this->eventimages_model->create($event,$status,$order,$image)==0)
+if($this->EventImages_Model->create($event,$status,$order,$image)==0)
 $data["alerterror"]="New Event Images could not be created.";
 else
 $data["alertsuccess"]="Event Image created Successfully.";
-$data["redirect"]="site/vieweventimages?id=".$event;
+$data["redirect"]="site/viewEventImages?id=".$event;
 $this->load->view("redirect2",$data);
 }
 }
-public function editeventimages()
+public function editEventImages()
 {
 $access=array("1");
-$this->checkaccess($access);
-$data["page"]="editeventimages";
+$this->checkAccess($access);
+$data["page"]="editEventImages";
 $data["activemenu"]="events";
 $data["page2"]="block/eventblock";
 $data["before1"]=$this->input->get('eventid');
 $data["before2"]=$this->input->get('eventid');
 $data["before3"]=$this->input->get('eventid');
-$data[ 'status' ] =$this->user_model->getstatusdropdown();
-$data[ 'event' ] =$this->user_model->geteventsdropdown();
+$data[ 'status' ] =$this->User_Model->getStatusDropDown();
+$data[ 'event' ] =$this->User_Model->getEventsDropDown();
 $data["title"]="Edit Event Image";
-$data["before"]=$this->eventimages_model->beforeedit($this->input->get("id"));
+$data["before"]=$this->EventImages_Model->beforeEdit($this->input->get("id"));
 $this->load->view("templatewith2",$data);
 }
-public function editeventimagessubmit()
+public function editEventImagesSubmit()
 {
 $access=array("1");
-$this->checkaccess($access);
+$this->checkAccess($access);
 $this->form_validation->set_rules("id","ID","trim");
 $this->form_validation->set_rules("event","event","trim");
 $this->form_validation->set_rules("status","Status","trim");
@@ -2199,11 +2199,11 @@ $this->form_validation->set_rules("image","Image","trim");
 if($this->form_validation->run()==FALSE)
 {
 $data["alerterror"]=validation_errors();
-$data["page"]="editeventimages";
-$data[ 'event' ] =$this->user_model->geteventsdropdown();
-$data[ 'status' ] =$this->user_model->getstatusdropdown();
+$data["page"]="editEventImages";
+$data[ 'event' ] =$this->User_Model->getEventsDropDown();
+$data[ 'status' ] =$this->User_Model->getStatusDropDown();
 $data["title"]="Edit Event Image";
-$data["before"]=$this->eventimages_model->beforeedit($this->input->get("id"));
+$data["before"]=$this->EventImages_Model->beforeEdit($this->input->get("id"));
 $this->load->view("template",$data);
 }
 else
@@ -2235,7 +2235,7 @@ $order=$this->input->get_post("order");
                 $this->image_lib->initialize($config_r);
                 if(!$this->image_lib->resize())
                 {
-                    echo "Failed." . $this->image_lib->display_errors();
+                  $data['alerterror']="Failed." . $this->image_lib->display_errors();
                     //return false;
                 }  
                 else
@@ -2250,37 +2250,37 @@ $order=$this->input->get_post("order");
             
             if($image=="")
             {
-            $image=$this->user_model->geteventimagebyid($id);
+            $image=$this->User_Model->getEventImageById($id);
                // print_r($image);
                 $image=$image->image;
             }
             
-if($this->eventimages_model->edit($id,$event,$status,$order,$image)==0)
-$data["alerterror"]="New Event Image could not be Updated.";
+if($this->EventImages_Model->edit($id,$event,$status,$order,$image)==0)
+$data["alerterror"]="New Event Image Could Not Be Updated.";
 else
 $data["alertsuccess"]="Event Images Updated Successfully.";
-$data["redirect"]="site/vieweventimages?id=".$event;
+$data["redirect"]="site/viewEventImages?id=".$event;
 $this->load->view("redirect2",$data);
 }
 }
-public function deleteeventimages()
+public function deleteEventImages()
 {
 $access=array("1");
-$this->checkaccess($access);
-$this->eventimages_model->delete($this->input->get("id"));
-$data["redirect"]="site/vieweventimages?id=".$this->input->get('eventid');
+$this->checkAccess($access);
+$this->EventImages_Model->delete($this->input->get("id"));
+$data["redirect"]="site/viewEventImages?id=".$this->input->get('eventid');
 $this->load->view("redirect2",$data);
 }
-public function viewenquiry()
+public function viewEnquiry()
 {
 $access=array("1");
-$this->checkaccess($access);
-$data["page"]="viewenquiry";
-$data["base_url"]=site_url("site/viewenquiryjson");
+$this->checkAccess($access);
+$data["page"]="viewEnquiry";
+$data["base_url"]=site_url("site/viewEnquiryJson");
 $data["title"]="View Enquiry";
 $this->load->view("template",$data);
 }
-function viewenquiryjson()
+function viewEnquiryJson()
 {
 $elements=array();
 $elements[0]=new stdClass();
@@ -2336,20 +2336,20 @@ $data["message"]=$this->chintantable->query($pageno,$maxrow,$orderby,$orderorder
 $this->load->view("json",$data);
 }
 
-public function createenquiry()
+public function createEnquiry()
 {
 $access=array("1");
-$this->checkaccess($access);
-$data["page"]="createenquiry";
+$this->checkAccess($access);
+$data["page"]="createEnquiry";
 $data["activemenu"]="enquiries";
-$data["user"]=$this->user_model->getuserdropdown();
+$data["user"]=$this->User_Model->getUserDropDown();
 $data["title"]="Create Enquiry";
 $this->load->view("template",$data);
 }
-public function createenquirysubmit() 
+public function createEnquirySubmit() 
 {
 $access=array("1");
-$this->checkaccess($access);
+$this->checkAccess($access);
 $this->form_validation->set_rules("user","User","trim");
 $this->form_validation->set_rules("name","Name","trim");
 $this->form_validation->set_rules("email","Email","trim");
@@ -2359,8 +2359,8 @@ $this->form_validation->set_rules("content","Content","trim");
 if($this->form_validation->run()==FALSE)
 {
 $data["alerterror"]=validation_errors();
-$data["user"]=$this->user_model->getuserdropdown();
-$data["page"]="createenquiry";
+$data["user"]=$this->User_Model->getUserDropDown();
+$data["page"]="createEnquiry";
 $data["title"]="Create Enquiry";
 $this->load->view("template",$data);
 }
@@ -2372,29 +2372,29 @@ $email=$this->input->get_post("email");
 $title=$this->input->get_post("title");
 $timestamp=$this->input->get_post("timestamp");
 $content=$this->input->get_post("content");
-if($this->enquiry_model->create($user,$name,$email,$title,$timestamp,$content)==0)
+if($this->Enquiry_Model->create($user,$name,$email,$title,$timestamp,$content)==0)
 $data["alerterror"]="New enquiry could not be created.";
 else
 $data["alertsuccess"]="enquiry created Successfully.";
-$data["redirect"]="site/viewenquiry";
+$data["redirect"]="site/viewEnquiry";
 $this->load->view("redirect",$data);
 }
 }
-public function editenquiry()
+public function editEnquiry()
 {
 $access=array("1");
-$this->checkaccess($access);
-$data["page"]="editenquiry";
+$this->checkAccess($access);
+$data["page"]="editEnquiry";
 $data["activemenu"]="enquiries";
-$data["user"]=$this->user_model->getuserdropdown();
+$data["user"]=$this->User_Model->getUserDropDown();
 $data["title"]="Edit Enquiry";
-$data["before"]=$this->enquiry_model->beforeedit($this->input->get("id"));
+$data["before"]=$this->Enquiry_Model->beforeEdit($this->input->get("id"));
 $this->load->view("template",$data);
 }
-public function editenquirysubmit()
+public function editEnquirySubmit()
 {
 $access=array("1");
-$this->checkaccess($access);
+$this->checkAccess($access);
 $this->form_validation->set_rules("id","ID","trim");
 $this->form_validation->set_rules("user","User","trim");
 $this->form_validation->set_rules("name","Name","trim");
@@ -2405,10 +2405,10 @@ $this->form_validation->set_rules("content","Content","trim");
 if($this->form_validation->run()==FALSE)
 {
 $data["alerterror"]=validation_errors();
-$data["page"]="editenquiry";
-$data["user"]=$this->user_model->getuserdropdown();
+$data["page"]="editEnquiry";
+$data["user"]=$this->User_Model->getUserDropDown();
 $data["title"]="Edit Enquiry";
-$data["before"]=$this->enquiry_model->beforeedit($this->input->get("id"));
+$data["before"]=$this->Enquiry_Model->beforeEdit($this->input->get("id"));
 $this->load->view("template",$data);
 }
 else
@@ -2420,32 +2420,32 @@ $email=$this->input->get_post("email");
 $title=$this->input->get_post("title");
 $timestamp=$this->input->get_post("timestamp");
 $content=$this->input->get_post("content");
-if($this->enquiry_model->edit($id,$user,$name,$email,$title,$timestamp,$content)==0)
-$data["alerterror"]="New enquiry could not be Updated.";
+if($this->Enquiry_Model->edit($id,$user,$name,$email,$title,$timestamp,$content)==0)
+$data["alerterror"]="New enquiry Could Not Be Updated.";
 else
 $data["alertsuccess"]="enquiry Updated Successfully.";
-$data["redirect"]="site/viewenquiry";
+$data["redirect"]="site/viewEnquiry";
 $this->load->view("redirect",$data);
 }
 }
-public function deleteenquiry()
+public function deleteEnquiry()
 {
 $access=array("1");
-$this->checkaccess($access);
-$this->enquiry_model->delete($this->input->get("id"));
-$data["redirect"]="site/viewenquiry";
+$this->checkAccess($access);
+$this->Enquiry_Model->delete($this->input->get("id"));
+$data["redirect"]="site/viewEnquiry";
 $this->load->view("redirect",$data);
 }
-public function viewnotification()
+public function viewNotification()
 {
 $access=array("1");
-$this->checkaccess($access);
-$data["page"]="viewnotification";
-$data["base_url"]=site_url("site/viewnotificationjson");
+$this->checkAccess($access);
+$data["page"]="viewNotification";
+$data["base_url"]=site_url("site/viewNotificationJson");
 $data["title"]="View Notifications";
 $this->load->view("template",$data);
 }
-function viewnotificationjson()
+function viewNotificationJson()
 {
 $elements=array();
 $elements[0]=new stdClass();
@@ -2486,28 +2486,28 @@ $data["message"]=$this->chintantable->query($pageno,$maxrow,$orderby,$orderorder
 $this->load->view("json",$data);
 }
 
-public function createnotification()
+public function createNotification()
 {
 $access=array("1");
-$this->checkaccess($access);
-$data["page"]="createnotification";
+$this->checkAccess($access);
+$data["page"]="createNotification";
 $data["activemenu"]="notifications";
-$this->notification_model->changestatusofexternallink();
-$data[ 'linktype' ] =$this->user_model->getlinktypedropdown();
+$this->Notification_Model->changeStatusOfExternalLink();
+$data[ 'linktype' ] =$this->User_Model->getLinkTypeDropDown();
 $data[ 'showdropdown' ] =18;
-$data[ 'event' ] =$this->user_model->geteventsdropdown();
-$data[ 'blog' ] =$this->user_model->getblogdropdown();
-$data[ 'video' ] =$this->user_model->getvideogallerydropdown(); 
-$data[ 'article' ] =$this->user_model->getarticledropdown();   
-$data[ 'gallery' ] =$this->user_model->getgallerydropdown();
-$data[ 'status' ] =$this->user_model->getstatusdropdown();
+$data[ 'event' ] =$this->User_Model->getEventsDropDown();
+$data[ 'blog' ] =$this->User_Model->getBlogDropDown();
+$data[ 'video' ] =$this->User_Model->getVideoGalleryDropDown(); 
+$data[ 'article' ] =$this->User_Model->getArticleDropDown();   
+$data[ 'gallery' ] =$this->User_Model->getGalleryDropDown();
+$data[ 'status' ] =$this->User_Model->getStatusDropDown();
 $data["title"]="Create Notification";
 $this->load->view("template",$data);
 }
-public function createnotificationsubmit() 
+public function createNotificationSubmit() 
 {
 $access=array("1");
-$this->checkaccess($access);
+$this->checkAccess($access);
 $linktype=$this->input->get_post("linktype");
 $event=$this->input->get_post("event");
 $video=$this->input->get_post("video");
@@ -2541,7 +2541,7 @@ $link=$this->input->get_post("link");
                 $this->image_lib->initialize($config_r);
                 if(!$this->image_lib->resize())
                 {
-                    echo "Failed." . $this->image_lib->display_errors();
+                    $data['alerterror']="Failed." . $this->image_lib->display_errors();
                     //return false;
                 }  
                 else
@@ -2553,39 +2553,39 @@ $link=$this->input->get_post("link");
                 }
                 
 			}
-if($this->notification_model->create($linktype,$event,$video,$gallery,$article,$status,$blog,$link,$content,$image)==0)
+if($this->Notification_Model->create($linktype,$event,$video,$gallery,$article,$status,$blog,$link,$content,$image)==0)
 $data["alerterror"]="New notification could not be created.";
 else
 $data["alertsuccess"]="notification created Successfully.";
-$data["redirect"]="site/viewnotification";
+$data["redirect"]="site/viewNotification";
 $this->load->view("redirect",$data);
 
 }
-public function editnotification()
+public function editNotification()
 {
 $access=array("1");
-$this->checkaccess($access);
-$data["page"]="editnotification";
+$this->checkAccess($access);
+$data["page"]="editNotification";
 //$data["page2"]="block/notificationblock";
-$this->notification_model->changestatusofexternallink();
+$this->Notification_Model->changeStatusOfExternalLink();
 $data["before1"]=$this->input->get('id');
 $data["before2"]=$this->input->get('id');
-$data[ 'linktype' ] =$this->user_model->getlinktypedropdown();
-$data[ 'event' ] =$this->user_model->geteventsdropdown();
-$data[ 'blog' ] =$this->user_model->getblogdropdown();
-$data[ 'video' ] =$this->user_model->getvideogallerydropdown(); 
-$data[ 'article' ] =$this->user_model->getarticledropdown();   
-$data[ 'gallery' ] =$this->user_model->getgallerydropdown();
-$data[ 'status' ] =$this->user_model->getstatusdropdown();
+$data[ 'linktype' ] =$this->User_Model->getLinkTypeDropDown();
+$data[ 'event' ] =$this->User_Model->getEventsDropDown();
+$data[ 'blog' ] =$this->User_Model->getBlogDropDown();
+$data[ 'video' ] =$this->User_Model->getVideoGalleryDropDown(); 
+$data[ 'article' ] =$this->User_Model->getArticleDropDown();   
+$data[ 'gallery' ] =$this->User_Model->getGalleryDropDown();
+$data[ 'status' ] =$this->User_Model->getStatusDropDown();
 $data["title"]="Edit Notification";
 $data["activemenu"]="notifications";
-$data["before"]=$this->notification_model->beforeedit($this->input->get("id"));
+$data["before"]=$this->Notification_Model->beforeEdit($this->input->get("id"));
 $this->load->view("template",$data);
 }
-public function editnotificationsubmit()
+public function editNotificationSubmit()
 {
 $access=array("1");
-$this->checkaccess($access);
+$this->checkAccess($access);
 $this->form_validation->set_rules("id","ID","trim");
 $this->form_validation->set_rules("videogallery","Video Gallery","trim");
 $this->form_validation->set_rules("event","event","trim");
@@ -2600,16 +2600,16 @@ $this->form_validation->set_rules("content","Content","trim");
 if($this->form_validation->run()==FALSE)
 {
 $data["alerterror"]=validation_errors();
-$data["page"]="editnotification";
-$data[ 'linktype' ] =$this->user_model->getlinktypedropdown();
-$data[ 'event' ] =$this->user_model->geteventsdropdown();
-$data[ 'blog' ] =$this->user_model->getblogdropdown();
-$data[ 'video' ] =$this->user_model->getvideogallerydropdown(); 
-$data[ 'article' ] =$this->user_model->getarticledropdown();   
-$data[ 'gallery' ] =$this->user_model->getgallerydropdown();
-$data[ 'status' ] =$this->user_model->getstatusdropdown();
+$data["page"]="editNotification";
+$data[ 'linktype' ] =$this->User_Model->getLinkTypeDropDown();
+$data[ 'event' ] =$this->User_Model->getEventsDropDown();
+$data[ 'blog' ] =$this->User_Model->getBlogDropDown();
+$data[ 'video' ] =$this->User_Model->getVideoGalleryDropDown(); 
+$data[ 'article' ] =$this->User_Model->getArticleDropDown();   
+$data[ 'gallery' ] =$this->User_Model->getGalleryDropDown();
+$data[ 'status' ] =$this->User_Model->getStatusDropDown();
 $data["title"]="Edit Notification";
-$data["before"]=$this->notification_model->beforeedit($this->input->get("id"));
+$data["before"]=$this->Notification_Model->beforeEdit($this->input->get("id"));
 $this->load->view("template",$data);
 }
 else
@@ -2647,7 +2647,7 @@ $timestamp=$this->input->get_post("timestamp");
                 $this->image_lib->initialize($config_r);
                 if(!$this->image_lib->resize())
                 {
-                    echo "Failed." . $this->image_lib->display_errors();
+                   $data['alerterror']="Failed." . $this->image_lib->display_errors();
                     //return false;
                 }  
                 else
@@ -2662,41 +2662,41 @@ $timestamp=$this->input->get_post("timestamp");
             
             if($image=="")
             {
-            $image=$this->user_model->getnotificationimagebyid($id);
+            $image=$this->User_Model->getNotificationImageById($id);
                // print_r($image);
                 $image=$image->image;
             }
             
-if($this->notification_model->edit($id,$linktype,$event,$video,$gallery,$article,$status,$blog,$link,$content,$image,$timestamp)==0)
-$data["alerterror"]="New notification could not be Updated.";
+if($this->Notification_Model->edit($id,$linktype,$event,$video,$gallery,$article,$status,$blog,$link,$content,$image,$timestamp)==0)
+$data["alerterror"]="New notification Could Not Be Updated.";
 else
 $data["alertsuccess"]="notification Updated Successfully.";
-$data["redirect"]="site/viewnotification";
+$data["redirect"]="site/viewNotification";
 $this->load->view("redirect",$data);
 }
 }
-public function deletenotification()
+public function deleteNotification()
 {
 $access=array("1");
-$this->checkaccess($access);
-$this->notification_model->delete($this->input->get("id"));
-$data["redirect"]="site/viewnotification";
+$this->checkAccess($access);
+$this->Notification_Model->delete($this->input->get("id"));
+$data["redirect"]="site/viewNotification";
 $this->load->view("redirect",$data);
 }
-public function viewnotificationuser()
+public function viewNotificationUser()
 {
 $access=array("1");
-$this->checkaccess($access);
-$data["page"]="viewnotificationuser";
+$this->checkAccess($access);
+$data["page"]="viewNotificationUser";
 $data["page2"]="block/notificationblock";
 $data["before1"]=$this->input->get('id');
 $data["before2"]=$this->input->get('id');
-$data["notification"]=$this->user_model->getnotificationdropdown();
-$data["base_url"]=site_url("site/viewnotificationuserjson?id=").$this->input->get('id');
+$data["notification"]=$this->User_Model->getNotificationDropDown();
+$data["base_url"]=site_url("site/viewNotificationUserJson?id=").$this->input->get('id');
 $data["title"]="View Notification Users";
 $this->load->view("templatewith2",$data);
 }
-function viewnotificationuserjson()
+function viewNotificationUserJson()
 {
     $id=$this->input->get('id');
 $elements=array();
@@ -2749,24 +2749,24 @@ $data["message"]=$this->chintantable->query($pageno,$maxrow,$orderby,$orderorder
 $this->load->view("json",$data);
 }
 
-public function createnotificationuser()
+public function createNotificationUser()
 {
 $access=array("1");
-$this->checkaccess($access);
-$data["page"]="createnotificationuser";
+$this->checkAccess($access);
+$data["page"]="createNotificationUser";
 $data["page2"]="block/notificationblock";
 $data["before1"]=$this->input->get('id');
 $data["before2"]=$this->input->get('id');
-$data["notification"]=$this->user_model->getnotificationdropdown();
+$data["notification"]=$this->User_Model->getNotificationDropDown();
 $data["title"]="Create Notification User";
-$data[ 'notification' ] =$this->user_model->getnotificationdropdown();
-$data[ 'user' ] =$this->user_model->getuserdropdown();
+$data[ 'notification' ] =$this->User_Model->getNotificationDropDown();
+$data[ 'user' ] =$this->User_Model->getUserDropDown();
 $this->load->view("templatewith2",$data);
 }
-public function createnotificationusersubmit() 
+public function createNotificationUserSubmit() 
 {
 $access=array("1");
-$this->checkaccess($access);
+$this->checkAccess($access);
 $this->form_validation->set_rules("notification","Notification","trim");
 $this->form_validation->set_rules("user","User","trim");
 $this->form_validation->set_rules("timestamp","Timestamp","trim");
@@ -2774,10 +2774,10 @@ $this->form_validation->set_rules("timestamp_receive","Timestamp Received","trim
 if($this->form_validation->run()==FALSE)
 {
 $data["alerterror"]=validation_errors();
-$data["notification"]=$this->user_model->getnotificationdropdown();
-$data["page"]="createnotificationuser";
-$data[ 'notification' ] =$this->user_model->getnotificationdropdown();
-$data[ 'user' ] =$this->user_model->getuserdropdown();
+$data["notification"]=$this->User_Model->getNotificationDropDown();
+$data["page"]="createNotificationUser";
+$data[ 'notification' ] =$this->User_Model->getNotificationDropDown();
+$data[ 'user' ] =$this->User_Model->getUserDropDown();
 $data["title"]="Create Notification User";
 $this->load->view("template",$data);
 }
@@ -2787,33 +2787,33 @@ $notification=$this->input->get_post("notification");
 $user=$this->input->get_post("user");
 $timestamp=$this->input->get_post("timestamp");
 $timestamp_receive=$this->input->get_post("timestamp_receive");
-if($this->notificationuser_model->create($notification,$user,$timestamp,$timestamp_receive)==0)
-$data["alerterror"]="New notificationuser could not be created.";
+if($this->NotificationUser_Model->create($notification,$user,$timestamp,$timestamp_receive)==0)
+$data["alerterror"]="New Notificationuser could not be created.";
 else
-$data["alertsuccess"]="notificationuser created Successfully.";
-$data["redirect"]="site/viewnotificationuser?id=".$notification;
+$data["alertsuccess"]="Notificationuser created Successfully.";
+$data["redirect"]="site/viewNotificationUser?id=".$notification;
 $this->load->view("redirect2",$data);
 }
 }
-public function editnotificationuser()
+public function editNotificationUser()
 {
 $access=array("1");
-$this->checkaccess($access);
-$data["page"]="editnotificationuser";
+$this->checkAccess($access);
+$data["page"]="editNotificationUser";
 $data["page2"]="block/notificationblock";
 $data["before1"]=$this->input->get('notificationid');
 $data["before2"]=$this->input->get('notificationid');
-$data["notification"]=$this->user_model->getnotificationdropdown();
-$data[ 'notification' ] =$this->user_model->getnotificationdropdown();
-$data[ 'user' ] =$this->user_model->getuserdropdown();
+$data["notification"]=$this->User_Model->getNotificationDropDown();
+$data[ 'notification' ] =$this->User_Model->getNotificationDropDown();
+$data[ 'user' ] =$this->User_Model->getUserDropDown();
 $data["title"]="Edit Notification User";
-$data["before"]=$this->notificationuser_model->beforeedit($this->input->get("id"));
+$data["before"]=$this->NotificationUser_Model->beforeEdit($this->input->get("id"));
 $this->load->view("templatewith2",$data);
 }
-public function editnotificationusersubmit()
+public function editNotificationUserSubmit()
 {
 $access=array("1");
-$this->checkaccess($access);
+$this->checkAccess($access);
 $this->form_validation->set_rules("id","ID","trim");
 $this->form_validation->set_rules("notification","Notification","trim");
 $this->form_validation->set_rules("user","User","trim");
@@ -2822,12 +2822,12 @@ $this->form_validation->set_rules("timestamp_receive","Timestamp Received","trim
 if($this->form_validation->run()==FALSE)
 {
 $data["alerterror"]=validation_errors();
-$data["notification"]=$this->user_model->getnotificationdropdown();
-$data[ 'notification' ] =$this->user_model->getnotificationdropdown();
-$data[ 'user' ] =$this->user_model->getuserdropdown();
-$data["page"]="editnotificationuser";
+$data["notification"]=$this->User_Model->getNotificationDropDown();
+$data[ 'notification' ] =$this->User_Model->getNotificationDropDown();
+$data[ 'user' ] =$this->User_Model->getUserDropDown();
+$data["page"]="editNotificationUser";
 $data["title"]="Edit Notification User";
-$data["before"]=$this->notificationuser_model->beforeedit($this->input->get("id"));
+$data["before"]=$this->NotificationUser_Model->beforeEdit($this->input->get("id"));
 $this->load->view("template",$data);
 }
 else
@@ -2837,32 +2837,32 @@ $notification=$this->input->get_post("notification");
 $user=$this->input->get_post("user");
 $timestamp=$this->input->get_post("timestamp");
 $timestamp_receive=$this->input->get_post("timestamp_receive");
-if($this->notificationuser_model->edit($id,$notification,$user,$timestamp,$timestamp_receive)==0)
-$data["alerterror"]="New notificationuser could not be Updated.";
+if($this->NotificationUser_Model->edit($id,$notification,$user,$timestamp,$timestamp_receive)==0)
+$data["alerterror"]="New notificationuser Could Not Be Updated.";
 else
 $data["alertsuccess"]="notificationuser Updated Successfully.";
-$data["redirect"]="site/viewnotificationuser?id=".$notification;
+$data["redirect"]="site/viewNotificationUser?id=".$notification;
 $this->load->view("redirect2",$data);
 }
 }
-public function deletenotificationuser()
+public function deleteNotificationUser()
 {
 $access=array("1");
-$this->checkaccess($access);
-$this->notificationuser_model->delete($this->input->get("id"));
-$data["redirect"]="site/viewnotificationuser?id=".$this->input->get('notificationid');
+$this->checkAccess($access);
+$this->NotificationUser_Model->delete($this->input->get("id"));
+$data["redirect"]="site/viewNotificationUser?id=".$this->input->get('notificationid');
 $this->load->view("redirect2",$data);
 }
-public function viewblog()
+public function viewBlog()
 {
 $access=array("1");
-$this->checkaccess($access);
-$data["page"]="viewblog";
-$data["base_url"]=site_url("site/viewblogjson");
+$this->checkAccess($access);
+$data["page"]="viewBlog";
+$data["base_url"]=site_url("site/viewBlogJson");
 $data["title"]="View Blog";
 $this->load->view("template",$data);
 }
-function viewblogjson()
+function viewBlogJson()
 {
 $elements=array();
 $elements[0]=new stdClass();
@@ -2909,19 +2909,19 @@ $data["message"]=$this->chintantable->query($pageno,$maxrow,$orderby,$orderorder
 $this->load->view("json",$data);
 }
 
-public function createblog()
+public function createBlog()
 {
 $access=array("1");
-$this->checkaccess($access);
-$data["page"]="createblog";
+$this->checkAccess($access);
+$data["page"]="createBlog";
 $data["activemenu"]="blogs";
 $data["title"]="Create Blog";
 $this->load->view("template",$data);
 }
-public function createblogsubmit() 
+public function createBlogSubmit() 
 {
 $access=array("1");
-$this->checkaccess($access);
+$this->checkAccess($access);
 $this->form_validation->set_rules("name","Name","trim");
 $this->form_validation->set_rules("title","Title","trim");
 $this->form_validation->set_rules("json","Json","trim");
@@ -2929,7 +2929,7 @@ $this->form_validation->set_rules("content","Content","trim");
 if($this->form_validation->run()==FALSE)
 {
 $data["alerterror"]=validation_errors();
-$data["page"]="createblog";
+$data["page"]="createBlog";
 $data["title"]="Create Blog";
 $this->load->view("template",$data);
 }
@@ -2961,7 +2961,7 @@ $url=$this->input->get_post("url");
                 $this->image_lib->initialize($config_r);
                 if(!$this->image_lib->resize())
                 {
-                    echo "Failed." . $this->image_lib->display_errors();
+                    $data['alerterror']="Failed." . $this->image_lib->display_errors();
                     //return false;
                 }  
                 else
@@ -2973,32 +2973,32 @@ $url=$this->input->get_post("url");
                 }
                 
 			}
-if($this->blog_model->create($title,$json,$content,$url,$image)==0)
+if($this->Blog_Model->create($title,$json,$content,$url,$image)==0)
 $data["alerterror"]="New blog could not be created.";
 else
 $data["alertsuccess"]="blog created Successfully.";
-$data["redirect"]="site/viewblog";
+$data["redirect"]="site/viewBlog";
 $this->load->view("redirect",$data);
 }
 }
-public function editblog()
+public function editBlog()
 {
 $access=array("1");
-$this->checkaccess($access);
-$data["page"]="editblog";
+$this->checkAccess($access);
+$data["page"]="editBlog";
 $data["activemenu"]="blogs";
 //$data["page2"]="block/blogblock";
 $data["before1"]=$this->input->get('id');
 $data["before2"]=$this->input->get('id');
 $data["before3"]=$this->input->get('id');
 $data["title"]="Edit Blog";
-$data["before"]=$this->blog_model->beforeedit($this->input->get("id"));
+$data["before"]=$this->Blog_Model->beforeEdit($this->input->get("id"));
 $this->load->view("template",$data);
 }
-public function editblogsubmit()
+public function editBlogSubmit()
 {
 $access=array("1");
-$this->checkaccess($access);
+$this->checkAccess($access);
 $this->form_validation->set_rules("id","ID","trim");
 $this->form_validation->set_rules("name","Name","trim");
 $this->form_validation->set_rules("title","Title","trim");
@@ -3007,9 +3007,9 @@ $this->form_validation->set_rules("content","Content","trim");
 if($this->form_validation->run()==FALSE)
 {
 $data["alerterror"]=validation_errors();
-$data["page"]="editblog";
+$data["page"]="editBlog";
 $data["title"]="Edit Blog";
-$data["before"]=$this->blog_model->beforeedit($this->input->get("id"));
+$data["before"]=$this->Blog_Model->beforeEdit($this->input->get("id"));
 $this->load->view("template",$data);
 }
 else
@@ -3042,7 +3042,7 @@ $content=$this->input->get_post("content");
                 $this->image_lib->initialize($config_r);
                 if(!$this->image_lib->resize())
                 {
-                    echo "Failed." . $this->image_lib->display_errors();
+                   $data['alerterror']="Failed." . $this->image_lib->display_errors();
                     //return false;
                 }  
                 else
@@ -3057,41 +3057,41 @@ $content=$this->input->get_post("content");
             
             if($image=="")
             {
-            $image=$this->blog_model->getimagebyid($id);
+            $image=$this->Blog_Model->getImageById($id);
                // print_r($image);
                 $image=$image->image;
             }
             
-if($this->blog_model->edit($id,$title,$json,$content,$timestamp,$url,$image)==0)
-$data["alerterror"]="New blog could not be Updated.";
+if($this->Blog_Model->edit($id,$title,$json,$content,$timestamp,$url,$image)==0)
+$data["alerterror"]="New blog Could Not Be Updated.";
 else
 $data["alertsuccess"]="blog Updated Successfully.";
-$data["redirect"]="site/viewblog";
+$data["redirect"]="site/viewBlog";
 $this->load->view("redirect",$data);
 }
 }
-public function deleteblog()
+public function deleteBlog()
 {
 $access=array("1");
-$this->checkaccess($access);
-$this->blog_model->delete($this->input->get("id"));
-$data["redirect"]="site/viewblog";
+$this->checkAccess($access);
+$this->Blog_Model->delete($this->input->get("id"));
+$data["redirect"]="site/viewBlog";
 $this->load->view("redirect",$data);
 }
-public function viewblogvideo()
+public function viewBlogVideo()
 {
 $access=array("1");
-$this->checkaccess($access);
-$data["page"]="viewblogvideo";
+$this->checkAccess($access);
+$data["page"]="viewBlogVideo";
 $data["page2"]="block/blogblock";
 $data["before1"]=$this->input->get('id');
 $data["before2"]=$this->input->get('id');
 $data["before3"]=$this->input->get('id');
-$data["base_url"]=site_url("site/viewblogvideojson?id=").$this->input->get('id');
+$data["base_url"]=site_url("site/viewBlogVideoJson?id=").$this->input->get('id');
 $data["title"]="View Blog Videos";
 $this->load->view("templatewith2",$data);
 }
-function viewblogvideojson()
+function viewBlogVideoJson()
 {
     $id=$this->input->get('id');
 $elements=array();
@@ -3144,24 +3144,24 @@ $data["message"]=$this->chintantable->query($pageno,$maxrow,$orderby,$orderorder
 $this->load->view("json",$data);
 }
 
-public function createblogvideo()
+public function createBlogVideo()
 {
 $access=array("1");
-$this->checkaccess($access);
-$data["page"]="createblogvideo";
+$this->checkAccess($access);
+$data["page"]="createBlogVideo";
 $data["page2"]="block/blogblock";
 $data["before1"]=$this->input->get('id');
 $data["before2"]=$this->input->get('id');
 $data["before3"]=$this->input->get('id');
-$data[ 'blog' ] =$this->user_model->getblogdropdown();
-$data[ 'status' ] =$this->user_model->getstatusdropdown();
+$data[ 'blog' ] =$this->User_Model->getBlogDropDown();
+$data[ 'status' ] =$this->User_Model->getStatusDropDown();
 $data["title"]="Create Blog Video";
 $this->load->view("templatewith2",$data);
 }
-public function createblogvideosubmit() 
+public function createBlogVideoSubmit() 
 {
 $access=array("1");
-$this->checkaccess($access);
+$this->checkAccess($access);
 $this->form_validation->set_rules("blog","Blog","trim");
 $this->form_validation->set_rules("status","Status","trim");
 $this->form_validation->set_rules("order","Order","trim");
@@ -3169,9 +3169,9 @@ $this->form_validation->set_rules("video","Video","trim");
 if($this->form_validation->run()==FALSE)
 {
 $data["alerterror"]=validation_errors();
-$data[ 'blog' ] =$this->user_model->getblogdropdown();
-$data["page"]="createblogvideo";
-$data[ 'status' ] =$this->user_model->getstatusdropdown();
+$data[ 'blog' ] =$this->User_Model->getBlogDropDown();
+$data["page"]="createBlogVideo";
+$data[ 'status' ] =$this->User_Model->getStatusDropDown();
 $data["title"]="Create Blog Video";
 $this->load->view("template",$data);
 }
@@ -3181,33 +3181,33 @@ $blog=$this->input->get_post("blog");
 $status=$this->input->get_post("status");
 $order=$this->input->get_post("order");
 $video=$this->input->get_post("video");
-if($this->blogvideo_model->create($blog,$status,$order,$video)==0)
+if($this->BlogVideo_Model->create($blog,$status,$order,$video)==0)
 $data["alerterror"]="New blogvideo could not be created.";
 else
 $data["alertsuccess"]="blogvideo created Successfully.";
-$data["redirect"]="site/viewblogvideo?id=".$blog;
+$data["redirect"]="site/viewBlogVideo?id=".$blog;
 $this->load->view("redirect",$data);
 }
 }
-public function editblogvideo()
+public function editBlogVideo()
 {
 $access=array("1");
-$this->checkaccess($access);
-$data["page"]="editblogvideo";
+$this->checkAccess($access);
+$data["page"]="editBlogVideo";
 $data["page2"]="block/blogblock";
 $data["before1"]=$this->input->get('id');
 $data["before2"]=$this->input->get('id');
 $data["before3"]=$this->input->get('id');
-$data[ 'status' ] =$this->user_model->getstatusdropdown();
-$data[ 'blog' ] =$this->user_model->getblogdropdown();
+$data[ 'status' ] =$this->User_Model->getStatusDropDown();
+$data[ 'blog' ] =$this->User_Model->getBlogDropDown();
 $data["title"]="Edit Blog Video";
-$data["before"]=$this->blogvideo_model->beforeedit($this->input->get("id"));
+$data["before"]=$this->BlogVideo_Model->beforeEdit($this->input->get("id"));
 $this->load->view("templatewith2",$data);
 }
-public function editblogvideosubmit()
+public function editBlogVideoSubmit()
 {
 $access=array("1");
-$this->checkaccess($access);
+$this->checkAccess($access);
 $this->form_validation->set_rules("id","ID","trim");
 $this->form_validation->set_rules("blog","Blog","trim");
 $this->form_validation->set_rules("status","Status","trim");
@@ -3216,11 +3216,11 @@ $this->form_validation->set_rules("video","Video","trim");
 if($this->form_validation->run()==FALSE)
 {
 $data["alerterror"]=validation_errors();
-$data["page"]="editblogvideo";
-$data[ 'status' ] =$this->user_model->getstatusdropdown();
-$data[ 'blog' ] =$this->user_model->getblogdropdown();
+$data["page"]="editBlogVideo";
+$data[ 'status' ] =$this->User_Model->getStatusDropDown();
+$data[ 'blog' ] =$this->User_Model->getBlogDropDown();
 $data["title"]="Edit Blog Video";
-$data["before"]=$this->blogvideo_model->beforeedit($this->input->get("id"));
+$data["before"]=$this->BlogVideo_Model->beforeEdit($this->input->get("id"));
 $this->load->view("template",$data);
 }
 else
@@ -3230,36 +3230,36 @@ $blog=$this->input->get_post("blog");
 $status=$this->input->get_post("status");
 $order=$this->input->get_post("order");
 $video=$this->input->get_post("video");
-if($this->blogvideo_model->edit($id,$blog,$status,$order,$video)==0)
-$data["alerterror"]="New blogvideo could not be Updated.";
+if($this->BlogVideo_Model->edit($id,$blog,$status,$order,$video)==0)
+$data["alerterror"]="New blogvideo Could Not Be Updated.";
 else
 $data["alertsuccess"]="blogvideo Updated Successfully.";
-$data["redirect"]="site/viewblogvideo?id=".$blog;
+$data["redirect"]="site/viewBlogVideo?id=".$blog;
 $this->load->view("redirect2",$data);
 }
 }
-public function deleteblogvideo()
+public function deleteBlogVideo()
 {
 $access=array("1");
-$this->checkaccess($access);
-$this->blogvideo_model->delete($this->input->get("id"));
-$data["redirect"]="site/viewblogvideo?id=".$this->input->get('blogid');
+$this->checkAccess($access);
+$this->BlogVideo_Model->delete($this->input->get("id"));
+$data["redirect"]="site/viewBlogVideo?id=".$this->input->get('blogid');
 $this->load->view("redirect2",$data);
 }
-public function viewblogimages()
+public function viewBlogImages()
 {
 $access=array("1");
-$this->checkaccess($access);
-$data["page"]="viewblogimages";
+$this->checkAccess($access);
+$data["page"]="viewBlogImages";
 $data["page2"]="block/blogblock";
 $data["before1"]=$this->input->get('id');
 $data["before2"]=$this->input->get('id');
 $data["before3"]=$this->input->get('id');
-$data["base_url"]=site_url("site/viewblogimagesjson?id=").$this->input->get('id');
+$data["base_url"]=site_url("site/viewBlogImagesJson?id=").$this->input->get('id');
 $data["title"]="View Blog Images";
 $this->load->view("templatewith2",$data);
 }
-function viewblogimagesjson()
+function viewBlogImagesJson()
 {
     $id=$this->input->get('id');
 $elements=array();
@@ -3311,24 +3311,24 @@ $data["message"]=$this->chintantable->query($pageno,$maxrow,$orderby,$orderorder
 $this->load->view("json",$data);
 }
 
-public function createblogimages()
+public function createBlogImages()
 {
 $access=array("1");
-$this->checkaccess($access);
-$data["page"]="createblogimages";
+$this->checkAccess($access);
+$data["page"]="createBlogImages";
 $data["page2"]="block/blogblock";
 $data["before1"]=$this->input->get('id');
 $data["before2"]=$this->input->get('id');
 $data["before3"]=$this->input->get('id');
-$data[ 'status' ] =$this->user_model->getstatusdropdown();
-$data[ 'blog' ] =$this->user_model->getblogdropdown();
+$data[ 'status' ] =$this->User_Model->getStatusDropDown();
+$data[ 'blog' ] =$this->User_Model->getBlogDropDown();
 $data["title"]="Create Blog Image";
 $this->load->view("templatewith2",$data);
 }
-public function createblogimagessubmit() 
+public function createBlogImagesSubmit() 
 {
 $access=array("1");
-$this->checkaccess($access);
+$this->checkAccess($access);
 $this->form_validation->set_rules("blog","ID","trim");
 $this->form_validation->set_rules("status","Status","trim");
 $this->form_validation->set_rules("order","Order","trim");
@@ -3336,9 +3336,9 @@ $this->form_validation->set_rules("image","Image","trim");
 if($this->form_validation->run()==FALSE)
 {
 $data["alerterror"]=validation_errors();
-$data["page"]="createblogimages";
-$data[ 'status' ] =$this->user_model->getstatusdropdown();
-$data[ 'blog' ] =$this->user_model->getblogdropdown();
+$data["page"]="createBlogImages";
+$data[ 'status' ] =$this->User_Model->getStatusDropDown();
+$data[ 'blog' ] =$this->User_Model->getBlogDropDown();
 $data["title"]="Create Blog Image";
 $this->load->view("template",$data);
 }
@@ -3370,7 +3370,7 @@ $order=$this->input->get_post("order");
                 $this->image_lib->initialize($config_r);
                 if(!$this->image_lib->resize())
                 {
-                    echo "Failed." . $this->image_lib->display_errors();
+                   $data['alerterror']="Failed." . $this->image_lib->display_errors();
                     //return false;
                 }  
                 else
@@ -3382,33 +3382,33 @@ $order=$this->input->get_post("order");
                 }
                 
 			}
-if($this->blogimages_model->create($blog,$status,$order,$image)==0)
+if($this->BlogImages_Model->create($blog,$status,$order,$image)==0)
 $data["alerterror"]="New blogimages could not be created.";
 else
 $data["alertsuccess"]="blogimages created Successfully.";
-$data["redirect"]="site/viewblogimages?id=".$blog;
+$data["redirect"]="site/viewBlogImages?id=".$blog;
 $this->load->view("redirect2",$data);
 }
 }
-public function editblogimages()
+public function editBlogImages()
 {
 $access=array("1");
-$this->checkaccess($access);
-$data["page"]="editblogimages";
+$this->checkAccess($access);
+$data["page"]="editBlogImages";
 $data["page2"]="block/blogblock";
 $data["before1"]=$this->input->get('id');
 $data["before2"]=$this->input->get('id');
 $data["before3"]=$this->input->get('id');
-$data[ 'status' ] =$this->user_model->getstatusdropdown();
-$data[ 'blog' ] =$this->user_model->getblogdropdown();
+$data[ 'status' ] =$this->User_Model->getStatusDropDown();
+$data[ 'blog' ] =$this->User_Model->getBlogDropDown();
 $data["title"]="Edit Blog Image";
-$data["before"]=$this->blogimages_model->beforeedit($this->input->get("id"));
+$data["before"]=$this->BlogImages_Model->beforeEdit($this->input->get("id"));
 $this->load->view("templatewith2",$data);
 }
-public function editblogimagessubmit()
+public function editBlogImagesSubmit()
 {
 $access=array("1");
-$this->checkaccess($access);
+$this->checkAccess($access);
 $this->form_validation->set_rules("id","ID","trim");
 $this->form_validation->set_rules("blog","ID","trim");
 $this->form_validation->set_rules("status","Status","trim");
@@ -3417,11 +3417,11 @@ $this->form_validation->set_rules("image","Image","trim");
 if($this->form_validation->run()==FALSE)
 {
 $data["alerterror"]=validation_errors();
-$data["page"]="editblogimages";
-$data[ 'status' ] =$this->user_model->getstatusdropdown();
-$data[ 'blog' ] =$this->user_model->getblogdropdown();
+$data["page"]="editBlogImages";
+$data[ 'status' ] =$this->User_Model->getStatusDropDown();
+$data[ 'blog' ] =$this->User_Model->getBlogDropDown();
 $data["title"]="Edit Blog Image";
-$data["before"]=$this->blogimages_model->beforeedit($this->input->get("id"));
+$data["before"]=$this->BlogImages_Model->beforeEdit($this->input->get("id"));
 $this->load->view("template",$data);
 }
 else
@@ -3453,7 +3453,7 @@ $order=$this->input->get_post("order");
                 $this->image_lib->initialize($config_r);
                 if(!$this->image_lib->resize())
                 {
-                    echo "Failed." . $this->image_lib->display_errors();
+                    $data['alerterror']="Failed." . $this->image_lib->display_errors();
                     //return false;
                 }  
                 else
@@ -3468,25 +3468,25 @@ $order=$this->input->get_post("order");
             
             if($image=="")
             {
-            $image=$this->user_model->getblogimagebyid($id);
+            $image=$this->User_Model->getBlogImageById($id);
                // print_r($image);
                 $image=$image->image;
             }
             
-if($this->blogimages_model->edit($id,$blog,$status,$order,$image)==0)
-$data["alerterror"]="New blogimages could not be Updated.";
+if($this->BlogImages_Model->edit($id,$blog,$status,$order,$image)==0)
+$data["alerterror"]="New blogimages Could Not Be Updated.";
 else
 $data["alertsuccess"]="blogimages Updated Successfully.";
-$data["redirect"]="site/viewblogimages?id=".$blog;
+$data["redirect"]="site/viewBlogImages?id=".$blog;
 $this->load->view("redirect2",$data);
 }
 }
-public function deleteblogimages()
+public function deleteBlogImages()
 {
 $access=array("1");
-$this->checkaccess($access);
-$this->blogimages_model->delete($this->input->get("id"));
-$data["redirect"]="site/viewblogimages?id=".$this->input->get('blogid');
+$this->checkAccess($access);
+$this->BlogImages_Model->delete($this->input->get("id"));
+$data["redirect"]="site/viewBlogImages?id=".$this->input->get('blogid');
 $this->load->view("redirect2",$data);
 }
 
@@ -3497,16 +3497,16 @@ $this->load->view("redirect2",$data);
     
     
     
-    public function viewslider()
+    public function viewSlider()
 {
 $access=array("1");
-$this->checkaccess($access);
-$data["page"]="viewslider";
-$data["base_url"]=site_url("site/viewsliderjson");
+$this->checkAccess($access);
+$data["page"]="viewSlider";
+$data["base_url"]=site_url("site/viewSliderJson");
 $data["title"]="View Sliders";
 $this->load->view("template",$data);
 }
-function viewsliderjson()
+function viewSliderJson()
 {
 $elements=array();
 $elements[0]=new stdClass();
@@ -3552,20 +3552,20 @@ $data["message"]=$this->chintantable->query($pageno,$maxrow,$orderby,$orderorder
 $this->load->view("json",$data);
 }
 
-public function createslider()
+public function createSlider()
 {
 $access=array("1");
-$this->checkaccess($access);
-$data["page"]="createslider";
+$this->checkAccess($access);
+$data["page"]="createSlider";
 $data["activemenu"]="home slides";
-$data[ 'status' ] =$this->user_model->getstatusdropdown();
+$data[ 'status' ] =$this->User_Model->getStatusDropDown();
 $data["title"]="Create Slider";
 $this->load->view("template",$data);
 }
-public function createslidersubmit() 
+public function createSliderSubmit() 
 {
 $access=array("1");
-$this->checkaccess($access);
+$this->checkAccess($access);
 $this->form_validation->set_rules("blog","ID","trim");
 $this->form_validation->set_rules("status","Status","trim");
 $this->form_validation->set_rules("order","Order","trim");
@@ -3573,8 +3573,8 @@ $this->form_validation->set_rules("image","Image","trim");
 if($this->form_validation->run()==FALSE)
 {
 $data["alerterror"]=validation_errors();
-$data["page"]="createslider";
-$data[ 'status' ] =$this->user_model->getstatusdropdown();
+$data["page"]="createSlider";
+$data[ 'status' ] =$this->User_Model->getStatusDropDown();
 $data["title"]="Create Slider";
 $this->load->view("template",$data);
 }
@@ -3594,29 +3594,29 @@ $order=$this->input->get_post("order");
 							$uploaddata = $this->upload->data();
 							$image=$uploaddata['file_name'];
 						}
-if($this->slider_model->create($alt,$status,$order,$image)==0)
+if($this->Slider_Model->create($alt,$status,$order,$image)==0)
 $data["alerterror"]="New slider could not be created.";
 else
 $data["alertsuccess"]="slider created Successfully.";
-$data["redirect"]="site/viewslider";
+$data["redirect"]="site/viewSlider";
 $this->load->view("redirect",$data);
 }
 }
-public function editslider()
+public function editSlider()
 {
 $access=array("1");
-$this->checkaccess($access);
-$data["page"]="editslider";
+$this->checkAccess($access);
+$data["page"]="editSlider";
 $data["activemenu"]="home slides";
-$data[ 'status' ] =$this->user_model->getstatusdropdown();
+$data[ 'status' ] =$this->User_Model->getStatusDropDown();
 $data["title"]="Edit Slider";
-$data["before"]=$this->slider_model->beforeedit($this->input->get("id"));
+$data["before"]=$this->Slider_Model->beforeEdit($this->input->get("id"));
 $this->load->view("template",$data);
 }
-public function editslidersubmit()
+public function editSliderSubmit()
 {
 $access=array("1");
-$this->checkaccess($access);
+$this->checkAccess($access);
 $this->form_validation->set_rules("id","ID","trim");
 $this->form_validation->set_rules("blog","ID","trim");
 $this->form_validation->set_rules("status","Status","trim");
@@ -3625,10 +3625,10 @@ $this->form_validation->set_rules("image","Image","trim");
 if($this->form_validation->run()==FALSE)
 {
 $data["alerterror"]=validation_errors();
-$data["page"]="editslider";
-$data[ 'status' ] =$this->user_model->getstatusdropdown();
+$data["page"]="editSlider";
+$data[ 'status' ] =$this->User_Model->getStatusDropDown();
 $data["title"]="Edit slider";
-$data["before"]=$this->slider_model->beforeedit($this->input->get("id"));
+$data["before"]=$this->Slider_Model->beforeEdit($this->input->get("id"));
 $this->load->view("template",$data);
 }
 else
@@ -3651,39 +3651,39 @@ $order=$this->input->get_post("order");
 
 						if($image=="")
 						{
-						$image=$this->slider_model->getimagebyid($id);
+						$image=$this->Slider_Model->getImageById($id);
 						   // print_r($image);
 							$image=$image->image;
 						}
-if($this->slider_model->edit($id,$alt,$status,$order,$image)==0)
-$data["alerterror"]="New slider could not be Updated.";
+if($this->Slider_Model->edit($id,$alt,$status,$order,$image)==0)
+$data["alerterror"]="New slider Could Not Be Updated.";
 else
 $data["alertsuccess"]="slider Updated Successfully.";
-$data["redirect"]="site/viewslider";
+$data["redirect"]="site/viewSlider";
 $this->load->view("redirect",$data);
 }
 }
-public function deleteslider()
+public function deleteSlider()
 {
 $access=array("1");
-$this->checkaccess($access);
-$this->slider_model->delete($this->input->get("id"));
-$data["redirect"]="site/viewslider";
+$this->checkAccess($access);
+$this->Slider_Model->delete($this->input->get("id"));
+$data["redirect"]="site/viewSlider";
 $this->load->view("redirect",$data);
 }
     
 // CONFIG CRUDE STARTS
     
-public function viewconfig()
+public function viewConfig()
 {
 $access=array("1");
-$this->checkaccess($access);
-$data["page"]="viewconfig";
-$data["base_url"]=site_url("site/viewconfigjson");
+$this->checkAccess($access);
+$data["page"]="viewConfig";
+$data["base_url"]=site_url("site/viewConfigJson");
 $data["title"]="View Config";
 $this->load->view("template",$data);
 }
-function viewconfigjson()
+function viewConfigJson()
 {
 $elements=array();
 $elements[0]=new stdClass();
@@ -3729,19 +3729,19 @@ $data["message"]=$this->chintantable->query($pageno,$maxrow,$orderby,$orderorder
 $this->load->view("json",$data);
 }
 
-public function createconfig()
+public function createConfig()
 {
 $access=array("1");
-$this->checkaccess($access);
-$data["page"]="createconfig";
-$data[ 'type' ] =$this->user_model->gettypedropdown();
+$this->checkAccess($access);
+$data["page"]="createConfig";
+$data[ 'type' ] =$this->User_Model->getTypeDropDown();
 $data["title"]="Create Config";
 $this->load->view("template",$data);
 }
-public function createconfigsubmit() 
+public function createConfigSubmit() 
 {
 $access=array("1");
-$this->checkaccess($access);
+$this->checkAccess($access);
 $this->form_validation->set_rules("status","Status","trim");
 $this->form_validation->set_rules("title","Title","trim");
 $this->form_validation->set_rules("timestamp","Timestamp","trim");
@@ -3749,8 +3749,8 @@ $this->form_validation->set_rules("content","Content","trim");
 if($this->form_validation->run()==FALSE)
 {
 $data["alerterror"]=validation_errors();
-$data["page"]="createconfig";
-$data[ 'type' ] =$this->user_model->gettypedropdown();
+$data["page"]="createConfig";
+$data[ 'type' ] =$this->User_Model->getTypeDropDown();
 $data["title"]="Create Config";
 $this->load->view("template",$data);
 }
@@ -3760,30 +3760,30 @@ $text=$this->input->get_post("text");
 $title=$this->input->get_post("title");
 $type=$this->input->get_post("type");
 $content=$this->input->get_post("content");
-if($this->config_model->create($title,$content,$text,$type)==0)
+if($this->Config_Model->create($title,$content,$text,$type)==0)
 $data["alerterror"]="New config could not be created.";
 else
 $data["alertsuccess"]="config created Successfully.";
-$data["redirect"]="site/viewconfig";
+$data["redirect"]="site/viewConfig";
 $this->load->view("redirect",$data);
 }
 }
-public function editconfig()
+public function editConfig()
 {
     $access=array("1");
-    $this->checkaccess($access);
+    $this->checkAccess($access);
     $id=$this->input->get('id');
     $type=$id;
-//    $type=$this->config_model->geteditpage($id);
+//    $type=$this->Config_Model->getEditPage($id);
     switch($type)
     {
         case 1: {
-            $data["page"]="editconfigtext";
+            $data["page"]="editConfigText";
             $data["title"]="Edit Config";
         }
             break;
         case 2: {
-            $data["page"]="editconfigimage";
+            $data["page"]="editConfigImage";
             $data["title"]="Edit Config Image";
         }
             break;
@@ -3839,35 +3839,35 @@ public function editconfig()
         }
             break;  
         case 13: {
-            $data["page"]="editconfigtext";
+            $data["page"]="editConfigText";
             $data["title"]="Description";
         }
             break;    
         case 14: {
-            $data["page"]="editconfigtext";
+            $data["page"]="editConfigText";
             $data["title"]="Color";
         }
             break; 
         case 15: {
-            $data["page"]="editconfigtext";
+            $data["page"]="editConfigText";
             $data["title"]="Meta Keyword";
         }
             break;  
         case 16: {
-            $data["page"]="editconfigtext";
+            $data["page"]="editConfigText";
             $data["title"]="Meta Decription";
         }
             break;     
     }
-    $data[ 'type' ] =$this->user_model->gettypedropdown();
+    $data[ 'type' ] =$this->User_Model->getTypeDropDown();
     $data[ 'activemenu' ] ="config";
-    $data["before"]=$this->config_model->beforeedit($this->input->get("id"));
+    $data["before"]=$this->Config_Model->beforeEdit($this->input->get("id"));
     $this->load->view("templateconfig",$data);
 }
-public function editconfigsubmit()
+public function editConfigSubmit()
 {
     $access=array("1");
-    $this->checkaccess($access);
+    $this->checkAccess($access);
     $id=$this->input->get_post("id");
     $text=$this->input->get_post("text");
     $title=$this->input->get_post("title");
@@ -3968,7 +3968,7 @@ public function editconfigsubmit()
         $this->image_lib->initialize($config_r);
         if(!$this->image_lib->resize())
         {
-            echo "Failed." . $this->image_lib->display_errors();
+            $data['alerterror']="Failed." . $this->image_lib->display_errors();
             //return false;
         }  
         else
@@ -3980,19 +3980,19 @@ public function editconfigsubmit()
         }
 
     }
-    if($this->config_model->edit($id,$title,$content,$text,$image,$type,$description)==0)
-    $data["alerterror"]="New config could not be Updated.";
+    if($this->Config_Model->edit($id,$title,$content,$text,$image,$type,$description)==0)
+    $data["alerterror"]="New config Could Not Be Updated.";
     else
     $data["alertsuccess"]="config Updated Successfully.";
-    $data["redirect"]="site/viewconfig";
+    $data["redirect"]="site/viewConfig";
     $this->load->view("redirect",$data);
 }
-public function deleteconfig()
+public function deleteConfig()
 {
 $access=array("1");
-$this->checkaccess($access);
-$this->config_model->delete($this->input->get("id"));
-$data["redirect"]="site/viewconfig";
+$this->checkAccess($access);
+$this->Config_Model->delete($this->input->get("id"));
+$data["redirect"]="site/viewConfig";
 $this->load->view("redirect",$data);
 }
     
@@ -4003,71 +4003,71 @@ $this->load->view("redirect",$data);
     //HOME
     
     
-    public function edithome()
+    public function editHome()
 {
 $access=array("1");
-$this->checkaccess($access);
-$data["page"]="edithome";      
+$this->checkAccess($access);
+$data["page"]="editHome";      
 $data["title"]="Edit Home";
-$data["before"]=$this->slider_model->beforeedithome("1");
+$data["before"]=$this->Slider_Model->beforeEditHome("1");
 $this->load->view("template",$data);
 }
-public function edithomesubmit()
+public function editHomeSubmit()
 {
 $access=array("1");
-$this->checkaccess($access);
+$this->checkAccess($access);
 $id=$this->input->get_post("id");
 $content=$this->input->get_post("content");
-if($this->slider_model->edithome($id,$content)==0)
-$data["alerterror"]="New home could not be Updated.";
+if($this->Slider_Model->editHome($id,$content)==0)
+$data["alerterror"]="New home Could Not Be Updated.";
 else
 $data["alertsuccess"]="home Updated Successfully.";
-$data["redirect"]="site/edithome";
+$data["redirect"]="site/editHome";
 $this->load->view("redirect2",$data);
 
 }
     // CLEAR IMAGE
-    public function cleargalleryimage(){
+    public function clearGalleryImage(){
     $id=$this->input->get_post("id");
-    $this->gallery_model->cleargalleryimage($id);
+    $this->Gallery_Model->clearGalleryImage($id);
     } 
-    public function cleargalleryimage1(){
+    public function clearGalleryImage1(){
     $id=$this->input->get_post("id");
-    $this->galleryimage_model->cleargalleryimage1($id);
-    } 
-    
-    public function clearuserimage(){
-    $id=$this->input->get_post("id");
-    $this->user_model->clearuserimage($id);
+    $this->GalleryImage_Model->clearGalleryImage1($id);
     } 
     
-    public function clearcoverimage(){
+    public function clearUserImage(){
     $id=$this->input->get_post("id");
-    $this->user_model->clearcoverimage($id);
-    }
-    public function cleareventimage(){
-    $id=$this->input->get_post("id");
-    $this->events_model->cleareventimage($id);
-    }
-    public function cleararticleimage(){
-    $id=$this->input->get_post("id");
-    $this->articles_model->cleararticleimage($id);
+    $this->User_Model->clearUserImage($id);
     } 
-    public function cleareventimage1(){
+    
+    public function clearCoverImage(){
     $id=$this->input->get_post("id");
-    $this->eventimages_model->cleareventimage1($id);
-    } 
-    public function clearsliderimage(){
-    $id=$this->input->get_post("id");
-    $this->slider_model->clearsliderimage($id);
+    $this->User_Model->clearCoverImage($id);
     }
-    public function clearnotificationimage(){
+    public function clearEventImage(){
     $id=$this->input->get_post("id");
-    $this->notification_model->clearnotificationimage($id);
+    $this->Events_Model->clearEventImage($id);
+    }
+    public function clearArticleImage(){
+    $id=$this->input->get_post("id");
+    $this->Articles_Model->clearArticleImage($id);
     } 
-    public function clearblogimage(){
+    public function clearEventImage1(){
     $id=$this->input->get_post("id");
-    $this->blog_model->clearblogimage($id);
+    $this->EventImages_Model->clearEventImage1($id);
+    } 
+    public function clearSliderImage(){
+    $id=$this->input->get_post("id");
+    $this->Slider_Model->clearSliderImage($id);
+    }
+    public function clearNotificationImage(){
+    $id=$this->input->get_post("id");
+    $this->Notification_Model->clearNotificationImage($id);
+    } 
+    public function clearBlogImage(){
+    $id=$this->input->get_post("id");
+    $this->Blog_Model->clearBlogImage($id);
     }
 
 }

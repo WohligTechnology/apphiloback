@@ -4,7 +4,7 @@
     </div>
 </div>
 <div class="row">
-    <form class="col s12" method="post" action="<?php echo site_url('site/editenquirysubmit');?>" enctype="multipart/form-data">
+    <form class="col s12" method="post" action="<?php echo site_url('site/editEnquirySubmit');?>" enctype="multipart/form-data">
         <input type="hidden" id="normal-field" class="form-control" name="id" value="<?php echo set_value('id',$before->id);?>" style="display:none;">
 
          <div class="row">
@@ -49,7 +49,7 @@
 <div class="row">
     <div class="col s12 m6">
         <div class=" form-group">
-                <a href="<?php echo site_url("site/viewenquiry"); ?>" class="btn btn-secondary waves-effect waves-light blue darken-4">Back</a>
+                <a href="<?php echo site_url("site/viewEnquiry"); ?>" class="btn btn-secondary waves-effect waves-light blue darken-4">Back</a>
             </div>
     </div>
 </div>

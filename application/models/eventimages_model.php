@@ -1,7 +1,7 @@
 <?php
 if ( !defined( "BASEPATH" ) )
 exit( "No direct script access allowed" );
-class eventimages_model extends CI_Model
+class EventImages_Model extends CI_Model
 {
 public function create($event,$status,$order,$image)
 {
@@ -13,13 +13,13 @@ return  0;
 else
 return  $id;
 }
-public function beforeedit($id)
+public function beforeEdit($id)
 {
 $this->db->where("id",$id);
 $query=$this->db->get("webapp_eventimages")->row();
 return $query;
 }
-function getsingleeventimages($id){
+function getSingleEventImages($id){
 $this->db->where("id",$id);
 $query=$this->db->get("webapp_eventimages")->row();
 return $query;
@@ -36,7 +36,7 @@ public function delete($id)
 $query=$this->db->query("DELETE FROM `webapp_eventimages` WHERE `id`='$id'");
 return $query;
 }
-     public function cleareventimage1($id){
+     public function clearEventImage1($id){
          $data = array(
             'image' => ''
         );

@@ -5,7 +5,7 @@
 </div>
 </div>
 <div class="row">
-	<form class="col s12" method="post" action="<?php echo site_url('site/editarticlessubmit');?>" enctype="multipart/form-data">
+	<form class="col s12" method="post" action="<?php echo site_url('site/editArticlessubmit');?>" enctype="multipart/form-data">
 		<input type="hidden" id="normal-field" class="form-control" name="id" value="<?php echo set_value('id',$before->id);?>" style="display:none;">
 		<?php if($before->id == 1) {?>
 
@@ -78,9 +78,9 @@
 
 												<?php }
      else { ?>
-													<a href="<?php echo site_url('site/viewarticles'); ?>" class="btn btn-secondary waves-effect waves-light red">Cancel</a>
+													<a href="<?php echo site_url('site/viewArticles'); ?>" class="btn btn-secondary waves-effect waves-light red">Cancel</a>
 													<?php } ?>
-														<!--                <a href="<?php echo site_url('site/viewarticles'); ?>" class="btn btn-secondary waves-effect waves-light red">Cancel</a>-->
+														<!--                <a href="<?php echo site_url('site/viewArticles'); ?>" class="btn btn-secondary waves-effect waves-light red">Cancel</a>-->
 										</div>
 								</div>
 	</form>
@@ -89,7 +89,7 @@
     $(document).ready(function () {
         $(".clearimg").click(function () {
             if (confirm("Are you sure want to clear Image!") == true) {
-                $.get("<?php echo site_url('site/cleararticleimage?id='.$before->id);?>", function (data) {
+                $.get("<?php echo site_url('site/clearArticleImage?id='.$before->id);?>", function (data) {
                     $("input.image1").val("");
                     $("span.image1").html("");
                 });                          

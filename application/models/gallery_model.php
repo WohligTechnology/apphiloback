@@ -1,7 +1,7 @@
 <?php
 if ( !defined( "BASEPATH" ) )
 exit( "No direct script access allowed" );
-class gallery_model extends CI_Model
+class Gallery_Model extends CI_Model
 {
 public function create($order,$status,$name,$json,$image)
 {
@@ -13,13 +13,13 @@ return  0;
 else
 return  $id;
 }
-public function beforeedit($id)
+public function beforeEdit($id)
 {
 $this->db->where("id",$id);
 $query=$this->db->get("webapp_gallery")->row();
 return $query;
 }
-function getsinglegallery($id){
+function getSingleGallery($id){
 //$query=$this->db->query("SELECT `webapp_gallery`.`id`, `webapp_gallery`.`order`, `webapp_gallery`.`status`,`webapp_gallery`.`name`, `webapp_gallery`.`json`,`webapp_galleryimage`.`id`, `webapp_galleryimage`.`gallery`, `webapp_galleryimage`.`order`, `webapp_galleryimage`.`status`, `webapp_galleryimage`.`image`, `webapp_galleryimage`.`alt` FROM `webapp_gallery` LEFT OUTER JOIN `webapp_galleryimage` ON `webapp_galleryimage`.`gallery`=`webapp_gallery`.`id` WHERE `webapp_gallery`.`id`='$id'")->result();
     $query=$this->db->query("SELECT `id`, `order`, `status`, `name`, `json` FROM `webapp_gallery` WHERE `status`=1 AND `id`='$id'")->row();
      
@@ -40,12 +40,12 @@ $query=$this->db->query("DELETE FROM `webapp_gallery` WHERE `id`='$id'");
 $query=$this->db->query("DELETE FROM `webapp_galleryimage` WHERE `gallery`='$id'");
 return $query;
 }
-    public function getimagebyid($id)
+    public function getImageById($id)
 	{
 		$query=$this->db->query("SELECT `image` FROM `webapp_gallery` WHERE `id`='$id'")->row();
 		return $query;
 	}
-    public function cleargalleryimage($id){
+    public function clearGalleryImage($id){
          $data = array(
             'image' => ''
         );

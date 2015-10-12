@@ -1,9 +1,9 @@
 <?php
 if ( !defined( "BASEPATH" ) )
 exit( "No direct script access allowed" );
-class restapi_model extends CI_Model
+class RestApi_model extends CI_Model
 {
-    public function createenquiry($name,$email,$user,$content,$title){
+    public function createEnquiry($name,$email,$user,$content,$title){
     $data=array("name" => $name,"email" => $email,"user" => $user,"content" => $content,"title" => $title);
 $query=$this->db->insert( "webapp_enquiry", $data );
 $id=$this->db->insert_id();
@@ -12,11 +12,11 @@ return  0;
 else
 return  1;
     }
-    public function blogids(){
+    public function blogIds(){
     $query=$this->db->query("SELECT `id` FROM `webapp_blog`")->result();
         return $query;
     }    
-    public function signup($username,$email,$password,$dob){
+    public function signUp($username,$email,$password,$dob){
 		$data=array("name" => $username,"email" => $email,"password" => md5($password),"eventnotification" => 'false',"photonotification" => 'false',"videonotification" => 'false',"blognotification" => 'false',"dob" => $dob,"logintype" => "Email","accesslevel" => "3");
 		$query=$this->db->insert( "user", $data );
 		$id=$this->db->insert_id();
@@ -26,7 +26,7 @@ return  1;
 		else
 		return $newdata;
     }
-    public function signin($username,$password)
+    public function signIn($username,$password)
     {
         
      $password=md5($password);
@@ -61,12 +61,12 @@ return  1;
        
     }
     
-    public function getappconfig(){
+    public function getAppConfig(){
     $query=$this->db->query("SELECT `id`, `title`, `content`, `text`, `type`, `image` FROM `config`")->result();
        return $query;
     }
     
-    public function profilesubmit($id,$name,$email,$password,$dob,$contact)
+    public function profileSubmit($id,$name,$email,$password,$dob,$contact)
     {
         $password=md5($password);
         $data=array("name" => $name,"email" => $email,"password" => $password,"dob" => $dob,"contact" => $contact);
@@ -77,7 +77,7 @@ return  1;
         else
         return  1;
     }
-    public function editprofile($id,$name,$email,$dob,$contact,$location)
+    public function editProfile($id,$name,$email,$dob,$contact,$location)
     {
         $data=array("name" => $name,"email" => $email,"dob" => $dob,"contact" => $contact,"address" => $location);
         $this->db->where( "id", $id );
@@ -88,36 +88,36 @@ return  1;
         else
         return  0;
     }
-    public function searcharticletitle($searchelement){
-        $query=$this->db->query("SELECT `id`, `status`, `title`, `json`, `content`, `timestamp`, `image` FROM `webapp_articles` WHERE `title` LIKE '%$searchelement%'")->result();
+    public function searchArticleTitle($searchElement){
+        $query=$this->db->query("SELECT `id`, `status`, `title`, `json`, `content`, `timestamp`, `image` FROM `webapp_articles` WHERE `title` LIKE '%$searchElement%'")->result();
         return $query;
     } 
-    public function searcheventtitle($searchelement){
-        $query=$this->db->query("SELECT `id`, `status`, `title`, `timestamp`, `content`, `image`, `startdate`, `starttime` FROM `webapp_events` WHERE `title` LIKE '%$searchelement%'")->result();
+    public function searchEventTitle($searchElement){
+        $query=$this->db->query("SELECT `id`, `status`, `title`, `timestamp`, `content`, `image`, `startdate`, `starttime` FROM `webapp_events` WHERE `title` LIKE '%$searchElement%'")->result();
         return $query;
     }  
-    public function searchblogtitle($searchelement){
-        $query=$this->db->query("SELECT `id`, `name`, `title`, `json`, `content`, `timestamp` FROM `webapp_blog` WHERE `name` LIKe '%$searchelement%' OR `title` LIKE '%$searchelement%'")->result();
+    public function searchBlogTitle($searchElement){
+        $query=$this->db->query("SELECT `id`, `name`, `title`, `json`, `content`, `timestamp` FROM `webapp_blog` WHERE `name` LIKe '%$searchElement%' OR `title` LIKE '%$searchElement%'")->result();
         return $query;
     } 
-    public function searchgalleryname($searchelement){
-        $query=$this->db->query("SELECT `id`, `order`, `status`, `name`, `json`, `timestamp`, `image` FROM `webapp_gallery` WHERE `name` LIKE '%$searchelement%'")->result();
+    public function searchGalleryName($searchElement){
+        $query=$this->db->query("SELECT `id`, `order`, `status`, `name`, `json`, `timestamp`, `image` FROM `webapp_gallery` WHERE `name` LIKE '%$searchElement%'")->result();
         return $query;
     } 
-    public function searchvideogalleryname($searchelement){
-        $query=$this->db->query("SELECT `id`, `order`, `status`, `name`, `json`, `timestamp` FROM `webapp_videogallery` WHERE `name` LIKE '%$searchelement%'")->result();
+    public function searchVideoGalleryName($searchElement){
+        $query=$this->db->query("SELECT `id`, `order`, `status`, `name`, `json`, `timestamp` FROM `webapp_videogallery` WHERE `name` LIKE '%$searchElement%'")->result();
         return $query;
     }
-    public function searchelement($searchelement){
-     $query['article']=$this->db->query("SELECT `id`, `status`, `title`, `json`, `content`, `timestamp`, `image` FROM `webapp_articles` WHERE `title` LIKE '%$searchelement%'")->result();
-                $query['events']=$this->db->query("SELECT `id`, `status`, `title`, `timestamp`, `content`, `image`, `startdate`, `starttime` FROM `webapp_events` WHERE `title` LIKE '%$searchelement%'")->result();
-           $query['blog']=$this->db->query("SELECT `id`, `title`, `json`, `content`, `timestamp` FROM `webapp_blog` WHERE `title` LIKE '%$searchelement%'")->result();
-          $query['gallery']=$this->db->query("SELECT `id`, `order`, `status`, `name`, `json`, `timestamp`, `image` FROM `webapp_gallery` WHERE `name` LIKE '%$searchelement%'")->result();
-          $query['videogallery']=$this->db->query("SELECT `id`, `order`, `status`, `name`, `json`, `timestamp` FROM `webapp_videogallery` WHERE `name` LIKE '%$searchelement%'")->result();
+    public function searchElement($searchElement){
+     $query['article']=$this->db->query("SELECT `id`, `status`, `title`, `json`, `content`, `timestamp`, `image` FROM `webapp_articles` WHERE `title` LIKE '%$searchElement%'")->result();
+                $query['events']=$this->db->query("SELECT `id`, `status`, `title`, `timestamp`, `content`, `image`, `startdate`, `starttime` FROM `webapp_events` WHERE `title` LIKE '%$searchElement%'")->result();
+           $query['blog']=$this->db->query("SELECT `id`, `title`, `json`, `content`, `timestamp` FROM `webapp_blog` WHERE `title` LIKE '%$searchElement%'")->result();
+          $query['gallery']=$this->db->query("SELECT `id`, `order`, `status`, `name`, `json`, `timestamp`, `image` FROM `webapp_gallery` WHERE `name` LIKE '%$searchElement%'")->result();
+          $query['videogallery']=$this->db->query("SELECT `id`, `order`, `status`, `name`, `json`, `timestamp` FROM `webapp_videogallery` WHERE `name` LIKE '%$searchElement%'")->result();
         return $query;
     }
     
-    public function getallfrontmenu(){
+    public function getAllFrontmenu(){
        $query['menu']=$this->db->query("SELECT `webapp_frontmenu`.`id`,`webapp_frontmenu`.`order`,`webapp_frontmenu`.`parent`,`webapp_frontmenu`.`status`,`webapp_frontmenu`.`name`,`webapp_frontmenu`.`json`,`webapp_frontmenu`.`image`,`webapp_frontmenu`.`linktype`,`webapp_frontmenu`.`event`,`webapp_frontmenu`.`blog`,`webapp_frontmenu`.`video`,`webapp_frontmenu`.`article`,`webapp_frontmenu`.`gallery`,`linktype`.`id` as `linktypeid`,`linktype`.`name` as `linktypename`,`linktype`.`status` as `linktypestatus`,`linktype`.`order` as `linktypeorder`,`linktype`.`link` as `linktypelink`,`webapp_events`.`title` as `eventname`,`webapp_blog`.`title` as `blogname`,`webapp_videogallery`.`name` as `videoname`,`webapp_articles`.`title` as `articlename`,`webapp_gallery`.`name` as `galleryname`,`webapp_frontmenu`.`icon` as `icon` FROM `webapp_frontmenu` 
     LEFT OUTER JOIN `linktype` ON `linktype`.`id`=`webapp_frontmenu`.`linktype` 
     LEFT OUTER JOIN `webapp_events` ON `webapp_events`.`id`=`webapp_frontmenu`.`event` 
@@ -129,7 +129,7 @@ return  1;
         return $query;
     
     }
-    public function updateprofileimage($imageName,$userid){
+    public function updateProfileImage($imageName,$userid){
         $data = array(
                'image' => $imageName
             );
@@ -138,7 +138,7 @@ return  1;
         $this->db->update('user', $data); 
         return $query;
     } 
-    public function updatecoverimage($imageName,$userid){
+    public function updateCoverImage($imageName,$userid){
          $data = array(
                'coverimage' => $imageName
             );
@@ -147,11 +147,11 @@ return  1;
         $this->db->update('user', $data); 
         return $query;
     } 
-    public function getallsliders(){
+    public function getAllSliders(){
         $query=$this->db->query("SELECT `id`, `image`, `order`, `status`, `alt` FROM `slider` WHERE `status`=1")->result(); 
         return $query;
     } 
-    public function getsingleuserdetail($id){
+    public function getSingleUserDetail($id){
         $query=$this->db->query("SELECT `id`, `name`, `email`, `accesslevel`, `timestamp`, `status`, `image`, `username`, `socialid`, `logintype`, `json`, `dob`, `street`, `address` as `location`, `city`, `state`, `pincode`, `facebook`, `twitter`, `google`, `country`, `instagram`, `contact`, `eventnotification`, `photonotification`, `videonotification`, `blognotification`, `coverimage` FROM `user` WHERE `id`='$id'")->row();
         // eventnotification
         if($query->eventnotification=="true")
@@ -192,15 +192,15 @@ return  1;
         
         return $query;
     }
-    public function gethomecontent(){
+    public function getHomeContent(){
         $query=$this->db->query("SELECT `content` FROM `home`")->row(); 
         return $query;
     }
-    public function changesetting($id,$event,$photo,$video,$blog){
+    public function changeSetting($id,$event,$photo,$video,$blog){
         $query=$this->db->query("UPDATE `user` SET `eventnotification`='$event',`photonotification`='$photo',`videonotification`='$video',`blognotification`='$blog' WHERE `id`='$id'"); 
         return $query;
         }
-     public function changepassword($id, $oldpassword, $newpassword, $confirmpassword) {
+     public function changePassword($id, $oldpassword, $newpassword, $confirmpassword) {
         $oldpassword = md5($oldpassword);
         $newpassword = md5($newpassword);
         $confirmpassword = md5($confirmpassword);

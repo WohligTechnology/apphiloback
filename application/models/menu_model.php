@@ -36,7 +36,7 @@ class Menu_model extends CI_Model
 		else
 			return  1;
 	}
-	function viewmenu()
+	function viewMenu()
 	{
 		$query="SELECT `menu`.`id` as `id`,`menu`.`name` as `name`,`menu`.`description` as `description`,`menu`.`keyword` as `keyword`,`menu`.`url` as `url`,`menu2`.`name` as `parentmenu`,`menu`.`linktype` as `linktype`,`menu`.`icon`,`menu`.`order` FROM `menu`
 		LEFT JOIN `menu` as `menu2` ON `menu2`.`id` = `menu`.`parent` 
@@ -45,7 +45,7 @@ class Menu_model extends CI_Model
 		$query=$this->db->query($query)->result();
 		return $query;
 	}
-	public function beforeedit( $id )
+	public function beforeEdit( $id )
 	{
 		$this->db->where( 'id', $id );
 		$query['menu']=$this->db->get( 'menu' )->row();
@@ -88,12 +88,12 @@ class Menu_model extends CI_Model
 		} }
 		return 1;
 	}
-	function deletemenu($id)
+	function deleteMenu($id)
 	{
 		$query=$this->db->query("DELETE FROM `menu` WHERE `id`='$id'");
 		$query=$this->db->query("DELETE FROM `menuaccess` WHERE `menu`='$id'");
 	}
-	public function getmenu()
+	public function getMenu()
 	{
 		$query=$this->db->query("SELECT * FROM `menu`  ORDER BY `id` ASC" )->result();
 		$return=array(
@@ -106,7 +106,7 @@ class Menu_model extends CI_Model
 		}
 		return $return;
 	}
-	function viewmenus()
+	function viewMenus()
 	{
         $accesslevel=$this->session->userdata( 'accesslevel' );
 		$query="SELECT `menu`.`id` as `id`,`menu`.`name` as `name`,`menu`.`description` as `description`,`menu`.`keyword` as `keyword`,`menu`.`url` as `url`,`menu2`.`name` as `parentmenu`,`menu`.`linktype` as `linktype`,`menu`.`icon` FROM `menu`
@@ -118,7 +118,7 @@ class Menu_model extends CI_Model
 		$query=$this->db->query($query)->result();
 		return $query;
 	}
-	function getsubmenus($parent)
+	function getSubMenus($parent)
 	{
 		$query="SELECT `menu`.`id` as `id`,`menu`.`name` as `name`,`menu`.`description` as `description`,`menu`.`keyword` as `keyword`,`menu`.`url` as `url`,`menu`.`linktype` as `linktype`,`menu`.`icon` FROM `menu`
 		WHERE `menu`.`parent` = '$parent'
@@ -127,7 +127,7 @@ class Menu_model extends CI_Model
 		$query=$this->db->query($query)->result();
 		return $query;
 	}
-	function getpages($parent)
+	function getPages($parent)
 	{ 
 		$query="SELECT `menu`.`id` as `id`,`menu`.`name` as `name`,`menu`.`url` as `url` FROM `menu`
 		WHERE `menu`.`parent` = '$parent'

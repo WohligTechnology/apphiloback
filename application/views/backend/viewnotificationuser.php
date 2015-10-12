@@ -26,13 +26,13 @@
 
 
     </div>
-    <div class="createbuttonplacement"><a class="btn-floating btn-large waves-effect waves-light green accent-4" href="<?php echo site_url("site/createnotificationuser?id=").$this->input->get('id');?>"><i class="material-icons">add</i></a>
+    <div class="createbuttonplacement"><a class="btn-floating btn-large waves-effect waves-light green accent-4" href="<?php echo site_url("site/createNotificationUser?id=").$this->input->get('id');?>"><i class="material-icons">add</i></a>
     </div>
 
 </div>
 <script>
     function drawtable(resultrow) {
-         return "<tr><td>" + resultrow.id + "</td><td>" + resultrow.notification + "</td><td>" + resultrow.user + "</td><td>" + resultrow.timestamp + "</td><td><a class='btn btn-primary btn-xs waves-effect waves-light orange lighten-1' href='<?php echo site_url('site/editnotificationuser?id=');?>" + resultrow.id + "&notificationid=" + resultrow.notificationid + "'><i class='material-icons'>mode_edit</i></a><a class='btn btn-danger btn-xs waves-effect waves-light red' onclick=\"return confirm('Are you sure you want to delete?');\" href='<?php echo site_url('site/deletenotificationuser?id='); ?>" + resultrow.id + "&notificationid=" + resultrow.notificationid + "'><i class='material-icons propericon'>delete</i></a></td></tr>";
+         return "<tr><td>" + resultrow.id + "</td><td>" + resultrow.notification + "</td><td>" + resultrow.user + "</td><td>" + resultrow.timestamp + "</td><td><a class='btn btn-primary btn-xs waves-effect waves-light orange lighten-1' href='<?php echo site_url('site/editNotificationUser?id=');?>" + resultrow.id + "&notificationid=" + resultrow.notificationid + "'><i class='material-icons'>mode_edit</i></a><a class='btn btn-danger btn-xs waves-effect waves-light red' onclick=\"return confirm('Are you sure you want to delete?');\" href='<?php echo site_url('site/deleteNotificationUser?id='); ?>" + resultrow.id + "&notificationid=" + resultrow.notificationid + "'><i class='material-icons propericon'>delete</i></a></td></tr>";
     }
     generatejquery('<?php echo $base_url;?>');
 </script>

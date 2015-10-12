@@ -2,7 +2,7 @@
     <div class="col s12">
     <h4 class="pad-left-15">Create Blog Images</h4>
     </div>
-        <form class="col s12" method="post" action="<?php echo site_url('site/createblogimagessubmit');?>" enctype="multipart/form-data">
+        <form class="col s12" method="post" action="<?php echo site_url('site/createBlogImagesSubmit');?>" enctype="multipart/form-data">
 
           
             <div class="row">
@@ -38,7 +38,7 @@
                 <label class="col-sm-2 control-label">&nbsp;</label>
                 <div class="col-sm-4">
                     <button type="submit" class="btn btn-primary waves-effect waves-light green">Save</button>
-                    <a href="<?php echo site_url("site/viewblogimages?id=").$this->input->get('id');?>" class="btn btn-secondary waves-effect waves-light red">Cancel</a>
+                    <a href="<?php echo site_url("site/viewBlogImages?id=").$this->input->get('id');?>" class="btn btn-secondary waves-effect waves-light red">Cancel</a>
                 </div>
             </div>
         </form>

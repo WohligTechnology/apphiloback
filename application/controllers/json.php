@@ -55,15 +55,15 @@ $orderorder="ASC";
 $data["message"]=$this->chintantable->query($pageno,$maxrow,$orderby,$orderorder,$search,$elements,"FROM `webapp_articles`","WHERE `webapp_articles`.`status`=1");
 $this->load->view("json",$data);
 }
-public function getsinglearticles()
+public function getSingleArticles()
 {
 $id=$this->input->get_post("id");
-$data["message"]=$this->articles_model->getsinglearticles($id);
+$data["message"]=$this->Articles_Model->getSingleArticles($id);
 $this->load->view("json",$data);
 }
-function getallfrontmenu()
+function getAllFrontmenu()
 {
-$data["message"]=$this->restapi_model->getallfrontmenu();
+$data["message"]=$this->RestApi_model->getAllFrontmenu();
 $this->load->view("json",$data);
 }
 function getallgallery()
@@ -123,10 +123,10 @@ $orderorder="ASC";
 $data["message"]=$this->chintantable->query($pageno,$maxrow,$orderby,$orderorder,$search,$elements,"FROM `webapp_gallery`","WHERE `webapp_gallery`.`status`=1");
 $this->load->view("json",$data);
 }
-public function getsinglegallery()
+public function getSingleGallery()
 {
 $id=$this->input->get_post("id");
-$data["message"]=$this->gallery_model->getsinglegallery($id);
+$data["message"]=$this->Gallery_Model->getSingleGallery($id);
 $this->load->view("json",$data);
 }
 function getallgalleryimage()
@@ -242,10 +242,10 @@ $orderorder="ASC";
 $data["message"]=$this->chintantable->query($pageno,$maxrow,$orderby,$orderorder,$search,$elements,"FROM `webapp_videogallery` LEFT OUTER JOIN `webapp_videogalleryvideo` ON `webapp_videogalleryvideo`.`videogallery`=`webapp_videogallery`.`id`","WHERE `webapp_videogallery`.`status`=1","GROUP BY `webapp_videogallery`.`id`");
 $this->load->view("json",$data);
 }
-public function getsinglevideogallery()
+public function getSingleVideoGallery()
 {
 $id=$this->input->get_post("id");
-$data["message"]=$this->videogallery_model->getsinglevideogallery($id);
+$data["message"]=$this->VideoGallery_Model->getSingleVideoGallery($id);
 $this->load->view("json",$data);
 }
 function getallvideogalleryvideo()
@@ -408,7 +408,7 @@ $orderorder="DESC";
 $data["message"]=$this->chintantable->query($pageno,$maxrow,$orderby,$orderorder,$search,$elements,"FROM `webapp_events`","WHERE `webapp_events`.`status`=1");
 $this->load->view("json",$data);
 }
-public function getsingleevents()
+public function getSingleEvents()
 {
       $data = json_decode(file_get_contents('php://input'), true);
 		$id=$data['id'];
@@ -416,12 +416,12 @@ public function getsingleevents()
             $data["message"]=0;
             }
             else{
-            $data["message"]=$this->events_model->getsingleevents($id);
+            $data["message"]=$this->Events_Model->getSingleEvents($id);
             }
 $this->load->view("json",$data);
 }
  
- public function createenquiry(){
+ public function createEnquiry(){
         $data = json_decode(file_get_contents('php://input'), true);
 		$name=$data['name'];
 		$email=$data['email'];
@@ -433,11 +433,11 @@ $this->load->view("json",$data);
 		$data['message']=0;
 		}
 	    else{
-        $data['message']=$this->restapi_model->createenquiry($name,$email,$user,$content,$title);
+        $data['message']=$this->RestApi_model->createEnquiry($name,$email,$user,$content,$title);
         }
         $this->load->view("json",$data);
  }
- public function signup(){
+ public function signUp(){
         $data = json_decode(file_get_contents('php://input'), true);
 		$username=$data['username'];
 		$email=$data['email'];
@@ -448,7 +448,7 @@ $this->load->view("json",$data);
 		$data['message']=0;
 		}
 	    else{
-        $data['message']=$this->restapi_model->signup($username,$email,$password,$dob);
+        $data['message']=$this->RestApi_model->signUp($username,$email,$password,$dob);
         }
         $this->load->view("json",$data);
  }
@@ -461,7 +461,7 @@ $this->load->view("json",$data);
 		$data['message']=0;
 		}
 	    else{
-        $data['message']=$this->restapi_model->signin($username,$password);
+        $data['message']=$this->RestApi_model->signin($username,$password);
         }
         $this->load->view("json",$data);
  }
@@ -592,10 +592,10 @@ $orderorder="DESC";
 $data["message"]=$this->chintantable->query($pageno,$maxrow,$orderby,$orderorder,$search,$elements,"FROM `webapp_notification` LEFT OUTER JOIN `webapp_notificationuser` ON `webapp_notificationuser`.`notification`=`webapp_notification`.`id`","WHERE `webapp_notificationuser`.`user`='$id'");
 $this->load->view("json",$data);
 }
-public function getsinglenotification()
+public function getSingleNotification()
 {
 $id=$this->input->get_post("id");
-$data["message"]=$this->notification_model->getsinglenotification($id);
+$data["message"]=$this->Notification_Model->getSingleNotification($id);
 $this->load->view("json",$data);
 }
 function getallnotificationuser()
@@ -651,10 +651,10 @@ $orderorder="ASC";
 $data["message"]=$this->chintantable->query($pageno,$maxrow,$orderby,$orderorder,$search,$elements,"FROM `webapp_notificationuser`");
 $this->load->view("json",$data);
 }
-public function getsinglenotificationuser()
+public function getSingleNotificationUser()
 {
 $id=$this->input->get_post("id");
-$data["message"]=$this->notificationuser_model->getsinglenotificationuser($id);
+$data["message"]=$this->NotificationUser_Model->getSingleNotificationUser($id);
 $this->load->view("json",$data);
 }
 function getallblog()
@@ -706,7 +706,7 @@ $orderorder="DESC";
 $data["message"]=$this->chintantable->query($pageno,$maxrow,$orderby,$orderorder,$search,$elements,"FROM `webapp_blog`");
 $this->load->view("json",$data);
 }
-public function getsingleblog()
+public function getSingleBlog()
 {
 $data = json_decode(file_get_contents('php://input'), true);
 $id=$data['id'];
@@ -714,25 +714,25 @@ if(empty($data)){
 $data["message"]=0;
 }
 else{
-$data["message"]=$this->blog_model->getsingleblog($id);
+$data["message"]=$this->Blog_Model->getSingleBlog($id);
 }
 $this->load->view("json",$data);
 }
   public function authenticate() {
 
-        $data['message'] = $this->user_model->authenticate();
+        $data['message'] = $this->User_Model->authenticate();
         $this->load->view('json', $data);
     }
- function getallsliders()
+ function getAllSliders()
 {
-$data["message"]=$this->restapi_model->getallsliders();
+$data["message"]=$this->RestApi_model->getAllSliders();
 $this->load->view("json",$data);
 }
- public function getappconfig(){
-$data["message"]=$this->restapi_model->getappconfig();
+ public function getAppConfig(){
+$data["message"]=$this->RestApi_model->getAppConfig();
  $this->load->view("json",$data);
  }
- public function profilesubmit() {
+ public function profileSubmit() {
        $data = json_decode(file_get_contents('php://input'), true);
          $id=$data['id'];
          $name=$data['name'];
@@ -745,11 +745,11 @@ $data["message"]=$this->restapi_model->getappconfig();
 		$data['message']=0;
 		}
 	    else{
-        $data["message"] = $this->restapi_model->profilesubmit($id,$name,$email,$password,$dob,$contact);
+        $data["message"] = $this->RestApi_model->profileSubmit($id,$name,$email,$password,$dob,$contact);
         }
         $this->load->view("json", $data);
     }
- public function editprofile() {
+ public function editProfile() {
        $data = json_decode(file_get_contents('php://input'), true);
          $id=$data['id'];
          $name=$data['name'];
@@ -762,31 +762,31 @@ $data["message"]=$this->restapi_model->getappconfig();
 		$data['message']=0;
 		}
 	    else{
-        $data["message"] = $this->restapi_model->editprofile($id,$name,$email,$dob,$contact,$location);
+        $data["message"] = $this->RestApi_model->editProfile($id,$name,$email,$dob,$contact,$location);
         }
         $this->load->view("json", $data);
     }
  
-    public function searchelementold(){
-        $searchelement=$this->input->get('searchelement');
-        $data['articletitle']=$this->restapi_model->searcharticletitle($searchelement);
-        $data['eventtitle']=$this->restapi_model->searcheventtitle($searchelement);
-        $data['blogtitle']=$this->restapi_model->searchblogtitle($searchelement);
-        $data['galleryname']=$this->restapi_model->searchgalleryname($searchelement);
-        $data['videogalleryname']=$this->restapi_model->searchvideogalleryname($searchelement);
+    public function searchElementold(){
+        $searchElement=$this->input->get('searchElement');
+        $data['articletitle']=$this->RestApi_model->searchArticleTitle($searchElement);
+        $data['eventtitle']=$this->RestApi_model->searchEventTitle($searchElement);
+        $data['blogtitle']=$this->RestApi_model->searchBlogTitle($searchElement);
+        $data['galleryname']=$this->RestApi_model->searchGalleryName($searchElement);
+        $data['videogalleryname']=$this->RestApi_model->searchVideoGalleryName($searchElement);
         $data['message']=array_merge($data['articletitle'], $data['eventtitle'], $data['blogtitle'],$data['galleryname'],           $data['videogalleryname']);
         $this->load->view("json", $data); 
  } 
- public function searchelement(){
+ public function searchElement(){
       $data = json_decode(file_get_contents('php://input'), true);
       
-        $searchelement=$data['searchelement'];
+        $searchElement=$data['searchElement'];
         if(empty($data))
         {
         $data['message']=0;
         }
         else{
-        $data['message']=$this->restapi_model->searchelement($searchelement);
+        $data['message']=$this->RestApi_model->searchElement($searchElement);
         }
         $this->load->view("json", $data); 
  }
@@ -795,7 +795,7 @@ $data["message"]=$this->restapi_model->getappconfig();
 	 $date = new DateTime();
         $imageName = "image:".rand(0, 100000)."".$date->getTimestamp().".jpg";
         if(move_uploaded_file($_FILES["file"]["tmp_name"], "./uploads/".$imageName)){
-            $this->restapi_model->updateprofileimage($imageName,$user);
+            $this->RestApi_model->updateProfileImage($imageName,$user);
        		$data["message"]=$imageName;
             	$this->load->view("json",$data); 
         }else{
@@ -808,7 +808,7 @@ $data["message"]=$this->restapi_model->getappconfig();
 	 $date = new DateTime();
         $imageName = "image:".rand(0, 100000)."".$date->getTimestamp().".jpg";
         if(move_uploaded_file($_FILES["file"]["tmp_name"], "./uploads/".$imageName)){
-             $this->restapi_model->updatecoverimage($imageName,$user);
+             $this->RestApi_model->updateCoverImage($imageName,$user);
        		$data["message"]=$imageName;
             	$this->load->view("json",$data); 
         }else{
@@ -816,16 +816,16 @@ $data["message"]=$this->restapi_model->getappconfig();
             	$this->load->view("json",$data); 
         }
  }
- public function getsingleuserdetail(){
+ public function getSingleUserDetail(){
         $id=$this->input->get('id');
-        $data['message']=$this->restapi_model->getsingleuserdetail($id);
+        $data['message']=$this->RestApi_model->getSingleUserDetail($id);
         $this->load->view("json", $data); 
  }
- public function gethomecontent(){
-        $data['message']=$this->restapi_model->gethomecontent();
+ public function getHomeContent(){
+        $data['message']=$this->RestApi_model->getHomeContent();
         $this->load->view("json", $data); 
  }
- public function changesetting(){
+ public function changeSetting(){
       $data = json_decode(file_get_contents('php://input'), true);
 
         $id=$data['id'];
@@ -837,17 +837,17 @@ $data["message"]=$this->restapi_model->getappconfig();
             $data['message']=0;
         }
         else{
-        $data['message']=$this->restapi_model->changesetting($id,$event,$photo,$video,$blog);
+        $data['message']=$this->RestApi_model->changeSetting($id,$event,$photo,$video,$blog);
         }
         $this->load->view("json", $data); 
  }
    public function forgotpassword()
     {
         $email=$this->input->get_post('email');
-        $userid=$this->user_model->getidbyemail($email);
+        $userid=$this->User_Model->getIdByEmail($email);
 		$this->load->helper('string');
         $randompassword=random_string('alnum',8);
-		$data['message']=$this->user_model->forgotpasswordsubmit($randompassword,$userid);
+		$data['message']=$this->User_Model->forgotPasswordSubmit($randompassword,$userid);
         if($userid=="")
         {
             $data['message']="Not A Valid Email.";
@@ -884,7 +884,7 @@ $data["message"]=$this->restapi_model->getappconfig();
         
     }
     }
-    public function changepassword() {
+    public function changePassword() {
         $data = json_decode(file_get_contents('php://input'), true);
         $id=$data['id'];
         $oldpassword=$data['oldpassword'];
@@ -895,7 +895,7 @@ $data["message"]=$this->restapi_model->getappconfig();
         $data['message']=0;
         }
         else{
-        $data["message"] = $this->restapi_model->changepassword($id,$oldpassword,$newpassword,$confirmpassword);
+        $data["message"] = $this->RestApi_model->changePassword($id,$oldpassword,$newpassword,$confirmpassword);
         }
         $this->load->view("json",$data);
         

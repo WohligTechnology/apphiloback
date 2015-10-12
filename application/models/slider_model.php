@@ -1,7 +1,7 @@
 <?php
 if ( !defined( "BASEPATH" ) )
 exit( "No direct script access allowed" );
-class slider_model extends CI_Model
+class Slider_Model extends CI_Model
 {
 public function create($alt,$status,$order,$image)
 {
@@ -13,19 +13,19 @@ return  0;
 else
 return  $id;
 }
-public function beforeedit($id)
+public function beforeEdit($id)
 {
 $this->db->where("id",$id);
 $query=$this->db->get("slider")->row();
 return $query;
 }
-    public function beforeedithome($id)
+    public function beforeEditHome($id)
 {
 $this->db->where("id",$id);
 $query=$this->db->get("home")->row();
 return $query;
 }
-function getsingleblogimages($id){
+function getSingleBlogImages($id){
 $this->db->where("id",$id);
 $query=$this->db->get("slider")->row();
 return $query;
@@ -37,7 +37,7 @@ $this->db->where( "id", $id );
 $query=$this->db->update( "slider", $data );
 return 1;
 }
-    public function edithome($id,$content)
+    public function editHome($id,$content)
 {
 $data=array("content" => $content,"status" => 1);
 $this->db->where( "id", $id );
@@ -49,13 +49,13 @@ public function delete($id)
 $query=$this->db->query("DELETE FROM `slider` WHERE `id`='$id'");
 return $query;
 }
-     public function getimagebyid($id)
+     public function getImageById($id)
 	{
 		$query=$this->db->query("SELECT `image` FROM `slider` WHERE `id`='$id'")->row();
 		return $query;
 	}
     
-           public function clearsliderimage($id){
+           public function clearSliderImage($id){
          $data = array(
             'image' => ''
         );

@@ -1,7 +1,7 @@
 <?php
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
-class User_model extends CI_Model
+class User_Model extends CI_Model
 {
     protected $id, $username, $password;
     public function validate($username, $password)
@@ -86,7 +86,7 @@ class User_model extends CI_Model
             return 1;
     }
     
-    function viewusers($startfrom, $totallength)
+    function viewUsers($startfrom, $totallength)
     {
         $user        = $this->session->userdata('accesslevel');
         $query       = "SELECT DISTINCT `user`.`id` as `id`,`user`.`firstname` as `firstname`,`user`.`lastname` as `lastname`,`accesslevel`.`name` as `accesslevel`	,`user`.`email` as `email`,`user`.`contact` as `contact`,`user`.`status` as `status`,`user`.`accesslevel` as `access`
@@ -109,7 +109,7 @@ class User_model extends CI_Model
         $return->totalcount = $return->totalcount->totalcount;
         return $return;
     }
-    public function beforeedit($id)
+    public function beforeEdit($id)
     {
         $this->db->where('id', $id);
         $query = $this->db->get('user')->row();
@@ -167,46 +167,46 @@ class User_model extends CI_Model
         return 1;
     }
     
-    public function getuserimagebyid($id)
+    public function getUserImageById($id)
     {
         $query = $this->db->query("SELECT `image` FROM `user` WHERE `id`='$id'")->row();
         return $query;
     }
-    public function getcoverimagebyid($id)
+    public function getCoverImageById($id)
     {
         $query = $this->db->query("SELECT `coverimage` FROM `user` WHERE `id`='$id'")->row();
         return $query;
     }
-    public function getsliderimagebyid($id)
+    public function getSliderImageById($id)
     {
         $query = $this->db->query("SELECT `image` FROM `slider` WHERE `id`='$id'")->row();
         return $query;
     }
-    public function getgalleryimagebyid($id)
+    public function getGalleryImageById($id)
     {
         $query = $this->db->query("SELECT `image` FROM `webapp_galleryimage` WHERE `id`='$id'")->row();
         return $query;
     }
-    public function getblogimagebyid($id)
+    public function getBlogImageById($id)
     {
         $query = $this->db->query("SELECT `image` FROM `webapp_blogimages` WHERE `id`='$id'")->row();
         return $query;
     }
-    public function geteventimagebyid($id)
+    public function getEventImageById($id)
     {
         $query = $this->db->query("SELECT `image` FROM `webapp_eventimages` WHERE `id`='$id'")->row();
         return $query;
     }
-    public function getnotificationimagebyid($id)
+    public function getNotificationImageById($id)
     {
         $query = $this->db->query("SELECT `image` FROM `webapp_notification` WHERE `id`='$id'")->row();
         return $query;
     }
-    function deleteuser($id)
+    function deleteUser($id)
     {
         $query = $this->db->query("DELETE FROM `user` WHERE `id`='$id'");
     }
-    function changepassword($id, $password)
+    function changePassword($id, $password)
     {
         $data = array(
             'password' => md5($password)
@@ -219,7 +219,7 @@ class User_model extends CI_Model
             return 1;
     }
     
-    public function getuserdropdown()
+    public function getUserDropDown()
     {
         $query = $this->db->query("SELECT * FROM `user`  ORDER BY `id` ASC")->result();
         foreach ($query as $row) {
@@ -228,7 +228,7 @@ class User_model extends CI_Model
         
         return $return;
     }
-    public function getarticlesdropdown()
+    public function getArticlesDropDown()
     {
         $query = $this->db->query("SELECT * FROM `webapp_articles`  ORDER BY `id` ASC")->result();
         foreach ($query as $row) {
@@ -237,7 +237,7 @@ class User_model extends CI_Model
         
         return $return;
     }
-    public function getblogdropdown()
+    public function getBlogDropDown()
     {
         $query = $this->db->query("SELECT * FROM `webapp_blog`  ORDER BY `id` ASC")->result();
         
@@ -247,7 +247,7 @@ class User_model extends CI_Model
         }
         return $return;
     }
-    public function getnotificationdropdown()
+    public function getNotificationDropDown()
     {
         $query = $this->db->query("SELECT * FROM `webapp_notification`  ORDER BY `id` ASC")->result();
         
@@ -258,7 +258,7 @@ class User_model extends CI_Model
         return $return;
     }
     
-    public function getaccesslevels()
+    public function getAccessLevels()
     {
         $return      = array();
         $query       = $this->db->query("SELECT * FROM `accesslevel` ORDER BY `id` ASC")->result();
@@ -283,7 +283,7 @@ class User_model extends CI_Model
         
         return $return;
     }
-    public function getstatusdropdown()
+    public function getStatusDropDown()
     {
         $query = $this->db->query("SELECT * FROM `statuses`  ORDER BY `id` ASC")->result();
         foreach ($query as $row) {
@@ -292,7 +292,7 @@ class User_model extends CI_Model
         
         return $return;
     }
-    //     public function getblogdropdown()
+    //     public function getBlogDropDown()
     //{
     //	$query=$this->db->query("SELECT * FROM `webapp_blog`  ORDER BY `id` ASC")->result();
     //		$return=array(
@@ -305,7 +305,7 @@ class User_model extends CI_Model
     //		
     //		return $return;
     //} 
-    public function getvideodropdown()
+    public function getVideoDropDown()
     {
         $query = $this->db->query("SELECT * FROM `webapp_videogallery`  ORDER BY `id` ASC")->result();
         
@@ -315,7 +315,7 @@ class User_model extends CI_Model
         
         return $return;
     }
-    public function getarticledropdown()
+    public function getArticleDropDown()
     {
         $query = $this->db->query("SELECT * FROM `webapp_articles` WHERE `id` <> 1 AND `status` = 1 ORDER BY `id` ASC")->result();
         $return[""] = "Choose Page";
@@ -324,7 +324,7 @@ class User_model extends CI_Model
         }
         return $return;
     }
-    public function getgallerydropdown()
+    public function getGalleryDropDown()
     {
         $query = $this->db->query("SELECT * FROM `webapp_gallery`  ORDER BY `id` ASC")->result();
         $return[""]="Choose Image Gallery";
@@ -333,14 +333,14 @@ class User_model extends CI_Model
         }
         return $return;
     }
-    public function getusercount()
+    public function getUserCount()
     {
         $query     = $this->db->query("SELECT COUNT(*) as `usercount` FROM `user`")->row();
         $usercount = $query->usercount;
         return $usercount;
     }
     
-    public function getlinktypedropdown()
+    public function getLinkTypeDropDown()
     {
         $query = $this->db->query("SELECT * FROM `linktype` WHERE `status`=1  ORDER BY `id` ASC")->result();
         
@@ -350,7 +350,7 @@ class User_model extends CI_Model
         
         return $return;
     }
-    //     public function getgallerydropdown()
+    //     public function getGalleryDropDown()
     //	{
     //		$query=$this->db->query("SELECT * FROM `webapp_gallery`  ORDER BY `id` ASC")->result();
     //		$return=array(
@@ -363,7 +363,7 @@ class User_model extends CI_Model
     //
     //		return $return;
     //	} 
-    public function geteventsdropdown()
+    public function getEventsDropDown()
     {
         $query = $this->db->query("SELECT * FROM `webapp_events`  ORDER BY `id` ASC")->result();
         
@@ -373,7 +373,7 @@ class User_model extends CI_Model
         }
         return $return;
     }
-    public function getvideogallerydropdown()
+    public function getVideoGalleryDropDown()
     {
         $query = $this->db->query("SELECT * FROM `webapp_videogallery`  ORDER BY `id` ASC")->result();
         
@@ -383,7 +383,7 @@ class User_model extends CI_Model
         }
         return $return;
     }
-    public function getfrontmenudropdown()
+    public function getFrontMenuDropDown()
     {
         $query = $this->db->query("SELECT * FROM `webapp_frontmenu`  ORDER BY `id` ASC")->result();
         
@@ -393,7 +393,7 @@ class User_model extends CI_Model
         
         return $return;
     }
-    public function gettypedropdown()
+    public function getTypeDropDown()
     {
         $return = array(
             "1" => "Text",
@@ -402,7 +402,7 @@ class User_model extends CI_Model
         );
         return $return;
     }
-    public function geteventnotificationdropdown()
+    public function getEventNotificationDropDown()
     {
         $return = array(
             "" => "Eventnotification",
@@ -411,7 +411,7 @@ class User_model extends CI_Model
         );
         return $return;
     }
-    public function getphotonotificationdropdown()
+    public function getPhotoNotificationDropDown()
     {
         $return = array(
             "" => "Photonotification",
@@ -420,7 +420,7 @@ class User_model extends CI_Model
         );
         return $return;
     }
-    public function getlinkdropdown()
+    public function getLinkDropDown()
     {
         $return = array(
             "ln-home" => "ln-home",
@@ -836,7 +836,7 @@ class User_model extends CI_Model
         asort($return);
         return $return;
     }
-    public function getvideonotificationdropdown()
+    public function getVideoNotificationDropDown()
     {
         $return = array(
             "" => "Videonotification",
@@ -845,7 +845,7 @@ class User_model extends CI_Model
         );
         return $return;
     }
-    public function getblognotificationdropdown()
+    public function getBlogNotificationDropDown()
     {
         $return = array(
             "" => "Blognotification",
@@ -855,7 +855,7 @@ class User_model extends CI_Model
         return $return;
     }
     
-    function changestatus($id)
+    function changeStatus($id)
     {
         $query  = $this->db->query("SELECT `status` FROM `user` WHERE `id`='$id'")->row();
         $status = $query->status;
@@ -874,7 +874,7 @@ class User_model extends CI_Model
         else
             return 1;
     }
-    function editaddress($id, $address, $city, $pincode)
+    function editAddress($id, $address, $city, $pincode)
     {
         $data = array(
             'address' => $address,
@@ -885,12 +885,12 @@ class User_model extends CI_Model
         $this->db->where('id', $id);
         $query = $this->db->update('user', $data);
         if ($query) {
-            $this->saveuserlog($id, 'User Address Edited');
+            $this->saveUserLog($id, 'User Address Edited');
         }
         return 1;
     }
     
-    function saveuserlog($id, $status)
+    function saveUserLog($id, $status)
     {
         //		$fromuser = $this->session->userdata('id');
         $data2  = array(
@@ -900,7 +900,7 @@ class User_model extends CI_Model
         $query2 = $this->db->insert('userlog', $data2);
         $query  = $this->db->query("UPDATE `user` SET `status`='$status' WHERE `id`='$user'");
     }
-    function signup($email, $password)
+    function signUp($email, $password)
     {
         $password = md5($password);
         $query    = $this->db->query("SELECT `id` FROM `user` WHERE `email`='$email' ");
@@ -964,7 +964,7 @@ class User_model extends CI_Model
             return $query;
         }
     }
-    function frontendauthenticate($email, $password)
+    function frontendAuthenticate($email, $password)
     {
         $query = $this->db->query("SELECT `id`, `name`, `email`, `accesslevel`, `timestamp`, `status`, `image`, `username`, `socialid`, `logintype`, `json` FROM `user` WHERE `email` LIKE '$email' AND `password`='$password' LIMIT 0,1");
         if ($query->num_rows() > 0) {
@@ -977,14 +977,14 @@ class User_model extends CI_Model
                 $status = 4;
                 //                if($updatequery)
                 //                {
-                $this->saveuserlog($id, $status);
+                $this->saveUserLog($id, $status);
                 //                }
             } else if ($status == 1) {
                 $status = 2;
                 //                $updatequery=$this->db->query("UPDATE `user` SET `status`=2 WHERE `id`='$id'");
                 //                if($updatequery)
                 //                {
-                $this->saveuserlog($id, $status);
+                $this->saveUserLog($id, $status);
                 //                }
             }
             
@@ -1011,7 +1011,7 @@ class User_model extends CI_Model
         }
     }
     
-    function frontendregister($name, $email, $password, $socialid, $logintype, $json)
+    function frontendRegister($name, $email, $password, $socialid, $logintype, $json)
     {
         $data        = array(
             'name' => $name,
@@ -1036,7 +1036,7 @@ class User_model extends CI_Model
         return $data1;
     }
     
-    function getallinfoofuser($id)
+    function getAllInfoOfUser($id)
     {
         $user  = $this->session->userdata('accesslevel');
         $query = "SELECT DISTINCT `user`.`id` as `id`,`user`.`firstname` as `firstname`,`user`.`lastname` as `lastname`,`accesslevel`.`name` as `accesslevel`	,`user`.`email` as `email`,`user`.`contact` as `contact`,`user`.`status` as `status`,`user`.`accesslevel` as `access`
@@ -1047,7 +1047,7 @@ class User_model extends CI_Model
         return $query;
     }
     
-    public function getlogintypedropdown()
+    public function getLogintypeDropDown()
     {
         $query  = $this->db->query("SELECT * FROM `logintype`  ORDER BY `id` ASC")->result();
         $return = array();
@@ -1058,7 +1058,7 @@ class User_model extends CI_Model
         return $return;
     }
     
-    public function frontendlogout($user)
+    public function frontendLogout($user)
     {
         $query  = $this->db->query("SELECT `id`, `name`, `email`, `accesslevel`, `timestamp`, `status`, `image`, `username`, `socialid`, `logintype`, `json` FROM `user` WHERE `id`='$user' LIMIT 0,1")->row();
         $status = $query->status;
@@ -1067,14 +1067,14 @@ class User_model extends CI_Model
             //            $updatequery=$this->db->query("UPDATE `user` SET `status`=3 WHERE `id`='$user'");
             //            if($updatequery)
             //            {
-            $this->saveuserlog($id, $status);
+            $this->saveUserLog($id, $status);
             //            }
         } else if ($status == 2) {
             $status = 1;
             //            $updatequery=$this->db->query("UPDATE `user` SET `status`=1 WHERE `id`='$user'");
             //            if($updatequery)
             //            {
-            $this->saveuserlog($id, $status);
+            $this->saveUserLog($id, $status);
             //            }
         }
         //        $updatequery=$this->db->query("UPDATE `user` SET `status`=5 WHERE `id`='$user'");
@@ -1089,7 +1089,7 @@ class User_model extends CI_Model
         //        }
     }
     
-    function sociallogin($user_profile, $provider)
+    function socialLogin($user_profile, $provider)
     {
         $query = $this->db->query("SELECT * FROM `user` WHERE `user`.`socialid`='$user_profile->identifier'");
         if ($query->num_rows == 0) {
@@ -1149,14 +1149,14 @@ class User_model extends CI_Model
         }
     }
     
-    function getidbyemail($useremail)
+    function getIdByEmail($useremail)
     {
         $query  = $this->db->query("SELECT `id` FROM `user`
 		WHERE `email`='$useremail'")->row();
         $userid = $query->id;
         return $userid;
     }
-    function forgotpasswordsubmit($newpassword, $userid)
+    function forgotPasswordSubmit($newpassword, $userid)
     {
         $newpassword = md5($newpassword);
         $query = $this->db->query("UPDATE `user` SET `forgotpassword`='$newpassword' WHERE `id`='$userid'");
@@ -1165,7 +1165,7 @@ class User_model extends CI_Model
         else
             return 1;
     }
-      public function clearuserimage($id){
+      public function clearUserImage($id){
          $data = array(
             'image' => ''
         );
@@ -1173,7 +1173,7 @@ class User_model extends CI_Model
         $query = $this->db->update('user', $data);
         return $query;
     }  
-    public function clearcoverimage($id){
+    public function clearCoverImage($id){
          $data = array(
             'coverimage' => ''
         );

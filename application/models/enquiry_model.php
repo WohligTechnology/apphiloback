@@ -1,7 +1,7 @@
 <?php
 if ( !defined( "BASEPATH" ) )
 exit( "No direct script access allowed" );
-class enquiry_model extends CI_Model
+class Enquiry_Model extends CI_Model
 {
 public function create($user,$name,$email,$title,$timestamp,$content)
 {
@@ -13,13 +13,13 @@ return  0;
 else
 return  $id;
 }
-public function beforeedit($id)
+public function beforeEdit($id)
 {
 $this->db->where("id",$id);
 $query=$this->db->get("webapp_enquiry")->row();
 return $query;
 }
-function getsingleenquiry($id){
+function getSingleEnquiry($id){
 $this->db->where("id",$id);
 $query=$this->db->get("webapp_enquiry")->row();
 return $query;

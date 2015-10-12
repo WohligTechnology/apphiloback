@@ -1,7 +1,7 @@
 <?php
 if ( !defined( "BASEPATH" ) )
 exit( "No direct script access allowed" );
-class videogallery_model extends CI_Model
+class VideoGallery_Model extends CI_Model
 {
 public function create($order,$status,$name,$json,$subtitle)
 {
@@ -13,13 +13,13 @@ return  0;
 else
 return  $id;
 }
-public function beforeedit($id)
+public function beforeEdit($id)
 {
 $this->db->where("id",$id);
 $query=$this->db->get("webapp_videogallery")->row();
 return $query;
 }
-function getsinglevideogallery($id){
+function getSingleVideoGallery($id){
 $query=$this->db->query("SELECT `id`, `order`, `status`, `name`, `json` FROM `webapp_videogallery` WHERE `status`=1 AND `id`='$id'")->row();
     $query->videos=$this->db->query("SELECT `id`, `order`, `status`, `name`, `json` FROM `webapp_videogallery` WHERE `status`=1 AND `id`='$id'")->result();
 return $query;

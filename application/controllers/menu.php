@@ -14,7 +14,7 @@ class Menu extends CI_Controller
 			redirect( base_url() . 'index.php/login', 'refresh' );
 		} //$is_logged_in !== 'true' || !isset( $is_logged_in )
 	}
-	function checkaccess($access)
+	function checkAccess($access)
 	{
 		$accesslevel=$this->session->userdata('accesslevel');
 		if(!in_array($accesslevel,$access))
@@ -24,7 +24,7 @@ class Menu extends CI_Controller
 	{
 		//$access = array("1","2");
 		$access = array("1","2");
-		$this->checkaccess($access);
+		$this->checkAccess($access);
 		$data[ 'page' ] = 'dashboard';
 		$data[ 'title' ] = 'Welcome';
 		$this->load->view( 'template', $data );	
@@ -34,9 +34,9 @@ class Menu extends CI_Controller
 	public function createmenu()
 	{
 		$access = array("1");
-		$this->checkaccess($access);
-		$data['accesslevel']=$this->user_model->getaccesslevels();
-		$data['parentmenu']=$this->menu_model->getmenu();
+		$this->checkAccess($access);
+		$data['accesslevel']=$this->User_Model->getaccesslevels();
+		$data['parentmenu']=$this->menu_model->getMenu();
 		$data[ 'page' ] = 'createmenu';
 		$data[ 'title' ] = 'Create menu';
 		$this->load->view( 'template', $data );	
@@ -44,7 +44,7 @@ class Menu extends CI_Controller
 	function createmenusubmit()
 	{
 		$access = array("1");
-		$this->checkaccess($access);
+		$this->checkAccess($access);
 		$this->form_validation->set_rules('name','name','trim');
 		$this->form_validation->set_rules('description','description','trim');
 		$this->form_validation->set_rules('keyword','keyword','trim|');
@@ -56,8 +56,8 @@ class Menu extends CI_Controller
 		if($this->form_validation->run() == FALSE)	
 		{
 			$data['alerterror'] = validation_errors();
-			$data['accesslevel']=$this->user_model->getaccesslevels();
-			$data['parentmenu']=$this->menu_model->getmenu();
+			$data['accesslevel']=$this->User_Model->getaccesslevels();
+			$data['parentmenu']=$this->menu_model->getMenu();
 			$data['page']='createmenu';
 			$data['title']='Create New menu';
 			$this->load->view('template',$data);
@@ -79,30 +79,30 @@ class Menu extends CI_Controller
 			else
 			$data['alertsuccess']="menu created Successfully.";
 			
-			$data['table']=$this->menu_model->viewmenu();
-			$data['redirect']="menu/viewmenu";
+			$data['table']=$this->menu_model->viewMenu();
+			$data['redirect']="menu/viewMenu";
 			//$data['other']="template=$template";
 			$this->load->view("redirect",$data);
-			/*$data['page']='viewmenu';
+			/*$data['page']='viewMenu';
 			$data['title']='View menus';
 			$this->load->view('template',$data);*/
 		}
 	}
-	function viewmenu()
+	function viewMenu()
 	{
 		$access = array("1");
-		$this->checkaccess($access);
-		$data['table']=$this->menu_model->viewmenu();
-		$data['page']='viewmenu';
+		$this->checkAccess($access);
+		$data['table']=$this->menu_model->viewMenu();
+		$data['page']='viewMenu';
 		$data['title']='View menus';
 		$this->load->view('template',$data);
 	}
 	function editmenu()
 	{
 		$access = array("1");
-		$this->checkaccess($access);
-		$data['accesslevel']=$this->user_model->getaccesslevels();
-		$data['parentmenu']=$this->menu_model->getmenu();
+		$this->checkAccess($access);
+		$data['accesslevel']=$this->User_Model->getaccesslevels();
+		$data['parentmenu']=$this->menu_model->getMenu();
 		$data['before']=$this->menu_model->beforeedit($this->input->get('id'));
 		$data['page']='editmenu';
 		$data['title']='Edit menu';
@@ -111,7 +111,7 @@ class Menu extends CI_Controller
 	function editmenusubmit()
 	{
 		$access = array("1");
-		$this->checkaccess($access);
+		$this->checkAccess($access);
 		$this->form_validation->set_rules('name','name','trim');
 		$this->form_validation->set_rules('description','description','trim');
 		$this->form_validation->set_rules('keyword','keyword','trim|');
@@ -123,8 +123,8 @@ class Menu extends CI_Controller
 		if($this->form_validation->run() == FALSE)	
 		{
 			$data['alerterror'] = validation_errors();
-			$data['accesslevel']=$this->user_model->getaccesslevels();
-			$data['parentmenu']=$this->menu_model->getmenu();
+			$data['accesslevel']=$this->User_Model->getaccesslevels();
+			$data['parentmenu']=$this->menu_model->getMenu();
 			$data['before']=$this->menu_model->beforeedit($this->input->post('id'));
 			$data['page']='editmenu';
 			$data['title']='Edit menu';
@@ -147,21 +147,21 @@ class Menu extends CI_Controller
 			$data['alerterror']="menu Editing was unsuccesful";
 			else
 			$data['alertsuccess']="menu edited Successfully.";
-			$data['table']=$this->menu_model->viewmenu();
-			$data['redirect']="menu/viewmenu";
+			$data['table']=$this->menu_model->viewMenu();
+			$data['redirect']="menu/viewMenu";
 			//$data['other']="template=$template";
 			$this->load->view("redirect",$data);
 			
 		}
 	}
-	function deletemenu()
+	function deleteMenu()
 	{
 		$access = array("1");
-		$this->checkaccess($access);
-		$this->menu_model->deletemenu($this->input->get('id'));
-		$data['table']=$this->menu_model->viewmenu();
+		$this->checkAccess($access);
+		$this->menu_model->deleteMenu($this->input->get('id'));
+		$data['table']=$this->menu_model->viewMenu();
 		$data['alertsuccess']="menu Deleted Successfully";
-		$data['page']='viewmenu';
+		$data['page']='viewMenu';
 		$data['title']='View menus';
 		$this->load->view('template',$data);
 	}
