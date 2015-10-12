@@ -5,8 +5,7 @@ class Config_Model extends CI_Model
 {
 public function create($title,$content,$text,$type)
 {
-$data=array("title" => $title,"content" => $content,"text" => $text,"type" => $type);
-$query=$this->db->insert( "config", $data );
+$query=$this->db->query("INSERT INTO `webapp_blog`( `title`, `text`, `content`, `type`) VALUES (".$this->db->escape($title).",".$this->db->escape($text).",".$this->db->escape($content).",".$this->db->escape($type).")");
 $id=$this->db->insert_id();
 if(!$query)
 return  0;
@@ -15,13 +14,11 @@ return  $id;
 }
 public function beforeEdit($id)
 {
-$this->db->where("id",$id);
-$query=$this->db->get("config")->row();
+$query=$this->db->query("SELECT * FROM `config` WHERE `id`=(".$this->db->escape($id).")")->row();
 return $query;
 }
 function getSingleConfig($id){
-$this->db->where("id",$id);
-$query=$this->db->get("config")->row();
+$query=$this->db->query("SELECT * FROM `config` WHERE `id`=(".$this->db->escape($id).")")->row();
 return $query;
 }
 public function edit($id,$title,$content,$text,$image,$type,$description)
@@ -92,19 +89,22 @@ public function edit($id,$title,$content,$text,$image,$type,$description)
     if($image){
     $text=$image;
     }
-$data=array("title" => $title,"content" => $content,"text" => $text,"image" => $image,"type" => $type,"description" => $description);
-$this->db->where( "id", $id );
-$query=$this->db->update( "config", $data );
+//$data=array("title" => $title,"content" => $content,"text" => $text,"image" => $image,"type" => $type,"description" => $description);
+//$this->db->where( "id", $id );
+//$query=$this->db->update( "config", $data );
+$query=$this->db->query("UPDATE `config` 
+ SET `title` = ".$this->db->escape($title).", `text` = ".$this->db->escape($text).",`content` = ".$this->db->escape($content).",`type` = ".$this->db->escape($type).",`image` = ".$this->db->escape($image).",`description` = ".$this->db->escape($description)."
+ WHERE id = (".$this->db->escape($id).")");
 return 1;
 }
 
 public function delete($id)
 {
-$query=$this->db->query("DELETE FROM `config` WHERE `id`='$id'");
+$query=$this->db->query("DELETE FROM `config` WHERE `id`=(".$this->db->escape($id).")");
 return $query;
 }
     public function getEditPage($id){
-    $query=$this->db->query("SELECT `type` FROM `config` WHERE `id`='$id'")->row();
+    $query=$this->db->query("SELECT `type` FROM `config` WHERE `id`=(".$this->db->escape($id).")")->row();
         $type=$query->type;
         return $type;
     }

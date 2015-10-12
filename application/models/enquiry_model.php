@@ -5,8 +5,7 @@ class Enquiry_Model extends CI_Model
 {
 public function create($user,$name,$email,$title,$timestamp,$content)
 {
-$data=array("user" => $user,"name" => $name,"email" => $email,"title" => $title,"content" => $content);
-$query=$this->db->insert( "webapp_enquiry", $data );
+$query=$this->db->query("INSERT INTO `webapp_enquiry`( `user`, `name`, `email`,`title`, `content`) VALUES (".$this->db->escape($title).",".$this->db->escape(user).",".$this->db->escape($content).",".$this->db->escape($name).",".$this->db->escape($email).")");
 $id=$this->db->insert_id();
 if(!$query)
 return  0;
@@ -15,25 +14,26 @@ return  $id;
 }
 public function beforeEdit($id)
 {
-$this->db->where("id",$id);
-$query=$this->db->get("webapp_enquiry")->row();
+$query=$this->db->query("SELECT * FROM `webapp_enquiry` WHERE `id`=(".$this->db->escape($id).")")->row();
 return $query;
 }
 function getSingleEnquiry($id){
-$this->db->where("id",$id);
-$query=$this->db->get("webapp_enquiry")->row();
+$query=$this->db->query("SELECT * FROM `webapp_enquiry` WHERE `id`=(".$this->db->escape($id).")")->row();
 return $query;
 }
 public function edit($id,$user,$name,$email,$title,$timestamp,$content)
 {
-$data=array("user" => $user,"name" => $name,"email" => $email,"title" => $title,"timestamp" => $timestamp,"content" => $content);
-$this->db->where( "id", $id );
-$query=$this->db->update( "webapp_enquiry", $data );
+//$data=array("user" => $user,"name" => $name,"email" => $email,"title" => $title,"timestamp" => $timestamp,"content" => $content);
+//$this->db->where( "id", $id );
+//$query=$this->db->update( "webapp_enquiry", $data );
+$query=$this->db->query("UPDATE `webapp_enquiry` 
+ SET `title` = ".$this->db->escape($title).", `user` = ".$this->db->escape($user).",`content` = ".$this->db->escape($content).",`timestamp` = ".$this->db->escape($timestamp).",`email` = ".$this->db->escape($email).",`name` = ".$this->db->escape($name)."
+ WHERE id = (".$this->db->escape($id).")");
 return 1;
 }
 public function delete($id)
 {
-$query=$this->db->query("DELETE FROM `webapp_enquiry` WHERE `id`='$id'");
+$query=$this->db->query("DELETE FROM `webapp_enquiry` WHERE `id`=(".$this->db->escape($id).")");
 return $query;
 }
 

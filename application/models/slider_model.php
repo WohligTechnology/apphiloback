@@ -5,14 +5,14 @@ class Slider_Model extends CI_Model
 {
 public function create($alt,$status,$order,$image)
 {
-$data=array("alt" => $alt,"status" => $status,"order" => $order,"image" => $image);
-$query=$this->db->insert( "slider", $data );
+$query=$this->db->query("INSERT INTO `slider`(`alt`, `status`, `order`, `image`) VALUES (".$this->db->escape($alt).",".$this->db->escape($status).",".$this->db->escape($order).",".$this->db->escape($image).")");
 $id=$this->db->insert_id();
 if(!$query)
 return  0;
 else
 return  $id;
 }
+    
 public function beforeEdit($id)
 {
 $this->db->where("id",$id);

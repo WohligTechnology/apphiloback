@@ -7,8 +7,7 @@ public function create($status,$title,$timestamp,$content,$venue,$image,$startda
 {
 $startdate = new DateTime($startdate);
 $startdate=$startdate->format('Y-m-d');
-$data=array("status" => $status,"title" => $title,"content" => $content,"venue" => $venue,"image" => $image,"startdate" => $startdate,"starttime" => $starttime);
-$query=$this->db->insert( "webapp_events", $data );
+$query=$this->db->query("INSERT INTO `webapp_events`(`status`, `title`, `venue`, `content`, `image`,`startdate`,`starttime`) VALUES (".$this->db->escape($status).",".$this->db->escape($title).",".$this->db->escape($venue).",".$this->db->escape($content).",".$this->db->escape($image).",".$this->db->escape($startdate).",".$this->db->escape($starttime).")");
 $id=$this->db->insert_id();
 if(!$query)
 return  0;
@@ -17,15 +16,14 @@ return  $id;
 }
 public function beforeEdit($id)
 {
-$this->db->where("id",$id);
-$query=$this->db->get("webapp_events")->row();
+$query=$this->db->query("SELECT * FROM `webapp_events` WHERE `id`=(".$this->db->escape($id).")")->row();
 return $query;
 }
 function getSingleEvents($id){
-$query=$this->db->query("SELECT `id`, `status`, `title`, date(`timestamp`) as `timestamp`, `content`,`image`,`venue` FROM `webapp_events` WHERE `status`=1 AND `id`='$id'")->row();
-$query->eventimages=$this->db->query("SELECT `id`, `event`, `status`, `order`, `image` FROM `webapp_eventimages` WHERE `event`='$id' 
+$query=$this->db->query("SELECT `id`, `status`, `title`, date(`timestamp`) as `timestamp`, `content`,`image`,`venue` FROM `webapp_events` WHERE `status`=1 AND `id`=(".$this->db->escape($id).")")->row();
+$query->eventimages=$this->db->query("SELECT `id`, `event`, `status`, `order`, `image` FROM `webapp_eventimages` WHERE `event`=(".$this->db->escape($id).") 
 AND `status`=1")->result();
-$query->eventvideos=$this->db->query("SELECT `id`, `event`, `videogallery`, `status`, `order`,`url` FROM `webapp_eventvideo` WHERE `status`=1 AND `event`='$id'")->result();
+$query->eventvideos=$this->db->query("SELECT `id`, `event`, `videogallery`, `status`, `order`,`url` FROM `webapp_eventvideo` WHERE `status`=1 AND `event`=(".$this->db->escape($id).")")->result();
     
 return $query;
 }
@@ -33,30 +31,26 @@ public function edit($id,$status,$title,$timestamp,$content,$venue,$image,$start
 {
     $startdate = new DateTime($startdate);
 $startdate=$startdate->format('Y-m-d');
-$data=array("status" => $status,"title" => $title,"timestamp" => $timestamp,"content" => $content,"venue" => $venue,"image" => $image,"startdate" => $startdate,"starttime" => $starttime);
-$this->db->where( "id", $id );
-$query=$this->db->update( "webapp_events", $data );
+  $query=$this->db->query("UPDATE `webapp_events` 
+ SET `status` = ".$this->db->escape($status).", `title` = ".$this->db->escape($title).", `venue` = ".$this->db->escape($venue).",`content` = ".$this->db->escape($content).",`timestamp` = ".$this->db->escape($timestamp).",`image` = ".$this->db->escape($image).",`startdate` = ".$this->db->escape($startdate).",`starttime` = ".$this->db->escape($starttime)."
+ WHERE id = (".$this->db->escape($id).")");
 return 1;
 }
 public function delete($id)
 {
-$query=$this->db->query("DELETE FROM `webapp_events` WHERE `id`='$id'");
-$query=$this->db->query("DELETE FROM `webapp_eventvideo` WHERE `event`='$id'");
-$query=$this->db->query("DELETE FROM `webapp_eventimages` WHERE `event`='$id'");
+$query=$this->db->query("DELETE FROM `webapp_events` WHERE `id`=(".$this->db->escape($id).")");
+$query=$this->db->query("DELETE FROM `webapp_eventvideo` WHERE `event`=(".$this->db->escape($id).")");
+$query=$this->db->query("DELETE FROM `webapp_eventimages` WHERE `event`=(".$this->db->escape($id).")");
 return $query;
 }
     public function getImageById($id)
 {
-$query=$this->db->query("SELECT `image` FROM `webapp_events` WHERE `id`='$id'")->row();
+$query=$this->db->query("SELECT `image` FROM `webapp_events` WHERE `id`=(".$this->db->escape($id).")")->row();
 return $query;
 }
      public function clearEventImage($id){
-         $data = array(
-            'image' => ''
-        );
-        $this->db->where('id', $id);
-        $query = $this->db->update('webapp_events', $data);
-        return $query;
+ $query=$this->db->query("UPDATE `webapp_events` SET `image` = '' WHERE id = (".$this->db->escape($id).")");
+ return $query;
     }
 }
 ?>
