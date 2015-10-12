@@ -5,7 +5,7 @@ class Enquiry_Model extends CI_Model
 {
 public function create($user,$name,$email,$title,$timestamp,$content)
 {
-$query=$this->db->query("INSERT INTO `webapp_enquiry`( `user`, `name`, `email`,`title`, `content`) VALUES (".$this->db->escape($title).",".$this->db->escape(user).",".$this->db->escape($content).",".$this->db->escape($name).",".$this->db->escape($email).")");
+$query=$this->db->query("INSERT INTO `webapp_enquiry`( `user`, `name`, `email`,`title`, `content`) VALUES (".$this->db->escape($title).",".$this->db->escape($user).",".$this->db->escape($content).",".$this->db->escape($name).",".$this->db->escape($email).")");
 $id=$this->db->insert_id();
 if(!$query)
 return  0;
@@ -23,9 +23,6 @@ return $query;
 }
 public function edit($id,$user,$name,$email,$title,$timestamp,$content)
 {
-//$data=array("user" => $user,"name" => $name,"email" => $email,"title" => $title,"timestamp" => $timestamp,"content" => $content);
-//$this->db->where( "id", $id );
-//$query=$this->db->update( "webapp_enquiry", $data );
 $query=$this->db->query("UPDATE `webapp_enquiry` 
  SET `title` = ".$this->db->escape($title).", `user` = ".$this->db->escape($user).",`content` = ".$this->db->escape($content).",`timestamp` = ".$this->db->escape($timestamp).",`email` = ".$this->db->escape($email).",`name` = ".$this->db->escape($name)."
  WHERE id = (".$this->db->escape($id).")");

@@ -5,8 +5,7 @@ class Gallery_Model extends CI_Model
 {
 public function create($order,$status,$name,$json,$image)
 {
-$data=array("order" => $order,"status" => $status,"name" => $name,"json" => $json,"image" => $image);
-$query=$this->db->insert( "webapp_gallery", $data );
+$query=$this->db->query("INSERT INTO `webapp_gallery`( `order`, `status`, `name`,`json`, `image`) VALUES (".$this->db->escape($order).",".$this->db->escape($status).",".$this->db->escape($name).",".$this->db->escape($json).",".$this->db->escape($image).")");
 $id=$this->db->insert_id();
 if(!$query)
 return  0;
@@ -15,42 +14,35 @@ return  $id;
 }
 public function beforeEdit($id)
 {
-$this->db->where("id",$id);
-$query=$this->db->get("webapp_gallery")->row();
+$query=$this->db->query("SELECT * FROM `webapp_gallery` WHERE `id`=(".$this->db->escape($id).")")->row();
 return $query;
 }
 function getSingleGallery($id){
-//$query=$this->db->query("SELECT `webapp_gallery`.`id`, `webapp_gallery`.`order`, `webapp_gallery`.`status`,`webapp_gallery`.`name`, `webapp_gallery`.`json`,`webapp_galleryimage`.`id`, `webapp_galleryimage`.`gallery`, `webapp_galleryimage`.`order`, `webapp_galleryimage`.`status`, `webapp_galleryimage`.`image`, `webapp_galleryimage`.`alt` FROM `webapp_gallery` LEFT OUTER JOIN `webapp_galleryimage` ON `webapp_galleryimage`.`gallery`=`webapp_gallery`.`id` WHERE `webapp_gallery`.`id`='$id'")->result();
-    $query=$this->db->query("SELECT `id`, `order`, `status`, `name`, `json` FROM `webapp_gallery` WHERE `status`=1 AND `id`='$id'")->row();
-     
-    $query->images=$this->db->query("SELECT `id`, `gallery`, `order`, `status`, `image`, `alt` FROM `webapp_galleryimage` WHERE `gallery`='$id' AND `status`=1")->result();
+$query=$this->db->query("SELECT `id`, `order`, `status`, `name`, `json` FROM `webapp_gallery` WHERE `status`=1 AND `id`=(".$this->db->escape($id).")")->row();
+$query->images=$this->db->query("SELECT `id`, `gallery`, `order`, `status`, `image`, `alt` FROM `webapp_galleryimage` WHERE `gallery`=(".$this->db->escape($id).") AND `status`=1")->result();
 //    array_push($row->images);
 return $query;
 }
 public function edit($id,$order,$status,$name,$json,$timestamp,$image)
 {
-$data=array("order" => $order,"status" => $status,"name" => $name,"json" => $json,"timestamp" => $timestamp,"image" => $image);
-$this->db->where( "id", $id );
-$query=$this->db->update( "webapp_gallery", $data );
+$query=$this->db->query("UPDATE `webapp_gallery` 
+ SET `order` = ".$this->db->escape($order).", `status` = ".$this->db->escape($status).",`name` = ".$this->db->escape($name).",`json` = ".$this->db->escape($json).",`timestamp` = ".$this->db->escape($timestamp).",`image` = ".$this->db->escape($image)."
+ WHERE id = (".$this->db->escape($id).")");
 return 1;
 }
 public function delete($id)
 {
-$query=$this->db->query("DELETE FROM `webapp_gallery` WHERE `id`='$id'");
-$query=$this->db->query("DELETE FROM `webapp_galleryimage` WHERE `gallery`='$id'");
+$query=$this->db->query("DELETE FROM `webapp_gallery` WHERE `id`=(".$this->db->escape($id).")");
+$query=$this->db->query("DELETE FROM `webapp_galleryimage` WHERE `gallery`=(".$this->db->escape($id).")");
 return $query;
 }
     public function getImageById($id)
 	{
-		$query=$this->db->query("SELECT `image` FROM `webapp_gallery` WHERE `id`='$id'")->row();
+		$query=$this->db->query("SELECT `image` FROM `webapp_gallery` WHERE `id`=(".$this->db->escape($id).")")->row();
 		return $query;
 	}
     public function clearGalleryImage($id){
-         $data = array(
-            'image' => ''
-        );
-        $this->db->where('id', $id);
-        $query = $this->db->update('webapp_gallery', $data);
+         $query=$this->db->query("UPDATE `webapp_gallery` SET `image` = '' WHERE id = (".$this->db->escape($id).")");
         return $query;
     }
 }

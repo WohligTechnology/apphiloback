@@ -15,53 +15,46 @@ return  $id;
     
 public function beforeEdit($id)
 {
-$this->db->where("id",$id);
-$query=$this->db->get("slider")->row();
+$query=$this->db->query("SELECT * FROM `slider` WHERE `id`=(".$this->db->escape($id).")")->row();
 return $query;
 }
     public function beforeEditHome($id)
 {
-$this->db->where("id",$id);
-$query=$this->db->get("home")->row();
+$query=$this->db->query("SELECT * FROM `home` WHERE `id`=(".$this->db->escape($id).")")->row();
 return $query;
 }
 function getSingleBlogImages($id){
-$this->db->where("id",$id);
-$query=$this->db->get("slider")->row();
+$query=$this->db->query("SELECT * FROM `slider` WHERE `id`=(".$this->db->escape($id).")")->row();
 return $query;
 }
 public function edit($id,$alt,$status,$order,$image)
 {
-$data=array("alt" => $alt,"status" => $status,"order" => $order,"image" => $image);
-$this->db->where( "id", $id );
-$query=$this->db->update( "slider", $data );
+$query=$this->db->query("UPDATE `slider` 
+ SET `alt` = ".$this->db->escape($alt).", `status` = ".$this->db->escape($status).",`order` = ".$this->db->escape($order).",`image` = ".$this->db->escape($image)."
+ WHERE id = (".$this->db->escape($id).")");
 return 1;
 }
     public function editHome($id,$content)
 {
-$data=array("content" => $content,"status" => 1);
-$this->db->where( "id", $id );
-$query=$this->db->update( "home", $data );
+$query=$this->db->query("UPDATE `home` 
+ SET `content` = ".$this->db->escape($content).", `status` = 1
+ WHERE id = (".$this->db->escape($id).")");
 return 1;
 }
 public function delete($id)
 {
-$query=$this->db->query("DELETE FROM `slider` WHERE `id`='$id'");
+$query=$this->db->query("DELETE FROM `slider` WHERE `id`=(".$this->db->escape($id).")");
 return $query;
 }
      public function getImageById($id)
 	{
-		$query=$this->db->query("SELECT `image` FROM `slider` WHERE `id`='$id'")->row();
+		$query=$this->db->query("SELECT `image` FROM `slider` WHERE `id`=(".$this->db->escape($id).")")->row();
 		return $query;
 	}
     
-           public function clearSliderImage($id){
-         $data = array(
-            'image' => ''
-        );
-        $this->db->where('id', $id);
-        $query = $this->db->update('slider', $data);
-        return $query;
+public function clearSliderImage($id){
+ $query=$this->db->query("UPDATE `slider` SET `image` = '' WHERE id = (".$this->db->escape($id).")");
+ return $query;
     }
 }
 ?>

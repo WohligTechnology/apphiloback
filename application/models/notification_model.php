@@ -5,8 +5,7 @@ class Notification_Model extends CI_Model
 {
 public function create($linktype,$event,$video,$gallery,$article,$status,$blog,$link,$content,$image)
 {
-$data=array("linktype" => $linktype,"event" => $event,"video" => $video,"gallery" => $gallery,"article" => $article,"status" => $status,"blog" => $blog,"link" => $link,"image" => $image,"content" => $content);
-$query=$this->db->insert( "webapp_notification", $data );
+$query=$this->db->query("INSERT INTO `webapp_notification`(`status`, `event`, `video`, `link`, `name`,`image`,`linktype`,`blog`,`article`,`gallery`) VALUES (".$this->db->escape($status).",".$this->db->escape($event).",".$this->db->escape($video).",".$this->db->escape($link).",".$this->db->escape($name).",".$this->db->escape($image).",".$this->db->escape($linktype).",".$this->db->escape($blog).",".$this->db->escape($article).",".$this->db->escape($gallery).")");
 $id=$this->db->insert_id();
 if(!$query)
 return  0;
@@ -15,26 +14,24 @@ return  $id;
 }
 public function beforeEdit($id)
 {
-$this->db->where("id",$id);
-$query=$this->db->get("webapp_notification")->row();
+$query=$this->db->query("SELECT * FROM `webapp_notification` WHERE `id`=(".$this->db->escape($id).")")->row();
 return $query;
 }
 function getSingleNotification($id){
-$this->db->where("id",$id);
-$query=$this->db->get("webapp_notification")->row();
+$query=$this->db->query("SELECT * FROM `webapp_notification` WHERE `id`=(".$this->db->escape($id).")")->row();
 return $query;
 }
 public function edit($id,$linktype,$event,$video,$gallery,$article,$status,$blog,$link,$content,$image,$timestamp)
 {
-$data=array("linktype" => $linktype,"event" => $event,"video" => $video,"gallery" => $gallery,"article" => $article,"status" => $status,"blog" => $blog,"link" => $link,"image" => $image,"content" => $content,"timestamp" => $timestamp);
-$this->db->where( "id", $id );
-$query=$this->db->update( "webapp_notification", $data );
+$query=$this->db->query("UPDATE `webapp_notification` 
+ SET `status` = ".$this->db->escape($status).", `event` = ".$this->db->escape($event).", `video` = ".$this->db->escape($video).",`image` = ".$this->db->escape($image).",`linktype` = ".$this->db->escape($linktype).",`link` = ".$this->db->escape($link).",`blog` = ".$this->db->escape($blog).",`article` = ".$this->db->escape($article).",`gallery` = ".$this->db->escape($gallery).",`content` = ".$this->db->escape($content).",`timestamp` = ".$this->db->escape($timestamp)."
+ WHERE id = (".$this->db->escape($id).")");
 return 1;
 }
 public function delete($id)
 {
-$query=$this->db->query("DELETE FROM `webapp_notification` WHERE `id`='$id'");
-    $query=$this->db->query("DELETE FROM `webapp_notificationuser` WHERE `notification`='$id'");
+$query=$this->db->query("DELETE FROM `webapp_notification` WHERE `id`=(".$this->db->escape($id).")");
+    $query=$this->db->query("DELETE FROM `webapp_notificationuser` WHERE `notification`=(".$this->db->escape($id).")");
 return $query;
 }
      public function changeStatusOfExternalLink(){
@@ -47,11 +44,7 @@ $this->db->where( "id", 18 );
 $query=$this->db->update( "linktype", $data );
     }
        public function clearNotificationImage($id){
-         $data = array(
-            'image' => ''
-        );
-        $this->db->where('id', $id);
-        $query = $this->db->update('webapp_notification', $data);
+              $query=$this->db->query("UPDATE `webapp_notification` SET `image` = '' WHERE id = (".$this->db->escape($id).")");
         return $query;
     }
 }

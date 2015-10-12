@@ -5,8 +5,7 @@ class NotificationUser_Model extends CI_Model
 {
 public function create($notification,$user,$timestamp,$timestamp_receive)
 {
-$data=array("notification" => $notification,"user" => $user);
-$query=$this->db->insert( "webapp_notificationuser", $data );
+$query=$this->db->query("INSERT INTO `webapp_notificationuser`( `notification`, `user`) VALUES (".$this->db->escape($notification).",".$this->db->escape($user).")");
 $id=$this->db->insert_id();
 if(!$query)
 return  0;
@@ -15,25 +14,23 @@ return  $id;
 }
 public function beforeEdit($id)
 {
-$this->db->where("id",$id);
-$query=$this->db->get("webapp_notificationuser")->row();
+$query=$this->db->query("SELECT * FROM `webapp_notificationuser` WHERE `id`=(".$this->db->escape($id).")")->row();
 return $query;
 }
 function getSingleNotificationUser($id){
-$this->db->where("id",$id);
-$query=$this->db->get("webapp_notificationuser")->row();
+$query=$this->db->query("SELECT * FROM `webapp_notificationuser` WHERE `id`=(".$this->db->escape($id).")")->row();
 return $query;
 }
 public function edit($id,$notification,$user,$timestamp,$timestamp_receive)
 {
-$data=array("notification" => $notification,"user" => $user,"timestamp" => $timestamp,"timestamp_receive" => $timestamp_receive);
-$this->db->where( "id", $id );
-$query=$this->db->update( "webapp_notificationuser", $data );
+$query=$this->db->query("UPDATE `webapp_notificationuser` 
+ SET `notification` = ".$this->db->escape($notification).", `user` = ".$this->db->escape($user).", `timestamp` = ".$this->db->escape($timestamp).",`timestamp_receive` = ".$this->db->escape($timestamp_receive)."
+ WHERE id = (".$this->db->escape($id).")");
 return 1;
 }
 public function delete($id)
 {
-$query=$this->db->query("DELETE FROM `webapp_notificationuser` WHERE `id`='$id'");
+$query=$this->db->query("DELETE FROM `webapp_notificationuser` WHERE `id`=(".$this->db->escape($id).")");
 return $query;
 }
 }
