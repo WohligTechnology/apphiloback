@@ -9,7 +9,7 @@ class RestApi_model extends CI_Model
     if(!$query)
     return  0;
     else
-    return  $id;
+    return  1;
     }
     public function blogIds(){
     $query=$this->db->query("SELECT `id` FROM `webapp_blog`")->result();

@@ -18,10 +18,7 @@ $query=$this->db->query("SELECT * FROM `webapp_blog` WHERE `id`=(".$this->db->es
 return $query;
 }
 function getSingleBlog($id){
-    $query=$this->db->query("SELECT `id`, `title`, `json`, `content`,`timestamp` FROM `webapp_blog` WHERE `id`=(".$this->db->escape($id).")")->row();
-$query->blogimage=$this->db->query("SELECT `id`, `blog`, `status`, `order`, `image` FROM `webapp_blogimages` WHERE `status`=1 AND `blog`=(".$this->db->escape($id).")")->result();
-   
-$query->blogvideo=$this->db->query("SELECT `id`, `blog`, `status`, `order`, `video` FROM `webapp_blogvideo` WHERE `status`=1 AND `blog`=(".$this->db->escape($id).")")->result();
+    $query=$this->db->query("SELECT `id`, `title`, `json`, `content`,`timestamp`,`image` FROM `webapp_blog` WHERE `id`=(".$this->db->escape($id).")")->row();
 return $query;
 }
 public function edit($id,$title,$json,$content,$timestamp,$url,$image)

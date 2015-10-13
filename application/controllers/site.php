@@ -43,7 +43,7 @@ class Site extends CI_Controller
             $data[ 'videonotification' ] =$this->User_Model->getVideoNotificationDropDown();
             $data[ 'blognotification' ] =$this->User_Model->getBlogNotificationDropDown();
 //        $data['category']=$this->category_model->getcategorydropdown();
-		$data[ 'page' ] = 'createuser';
+		$data[ 'page' ] = 'createUser';
 		$data[ 'activemenu' ] = 'users';
 		$data[ 'title' ] = 'Create User';
 		$this->load->view( 'template', $data );	

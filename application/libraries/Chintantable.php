@@ -62,8 +62,8 @@ class Chintantable {
                 $element->sort = $orderorder;
             }
             if ($search != "") {
-                $searchquery.= " " . $element->field . " LIKE '%" . $search . "%' OR ";
-            }
+                $searchquery.= " " . $element->field . " LIKE '%" . $this->CI->db->escape_like_str($search) . "%' OR ";
+            }     
         }
         $searchquery.= " 0 ";
         $selectquery.= " 1 ";

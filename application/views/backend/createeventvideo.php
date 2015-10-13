@@ -16,12 +16,7 @@
                    <label>Video Gallery</label>
                 </div>
             </div>
-            <div class="row">
-                <div class="input-field col s6">
-                    <label for="title">Title</label>
-                    <input type="text" id="title" name="title" value="<?php echo set_value('title');?>">
-                </div>
-            </div>
+           
             <div class="row">
                 <div class="input-field col s6">
                     <?php echo form_dropdown( 'status',$status,set_value( 'status')); ?>
