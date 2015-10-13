@@ -3598,8 +3598,8 @@ if($this->Slider_Model->create($alt,$status,$order,$image)==0)
 $data["alerterror"]="New slider could not be created.";
 else
 $data["alertsuccess"]="slider created Successfully.";
-//$data["redirect"]="site/viewSlider";
-//$this->load->view("redirect",$data);
+$data["redirect"]="site/viewSlider";
+$this->load->view("redirect",$data);
 }
 }
 public function editSlider()

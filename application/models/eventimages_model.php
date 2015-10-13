@@ -23,7 +23,7 @@ return $query;
 }
 public function edit($id,$event,$status,$order,$image)
 {
-$query=$this->db->query("UPDATE `webapp_blogimages` 
+$query=$this->db->query("UPDATE `webapp_eventimages` 
  SET `event` = ".$this->db->escape($event).", `status` = ".$this->db->escape($status).",`order` = ".$this->db->escape($order).",`image` = ".$this->db->escape($image)."
  WHERE id = (".$this->db->escape($id).")");
 return 1;

@@ -5,7 +5,7 @@ class FrontMenu_Model extends CI_Model
 {
 public function create($order,$parent,$status,$name,$json,$image,$linktype,$icon,$event,$blog,$video,$article,$gallery,$typeid)
 {
-$query=$this->db->query("INSERT INTO `webapp_eventvideo`(`status`, `event`, `video`, `order`, `parent`,`name`,`json`,`image`,`linktype`,`icon`,`blog`,`article`,`gallery`,`typeid`) VALUES (".$this->db->escape($status).",".$this->db->escape($event).",".$this->db->escape($video).",".$this->db->escape($order).",".$this->db->escape($parent).",".$this->db->escape($name).",".$this->db->escape($json).",".$this->db->escape($image).",".$this->db->escape($linktype).",".$this->db->escape($icon).",".$this->db->escape($blog).",".$this->db->escape($article).",".$this->db->escape($gallery).",".$this->db->escape($typeid).")");
+$query=$this->db->query("INSERT INTO `webapp_frontmenu`(`status`, `event`, `video`, `order`, `parent`,`name`,`json`,`image`,`linktype`,`icon`,`blog`,`article`,`gallery`,`typeid`) VALUES (".$this->db->escape($status).",".$this->db->escape($event).",".$this->db->escape($video).",".$this->db->escape($order).",".$this->db->escape($parent).",".$this->db->escape($name).",".$this->db->escape($json).",".$this->db->escape($image).",".$this->db->escape($linktype).",".$this->db->escape($icon).",".$this->db->escape($blog).",".$this->db->escape($article).",".$this->db->escape($gallery).",".$this->db->escape($typeid).")");
 $id=$this->db->insert_id();
 if(!$query)
 return  0;
