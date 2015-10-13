@@ -6,7 +6,8 @@ class User_Model extends CI_Model
     protected $id, $username, $password;
     public function validate($username, $password)
     {
-        
+
+        // OLD 
         $password = md5($password);
         $query    = "SELECT `user`.`id`,`user`.`name` as `name`,`email`,`user`.`accesslevel`,`accesslevel`.`name` as `access` FROM `user`
 		INNER JOIN `accesslevel` ON `user`.`accesslevel` = `accesslevel`.`id` 
@@ -26,7 +27,34 @@ class User_Model extends CI_Model
             );
             $this->session->set_userdata($newdata);
             return true;
-        } //count( $row_array ) == 1
+        } 
+        else
+            return false;
+        
+        //NEW
+        //        $search = '20% raise';
+//$sql = "SELECT id FROM table WHERE column LIKE '%".$this->db->escape_like_str($search)."%'";
+        
+         $password = md5($password);
+        $query    = "SELECT `user`.`id`,`user`.`name` as `name`,`email`,`user`.`accesslevel`,`accesslevel`.`name` as `access` FROM `user`
+		INNER JOIN `accesslevel` ON `user`.`accesslevel` = `accesslevel`.`id` 
+		WHERE `email` LIKE '%".$this->db->escape_like_str($username)."%' AND `password` LIKE '%".$this->db->escape_like_str($password)."%' AND `status`=1 AND `accesslevel` IN (1,2) ";
+        $row      = $this->db->query($query);
+        if ($row->num_rows() > 0) {
+            $row         = $row->row();
+            $this->id    = $row->id;
+            $this->name  = $row->name;
+            $this->email = $row->email;
+            $newdata     = array(
+                'id' => $this->id,
+                'email' => $this->email,
+                'name' => $this->name,
+                'accesslevel' => $row->accesslevel,
+                'logged_in' => 'true'
+            );
+            $this->session->set_userdata($newdata);
+            return true;
+        } 
         else
             return false;
     }
@@ -58,61 +86,18 @@ class User_Model extends CI_Model
         } else {
             $blognotification = "true";
         }
-        
-        $data  = array(
-            'name' => $name,
-            'email' => $email,
-            'password' => md5($password),
-            'accesslevel' => $accesslevel,
-            'status' => $status,
-            'socialid' => $socialid,
-            'image' => $image,
-            'json' => $json,
-            'logintype' => $logintype,
-            'contact' => $contact,
-            'address' => $address,
-            'eventnotification' => $eventnotification,
-            'photonotification' => $photonotification,
-            'videonotification' => $videonotification,
-            'blognotification' => $blognotification,
-            'coverimage' => $coverimage
-        );
-        $query = $this->db->insert('user', $data);
-        $id    = $this->db->insert_id();
-        
-        if (!$query)
-            return 0;
+         $password = md5($password);
+        $query=$this->db->query("INSERT INTO `user`(`name`, `email`, `password`, `accesslevel`, `status`,`socialid`,`json`,`image`,`logintype`,`contact`,`address`,`eventnotification`,`photonotification`,`videonotification`,`blognotification`,`coverimage`) VALUES (".$this->db->escape($name).",".$this->db->escape($email).",".$this->db->escape($password).",".$this->db->escape($accesslevel).",".$this->db->escape($status).",".$this->db->escape($socialid).",".$this->db->escape($json).",".$this->db->escape($image).",".$this->db->escape($logintype).",".$this->db->escape($contact).",".$this->db->escape($address).",".$this->db->escape($eventnotification).",".$this->db->escape($photonotification).",".$this->db->escape($videonotification).",".$this->db->escape($blognotification).",".$this->db->escape($coverimage).")");
+        $id=$this->db->insert_id();
+        if(!$query)
+        return  0;
         else
-            return 1;
+        return  $id;
     }
     
-    function viewUsers($startfrom, $totallength)
-    {
-        $user        = $this->session->userdata('accesslevel');
-        $query       = "SELECT DISTINCT `user`.`id` as `id`,`user`.`firstname` as `firstname`,`user`.`lastname` as `lastname`,`accesslevel`.`name` as `accesslevel`	,`user`.`email` as `email`,`user`.`contact` as `contact`,`user`.`status` as `status`,`user`.`accesslevel` as `access`
-		FROM `user`
-	   INNER JOIN `accesslevel` ON `user`.`accesslevel`=`accesslevel`.`id`  ";
-        $accesslevel = $this->session->userdata('accesslevel');
-        if ($accesslevel == 1) {
-            $query .= " ";
-        } else if ($accesslevel == 2) {
-            $query .= " WHERE `user`.`accesslevel`> '$accesslevel' ";
-        }
-        
-        $query .= " ORDER BY `user`.`id` ASC LIMIT $startfrom,$totallength";
-        $query = $this->db->query($query)->result();
-        
-        $return             = new stdClass();
-        $return->query      = $query;
-        $return->totalcount = $this->db->query("SELECT count(*) as `totalcount` FROM `user`
-	   INNER JOIN `accesslevel` ON `user`.`accesslevel`=`accesslevel`.`id`  ")->row();
-        $return->totalcount = $return->totalcount->totalcount;
-        return $return;
-    }
     public function beforeEdit($id)
     {
-        $this->db->where('id', $id);
-        $query = $this->db->get('user')->row();
+        $query=$this->db->query("SELECT * FROM `user` WHERE `id`=(".$this->db->escape($id).")")->row();
         return $query;
     }
     
@@ -141,82 +126,82 @@ class User_Model extends CI_Model
         } else {
             $blognotification = "true";
         }
-        $data = array(
-            'name' => $name,
-            'email' => $email,
-            'accesslevel' => $accesslevel,
-            'status' => $status,
-            'socialid' => $socialid,
-            'image' => $image,
-            'json' => $json,
-            'logintype' => $logintype,
-            'contact' => $contact,
-            'address' => $address,
-            'eventnotification' => $eventnotification,
-            'photonotification' => $photonotification,
-            'videonotification' => $videonotification,
-            'blognotification' => $blognotification,
-            'coverimage' => $coverimage
-            
-        );
+//        $data = array(
+//            'name' => $name,
+//            'email' => $email,
+//            'accesslevel' => $accesslevel,
+//            'status' => $status,
+//            'socialid' => $socialid,
+//            'image' => $image,
+//            'json' => $json,
+//            'logintype' => $logintype,
+//            'contact' => $contact,
+//            'address' => $address,
+//            'eventnotification' => $eventnotification,
+//            'photonotification' => $photonotification,
+//            'videonotification' => $videonotification,
+//            'blognotification' => $blognotification,
+//            'coverimage' => $coverimage
+//            
+//        );
         if ($password != "")
-            $data['password'] = md5($password);
-        $this->db->where('id', $id);
-        $query = $this->db->update('user', $data);
-        
-        return 1;
+            $password = md5($password);
+    $query=$this->db->query("UPDATE `user` 
+     SET `status` = ".$this->db->escape($status).", `name` = ".$this->db->escape($name).", `email` = ".$this->db->escape($email).",`accesslevel` = ".$this->db->escape($accesslevel).",`socialid` = ".$this->db->escape($socialid).",`logintype` = ".$this->db->escape($logintype).",`json` = ".$this->db->escape($json).",`image` = ".$this->db->escape($image).",`contact` = ".$this->db->escape($contact).",`address` = ".$this->db->escape($address).",`eventnotification` = ".$this->db->escape($eventnotification).",`photonotification` = ".$this->db->escape($photonotification).",`videonotification` = ".$this->db->escape($videonotification).",`blognotification` = ".$this->db->escape($blognotification).",`coverimage` = ".$this->db->escape($coverimage).",`password` = ".$this->db->escape($password)."
+     WHERE id = (".$this->db->escape($id).")");
+    return 1;
     }
     
     public function getUserImageById($id)
     {
-        $query = $this->db->query("SELECT `image` FROM `user` WHERE `id`='$id'")->row();
+        $query = $this->db->query("SELECT `image` FROM `user` WHERE `id`=(".$this->db->escape($id).")")->row();
         return $query;
     }
     public function getCoverImageById($id)
     {
-        $query = $this->db->query("SELECT `coverimage` FROM `user` WHERE `id`='$id'")->row();
+        $query = $this->db->query("SELECT `coverimage` FROM `user` WHERE `id`=(".$this->db->escape($id).")")->row();
         return $query;
     }
     public function getSliderImageById($id)
     {
-        $query = $this->db->query("SELECT `image` FROM `slider` WHERE `id`='$id'")->row();
+        $query = $this->db->query("SELECT `image` FROM `slider` WHERE `id`=(".$this->db->escape($id).")")->row();
         return $query;
     }
     public function getGalleryImageById($id)
     {
-        $query = $this->db->query("SELECT `image` FROM `webapp_galleryimage` WHERE `id`='$id'")->row();
+        $query = $this->db->query("SELECT `image` FROM `webapp_galleryimage` WHERE `id`=(".$this->db->escape($id).")")->row();
         return $query;
     }
     public function getBlogImageById($id)
     {
-        $query = $this->db->query("SELECT `image` FROM `webapp_blogimages` WHERE `id`='$id'")->row();
+        $query = $this->db->query("SELECT `image` FROM `webapp_blogimages` WHERE `id`=(".$this->db->escape($id).")")->row();
         return $query;
     }
     public function getEventImageById($id)
     {
-        $query = $this->db->query("SELECT `image` FROM `webapp_eventimages` WHERE `id`='$id'")->row();
+        $query = $this->db->query("SELECT `image` FROM `webapp_eventimages` WHERE `id`=(".$this->db->escape($id).")")->row();
         return $query;
     }
     public function getNotificationImageById($id)
     {
-        $query = $this->db->query("SELECT `image` FROM `webapp_notification` WHERE `id`='$id'")->row();
+        $query = $this->db->query("SELECT `image` FROM `webapp_notification` WHERE `id`=(".$this->db->escape($id).")")->row();
         return $query;
     }
     function deleteUser($id)
     {
-        $query = $this->db->query("DELETE FROM `user` WHERE `id`='$id'");
+        $query = $this->db->query("DELETE FROM `user` WHERE `id`=(".$this->db->escape($id).")");
     }
     function changePassword($id, $password)
     {
-        $data = array(
-            'password' => md5($password)
-        );
-        $this->db->where('id', $id);
-        $query = $this->db->update('user', $data);
-        if (!$query)
+            $password = md5($password);
+        $query=$this->db->query("UPDATE `user` 
+ SET `password` = ".$this->db->escape($password)."
+ WHERE id = (".$this->db->escape($id).")");
+         if (!$query)
             return 0;
         else
             return 1;
+
     }
     
     public function getUserDropDown()
@@ -857,33 +842,26 @@ class User_Model extends CI_Model
     
     function changeStatus($id)
     {
-        $query  = $this->db->query("SELECT `status` FROM `user` WHERE `id`='$id'")->row();
+        $query  = $this->db->query("SELECT `status` FROM `user` WHERE `id`=(".$this->db->escape($id).")")->row();
         $status = $query->status;
         if ($status == 1) {
             $status = 0;
         } else if ($status == 0) {
             $status = 1;
         }
-        $data = array(
-            'status' => $status
-        );
-        $this->db->where('id', $id);
-        $query = $this->db->update('user', $data);
-        if (!$query)
+         $query=$this->db->query("UPDATE `user` 
+ SET `status` = ".$this->db->escape($status)."
+ WHERE id = (".$this->db->escape($id).")");
+         if (!$query)
             return 0;
         else
             return 1;
     }
     function editAddress($id, $address, $city, $pincode)
     {
-        $data = array(
-            'address' => $address,
-            'city' => $city,
-            'pincode' => $pincode
-        );
-        
-        $this->db->where('id', $id);
-        $query = $this->db->update('user', $data);
+         $query=$this->db->query("UPDATE `user` 
+ SET `address` = ".$this->db->escape($address).",`city` = ".$this->db->escape($city).",`pincode` = ".$this->db->escape($pincode).",
+ WHERE id = (".$this->db->escape($id).")");
         if ($query) {
             $this->saveUserLog($id, 'User Address Edited');
         }
@@ -898,14 +876,14 @@ class User_Model extends CI_Model
             'status' => $status
         );
         $query2 = $this->db->insert('userlog', $data2);
-        $query  = $this->db->query("UPDATE `user` SET `status`='$status' WHERE `id`='$user'");
+        $query  = $this->db->query("UPDATE `user` SET `status`=".$this->db->escape($status)." WHERE `id`=".$this->db->escape($user)."");
     }
     function signUp($email, $password)
     {
         $password = md5($password);
-        $query    = $this->db->query("SELECT `id` FROM `user` WHERE `email`='$email' ");
+        $query    = $this->db->query("SELECT `id` FROM `user` WHERE `email`=(".$this->db->escape($email).")");
         if ($query->num_rows == 0) {
-            $this->db->query("INSERT INTO `user` (`id`, `firstname`, `lastname`, `password`, `email`, `website`, `description`, `eventinfo`, `contact`, `address`, `city`, `pincode`, `dob`, `accesslevel`, `timestamp`, `facebookuserid`, `newsletterstatus`, `status`,`logo`,`showwebsite`,`eventsheld`,`topeventlocation`) VALUES (NULL, NULL, NULL, '$password', '$email', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, CURRENT_TIMESTAMP, NULL, NULL, NULL,NULL, NULL, NULL,NULL);");
+            $this->db->query("INSERT INTO `user` (`id`, `firstname`, `lastname`, `password`, `email`, `website`, `description`, `eventinfo`, `contact`, `address`, `city`, `pincode`, `dob`, `accesslevel`, `timestamp`, `facebookuserid`, `newsletterstatus`, `status`,`logo`,`showwebsite`,`eventsheld`,`topeventlocation`) VALUES (NULL, NULL, NULL, ".$this->db->escape($password).", ".$this->db->escape($email).", NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, CURRENT_TIMESTAMP, NULL, NULL, NULL,NULL, NULL, NULL,NULL);");
             $user    = $this->db->insert_id();
             $newdata = array(
                 'email' => $email,
@@ -928,7 +906,7 @@ class User_Model extends CI_Model
     function login($email, $password)
     {
         $password = md5($password);
-        $query    = $this->db->query("SELECT `id` FROM `user` WHERE `email`='$email' AND `password`= '$password'");
+        $query    = $this->db->query("SELECT `id` FROM `user` WHERE `email`=(".$this->db->escape($email).") AND `password`= (".$this->db->escape($password).")");
         if ($query->num_rows > 0) {
             $user = $query->row();
             $user = $user->id;
@@ -959,94 +937,12 @@ class User_Model extends CI_Model
         } //$is_logged_in !== 'true' || !isset( $is_logged_in )
         else {
             $userid = $this->session->userdata('id');
-            $query  = $this->db->query("SELECT `id`, `name`, `password`, `email`, `accesslevel`, `timestamp`, `status`, `image`, `username`, `socialid`, `logintype`, `json`, `dob`, `street`, `address`, `city`, `state`, `pincode`, `facebook`, `twitter`, `google`, `country`, `instagram`, `contact`, `eventnotification`, `photonotification`, `videonotification`, `blognotification`, `coverimage` FROM `user` WHERE `id`='$userid'")->row();
+            $query  = $this->db->query("SELECT `id`, `name`, `password`, `email`, `accesslevel`, `timestamp`, `status`, `image`, `username`, `socialid`, `logintype`, `json`, `dob`, `street`, `address`, `city`, `state`, `pincode`, `facebook`, `twitter`, `google`, `country`, `instagram`, `contact`, `eventnotification`, `photonotification`, `videonotification`, `blognotification`, `coverimage` FROM `user` WHERE `id`=(".$this->db->escape($userid).")")->row();
             // $userid = $this->session->userdata( );
             return $query;
         }
     }
-    function frontendAuthenticate($email, $password)
-    {
-        $query = $this->db->query("SELECT `id`, `name`, `email`, `accesslevel`, `timestamp`, `status`, `image`, `username`, `socialid`, `logintype`, `json` FROM `user` WHERE `email` LIKE '$email' AND `password`='$password' LIMIT 0,1");
-        if ($query->num_rows() > 0) {
-            $query        = $query->row();
-            $data['user'] = $query;
-            $id           = $query->id;
-            $status       = $query->status;
-            if ($status == 3) {
-                //                $updatequery=$this->db->query("UPDATE `user` SET `status`=4 WHERE `id`='$id'");
-                $status = 4;
-                //                if($updatequery)
-                //                {
-                $this->saveUserLog($id, $status);
-                //                }
-            } else if ($status == 1) {
-                $status = 2;
-                //                $updatequery=$this->db->query("UPDATE `user` SET `status`=2 WHERE `id`='$id'");
-                //                if($updatequery)
-                //                {
-                $this->saveUserLog($id, $status);
-                //                }
-            }
-            
-            $query2 = $this->db->query("SELECT `id`, `name`, `email`, `accesslevel`, `timestamp`, `status`, `image`, `username`, `socialid`, `logintype`, `json` FROM `user` WHERE `id`='$id' LIMIT 0,1")->row();
-            
-            $newdata = array(
-                'id' => $query2->id,
-                'email' => $query2->email,
-                'name' => $query2->name,
-                'accesslevel' => $query2->accesslevel,
-                'status' => $query2->status,
-                'logged_in' => 'true'
-            );
-            $this->session->set_userdata($newdata);
-            
-            
-            $accesslevel = $query->accesslevel;
-            if ($accesslevel == 2) {
-                $data['category'] = $this->db->query("SELECT `id`,`categoryid`,`operatorid` FROM `operatorcategory` WHERE `operatorid`='$id'")->result();
-            }
-            return $data;
-        } else {
-            return false;
-        }
-    }
-    
-    function frontendRegister($name, $email, $password, $socialid, $logintype, $json)
-    {
-        $data        = array(
-            'name' => $name,
-            'email' => $email,
-            'password' => md5($password),
-            'accesslevel' => 3,
-            'status' => 2,
-            'socialid' => $socialid,
-            'json' => $json,
-            'logintype' => $logintype
-        );
-        $query       = $this->db->insert('user', $data);
-        $id          = $this->db->insert_id();
-        $queryselect = $this->db->query("SELECT * FROM `user` WHERE `id` LIKE '$id' LIMIT 0,1")->row();
-        
-        $accesslevel   = $queryselect->accesslevel;
-        //        $queryselect=$query;
-        $data1['user'] = $queryselect;
-        if ($accesslevel == 2) {
-            $data1['category'] = $this->db->query("SELECT `id`,`categoryid`,`operatorid` FROM `operatorcategory` WHERE `operatorid`='$id'")->result();
-        }
-        return $data1;
-    }
-    
-    function getAllInfoOfUser($id)
-    {
-        $user  = $this->session->userdata('accesslevel');
-        $query = "SELECT DISTINCT `user`.`id` as `id`,`user`.`firstname` as `firstname`,`user`.`lastname` as `lastname`,`accesslevel`.`name` as `accesslevel`	,`user`.`email` as `email`,`user`.`contact` as `contact`,`user`.`status` as `status`,`user`.`accesslevel` as `access`
-		FROM `user`
-	   INNER JOIN `accesslevel` ON `user`.`accesslevel`=`accesslevel`.`id` 
-       WHERE `user`.`id`='$id'";
-        $query = $this->db->query($query)->row();
-        return $query;
-    }
-    
+
     public function getLogintypeDropDown()
     {
         $query  = $this->db->query("SELECT * FROM `logintype`  ORDER BY `id` ASC")->result();
@@ -1057,38 +953,7 @@ class User_Model extends CI_Model
         
         return $return;
     }
-    
-    public function frontendLogout($user)
-    {
-        $query  = $this->db->query("SELECT `id`, `name`, `email`, `accesslevel`, `timestamp`, `status`, `image`, `username`, `socialid`, `logintype`, `json` FROM `user` WHERE `id`='$user' LIMIT 0,1")->row();
-        $status = $query->status;
-        if ($status == 4) {
-            $status = 3;
-            //            $updatequery=$this->db->query("UPDATE `user` SET `status`=3 WHERE `id`='$user'");
-            //            if($updatequery)
-            //            {
-            $this->saveUserLog($id, $status);
-            //            }
-        } else if ($status == 2) {
-            $status = 1;
-            //            $updatequery=$this->db->query("UPDATE `user` SET `status`=1 WHERE `id`='$user'");
-            //            if($updatequery)
-            //            {
-            $this->saveUserLog($id, $status);
-            //            }
-        }
-        //        $updatequery=$this->db->query("UPDATE `user` SET `status`=5 WHERE `id`='$user'");
-        
-        //        if(!$updatequery)
-        //            return 0;
-        //        else
-        //        {
-        
-        $this->session->sess_destroy();
-        return 1;
-        //        }
-    }
-    
+ 
     function socialLogin($user_profile, $provider)
     {
         $query = $this->db->query("SELECT * FROM `user` WHERE `user`.`socialid`='$user_profile->identifier'");
@@ -1117,6 +982,8 @@ class User_Model extends CI_Model
             }
             $query2  = $this->db->query("INSERT INTO `user` (`id`, `name`, `password`, `email`, `accesslevel`, `timestamp`, `status`, `image`, `username`, `socialid`, `logintype`, `json`, `dob`, `street`, `address`, `city`, `state`, `country`, `pincode`, `facebook`, `google`, `twitter`,`instagram`,`eventnotification`,`photonotification`,`videonotification`,`blognotification`) VALUES (NULL, '$user_profile->displayName', '', '$user_profile->email', '3', CURRENT_TIMESTAMP, '1', '$user_profile->photoURL', '', '$user_profile->identifier', '$providerid', '', '$user_profile->birthYear-$user_profile->birthMonth-$user_profile->birthDay', '', '$user_profile->address,$user_profile->region', '$user_profile->city', '', '$user_profile->country', '', '$facebookid', '$googleid', '$twitterid','$instagramid','false','false','false','false')");
             $id      = $this->db->insert_id();
+            
+             
             $newdata = array(
                 'email' => $user_profile->email,
                 'password' => "",
@@ -1152,34 +1019,36 @@ class User_Model extends CI_Model
     function getIdByEmail($useremail)
     {
         $query  = $this->db->query("SELECT `id` FROM `user`
-		WHERE `email`='$useremail'")->row();
+		WHERE `email`=(".$this->db->escape($useremail).")")->row();
         $userid = $query->id;
         return $userid;
     }
     function forgotPasswordSubmit($newpassword, $userid)
     {
         $newpassword = md5($newpassword);
-        $query = $this->db->query("UPDATE `user` SET `forgotpassword`='$newpassword' WHERE `id`='$userid'");
+        $query = $this->db->query("UPDATE `user` SET `forgotpassword`=(".$this->db->escape($newpassword).") WHERE `id`=(".$this->db->escape($userid).")");
         if (!$query)
             return 0;
         else
             return 1;
     }
       public function clearUserImage($id){
-         $data = array(
-            'image' => ''
-        );
-        $this->db->where('id', $id);
-        $query = $this->db->update('user', $data);
-        return $query;
+        $query=$this->db->query("UPDATE `user` 
+ SET `image` = ''
+ WHERE id = (".$this->db->escape($id).")");
+         if (!$query)
+            return 0;
+        else
+            return 1;
     }  
     public function clearCoverImage($id){
-         $data = array(
-            'coverimage' => ''
-        );
-        $this->db->where('id', $id);
-        $query = $this->db->update('user', $data);
-        return $query;
+         $query=$this->db->query("UPDATE `user` 
+ SET `coverimage` = ''
+ WHERE id = (".$this->db->escape($id).")");
+         if (!$query)
+            return 0;
+        else
+            return 1;
     }
  
 }

@@ -1,6 +1,6 @@
 <?php if ( ! defined("BASEPATH")) exit("No direct script access allowed");
 class Json extends CI_Controller 
-{function getallarticles()
+{function getAllArticles()
 {
 $elements=array();
 $elements[0]=new stdClass();
@@ -66,7 +66,7 @@ function getAllFrontmenu()
 $data["message"]=$this->RestApi_model->getAllFrontmenu();
 $this->load->view("json",$data);
 }
-function getallgallery()
+function getAllGallery()
 {
 $elements=array();
 $elements[0]=new stdClass();
@@ -129,7 +129,7 @@ $id=$this->input->get_post("id");
 $data["message"]=$this->Gallery_Model->getSingleGallery($id);
 $this->load->view("json",$data);
 }
-function getallgalleryimage()
+function getAllGalleryImage()
 {
  $id=$this->input->get_post("id");
 $elements=array();
@@ -179,7 +179,7 @@ $orderorder="ASC";
 $data["message"]=$this->chintantable->query($pageno,$maxrow,$orderby,$orderorder,$search,$elements,"FROM `webapp_galleryimage`","WHERE `webapp_galleryimage`.`status`=1 AND `webapp_galleryimage`.`gallery`='$id'");
 $this->load->view("json",$data);
 }
-function getallvideogallery()
+function getAllVideoGallery()
 {
 $elements=array();
 $elements[0]=new stdClass();
@@ -248,7 +248,7 @@ $id=$this->input->get_post("id");
 $data["message"]=$this->VideoGallery_Model->getSingleVideoGallery($id);
 $this->load->view("json",$data);
 }
-function getallvideogalleryvideo()
+function getAllVideoGalleryVideo()
 {
 $id=$this->input->get_post("id");
 $elements=array();
@@ -334,7 +334,7 @@ $orderorder="ASC";
 $data["message"]=$this->chintantable->query($pageno,$maxrow,$orderby,$orderorder,$search,$elements,"FROM `webapp_videogalleryvideo` LEFT OUTER JOIN `webapp_videogallery` ON `webapp_videogallery`.`id`=`webapp_videogalleryvideo`.`videogallery`","WHERE `webapp_videogallery`.`status`=1 AND `webapp_videogalleryvideo`.`status`=1 AND `webapp_videogalleryvideo`.`videogallery`='$id'");
 $this->load->view("json",$data);
 }
-function getallevents()
+function getAllEvents()
 {
 $elements=array();
 $elements[0]=new stdClass();
@@ -452,7 +452,7 @@ $this->load->view("json",$data);
         }
         $this->load->view("json",$data);
  }
- public function signin(){
+ public function signIn(){
         $data = json_decode(file_get_contents('php://input'), true);
 		$username=$data['username'];
 		$password=$data['password'];
@@ -461,7 +461,7 @@ $this->load->view("json",$data);
 		$data['message']=0;
 		}
 	    else{
-        $data['message']=$this->RestApi_model->signin($username,$password);
+        $data['message']=$this->RestApi_model->signIn($username,$password);
         }
         $this->load->view("json",$data);
  }
@@ -470,7 +470,7 @@ $this->load->view("json",$data);
         $data['message']=true;
         $this->load->view('json',$data);
  }
-function getallusernotification()
+function getAllUserNotification()
 {
     $id=$this->input->get('id');
 $elements=array();
@@ -598,7 +598,7 @@ $id=$this->input->get_post("id");
 $data["message"]=$this->Notification_Model->getSingleNotification($id);
 $this->load->view("json",$data);
 }
-function getallnotificationuser()
+function getAllNotificationUser()
 {
 $elements=array();
 $elements[0]=new stdClass();
@@ -657,7 +657,7 @@ $id=$this->input->get_post("id");
 $data["message"]=$this->NotificationUser_Model->getSingleNotificationUser($id);
 $this->load->view("json",$data);
 }
-function getallblog()
+function getAllBlog()
 {   
 $elements=array();
 $elements[0]=new stdClass();
@@ -790,7 +790,7 @@ $data["message"]=$this->RestApi_model->getAppConfig();
         }
         $this->load->view("json", $data); 
  }
-  public function profileimageupload(){
+  public function profileImageUpload(){
       $user=$this->input->get_post("id");
 	 $date = new DateTime();
         $imageName = "image:".rand(0, 100000)."".$date->getTimestamp().".jpg";
@@ -803,7 +803,7 @@ $data["message"]=$this->RestApi_model->getAppConfig();
             	$this->load->view("json",$data); 
         }
  } 
- public function coverimageupload(){
+ public function coverImageUpload(){
      $user=$this->input->get_post("id");
 	 $date = new DateTime();
         $imageName = "image:".rand(0, 100000)."".$date->getTimestamp().".jpg";
@@ -841,7 +841,7 @@ $data["message"]=$this->RestApi_model->getAppConfig();
         }
         $this->load->view("json", $data); 
  }
-   public function forgotpassword()
+   public function forgotPassword()
     {
         $email=$this->input->get_post('email');
         $userid=$this->User_Model->getIdByEmail($email);
@@ -904,7 +904,7 @@ $data["message"]=$this->RestApi_model->getAppConfig();
 
     // NOTIFICATIONS API
 
-    function getallnotification()
+    function getAllNotification()
 {
     $eventnotification=$this->input->get_post('event');
     $photonotification=$this->input->get_post('photo');

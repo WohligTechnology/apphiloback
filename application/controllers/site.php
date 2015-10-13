@@ -441,7 +441,7 @@ class Site extends CI_Controller
 		$access = array("1");
 		$this->checkAccess($access);
 		$this->User_Model->changeStatus($this->input->get('id'));
-		$data['table']=$this->User_Model->viewUsers();
+//		$data['table']=$this->User_Model->viewUsers();
 		$data['alertsuccess']="Status Changed Successfully";
 		$data['redirect']="site/viewUsers";
         $data['other']="template=$template";

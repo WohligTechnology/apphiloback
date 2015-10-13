@@ -5,8 +5,7 @@ class VideoGalleryVideo_Model extends CI_Model
 {
 public function create($order,$status,$videogallery,$url,$alt)
 {
-$data=array("order" => $order,"status" => $status,"videogallery" => $videogallery,"url" => $url,"alt" => $alt);
-$query=$this->db->insert( "webapp_videogalleryvideo", $data );
+$query=$this->db->query("INSERT INTO `webapp_videogalleryvideo`(`status`, `url`, `videogallery`, `order`, `alt`) VALUES (".$this->db->escape($status).",".$this->db->escape($url).",".$this->db->escape($videogallery).",".$this->db->escape($order).",".$this->db->escape($alt).")");
 $id=$this->db->insert_id();
 if(!$query)
 return  0;
@@ -15,25 +14,23 @@ return  $id;
 }
 public function beforeEdit($id)
 {
-$this->db->where("id",$id);
-$query=$this->db->get("webapp_videogalleryvideo")->row();
+$query=$this->db->query("SELECT * FROM `webapp_videogalleryvideo` WHERE `id`=(".$this->db->escape($id).")")->row();
 return $query;
 }
 function getSingleVideoGalleryVideo($id){
-$this->db->where("id",$id);
-$query=$this->db->get("webapp_videogalleryvideo")->row();
+$query=$this->db->query("SELECT * FROM `webapp_videogalleryvideo` WHERE `id`=(".$this->db->escape($id).")")->row();
 return $query;
 }
 public function edit($id,$order,$status,$videogallery,$url,$alt)
 {
-$data=array("order" => $order,"status" => $status,"videogallery" => $videogallery,"url" => $url,"alt" => $alt);
-$this->db->where( "id", $id );
-$query=$this->db->update( "webapp_videogalleryvideo", $data );
+$query=$this->db->query("UPDATE `webapp_videogalleryvideo` 
+ SET `status` = ".$this->db->escape($status).", `videogallery` = ".$this->db->escape($videogallery).", `url` = ".$this->db->escape($url).",`order` = ".$this->db->escape($order).",`alt` = ".$this->db->escape($alt)."
+ WHERE id = (".$this->db->escape($id).")");
 return 1;
 }
 public function delete($id)
 {
-$query=$this->db->query("DELETE FROM `webapp_videogalleryvideo` WHERE `id`='$id'");
+$query=$this->db->query("DELETE FROM `webapp_videogalleryvideo` WHERE `id`=(".$this->db->escape($id).")");
 return $query;
 }
 }
