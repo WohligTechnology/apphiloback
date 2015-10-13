@@ -31,17 +31,17 @@ class Menu extends CI_Controller
 	}
 	
 	//Menu
-	public function createmenu()
+	public function createMenu()
 	{
 		$access = array("1");
 		$this->checkAccess($access);
 		$data['accesslevel']=$this->User_Model->getaccesslevels();
 		$data['parentmenu']=$this->menu_model->getMenu();
-		$data[ 'page' ] = 'createmenu';
+		$data[ 'page' ] = 'createMenu';
 		$data[ 'title' ] = 'Create menu';
 		$this->load->view( 'template', $data );	
 	}
-	function createmenusubmit()
+	function createMenuSubmit()
 	{
 		$access = array("1");
 		$this->checkAccess($access);
@@ -58,7 +58,7 @@ class Menu extends CI_Controller
 			$data['alerterror'] = validation_errors();
 			$data['accesslevel']=$this->User_Model->getaccesslevels();
 			$data['parentmenu']=$this->menu_model->getMenu();
-			$data['page']='createmenu';
+			$data['page']='createMenu';
 			$data['title']='Create New menu';
 			$this->load->view('template',$data);
 		}
@@ -97,18 +97,18 @@ class Menu extends CI_Controller
 		$data['title']='View menus';
 		$this->load->view('template',$data);
 	}
-	function editmenu()
+	function editMenu()
 	{
 		$access = array("1");
 		$this->checkAccess($access);
 		$data['accesslevel']=$this->User_Model->getaccesslevels();
 		$data['parentmenu']=$this->menu_model->getMenu();
 		$data['before']=$this->menu_model->beforeedit($this->input->get('id'));
-		$data['page']='editmenu';
+		$data['page']='editMenu';
 		$data['title']='Edit menu';
 		$this->load->view('template',$data);
 	}
-	function editmenusubmit()
+	function editMenuSubmit()
 	{
 		$access = array("1");
 		$this->checkAccess($access);
@@ -126,7 +126,7 @@ class Menu extends CI_Controller
 			$data['accesslevel']=$this->User_Model->getaccesslevels();
 			$data['parentmenu']=$this->menu_model->getMenu();
 			$data['before']=$this->menu_model->beforeedit($this->input->post('id'));
-			$data['page']='editmenu';
+			$data['page']='editMenu';
 			$data['title']='Edit menu';
 			$this->load->view('template',$data);
 		}

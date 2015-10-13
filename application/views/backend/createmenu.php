@@ -5,7 +5,7 @@
 				 Menu Details
 			</header>
 			<div class="panel-body">
-			    <form class="form-horizontal tasi-form" method="post" action="<?php echo site_url('menu/createmenusubmit');?>">
+			    <form class="form-horizontal tasi-form" method="post" action="<?php echo site_url('menu/createMenuSubmit');?>">
 				    <div class="form-group">
 						<label class="col-sm-2 control-label">Name</label>
 						<div class="col-sm-4">

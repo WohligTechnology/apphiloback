@@ -5,7 +5,7 @@
 				 Menu Details
 			</header>
 			<div class="panel-body">
-			    <form class="form-horizontal tasi-form" method="post" action="<?php echo site_url('menu/editmenusubmit');?>">
+			    <form class="form-horizontal tasi-form" method="post" action="<?php echo site_url('menu/editMenuSubmit');?>">
 				    <input type="hidden" id="normal-field" class="form-control" name="id" value="<?php echo set_value('id',$before['menu']->id);?>" style="display:none;">
 					<div class="form-group">
 						<label class="col-sm-2 control-label">Name</label>
