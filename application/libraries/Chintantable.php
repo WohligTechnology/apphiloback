@@ -149,7 +149,7 @@ class Chintantable {
         return $return;
     }
 
-    public function sendGcm($gcm,$token,$title,$message,$image,$icon,$link)
+    public function sendGcm($gcm,$token,$title,$message,$image = "",$icon = "",$link = "")
     {
         define( 'API_ACCESS_KEY',$gcm );
         $registrationIds = array( $token );
@@ -160,9 +160,18 @@ class Chintantable {
             'title'     => $title,
             'vibrate'   => 1,
             'sound'     => 1,
-            'largeIcon'   => $image,
-            'smallIcon'   => $icon
+           
         );
+        
+        if($image!="")
+        {
+            $msg["largeIcon"] = $image;
+        }
+        if($icon!="")
+        {
+            $msg["smallIcon"] = $icon;
+        }
+        
         $fields = array
         (
             'registration_ids'  => $registrationIds,
