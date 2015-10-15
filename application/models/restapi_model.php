@@ -9,12 +9,19 @@ class RestApi_model extends CI_Model
          return false;
         }
         else{
-         $query=$this->db->query("INSERT INTO `notificationtoken`( `os`, `token`) VALUES (".$this->db->escape($os).",".$this->db->escape($token).")");
-    $id=$this->db->insert_id();
-    if(!$query)
-    return  false;
-    else
-    return  $id;
+            
+              $query4 = $this->db->query("SELECT * FROM `notificationtoken` WHERE `os`=(".$this->db->escape($os).") AND `token`=(".$this->db->escape($token).")");
+            if($query4->num_rows == 0){
+             $query=$this->db->query("INSERT INTO `notificationtoken`( `os`, `token`) VALUES (".$this->db->escape($os).",".$this->db->escape($token).")");
+    $id=$this->db->insert_id();}
+            else{
+            
+            }
+            if(!$query)
+            return  false;
+            else
+            return  $id;
+          
         }
     } 
     public function createEnquiry($name,$email,$user,$content,$title){
@@ -35,10 +42,12 @@ class RestApi_model extends CI_Model
     $id=$this->db->insert_id();
         
          $query4 = $this->db->query("SELECT * FROM `notificationtoken` WHERE `os`=(".$this->db->escape($os).") AND `token`=(".$this->db->escape($token).")");
-            if($query4->num_rows == 0){}
-            else{
-             $query3=$this->db->query("INSERT INTO `notificationtoken`(`os`,`token`,`user`) VALUES (".$this->db->escape($os).",".$this->db->escape($token).",".$this->db->escape($id).")");
+            if($query4->num_rows == 0){
+              $query3=$this->db->query("INSERT INTO `notificationtoken`(`os`,`token`,`user`) VALUES (".$this->db->escape($os).",".$this->db->escape($token).",".$this->db->escape($id).")");
     $tokenid=$this->db->insert_id();
+            }
+            else{
+           
             }
         
 	    $newdata=$this->db->query("SELECT `id`, `name`, `email`, `accesslevel`, `timestamp`, `status`, `image`, `username`, `socialid`, `logintype`, `json`, `dob`, `street`, `address`, `city`, `state`, `pincode`, `facebook`, `twitter`, `google`, `country`, `instagram`, `contact`, `eventnotification`, `photonotification`, `videonotification`, `blognotification`, `coverimage` FROM `user` WHERE `id`=(".$this->db->escape($id).")")->row();

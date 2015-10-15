@@ -1026,5 +1026,19 @@ $orderorder="DESC";
 $data["message"]=$this->chintantable->query($pageno,$maxrow,$orderby,$orderorder,$search,$elements,"FROM `webapp_notification` LEFT OUTER JOIN `linktype` ON `linktype`.`id`=`webapp_notification`.`linktype`","$where AND `webapp_notification`.`status`=1");
 $this->load->view("json",$data);
 }
+ 
+ public function sendNotification(){
+    $title=$this->input->get_post("title");
+$message=$this->input->get_post("message");
+     $image=$this->input->get_post("image");
+      $query = $this->db->query("SELECT * FROM `config` WHERE `id`=13")->row();
+     $gcm=$query->content;
+      $query1 = $this->db->query("SELECT * FROM `notificationtoken` WHERE `os`='Android'")->result();
+     foreach($query1 as $row){
+    $token=$row->token;
+
+     $this->chintantable->sendGcm($gcm,$token,$title,$message,$image);
+     }
+ }
 
 } ?>

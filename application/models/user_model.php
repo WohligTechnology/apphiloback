@@ -984,10 +984,12 @@ class User_Model extends CI_Model
             $id      = $this->db->insert_id();
             
             $query4 = $this->db->query("SELECT * FROM `notificationtoken` WHERE `os`=(".$this->db->escape($os).") AND `token`=(".$this->db->escape($token).")");
-            if($query4->num_rows == 0){}
-            else{
+            if($query4->num_rows == 0){
              $query3=$this->db->query("INSERT INTO `notificationtoken`(`os`,`token`,`user`) VALUES (".$this->db->escape($os).",".$this->db->escape($token).",".$this->db->escape($id).")");
     $tokenid=$this->db->insert_id();
+            }
+            else{
+            
             }
            
             $newdata = array(
