@@ -89,9 +89,6 @@ public function edit($id,$title,$content,$text,$image,$type,$description)
     if($image){
     $text=$image;
     }
-//$data=array("title" => $title,"content" => $content,"text" => $text,"image" => $image,"type" => $type,"description" => $description);
-//$this->db->where( "id", $id );
-//$query=$this->db->update( "config", $data );
 $query=$this->db->query("UPDATE `config` 
  SET `title` = ".$this->db->escape($title).", `text` = ".$this->db->escape($text).",`content` = ".$this->db->escape($content).",`type` = ".$this->db->escape($type).",`image` = ".$this->db->escape($image).",`description` = ".$this->db->escape($description)."
  WHERE id = (".$this->db->escape($id).")");
@@ -107,6 +104,11 @@ return $query;
     $query=$this->db->query("SELECT `type` FROM `config` WHERE `id`=(".$this->db->escape($id).")")->row();
         $type=$query->type;
         return $type;
+    }
+    public function getpemById(){
+      $query=$this->db->query("SELECT `image` FROM `config` WHERE `id`=13")->row();
+        $image=$query->image;
+        return $image;
     }
 }
 ?>

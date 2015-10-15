@@ -3946,6 +3946,7 @@ public function editConfigSubmit()
 
 
 	}
+    $preimage=$this->Config_Model->getpemById();
     $config['upload_path'] = './config/';
     $config['allowed_types'] = '*';
     $this->load->library('upload', $config);
@@ -3956,11 +3957,15 @@ public function editConfigSubmit()
         $uploaddata = $this->upload->data();
         $image=$uploaddata['file_name'];
     }
-else {
-$error = array('error' => $this->upload->display_errors());
-print_r( $error);
-return 0;
-}
+    else {
+        $image=$preimage;
+    if($this->Config_Model->edit($id,$title,$content,$text,$image,$type,$description)==0)
+    $data["alerterror"]="New config Could Not Be Updated.";
+    else
+    $data["alertsuccess"]="config Updated Successfully.";
+    $data["redirect"]="site/viewConfig";
+    $this->load->view("redirect",$data);
+    }
     if($this->Config_Model->edit($id,$title,$content,$text,$image,$type,$description)==0)
     $data["alerterror"]="New config Could Not Be Updated.";
     else
