@@ -256,7 +256,25 @@ class RestApi_model extends CI_Model
 			return -1;
         }
     }
-    
+    public function sendNotificationAndroid($title,$message,$image,$icon){
+     $query = $this->db->query("SELECT * FROM `config` WHERE `id`=13")->row();
+     $gcm=$query->content;
+     $query1 = $this->db->query("SELECT * FROM `notificationtoken` WHERE `os`='Android'")->result();
+     foreach($query1 as $row){
+     $token=$row->token;
+     $this->chintantable->sendGcm($gcm,$token,$title,$message,$image,$icon);
+     }
+    } 
+    public function sendNotificationIos($title){
+     $query = $this->db->query("SELECT * FROM `config` WHERE `id`=13")->row();
+     $passphase=$query->description;
+     $pem=$query->image;
+     $query1 = $this->db->query("SELECT * FROM `notificationtoken` WHERE `os`='iOS'")->result();
+     foreach($query1 as $row){
+     $token=$row->token;
+     $this->chintantable->sendApns($pem,$passphase,$token,$message);
+     }
+    }
     
 }
 ?>
