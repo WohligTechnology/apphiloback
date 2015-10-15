@@ -63,7 +63,7 @@ class Chintantable {
             }
             if ($search != "") {
                 $searchquery.= " " . $element->field . " LIKE '%" . $this->CI->db->escape_like_str($search) . "%' OR ";
-            }     
+            }
         }
         $searchquery.= " 0 ";
         $selectquery.= " 1 ";
@@ -160,9 +160,9 @@ class Chintantable {
             'title'     => $title,
             'vibrate'   => 1,
             'sound'     => 1,
-           
+
         );
-        
+
         if($image!="")
         {
             $msg["image"] = $image;
@@ -173,20 +173,21 @@ $msg["style"] = "picture";
         {
             $msg["icon"] = $icon;
         }
-        
+
         $fields = array
         (
             'registration_ids'  => $registrationIds,
             'data'          => $msg
         );
-         
+
         $headers = array
         (
             'Authorization: key=' . API_ACCESS_KEY,
             'Content-Type: application/json'
         );
-         
+
         $ch = curl_init();
+
         curl_setopt( $ch,CURLOPT_URL, 'https://android.googleapis.com/gcm/send' );
         curl_setopt( $ch,CURLOPT_POST, true );
         curl_setopt( $ch,CURLOPT_HTTPHEADER, $headers );
@@ -195,11 +196,11 @@ $msg["style"] = "picture";
         curl_setopt( $ch,CURLOPT_POSTFIELDS, json_encode( $fields ) );
         $result = curl_exec($ch );
         curl_close( $ch );
-        echo $result;
     }
 
     public function sendApns($apnsPem,$apnsPassphase,$token,$message,$link)
     {
+
         // Put your device token here (without spaces):
         $deviceToken = $token;
 
@@ -223,7 +224,7 @@ $msg["style"] = "picture";
         if (!$fp)
             exit("Failed to connect: $err $errstr" . PHP_EOL);
 
-        echo 'Connected to APNS' . PHP_EOL;
+        //echo 'Connected to APNS' . PHP_EOL;
 
         // Create the payload body
         $body['aps'] = array(
@@ -240,15 +241,12 @@ $msg["style"] = "picture";
         // Send it to the server
         $result = fwrite($fp, $msg, strlen($msg));
 
-        if (!$result)
-            echo 'Message not delivered' . PHP_EOL;
-        else
-            echo 'Message successfully delivered' . PHP_EOL;
+
 
         // Close the connection to the server
         fclose($fp);
-        
-        
+
+
     }
 
 
