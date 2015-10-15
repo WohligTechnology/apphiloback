@@ -1,5 +1,5 @@
 <?php
-$config['per_page'] = 20; 
+$config['per_page'] = 20;
 $config['full_tag_open'] = "<ul class='pagination'>";
 $config['full_tag_close'] ="</ul>";
 $config['num_tag_open'] = '<li>';

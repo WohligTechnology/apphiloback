@@ -1,4 +1,7 @@
-<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php
+ if (!defined('BASEPATH')) {
+     exit('No direct script access allowed');
+ }
 /*
 | -------------------------------------------------------------------
 | DATABASE CONNECTIVITY SETTINGS
@@ -17,7 +20,7 @@
 |	['password'] The password used to connect to the database
 |	['database'] The name of the database you want to connect to
 |	['dbdriver'] The database type. ie: mysql.  Currently supported:
-				 mysql, mysqli, postgre, odbc, mssql, sqlite, oci8
+                 mysql, mysqli, postgre, odbc, mssql, sqlite, oci8
 |	['dbprefix'] You can add an optional prefix, which will be added
 |				 to the table name when using the  Active Record class
 |	['pconnect'] TRUE/FALSE - Whether to use a persistent connection
@@ -47,46 +50,42 @@
 //
 
 $active_group = 'default';
-$active_record = TRUE;
+$active_record = true;
 
+$myserver = $_SERVER['SERVER_NAME'];
 
-$myserver=$_SERVER['SERVER_NAME'];
-
-if($myserver!="localhost" && $myserver!="192.168.2.24")
-{
+if ($myserver != 'localhost' && $myserver != '192.168.2.24') {
     $db['default']['hostname'] = 'localhost';
     $db['default']['username'] = 'wohligco_webapp';
     $db['default']['password'] = 'chintan123';
     $db['default']['database'] = 'wohligco_webapp';
     $db['default']['dbdriver'] = 'mysql';
     $db['default']['dbprefix'] = '';
-    $db['default']['pconnect'] = TRUE;
-    $db['default']['db_debug'] = TRUE;
-    $db['default']['cache_on'] = FALSE;
+    $db['default']['pconnect'] = true;
+    $db['default']['db_debug'] = true;
+    $db['default']['cache_on'] = false;
     $db['default']['cachedir'] = '';
     $db['default']['char_set'] = 'utf8';
     $db['default']['dbcollat'] = 'utf8_general_ci';
     $db['default']['swap_pre'] = '';
-    $db['default']['autoinit'] = TRUE;
-    $db['default']['stricton'] = FALSE;
-}
-else
-{
+    $db['default']['autoinit'] = true;
+    $db['default']['stricton'] = false;
+} else {
     $db['default']['hostname'] = 'localhost';
     $db['default']['username'] = 'root';
     $db['default']['password'] = '';
     $db['default']['database'] = 'webapp';
     $db['default']['dbdriver'] = 'mysql';
     $db['default']['dbprefix'] = '';
-    $db['default']['pconnect'] = TRUE;
-    $db['default']['db_debug'] = TRUE;
-    $db['default']['cache_on'] = FALSE;
+    $db['default']['pconnect'] = true;
+    $db['default']['db_debug'] = true;
+    $db['default']['cache_on'] = false;
     $db['default']['cachedir'] = '';
     $db['default']['char_set'] = 'utf8';
     $db['default']['dbcollat'] = 'utf8_general_ci';
     $db['default']['swap_pre'] = '';
-    $db['default']['autoinit'] = TRUE;
-    $db['default']['stricton'] = FALSE;
+    $db['default']['autoinit'] = true;
+    $db['default']['stricton'] = false;
 }
 
 //$db['default']['hostname'] = getconfig("hostname");
@@ -104,7 +103,6 @@ else
 //$db['default']['swap_pre'] = '';
 //$db['default']['autoinit'] = TRUE;
 //$db['default']['stricton'] = FALSE;
-
 
 
 /* End of file database.php */

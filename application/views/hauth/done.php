@@ -1,3 +1,2 @@
 <?php
-	var_dump($user_profile);
-?>
+    var_dump($user_profile);
