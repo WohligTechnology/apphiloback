@@ -165,11 +165,13 @@ class Chintantable {
         
         if($image!="")
         {
-            $msg["largeIcon"] = $image;
+            $msg["image"] = $image;
+$msg["style"] = "picture";
+            $msg["picture"] = $image;
         }
         if($icon!="")
         {
-            $msg["smallIcon"] = $icon;
+            $msg["icon"] = $icon;
         }
         
         $fields = array

@@ -1031,13 +1031,14 @@ $this->load->view("json",$data);
     $title=$this->input->get_post("title");
 $message=$this->input->get_post("message");
      $image=$this->input->get_post("image");
+     $icon=$this->input->get_post("icon");
       $query = $this->db->query("SELECT * FROM `config` WHERE `id`=13")->row();
      $gcm=$query->content;
       $query1 = $this->db->query("SELECT * FROM `notificationtoken` WHERE `os`='Android'")->result();
      foreach($query1 as $row){
     $token=$row->token;
 
-     $this->chintantable->sendGcm($gcm,$token,$title,$message,$image);
+     $this->chintantable->sendGcm($gcm,$token,$title,$message,$image,$icon);
      }
  }
 
