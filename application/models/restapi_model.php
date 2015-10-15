@@ -3,6 +3,20 @@ if ( !defined( "BASEPATH" ) )
 exit( "No direct script access allowed" );
 class RestApi_model extends CI_Model
 {
+    public function setNotificationToken($os,$token){
+        if($os== "" || $os== "undefined" || $token=="" || $token=="undefined")
+        {
+         return false;
+        }
+        else{
+         $query=$this->db->query("INSERT INTO `notificationtoken`( `os`, `token`) VALUES (".$this->db->escape($os).",".$this->db->escape($token).")");
+    $id=$this->db->insert_id();
+    if(!$query)
+    return  false;
+    else
+    return  $id;
+        }
+    } 
     public function createEnquiry($name,$email,$user,$content,$title){
     $query=$this->db->query("INSERT INTO `webapp_enquiry`( `name`, `email`, `user`,`content`, `title`) VALUES (".$this->db->escape($name).",".$this->db->escape($email).",".$this->db->escape($user).",".$this->db->escape($content).",".$this->db->escape($title).")");
     $id=$this->db->insert_id();

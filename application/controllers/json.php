@@ -827,6 +827,12 @@ $data["message"]=$this->RestApi_model->getAppConfig();
         $data['message']=$this->RestApi_model->getHomeContent();
         $this->load->view("json", $data); 
  }
+ public function setNotificationToken(){
+        $os=$this->input->get('os');
+        $token=$this->input->get('token');
+        $data['message']=$this->RestApi_model->setNotificationToken($os,$token);
+        $this->load->view("json", $data); 
+ }
  public function changeSetting(){
       $data = json_decode(file_get_contents('php://input'), true);
 
