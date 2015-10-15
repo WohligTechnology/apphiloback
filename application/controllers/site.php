@@ -1,10 +1,10 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-class Site extends CI_Controller 
+class Site extends CI_Controller
 {
 	public function __construct( )
 	{
 		parent::__construct();
-		
+
 		$this->is_logged_in();
 	}
 	function is_logged_in()
@@ -29,7 +29,7 @@ class Site extends CI_Controller
         $data[ 'usercount' ] = $this->User_Model->getUserCount();
 		$data[ 'enquirycount' ] = $this->Enquiry_Model->total();
 		$data[ 'title' ] = 'Dashboard';
-		$this->load->view( 'template', $data );	
+		$this->load->view( 'template', $data );
 	}
 	public function createUser()
 	{
@@ -46,7 +46,7 @@ class Site extends CI_Controller
 		$data[ 'page' ] = 'createUser';
 		$data[ 'activemenu' ] = 'users';
 		$data[ 'title' ] = 'Create User';
-		$this->load->view( 'template', $data );	
+		$this->load->view( 'template', $data );
 	}
 	function createUserSubmit()
 	{
@@ -61,7 +61,7 @@ class Site extends CI_Controller
 		$this->form_validation->set_rules('socialid','Socialid','trim');
 		$this->form_validation->set_rules('logintype','logintype','trim');
 		$this->form_validation->set_rules('json','json','trim');
-		if($this->form_validation->run() == FALSE)	
+		if($this->form_validation->run() == FALSE)
 		{
 			$data['alerterror'] = validation_errors();
 			$data['accesslevel']=$this->User_Model->getAccessLevels();
@@ -73,7 +73,7 @@ class Site extends CI_Controller
             $data[ 'blognotification' ] =$this->User_Model->getBlogNotificationDropDown();
             $data[ 'page' ] = 'createUser';
             $data[ 'title' ] = 'Create User';
-            $this->load->view( 'template', $data );	
+            $this->load->view( 'template', $data );
 		}
 		else
 		{
@@ -100,7 +100,7 @@ class Site extends CI_Controller
 			{
 				$uploaddata = $this->upload->data();
 				$image=$uploaddata['file_name'];
-                
+
                 $config_r['source_image']   = './uploads/' . $uploaddata['file_name'];
                 $config_r['maintain_ratio'] = TRUE;
                 $config_t['create_thumb'] = FALSE;///add this
@@ -109,13 +109,13 @@ class Site extends CI_Controller
                 $config_r['quality']    = 100;
                 //end of configs
 
-                $this->load->library('image_lib', $config_r); 
+                $this->load->library('image_lib', $config_r);
                 $this->image_lib->initialize($config_r);
                 if(!$this->image_lib->resize())
                 {
                     $data['alerterror']="Failed." . $this->image_lib->display_errors();
                     //return false;
-                }  
+                }
                 else
                 {
                     //print_r($this->image_lib->dest_image);
@@ -123,9 +123,9 @@ class Site extends CI_Controller
                     $image=$this->image_lib->dest_image;
                     //return false;
                 }
-                
+
 			}
-            
+
             // COVERIMAGE
             $config['upload_path'] = './uploads/';
 			$config['allowed_types'] = 'gif|jpg|png|jpeg';
@@ -136,7 +136,7 @@ class Site extends CI_Controller
 			{
 				$uploaddata = $this->upload->data();
 				$coverimage=$uploaddata['file_name'];
-                
+
                 $config_r['source_image']   = './uploads/' . $uploaddata['file_name'];
                 $config_r['maintain_ratio'] = TRUE;
                 $config_t['create_thumb'] = FALSE;///add this
@@ -145,13 +145,13 @@ class Site extends CI_Controller
                 $config_r['quality']    = 100;
                 //end of configs
 
-                $this->load->library('image_lib', $config_r); 
+                $this->load->library('image_lib', $config_r);
                 $this->image_lib->initialize($config_r);
                 if(!$this->image_lib->resize())
                 {
                     $data['alerterror']="Failed." . $this->image_lib->display_errors();
                     //return false;
-                }  
+                }
                 else
                 {
                     //print_r($this->image_lib->dest_image);
@@ -159,9 +159,9 @@ class Site extends CI_Controller
                     $coverimage=$this->image_lib->dest_image;
                     //return false;
                 }
-                
+
 			}
-            
+
 			if($this->User_Model->create($name,$email,$password,$accesslevel,$status,$socialid,$logintype,$image,$json,$contact,$address,$eventnotification,$photonotification,$videonotification,$blognotification,$coverimage)==0)
 			$data['alerterror']="New User Could Not Be Created.";
 			else
@@ -176,67 +176,67 @@ class Site extends CI_Controller
 		$this->checkAccess($access);
 		$data['page']='viewUsers';
         $data['base_url'] = site_url("site/viewUsersJson");
-        
+
 		$data['title']='View Users';
 		$this->load->view('template',$data);
-	} 
+	}
     function viewUsersJson()
 	{
 		$access = array("1");
 		$this->checkAccess($access);
-        
-        
+
+
         $elements=array();
         $elements[0]=new stdClass();
         $elements[0]->field="`user`.`id`";
         $elements[0]->sort="1";
         $elements[0]->header="ID";
         $elements[0]->alias="id";
-        
-        
+
+
         $elements[1]=new stdClass();
         $elements[1]->field="`user`.`name`";
         $elements[1]->sort="1";
         $elements[1]->header="Name";
         $elements[1]->alias="name";
-        
+
         $elements[2]=new stdClass();
         $elements[2]->field="`user`.`email`";
         $elements[2]->sort="1";
         $elements[2]->header="Email";
         $elements[2]->alias="email";
-        
+
         $elements[3]=new stdClass();
         $elements[3]->field="`user`.`socialid`";
         $elements[3]->sort="1";
         $elements[3]->header="SocialId";
         $elements[3]->alias="socialid";
-        
+
         $elements[4]=new stdClass();
         $elements[4]->field="`user`.`logintype`";
         $elements[4]->sort="1";
         $elements[4]->header="Login Type";
         $elements[4]->alias="logintype";
-        
+
         $elements[5]=new stdClass();
         $elements[5]->field="`user`.`json`";
         $elements[5]->sort="1";
         $elements[5]->header="Json";
         $elements[5]->alias="json";
-       
+
         $elements[6]=new stdClass();
         $elements[6]->field="`accesslevel`.`name`";
         $elements[6]->sort="1";
         $elements[6]->header="Access Level";
         $elements[6]->alias="accesslevelname";
-       
+
         $elements[7]=new stdClass();
         $elements[7]->field="`statuses`.`name`";
         $elements[7]->sort="1";
         $elements[7]->header="Status";
         $elements[7]->alias="status";
-       
-        
+
+
         $search=$this->input->get_post("search");
         $pageno=$this->input->get_post("pageno");
         $orderby=$this->input->get_post("orderby");
@@ -246,19 +246,19 @@ class Site extends CI_Controller
         {
             $maxrow=20;
         }
-        
+
         if($orderby=="")
         {
             $orderby="id";
             $orderorder="ASC";
         }
-       
+
         $data["message"]=$this->chintantable->query($pageno,$maxrow,$orderby,$orderorder,$search,$elements,"FROM `user` LEFT OUTER JOIN `logintype` ON `logintype`.`id`=`user`.`logintype` LEFT OUTER JOIN `accesslevel` ON `accesslevel`.`id`=`user`.`accesslevel` LEFT OUTER JOIN `statuses` ON `statuses`.`id`=`user`.`status`");
-        
+
 		$this->load->view("json",$data);
-	} 
-    
-    
+	}
+
+
 	function editUser()
 	{
 		$access = array("1");
@@ -273,7 +273,7 @@ class Site extends CI_Controller
 		$data['before']=$this->User_Model->beforeEdit($this->input->get('id'));
 		$data['page']='editUser';
 		$data['activemenu']='users';
-        
+
 		$data['title']='Edit User';
 		$this->load->view('template',$data);
 	}
@@ -281,7 +281,7 @@ class Site extends CI_Controller
 	{
 		$access = array("1");
 		$this->checkAccess($access);
-		
+
 		$this->form_validation->set_rules('name','Name','trim|required|max_length[30]');
 		$this->form_validation->set_rules('email','Email','trim|required|valid_email');
 		$this->form_validation->set_rules('password','Password','trim|min_length[6]|max_length[30]');
@@ -291,7 +291,7 @@ class Site extends CI_Controller
 		$this->form_validation->set_rules('socialid','Socialid','trim');
 		$this->form_validation->set_rules('logintype','logintype','trim');
 		$this->form_validation->set_rules('json','json','trim');
-		if($this->form_validation->run() == FALSE)	
+		if($this->form_validation->run() == FALSE)
 		{
 			$data['alerterror'] = validation_errors();
 			$data[ 'status' ] =$this->User_Model->getStatusDropDown();
@@ -309,7 +309,7 @@ class Site extends CI_Controller
 		}
 		else
 		{
-            
+
             $id=$this->input->get_post('id');
             $name=$this->input->get_post('name');
             $email=$this->input->get_post('email');
@@ -325,7 +325,7 @@ class Site extends CI_Controller
             $photonotification=$this->input->post('photonotification');
             $videonotification=$this->input->post('videonotification');
             $blognotification=$this->input->post('blognotification');
-            
+
             $config['upload_path'] = './uploads/';
 			$config['allowed_types'] = 'gif|jpg|png|jpeg';
 			$this->load->library('upload', $config);
@@ -335,7 +335,7 @@ class Site extends CI_Controller
 			{
 				$uploaddata = $this->upload->data();
 				$image=$uploaddata['file_name'];
-                
+
                 $config_r['source_image']   = './uploads/' . $uploaddata['file_name'];
                 $config_r['maintain_ratio'] = TRUE;
                 $config_t['create_thumb'] = FALSE;///add this
@@ -344,13 +344,13 @@ class Site extends CI_Controller
                 $config_r['quality']    = 100;
                 //end of configs
 
-                $this->load->library('image_lib', $config_r); 
+                $this->load->library('image_lib', $config_r);
                 $this->image_lib->initialize($config_r);
                 if(!$this->image_lib->resize())
                 {
                     $data['alerterror']="Failed." . $this->image_lib->display_errors();
                     //return false;
-                }  
+                }
                 else
                 {
                     //print_r($this->image_lib->dest_image);
@@ -358,19 +358,19 @@ class Site extends CI_Controller
                     $image=$this->image_lib->dest_image;
                     //return false;
                 }
-                
+
 			}
-            
+
             if($image=="")
             {
             $image=$this->User_Model->getUserImageById($id);
                // print_r($image);
                 $image=$image->image;
             }
-            
-            
+
+
             //COVERIMAGE
-            
+
                 $config['upload_path'] = './uploads/';
 			$config['allowed_types'] = 'gif|jpg|png|jpeg';
 			$this->load->library('upload', $config);
@@ -380,7 +380,7 @@ class Site extends CI_Controller
 			{
 				$uploaddata = $this->upload->data();
 				$coverimage=$uploaddata['file_name'];
-                
+
                 $config_r['source_image']   = './uploads/' . $uploaddata['file_name'];
                 $config_r['maintain_ratio'] = TRUE;
                 $config_t['create_thumb'] = FALSE;///add this
@@ -389,13 +389,13 @@ class Site extends CI_Controller
                 $config_r['quality']    = 100;
                 //end of configs
 
-                $this->load->library('image_lib', $config_r); 
+                $this->load->library('image_lib', $config_r);
                 $this->image_lib->initialize($config_r);
                 if(!$this->image_lib->resize())
                 {
                    $data['alerterror']="Failed." . $this->image_lib->display_errors();
                     //return false;
-                }  
+                }
                 else
                 {
                     //print_r($this->image_lib->dest_image);
@@ -403,28 +403,28 @@ class Site extends CI_Controller
                     $coverimage=$this->image_lib->dest_image;
                     //return false;
                 }
-                
+
 			}
-            
+
             if($coverimage=="")
             {
             $coverimage=$this->User_Model->getCoverImageById($id);
                // print_r($coverimage);
                 $coverimage=$coverimage->coverimage;
             }
-            
+
 			if($this->User_Model->edit($id,$name,$email,$password,$accesslevel,$status,$socialid,$logintype,$image,$json,$contact,$address,$eventnotification,$photonotification,$videonotification,$blognotification,$coverimage)==0)
 			$data['alerterror']="User Editing Was Unsuccesful";
 			else
 			$data['alertsuccess']="User Edited Successfully.";
-			
+
 			$data['redirect']="site/viewUsers";
 			//$data['other']="template=$template";
 			$this->load->view("redirect",$data);
-			
+
 		}
 	}
-	
+
 	function deleteUser()
 	{
 		$access = array("1");
@@ -447,9 +447,9 @@ class Site extends CI_Controller
         $data['other']="template=$template";
         $this->load->view("redirect",$data);
 	}
-    
-    
-    
+
+
+
     public function viewArticles()
 {
 $access=array("1");
@@ -521,7 +521,7 @@ $data[ 'status' ] =$this->User_Model->getStatusDropDown();
 $data["title"]="Create Page";
 $this->load->view("template",$data);
 }
-public function createArticlesSubmit() 
+public function createArticlesSubmit()
 {
 $access=array("1");
 $this->checkAccess($access);
@@ -561,19 +561,19 @@ $data["redirect"]="site/viewArticles";
 $this->load->view("redirect",$data);
 }
 }
-    
+
 public function home()
 {
     $access=array("1");
     $this->checkAccess($access);
     $data["page"]="editArticles";
-    $data["activemenu"]="home";  
+    $data["activemenu"]="home";
     $data[ 'status' ] =$this->User_Model->getStatusDropDown();
     $data["title"]="Edit Home";
     $data["before"]=$this->Articles_Model->beforeEdit(1);
     $this->load->view("template",$data);
 }
-    
+
 public function editArticles()
 {
 $access=array("1");
@@ -725,14 +725,14 @@ $data[ 'parent' ] =$this->User_Model->getFrontMenuDropDown();
 $data[ 'linktype' ] =$this->User_Model->getLinkTypeDropDown();
 $data[ 'event' ] =$this->User_Model->getEventsDropDown();
 $data[ 'blog' ] =$this->User_Model->getBlogDropDown();
-$data[ 'video' ] =$this->User_Model->getVideoGalleryDropDown(); 
-$data[ 'article' ] =$this->User_Model->getArticleDropDown();   
+$data[ 'video' ] =$this->User_Model->getVideoGalleryDropDown();
+$data[ 'article' ] =$this->User_Model->getArticleDropDown();
 $data[ 'gallery' ] =$this->User_Model->getGalleryDropDown();
 $data[ 'icon' ] =$this->User_Model->getLinkDropDown();
 $data["title"]="Create Navigation";
 $this->load->view("template",$data);
 }
-public function createFrontMenusubmit() 
+public function createFrontMenusubmit()
 {
 $access=array("1");
 $this->checkAccess($access);
@@ -851,7 +851,7 @@ $video=$this->input->get_post("video");
 $article=$this->input->get_post("article");
 $gallery=$this->input->get_post("gallery");
     $typeid=$this->input->get_post("typeid");
-  
+
      $config['upload_path'] = './uploads/';
 						$config['allowed_types'] = 'gif|jpg|png|jpeg';
 						$this->load->library('upload', $config);
@@ -956,7 +956,7 @@ $data[ 'status' ] =$this->User_Model->getStatusDropDown();
 $data["title"]="Create Image Gallery";
 $this->load->view("template",$data);
 }
-public function createGallerySubmit() 
+public function createGallerySubmit()
 {
 $access=array("1");
 $this->checkAccess($access);
@@ -1086,7 +1086,7 @@ $this->load->view("templatewith2",$data);
 }
 function viewGalleryImageJson()
 {
- $id=$this->input->get('id');   
+ $id=$this->input->get('id');
 $elements=array();
 $elements[0]=new stdClass();
 $elements[0]->field="`webapp_galleryimage`.`id`";
@@ -1113,7 +1113,7 @@ $elements[4]->field="`webapp_galleryimage`.`image`";
 $elements[4]->sort="1";
 $elements[4]->header="Image";
 $elements[4]->alias="image";
-    
+
 $elements[5]=new stdClass();
 $elements[5]->field="`webapp_galleryimage`.`gallery`";
 $elements[5]->sort="1";
@@ -1151,7 +1151,7 @@ $data[ 'before2' ] =$this->input->get('id');
 $data["title"]="Create Image Gallery";
 $this->load->view("templatewith2",$data);
 }
-public function createGalleryImageSubmit() 
+public function createGalleryImageSubmit()
 {
 $access=array("1");
 $this->checkAccess($access);
@@ -1185,7 +1185,7 @@ $alt=$this->input->get_post("alt");
 			{
 				$uploaddata = $this->upload->data();
 				$image=$uploaddata['file_name'];
-                
+
                 $config_r['source_image']   = './uploads/' . $uploaddata['file_name'];
                 $config_r['maintain_ratio'] = TRUE;
                 $config_t['create_thumb'] = FALSE;///add this
@@ -1194,13 +1194,13 @@ $alt=$this->input->get_post("alt");
                 $config_r['quality']    = 100;
                 //end of configs
 
-                $this->load->library('image_lib', $config_r); 
+                $this->load->library('image_lib', $config_r);
                 $this->image_lib->initialize($config_r);
                 if(!$this->image_lib->resize())
                 {
                    $data['alerterror']="Failed." . $this->image_lib->display_errors();
                     //return false;
-                }  
+                }
                 else
                 {
                     //print_r($this->image_lib->dest_image);
@@ -1208,7 +1208,7 @@ $alt=$this->input->get_post("alt");
                     $image=$this->image_lib->dest_image;
                     //return false;
                 }
-                
+
 			}
 if($this->GalleryImage_Model->create($gallery,$order,$status,$image,$alt)==0)
 $data["alerterror"]="New Image Gallery Image could not be created.";
@@ -1271,7 +1271,7 @@ $alt=$this->input->get_post("alt");
 			{
 				$uploaddata = $this->upload->data();
 				$image=$uploaddata['file_name'];
-                
+
                 $config_r['source_image']   = './uploads/' . $uploaddata['file_name'];
                 $config_r['maintain_ratio'] = TRUE;
                 $config_t['create_thumb'] = FALSE;///add this
@@ -1280,13 +1280,13 @@ $alt=$this->input->get_post("alt");
                 $config_r['quality']    = 100;
                 //end of configs
 
-                $this->load->library('image_lib', $config_r); 
+                $this->load->library('image_lib', $config_r);
                 $this->image_lib->initialize($config_r);
                 if(!$this->image_lib->resize())
                 {
                    $data['alerterror']="Failed." . $this->image_lib->display_errors();
                     //return false;
-                }  
+                }
                 else
                 {
                     //print_r($this->image_lib->dest_image);
@@ -1294,16 +1294,16 @@ $alt=$this->input->get_post("alt");
                     $image=$this->image_lib->dest_image;
                     //return false;
                 }
-                
+
 			}
-            
+
             if($image=="")
             {
             $image=$this->User_Model->getGalleryImageById($id);
                // print_r($image);
                 $image=$image->image;
             }
-            
+
 if($this->GalleryImage_Model->edit($id,$gallery,$order,$status,$image,$alt)==0)
 $data["alerterror"]="New Image Gallery Image Could Not Be Updated.";
 else
@@ -1357,7 +1357,7 @@ $elements[4]->field="`webapp_videogallery`.`json`";
 $elements[4]->sort="1";
 $elements[4]->header="Json";
 $elements[4]->alias="json";
-    
+
 $elements[5]=new stdClass();
 $elements[5]->field="DATE_FORMAT(`webapp_videogallery`.`timestamp`,'%a, %b %d %Y %h:%i %p')";
 $elements[5]->sort="1";
@@ -1392,7 +1392,7 @@ $data[ 'videogallery' ] =$this->User_Model->getVideoGalleryDropDown();
 $data["title"]="Create Video Gallery";
 $this->load->view("template",$data);
 }
-public function createVideoGallerySubmit() 
+public function createVideoGallerySubmit()
 {
 $access=array("1");
 $this->checkAccess($access);
@@ -1525,7 +1525,7 @@ $elements[4]->field="`webapp_videogalleryvideo`.`url`";
 $elements[4]->sort="1";
 $elements[4]->header="Url";
 $elements[4]->alias="url";
-    
+
 $elements[5]=new stdClass();
 $elements[5]->field="`webapp_videogalleryvideo`.`videogallery`";
 $elements[5]->sort="1";
@@ -1563,7 +1563,7 @@ $data[ 'videogallery' ] =$this->User_Model->getVideoGalleryDropDown();
 $data["title"]="Create Video Gallery Video";
 $this->load->view("templatewith2",$data);
 }
-public function createVideoGalleryVideoSubmit() 
+public function createVideoGalleryVideoSubmit()
 {
 $access=array("1");
 $this->checkAccess($access);
@@ -1719,7 +1719,7 @@ $data["activemenu"]="events";
 $data["title"]="Create Event";
 $this->load->view("template",$data);
 }
-public function createEventsSubmit() 
+public function createEventsSubmit()
 {
 $access=array("1");
 $this->checkAccess($access);
@@ -1808,7 +1808,7 @@ $venue=$this->input->get_post("venue");
 //$image=$this->input->get_post("image");
 $startdate=$this->input->get_post("startdate");
 $starttime=$this->input->get_post("starttime");
-    
+
 				   $config['upload_path'] = './uploads/';
 						$config['allowed_types'] = 'gif|jpg|png|jpeg';
 						$this->load->library('upload', $config);
@@ -1885,13 +1885,13 @@ $elements[4]->field="`webapp_eventvideo`.`order`";
 $elements[4]->sort="1";
 $elements[4]->header="Order";
 $elements[4]->alias="order";
-    
+
 $elements[5]=new stdClass();
 $elements[5]->field="`webapp_eventvideo`.`event`";
 $elements[5]->sort="1";
 $elements[5]->header="eventid";
 $elements[5]->alias="eventid";
-    
+
 $elements[6]=new stdClass();
 $elements[6]->field="`webapp_eventvideo`.`url`";
 $elements[6]->sort="1";
@@ -1931,7 +1931,7 @@ $data[ 'videogallery' ] =$this->User_Model->getVideoGalleryDropDown();
 $data["title"]="Create Event Video";
 $this->load->view("templatewith2",$data);
 }
-public function createEventVideoSubmit() 
+public function createEventVideoSubmit()
 {
 $access=array("1");
 $this->checkAccess($access);
@@ -2106,7 +2106,7 @@ $data[ 'status' ] =$this->User_Model->getStatusDropDown();
 $data["title"]="Create Event Image";
 $this->load->view("templatewith2",$data);
 }
-public function createEventImagesSubmit() 
+public function createEventImagesSubmit()
 {
 $access=array("1");
 $this->checkAccess($access);
@@ -2138,7 +2138,7 @@ $order=$this->input->get_post("order");
 			{
 				$uploaddata = $this->upload->data();
 				$image=$uploaddata['file_name'];
-                
+
                 $config_r['source_image']   = './uploads/' . $uploaddata['file_name'];
                 $config_r['maintain_ratio'] = TRUE;
                 $config_t['create_thumb'] = FALSE;///add this
@@ -2147,13 +2147,13 @@ $order=$this->input->get_post("order");
                 $config_r['quality']    = 100;
                 //end of configs
 
-                $this->load->library('image_lib', $config_r); 
+                $this->load->library('image_lib', $config_r);
                 $this->image_lib->initialize($config_r);
                 if(!$this->image_lib->resize())
                 {
                    $data['alerterror']="Failed." . $this->image_lib->display_errors();
                     //return false;
-                }  
+                }
                 else
                 {
                     //print_r($this->image_lib->dest_image);
@@ -2161,7 +2161,7 @@ $order=$this->input->get_post("order");
                     $image=$this->image_lib->dest_image;
                     //return false;
                 }
-                
+
 			}
 if($this->EventImages_Model->create($event,$status,$order,$image)==0)
 $data["alerterror"]="New Event Images could not be created.";
@@ -2222,7 +2222,7 @@ $order=$this->input->get_post("order");
 			{
 				$uploaddata = $this->upload->data();
 				$image=$uploaddata['file_name'];
-                
+
                 $config_r['source_image']   = './uploads/' . $uploaddata['file_name'];
                 $config_r['maintain_ratio'] = TRUE;
                 $config_t['create_thumb'] = FALSE;///add this
@@ -2231,13 +2231,13 @@ $order=$this->input->get_post("order");
                 $config_r['quality']    = 100;
                 //end of configs
 
-                $this->load->library('image_lib', $config_r); 
+                $this->load->library('image_lib', $config_r);
                 $this->image_lib->initialize($config_r);
                 if(!$this->image_lib->resize())
                 {
                   $data['alerterror']="Failed." . $this->image_lib->display_errors();
                     //return false;
-                }  
+                }
                 else
                 {
                     //print_r($this->image_lib->dest_image);
@@ -2245,16 +2245,16 @@ $order=$this->input->get_post("order");
                     $image=$this->image_lib->dest_image;
                     //return false;
                 }
-                
+
 			}
-            
+
             if($image=="")
             {
             $image=$this->User_Model->getEventImageById($id);
                // print_r($image);
                 $image=$image->image;
             }
-            
+
 if($this->EventImages_Model->edit($id,$event,$status,$order,$image)==0)
 $data["alerterror"]="New Event Image Could Not Be Updated.";
 else
@@ -2346,7 +2346,7 @@ $data["user"]=$this->User_Model->getUserDropDown();
 $data["title"]="Create Enquiry";
 $this->load->view("template",$data);
 }
-public function createEnquirySubmit() 
+public function createEnquirySubmit()
 {
 $access=array("1");
 $this->checkAccess($access);
@@ -2497,14 +2497,14 @@ $data[ 'linktype' ] =$this->User_Model->getLinkTypeDropDown();
 $data[ 'showdropdown' ] =18;
 $data[ 'event' ] =$this->User_Model->getEventsDropDown();
 $data[ 'blog' ] =$this->User_Model->getBlogDropDown();
-$data[ 'video' ] =$this->User_Model->getVideoGalleryDropDown(); 
-$data[ 'article' ] =$this->User_Model->getArticleDropDown();   
+$data[ 'video' ] =$this->User_Model->getVideoGalleryDropDown();
+$data[ 'article' ] =$this->User_Model->getArticleDropDown();
 $data[ 'gallery' ] =$this->User_Model->getGalleryDropDown();
 $data[ 'status' ] =$this->User_Model->getStatusDropDown();
 $data["title"]="Create Notification";
 $this->load->view("template",$data);
 }
-public function createNotificationSubmit() 
+public function createNotificationSubmit()
 {
 $access=array("1");
 $this->checkAccess($access);
@@ -2528,7 +2528,7 @@ $link=$this->input->get_post("link");
 			{
 				$uploaddata = $this->upload->data();
 				$image=$uploaddata['file_name'];
-                
+
                 $config_r['source_image']   = './uploads/' . $uploaddata['file_name'];
                 $config_r['maintain_ratio'] = TRUE;
                 $config_t['create_thumb'] = FALSE;///add this
@@ -2537,13 +2537,13 @@ $link=$this->input->get_post("link");
                 $config_r['quality']    = 100;
                 //end of configs
 
-                $this->load->library('image_lib', $config_r); 
+                $this->load->library('image_lib', $config_r);
                 $this->image_lib->initialize($config_r);
                 if(!$this->image_lib->resize())
                 {
                     $data['alerterror']="Failed." . $this->image_lib->display_errors();
                     //return false;
-                }  
+                }
                 else
                 {
                     //print_r($this->image_lib->dest_image);
@@ -2551,7 +2551,7 @@ $link=$this->input->get_post("link");
                     $image=$this->image_lib->dest_image;
                     //return false;
                 }
-                
+
 			}
 if($this->Notification_Model->create($linktype,$event,$video,$gallery,$article,$status,$blog,$link,$content,$image)==0)
 $data["alerterror"]="New notification could not be created.";
@@ -2573,8 +2573,8 @@ $data["before2"]=$this->input->get('id');
 $data[ 'linktype' ] =$this->User_Model->getLinkTypeDropDown();
 $data[ 'event' ] =$this->User_Model->getEventsDropDown();
 $data[ 'blog' ] =$this->User_Model->getBlogDropDown();
-$data[ 'video' ] =$this->User_Model->getVideoGalleryDropDown(); 
-$data[ 'article' ] =$this->User_Model->getArticleDropDown();   
+$data[ 'video' ] =$this->User_Model->getVideoGalleryDropDown();
+$data[ 'article' ] =$this->User_Model->getArticleDropDown();
 $data[ 'gallery' ] =$this->User_Model->getGalleryDropDown();
 $data[ 'status' ] =$this->User_Model->getStatusDropDown();
 $data["title"]="Edit Notification";
@@ -2604,8 +2604,8 @@ $data["page"]="editNotification";
 $data[ 'linktype' ] =$this->User_Model->getLinkTypeDropDown();
 $data[ 'event' ] =$this->User_Model->getEventsDropDown();
 $data[ 'blog' ] =$this->User_Model->getBlogDropDown();
-$data[ 'video' ] =$this->User_Model->getVideoGalleryDropDown(); 
-$data[ 'article' ] =$this->User_Model->getArticleDropDown();   
+$data[ 'video' ] =$this->User_Model->getVideoGalleryDropDown();
+$data[ 'article' ] =$this->User_Model->getArticleDropDown();
 $data[ 'gallery' ] =$this->User_Model->getGalleryDropDown();
 $data[ 'status' ] =$this->User_Model->getStatusDropDown();
 $data["title"]="Edit Notification";
@@ -2634,7 +2634,7 @@ $timestamp=$this->input->get_post("timestamp");
 			{
 				$uploaddata = $this->upload->data();
 				$image=$uploaddata['file_name'];
-                
+
                 $config_r['source_image']   = './uploads/' . $uploaddata['file_name'];
                 $config_r['maintain_ratio'] = TRUE;
                 $config_t['create_thumb'] = FALSE;///add this
@@ -2643,13 +2643,13 @@ $timestamp=$this->input->get_post("timestamp");
                 $config_r['quality']    = 100;
                 //end of configs
 
-                $this->load->library('image_lib', $config_r); 
+                $this->load->library('image_lib', $config_r);
                 $this->image_lib->initialize($config_r);
                 if(!$this->image_lib->resize())
                 {
                    $data['alerterror']="Failed." . $this->image_lib->display_errors();
                     //return false;
-                }  
+                }
                 else
                 {
                     //print_r($this->image_lib->dest_image);
@@ -2657,16 +2657,16 @@ $timestamp=$this->input->get_post("timestamp");
                     $image=$this->image_lib->dest_image;
                     //return false;
                 }
-                
+
 			}
-            
+
             if($image=="")
             {
             $image=$this->User_Model->getNotificationImageById($id);
                // print_r($image);
                 $image=$image->image;
             }
-            
+
 if($this->Notification_Model->edit($id,$linktype,$event,$video,$gallery,$article,$status,$blog,$link,$content,$image,$timestamp)==0)
 $data["alerterror"]="New notification Could Not Be Updated.";
 else
@@ -2725,7 +2725,7 @@ $elements[4]->field="`webapp_notificationuser`.`timestamp_receive`";
 $elements[4]->sort="1";
 $elements[4]->header="Timestamp Received";
 $elements[4]->alias="timestamp_receive";
-    
+
 $elements[5]=new stdClass();
 $elements[5]->field="`webapp_notificationuser`.`notification`";
 $elements[5]->sort="1";
@@ -2763,7 +2763,7 @@ $data[ 'notification' ] =$this->User_Model->getNotificationDropDown();
 $data[ 'user' ] =$this->User_Model->getUserDropDown();
 $this->load->view("templatewith2",$data);
 }
-public function createNotificationUserSubmit() 
+public function createNotificationUserSubmit()
 {
 $access=array("1");
 $this->checkAccess($access);
@@ -2885,7 +2885,7 @@ $elements[3]->field="`webapp_blog`.`json`";
 $elements[3]->sort="1";
 $elements[3]->header="Json";
 $elements[3]->alias="json";
-    
+
 $elements[5]=new stdClass();
 $elements[5]->field="DATE_FORMAT(`webapp_blog`.`timestamp`,'%a, %b %d %Y %h:%i %p')";
 $elements[5]->sort="1";
@@ -2918,7 +2918,7 @@ $data["activemenu"]="blogs";
 $data["title"]="Create Blog";
 $this->load->view("template",$data);
 }
-public function createBlogSubmit() 
+public function createBlogSubmit()
 {
 $access=array("1");
 $this->checkAccess($access);
@@ -2948,7 +2948,7 @@ $url=$this->input->get_post("url");
 			{
 				$uploaddata = $this->upload->data();
 				$image=$uploaddata['file_name'];
-                
+
                 $config_r['source_image']   = './uploads/' . $uploaddata['file_name'];
                 $config_r['maintain_ratio'] = TRUE;
                 $config_t['create_thumb'] = FALSE;///add this
@@ -2957,13 +2957,13 @@ $url=$this->input->get_post("url");
                 $config_r['quality']    = 100;
                 //end of configs
 
-                $this->load->library('image_lib', $config_r); 
+                $this->load->library('image_lib', $config_r);
                 $this->image_lib->initialize($config_r);
                 if(!$this->image_lib->resize())
                 {
                     $data['alerterror']="Failed." . $this->image_lib->display_errors();
                     //return false;
-                }  
+                }
                 else
                 {
                     //print_r($this->image_lib->dest_image);
@@ -2971,7 +2971,7 @@ $url=$this->input->get_post("url");
                     $image=$this->image_lib->dest_image;
                     //return false;
                 }
-                
+
 			}
 if($this->Blog_Model->create($title,$json,$content,$url,$image)==0)
 $data["alerterror"]="New blog could not be created.";
@@ -3029,7 +3029,7 @@ $content=$this->input->get_post("content");
 			{
 				$uploaddata = $this->upload->data();
 				$image=$uploaddata['file_name'];
-                
+
                 $config_r['source_image']   = './uploads/' . $uploaddata['file_name'];
                 $config_r['maintain_ratio'] = TRUE;
                 $config_t['create_thumb'] = FALSE;///add this
@@ -3038,13 +3038,13 @@ $content=$this->input->get_post("content");
                 $config_r['quality']    = 100;
                 //end of configs
 
-                $this->load->library('image_lib', $config_r); 
+                $this->load->library('image_lib', $config_r);
                 $this->image_lib->initialize($config_r);
                 if(!$this->image_lib->resize())
                 {
                    $data['alerterror']="Failed." . $this->image_lib->display_errors();
                     //return false;
-                }  
+                }
                 else
                 {
                     //print_r($this->image_lib->dest_image);
@@ -3052,16 +3052,16 @@ $content=$this->input->get_post("content");
                     $image=$this->image_lib->dest_image;
                     //return false;
                 }
-                
+
 			}
-            
+
             if($image=="")
             {
             $image=$this->Blog_Model->getImageById($id);
                // print_r($image);
                 $image=$image->image;
             }
-            
+
 if($this->Blog_Model->edit($id,$title,$json,$content,$timestamp,$url,$image)==0)
 $data["alerterror"]="New blog Could Not Be Updated.";
 else
@@ -3120,7 +3120,7 @@ $elements[4]->field="`webapp_blogvideo`.`video`";
 $elements[4]->sort="1";
 $elements[4]->header="Video";
 $elements[4]->alias="video";
-    
+
 $elements[5]=new stdClass();
 $elements[5]->field="`webapp_blogvideo`.`blog`";
 $elements[5]->sort="1";
@@ -3158,7 +3158,7 @@ $data[ 'status' ] =$this->User_Model->getStatusDropDown();
 $data["title"]="Create Blog Video";
 $this->load->view("templatewith2",$data);
 }
-public function createBlogVideoSubmit() 
+public function createBlogVideoSubmit()
 {
 $access=array("1");
 $this->checkAccess($access);
@@ -3325,7 +3325,7 @@ $data[ 'blog' ] =$this->User_Model->getBlogDropDown();
 $data["title"]="Create Blog Image";
 $this->load->view("templatewith2",$data);
 }
-public function createBlogImagesSubmit() 
+public function createBlogImagesSubmit()
 {
 $access=array("1");
 $this->checkAccess($access);
@@ -3357,7 +3357,7 @@ $order=$this->input->get_post("order");
 			{
 				$uploaddata = $this->upload->data();
 				$image=$uploaddata['file_name'];
-                
+
                 $config_r['source_image']   = './uploads/' . $uploaddata['file_name'];
                 $config_r['maintain_ratio'] = TRUE;
                 $config_t['create_thumb'] = FALSE;///add this
@@ -3366,13 +3366,13 @@ $order=$this->input->get_post("order");
                 $config_r['quality']    = 100;
                 //end of configs
 
-                $this->load->library('image_lib', $config_r); 
+                $this->load->library('image_lib', $config_r);
                 $this->image_lib->initialize($config_r);
                 if(!$this->image_lib->resize())
                 {
                    $data['alerterror']="Failed." . $this->image_lib->display_errors();
                     //return false;
-                }  
+                }
                 else
                 {
                     //print_r($this->image_lib->dest_image);
@@ -3380,7 +3380,7 @@ $order=$this->input->get_post("order");
                     $image=$this->image_lib->dest_image;
                     //return false;
                 }
-                
+
 			}
 if($this->BlogImages_Model->create($blog,$status,$order,$image)==0)
 $data["alerterror"]="New blogimages could not be created.";
@@ -3440,7 +3440,7 @@ $order=$this->input->get_post("order");
 			{
 				$uploaddata = $this->upload->data();
 				$image=$uploaddata['file_name'];
-                
+
                 $config_r['source_image']   = './uploads/' . $uploaddata['file_name'];
                 $config_r['maintain_ratio'] = TRUE;
                 $config_t['create_thumb'] = FALSE;///add this
@@ -3449,13 +3449,13 @@ $order=$this->input->get_post("order");
                 $config_r['quality']    = 100;
                 //end of configs
 
-                $this->load->library('image_lib', $config_r); 
+                $this->load->library('image_lib', $config_r);
                 $this->image_lib->initialize($config_r);
                 if(!$this->image_lib->resize())
                 {
                     $data['alerterror']="Failed." . $this->image_lib->display_errors();
                     //return false;
-                }  
+                }
                 else
                 {
                     //print_r($this->image_lib->dest_image);
@@ -3463,16 +3463,16 @@ $order=$this->input->get_post("order");
                     $image=$this->image_lib->dest_image;
                     //return false;
                 }
-                
+
 			}
-            
+
             if($image=="")
             {
             $image=$this->User_Model->getBlogImageById($id);
                // print_r($image);
                 $image=$image->image;
             }
-            
+
 if($this->BlogImages_Model->edit($id,$blog,$status,$order,$image)==0)
 $data["alerterror"]="New blogimages Could Not Be Updated.";
 else
@@ -3490,13 +3490,13 @@ $data["redirect"]="site/viewBlogImages?id=".$this->input->get('blogid');
 $this->load->view("redirect2",$data);
 }
 
-    
-    
+
+
     // slider
-    
-    
-    
-    
+
+
+
+
     public function viewSlider()
 {
 $access=array("1");
@@ -3562,7 +3562,7 @@ $data[ 'status' ] =$this->User_Model->getStatusDropDown();
 $data["title"]="Create Slider";
 $this->load->view("template",$data);
 }
-public function createSliderSubmit() 
+public function createSliderSubmit()
 {
 $access=array("1");
 $this->checkAccess($access);
@@ -3671,9 +3671,9 @@ $this->Slider_Model->delete($this->input->get("id"));
 $data["redirect"]="site/viewSlider";
 $this->load->view("redirect",$data);
 }
-    
+
 // CONFIG CRUDE STARTS
-    
+
 public function viewConfig()
 {
 $access=array("1");
@@ -3705,7 +3705,7 @@ $elements[4]->field="`config`.`type`";
 $elements[4]->sort="1";
 $elements[4]->header="type";
 $elements[4]->alias="type";
-    
+
 $elements[5]=new stdClass();
 $elements[5]->field="`config`.`content`";
 $elements[5]->sort="1";
@@ -3738,7 +3738,7 @@ $data[ 'type' ] =$this->User_Model->getTypeDropDown();
 $data["title"]="Create Config";
 $this->load->view("template",$data);
 }
-public function createConfigSubmit() 
+public function createConfigSubmit()
 {
 $access=array("1");
 $this->checkAccess($access);
@@ -3796,68 +3796,68 @@ public function editConfig()
             $data["page"]="login";
             $data["title"]="Login";
         }
-            break;   
+            break;
         case 5: {
             $data["page"]="blog";
             $data["title"]="Blog";
         }
-            break; 
+            break;
         case 6: {
             $data["page"]="gallery";
             $data["title"]="Gallery";
         }
-            break;  
+            break;
         case 7: {
             $data["page"]="videogallery";
             $data["title"]="Video Gallery";
         }
-            break;  
+            break;
         case 8: {
             $data["page"]="configevents";
             $data["title"]="Config Events";
         }
-            break;   
+            break;
         case 9: {
             $data["page"]="logo";
             $data["title"]="Logo";
         }
-            break;   
+            break;
         case 10: {
             $data["page"]="backgroundimage";
             $data["title"]="Background Image";
         }
-            break;  
-       
+            break;
+
         case 11: {
             $data["page"]="banner";
             $data["title"]="Banner";
         }
-            break;  
+            break;
         case 12: {
             $data["page"]="socialfeeds";
             $data["title"]="Social Feeds";
         }
-            break;  
+            break;
         case 13: {
             $data["page"]="editConfig";
             $data["title"]="Notification";
         }
-            break;    
+            break;
         case 14: {
             $data["page"]="editConfigText";
             $data["title"]="Color";
         }
-            break; 
+            break;
         case 15: {
             $data["page"]="editConfigText";
             $data["title"]="Meta Keyword";
         }
-            break;  
+            break;
         case 16: {
             $data["page"]="editConfigText";
             $data["title"]="Meta Decription";
         }
-            break;     
+            break;
     }
     $data[ 'type' ] =$this->User_Model->getTypeDropDown();
     $data[ 'activemenu' ] ="config";
@@ -3876,12 +3876,12 @@ public function editConfigSubmit()
     $description=$this->input->get_post("description");
     $newtext = json_decode($text);
 	//update hauth
-	
+
 	$urlforcontrollertest=$_SERVER["SCRIPT_FILENAME"];
         $urlforcontrollertest=substr($urlforcontrollertest,0,-9);
         $urlcontrollertest=$urlforcontrollertest.'application/config/hybridauthlib.php';
-        
-        
+
+
 	for($i = 0 ; $i < sizeOf($newtext) ; $i++){
 		$comp = $newtext[$i]->name;
 		switch($comp){
@@ -3894,7 +3894,7 @@ public function editConfigSubmit()
 			),";
 				$googletext = $mnutext[0]."//google\n".$googletext."//google".$mnutext[2];
 				if(write_file($urlforcontrollertest.'application/config/hybridauthlib.php', $googletext)){
-		
+
 	}
 			}
 			break;
@@ -3908,7 +3908,7 @@ public function editConfigSubmit()
 			),";
 				$googletext = $mnutext[0]."//facebook\n".$googletext."\n//facebook".$mnutext[2];
 				if(write_file($urlforcontrollertest.'application/config/hybridauthlib.php', $googletext)){
-		
+
 	}
 			}
 			break;
@@ -3921,7 +3921,7 @@ public function editConfigSubmit()
 			),";
 				$googletext = $mnutext[0]."//twitter\n".$googletext."\n//twitter".$mnutext[2];
 				if(write_file($urlforcontrollertest.'application/config/hybridauthlib.php', $googletext)){
-		
+
 	}
 			}
 			break;
@@ -3934,20 +3934,20 @@ public function editConfigSubmit()
 			),";
 				$googletext = $mnutext[0]."//instagram\n".$googletext."\n//instagram".$mnutext[2];
 				if(write_file($urlforcontrollertest.'application/config/hybridauthlib.php', $googletext)){
-		
+
 	}
 			}
 			break;
 			default:{
-				
+
 			}
-			
+
 		}
-		
-		
+
+
 	}
-    $config['upload_path'] = './uploads/';
-    $config['allowed_types'] = 'gif|jpg|png|jpeg';
+    $config['upload_path'] = './config/';
+    $config['allowed_types'] = '*';
     $this->load->library('upload', $config);
     $filename="image";
     $image="";
@@ -3955,31 +3955,12 @@ public function editConfigSubmit()
     {
         $uploaddata = $this->upload->data();
         $image=$uploaddata['file_name'];
-
-        $config_r['source_image']   = './uploads/' . $uploaddata['file_name'];
-        $config_r['maintain_ratio'] = TRUE;
-        $config_t['create_thumb'] = FALSE;///add this
-        $config_r['width']   = 800;
-        $config_r['height'] = 800;
-        $config_r['quality']    = 100;
-        //end of configs
-
-        $this->load->library('image_lib', $config_r); 
-        $this->image_lib->initialize($config_r);
-        if(!$this->image_lib->resize())
-        {
-            $data['alerterror']="Failed." . $this->image_lib->display_errors();
-            //return false;
-        }  
-        else
-        {
-            //print_r($this->image_lib->dest_image);
-            //dest_image
-            $image=$this->image_lib->dest_image;
-            //return false;
-        }
-
     }
+else {
+$error = array('error' => $this->upload->display_errors());
+print_r( $error);
+return 0;
+}
     if($this->Config_Model->edit($id,$title,$content,$text,$image,$type,$description)==0)
     $data["alerterror"]="New config Could Not Be Updated.";
     else
@@ -3995,19 +3976,19 @@ $this->Config_Model->delete($this->input->get("id"));
 $data["redirect"]="site/viewConfig";
 $this->load->view("redirect",$data);
 }
-    
-    
+
+
 //CONFIG CRUDE END
-    
-    
+
+
     //HOME
-    
-    
+
+
     public function editHome()
 {
 $access=array("1");
 $this->checkAccess($access);
-$data["page"]="editHome";      
+$data["page"]="editHome";
 $data["title"]="Edit Home";
 $data["before"]=$this->Slider_Model->beforeEditHome("1");
 $this->load->view("template",$data);
@@ -4030,17 +4011,17 @@ $this->load->view("redirect2",$data);
     public function clearGalleryImage(){
     $id=$this->input->get_post("id");
     $this->Gallery_Model->clearGalleryImage($id);
-    } 
+    }
     public function clearGalleryImage1(){
     $id=$this->input->get_post("id");
     $this->GalleryImage_Model->clearGalleryImage1($id);
-    } 
-    
+    }
+
     public function clearUserImage(){
     $id=$this->input->get_post("id");
     $this->User_Model->clearUserImage($id);
-    } 
-    
+    }
+
     public function clearCoverImage(){
     $id=$this->input->get_post("id");
     $this->User_Model->clearCoverImage($id);
@@ -4052,11 +4033,11 @@ $this->load->view("redirect2",$data);
     public function clearArticleImage(){
     $id=$this->input->get_post("id");
     $this->Articles_Model->clearArticleImage($id);
-    } 
+    }
     public function clearEventImage1(){
     $id=$this->input->get_post("id");
     $this->EventImages_Model->clearEventImage1($id);
-    } 
+    }
     public function clearSliderImage(){
     $id=$this->input->get_post("id");
     $this->Slider_Model->clearSliderImage($id);
@@ -4064,7 +4045,7 @@ $this->load->view("redirect2",$data);
     public function clearNotificationImage(){
     $id=$this->input->get_post("id");
     $this->Notification_Model->clearNotificationImage($id);
-    } 
+    }
     public function clearBlogImage(){
     $id=$this->input->get_post("id");
     $this->Blog_Model->clearBlogImage($id);
