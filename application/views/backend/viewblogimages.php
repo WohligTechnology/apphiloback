@@ -2,7 +2,7 @@
     <div class="col s12">
         <div class="row">
             <div class="col s12 drawchintantable">
-               <?php $this->chintantable->createsearch("List of Blog Images");?>
+               <?php $this->chintantable->createsearch('List of Blog Images');?>
                 <table class="highlight responsive-table">
                     <thead>
                         <tr>
@@ -12,21 +12,19 @@
             <!--                        <th data-field="order">Order</th>-->
                             <th data-field="image">Image</th>
                             <th data-field="action">Action</th>
-            
+
                         </tr>
                     </thead>
                     <tbody>
-            
+
                     </tbody>
                 </table>
             </div>
         </div>
         <?php $this->chintantable->createpagination();?>
 
-
-
     </div>
-    <div class="createbuttonplacement"><a class="btn-floating btn-large waves-effect waves-light blue darken-4" href="<?php echo site_url("site/createBlogImages?id=").$this->input->get('id');?>"><i class="material-icons">add</i></a>
+    <div class="createbuttonplacement"><a class="btn-floating btn-large waves-effect waves-light blue darken-4" href="<?php echo site_url('site/createBlogImages?id=').$this->input->get('id');?>"><i class="material-icons">add</i></a>
     </div>
 
 </div>

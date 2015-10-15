@@ -12,23 +12,23 @@
             </div>
             <div class="row">
                 <div class="input-field col s6">
-                    <?php echo form_dropdown( 'type',$type,set_value( 'type')); ?>
+                    <?php echo form_dropdown('type', $type, set_value('type')); ?>
                      <label>Type</label>
                 </div>
             </div>
-      
+
             <div class="row">
                 <div class="input-field col s12">
                     <textarea name="content" class="materialize-textarea" length="120">
-                        <?php echo set_value( 'content');?>
+                        <?php echo set_value('content');?>
                     </textarea>
                     <label>Content</label>
                 </div>
-            </div> 
+            </div>
                  <div class="row">
                 <div class="input-field col s12">
                     <textarea name="text" class="materialize-textarea" length="120">
-                        <?php echo set_value( 'text');?>
+                        <?php echo set_value('text');?>
                     </textarea>
                     <label>Text</label>
                 </div>

@@ -24,18 +24,18 @@
             </div>
             <div class="row">
                 <div class="input-field col s12 m6">
-                    <?php echo form_dropdown( 'user',$user,set_value( 'user')); ?>
+                    <?php echo form_dropdown('user', $user, set_value('user')); ?>
                      <label>User</label>
                 </div>
             </div>
-       
+
              <div class="row">
              <div class="col s12 m6">
                   <label>Content</label>
-                  <textarea id="some-textarea" name="content" placeholder="Enter text ..."><?php echo set_value( 'content');?></textarea>
-           
+                  <textarea id="some-textarea" name="content" placeholder="Enter text ..."><?php echo set_value('content');?></textarea>
+
              </div>
-           
+
         </div>
            <div class="row">
                <div class="col s12 m6">
@@ -45,6 +45,6 @@
             </div>
                </div>
            </div>
-        
+
         </form>
 </div>

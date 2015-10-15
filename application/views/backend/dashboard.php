@@ -27,7 +27,7 @@
                             <div class="col m6 l6">
                                 <h5 class="panel-title">Latest Enquiries</h5>
                             </div>
-                            
+
                         </div>
                     </div>
                     <table class="highlight responsive-table">
@@ -41,7 +41,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                
+
                         </tbody>
                     </table>
                 </div>
@@ -55,6 +55,3 @@
     }
     generatejquery('<?php echo $base_url;?>');
     </script>
-
-
-            

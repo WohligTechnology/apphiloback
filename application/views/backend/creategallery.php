@@ -10,10 +10,10 @@
                     <input type="text" id="name" name="name" value="<?php echo set_value('name');?>">
                 </div>
             </div>
-          
+
             <div class="row">
                 <div class="input-field col s12 m6">
-                    <?php echo form_dropdown( 'status',$status,set_value( 'status')); ?>
+                    <?php echo form_dropdown('status', $status, set_value('status')); ?>
                      <label>Status</label>
                 </div>
             </div>
@@ -43,6 +43,6 @@
             </div>
                  </div>
              </div>
-          
+
         </form>
 </div>

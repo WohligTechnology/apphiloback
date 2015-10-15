@@ -11,7 +11,7 @@
         </div>
         <div class="row">
             <div class="input-field col s12 m6">
-                <?php echo form_dropdown( 'status',$status,set_value( 'status')); ?>
+                <?php echo form_dropdown('status', $status, set_value('status')); ?>
                     <label>Status</label>
             </div>
         </div>
@@ -30,7 +30,7 @@
             <div class="col s12 m6">
                 <label>Content</label>
                 <textarea id="some-textarea" name="content" placeholder="Enter text ...">
-                    <?php echo set_value( 'content');?>
+                    <?php echo set_value('content');?>
                 </textarea>
             </div>
 

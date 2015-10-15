@@ -12,13 +12,13 @@
         </div>
         <div class="row">
             <div class="input-field col s12 m6">
-                <?php echo form_dropdown( 'status',$status,set_value( 'status')); ?>
+                <?php echo form_dropdown('status', $status, set_value('status')); ?>
                 <label>Status</label>
             </div>
         </div>
         <div class="row">
            <div class="col s12 m6">
-               <textarea id="some-textarea" name="content" placeholder="Enter text ..."><?php echo set_value( 'content');?></textarea>
+               <textarea id="some-textarea" name="content" placeholder="Enter text ..."><?php echo set_value('content');?></textarea>
            </div>
         </div>
         <div class="row">
@@ -40,6 +40,6 @@
         </div>
             </div>
         </div>
-    
+
     </form>
 </div>

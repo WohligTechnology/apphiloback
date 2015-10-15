@@ -19,14 +19,14 @@
 
 		<div class="row">
 			<div class="input-field col m6 s12">
-				<?php echo form_dropdown( 'status',$status,set_value( 'status')); ?>
+				<?php echo form_dropdown('status', $status, set_value('status')); ?>
 					<label>Status</label>
 			</div>
 		</div>
 
 		<div class="row">
 			<div class="input-field col m6 s12">
-				<?php echo form_dropdown('linktype',$linktype,set_value('linktype')); ?>
+				<?php echo form_dropdown('linktype', $linktype, set_value('linktype')); ?>
 					<label>Link Type</label>
 			</div>
 		</div>
@@ -34,7 +34,7 @@
 		<!--	Event-->
 		<div class="row drop">
 			<div class="input-field col m6 s12">
-				<?php echo form_dropdown('event',$event,set_value('event')); ?>
+				<?php echo form_dropdown('event', $event, set_value('event')); ?>
 					<label>Event</label>
 			</div>
 		</div>
@@ -42,7 +42,7 @@
 		<!--	Blog-->
 		<div class="row drop">
 			<div class="input-field col m6 s12">
-				<?php echo form_dropdown('blog',$blog,set_value('blog')); ?>
+				<?php echo form_dropdown('blog', $blog, set_value('blog')); ?>
 					<label>Blog</label>
 
 			</div>
@@ -51,7 +51,7 @@
 		<!--	Gallery-->
 		<div class="row drop">
 			<div class="input-field col m6 s12">
-				<?php echo form_dropdown('video',$video,set_value('video')); ?>
+				<?php echo form_dropdown('video', $video, set_value('video')); ?>
 					<label>Video Gallery</label>
 
 			</div>
@@ -60,7 +60,7 @@
 		<!--	Video-->
 		<div class="row drop">
 			<div class="input-field col m6 s12">
-				<?php echo form_dropdown('gallery',$gallery,set_value('gallery')); ?>
+				<?php echo form_dropdown('gallery', $gallery, set_value('gallery')); ?>
 					<label>Image Gallery</label>
 
 			</div>
@@ -69,14 +69,14 @@
 		<!--	Article-->
 		<div class="row drop">
 			<div class="input-field col m6 s12">
-				<?php echo form_dropdown('article',$article,set_value('article')); ?>
+				<?php echo form_dropdown('article', $article, set_value('article')); ?>
 					<label>Page</label>
 
 			</div>
 		</div>
 		<div class="row">
 			<div class="input-field col m6 s12">
-				<?php echo form_dropdown( 'icon',$icon,set_value( 'icon'), 'class="linear-icon form-control" data-placeholder="Choose a Accesslevel..."'); ?>
+				<?php echo form_dropdown('icon', $icon, set_value('icon'), 'class="linear-icon form-control" data-placeholder="Choose a Accesslevel..."'); ?>
 					<label>Select Icon</label>
 			</div>
 		</div>

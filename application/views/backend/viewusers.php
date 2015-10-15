@@ -2,7 +2,7 @@
     <div class="col s12">
         <div class="row">
             <div class="col s12 drawchintantable">
-                 <?php $this->chintantable->createsearch("List of Users");?>
+                 <?php $this->chintantable->createsearch('List of Users');?>
                 <table class="highlight responsive-table">
                     <thead>
                         <tr>
@@ -12,22 +12,19 @@
                             <th data-field="logintype">Login Type</th>
                             <th data-field="accesslevelname">Item Name</th>
                             <th data-field="">Action</th>
-            
                         </tr>
                     </thead>
                     <tbody>
-            
+
                     </tbody>
                 </table>
             </div>
         </div>
         <?php $this->chintantable->createpagination();?>
 
-
-
     </div>
-     <div class="createbuttonplacement"><a class="btn-floating btn-large waves-effect waves-light blue darken-4 tooltipped" href="<?php echo site_url("site/createUser"); ?>" data-position="top" data-delay="50" data-tooltip="Create"><i class="material-icons">add</i></a></div>
-      
+     <div class="createbuttonplacement"><a class="btn-floating btn-large waves-effect waves-light blue darken-4 tooltipped" href="<?php echo site_url('site/createUser'); ?>" data-position="top" data-delay="50" data-tooltip="Create"><i class="material-icons">add</i></a></div>
+
 </div>
 <script>
     function drawtable(resultrow) {

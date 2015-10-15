@@ -53,7 +53,7 @@
 		</div>
 		<div class="row">
 			<div class="input-field col m6 s12">
-				<?php echo form_dropdown( 'status',$status,set_value( 'status')); ?>
+				<?php echo form_dropdown('status', $status, set_value('status')); ?>
 					<label>Status</label>
 			</div>
 		</div>
@@ -81,13 +81,13 @@
 		</div>
 		<div class="row">
 			<div class="input-field col m6 s12">
-				<?php echo form_dropdown( 'accesslevel',$accesslevel,set_value( 'accesslevel')); ?>
+				<?php echo form_dropdown('accesslevel', $accesslevel, set_value('accesslevel')); ?>
 					<label>Access Level</label>
 			</div>
 		</div>
 		<div class="row">
 			<div class="input-field col m6 s12">
-				<textarea name="address" class="materialize-textarea" length="120"><?php echo set_value( 'address');?></textarea>
+				<textarea name="address" class="materialize-textarea" length="120"><?php echo set_value('address');?></textarea>
 				<label>Address</label>
 			</div>
 		</div>

@@ -11,18 +11,15 @@
                             <th data-field="order">Order</th>
                             <th data-field="status">Status</th>
                             <th data-field="action">Action</th>
-            
                         </tr>
                     </thead>
                     <tbody>
-            
+
                     </tbody>
                 </table>
             </div>
         </div>
         <?php $this->chintantable->createpagination();?>
-
-
 
     </div>
     <div class="createbuttonplacement"><a class="btn-floating btn-large waves-effect waves-light blue darken-4 tooltipped" href="<?php echo site_url("site/createVideoGalleryVideo?id=").$this->input->get('id');?>" data-position="top" data-delay="50" data-tooltip="Create"><i class="material-icons">add</i></a>

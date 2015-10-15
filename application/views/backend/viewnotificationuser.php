@@ -7,23 +7,19 @@
                     <thead>
                         <tr>
                           <th data-field="id">ID</th>
-                                        <th data-field="notification">Notification</th>
-                                        <th data-field="user">User</th>
-                                        <th data-field="timestamp">Timestamp</th>
-            <!--                                    <th data-field="timestamp_receive">Timestamp Received</th>-->
-                                        <th data-field="action">Action</th>
-            
+                          <th data-field="notification">Notification</th>
+                          <th data-field="user">User</th>
+                          <th data-field="timestamp">Timestamp</th>
+                          <th data-field="action">Action</th>
                         </tr>
                     </thead>
                     <tbody>
-            
+
                     </tbody>
                 </table>
             </div>
         </div>
         <?php $this->chintantable->createpagination();?>
-
-
 
     </div>
     <div class="createbuttonplacement"><a class="btn-floating btn-large waves-effect waves-light green accent-4" href="<?php echo site_url("site/createNotificationUser?id=").$this->input->get('id');?>"><i class="material-icons">add</i></a>

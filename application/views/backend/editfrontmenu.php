@@ -5,38 +5,38 @@
 </div>
 <div class="row">
 	<form class="col s12" method="post" action="<?php echo site_url('site/editFrontMenuSubmit');?>" enctype="multipart/form-data">
-		<input type="hidden" id="normal-field" class="form-control" name="id" value="<?php echo set_value('id',$before->id);?>" style="display:none;">
+		<input type="hidden" id="normal-field" class="form-control" name="id" value="<?php echo set_value('id', $before->id);?>" style="display:none;">
 
 		<div class="row">
 			<div class="input-field col m6 s12">
 				<label>Name</label>
-				<input type="text" name="name" value="<?php echo set_value('name',$before->name);?>">
+				<input type="text" name="name" value="<?php echo set_value('name', $before->name);?>">
 			</div>
 		</div>
 
 		<div class="row">
 			<div class="input-field col m6 s12">
 				<label>Order</label>
-				<input type="text" name="order" value="<?php echo set_value('order',$before->order);?>">
+				<input type="text" name="order" value="<?php echo set_value('order', $before->order);?>">
 			</div>
 		</div>
 		<div class="row">
 			<div class="input-field col m6 s12">
-				<?php echo form_dropdown( 'status',$status,set_value( 'status',$before->status)); ?>
+				<?php echo form_dropdown('status', $status, set_value('status', $before->status)); ?>
 					<label>Status</label>
 			</div>
 		</div>
 
 		<div class="row">
 			<div class="input-field col m6 s12">
-				<?php echo form_dropdown( 'linktype',$linktype,set_value( 'linktype',$before->linktype)); ?>
+				<?php echo form_dropdown('linktype', $linktype, set_value('linktype', $before->linktype)); ?>
 					<label>Link Type</label>
 			</div>
 		</div>
 		<!--	Event-->
 		<div class="row drop">
 			<div class="input-field col m6 s12">
-				<?php echo form_dropdown( 'event',$event,set_value( 'event',$before->event)); ?>
+				<?php echo form_dropdown('event', $event, set_value('event', $before->event)); ?>
 					<label>Event</label>
 			</div>
 		</div>
@@ -44,7 +44,7 @@
 		<!--	Blog-->
 		<div class="row drop">
 			<div class="input-field col m6 s12">
-				<?php echo form_dropdown( 'blog',$blog,set_value( 'blog',$before->blog)); ?>
+				<?php echo form_dropdown('blog', $blog, set_value('blog', $before->blog)); ?>
 					<label>Blog</label>
 
 			</div>
@@ -53,7 +53,7 @@
 		<!--	Gallery-->
 		<div class="row drop">
 			<div class="input-field col m6 s12">
-				<?php echo form_dropdown( 'video',$video,set_value( 'video',$before->video)); ?>
+				<?php echo form_dropdown('video', $video, set_value('video', $before->video)); ?>
 					<label>Video Gallery</label>
 
 			</div>
@@ -62,7 +62,7 @@
 		<!--	Video-->
 		<div class="row drop">
 			<div class="input-field col m6 s12">
-				<?php echo form_dropdown( 'gallery',$gallery,set_value( 'gallery',$before->gallery)); ?>
+				<?php echo form_dropdown('gallery', $gallery, set_value('gallery', $before->gallery)); ?>
 					<label>Image Gallery</label>
 
 			</div>
@@ -71,18 +71,18 @@
 		<!--	Article-->
 		<div class="row drop">
 			<div class="input-field col m6 s12">
-				<?php echo form_dropdown( 'article',$article,set_value( 'article',$before->article)); ?>
+				<?php echo form_dropdown('article', $article, set_value('article', $before->article)); ?>
 					<label>Page</label>
 
 			</div>
 		</div>
 		<div class="row">
 			<div class="input-field col m6 s12">
-				<?php echo form_dropdown( 'icon',$icon,set_value( 'icon',$before->icon), 'class="linear-icon form-control" data-placeholder="Choose a Accesslevel..."'); ?>
+				<?php echo form_dropdown('icon', $icon, set_value('icon', $before->icon), 'class="linear-icon form-control" data-placeholder="Choose a Accesslevel..."'); ?>
 					<label>Icon</label>
 			</div>
 		</div>
-		
+
 		<div class=" form-group">
 			<div class="row">
 				<div class="col s12">
