@@ -15,15 +15,19 @@ class RestApi_model extends CI_Model
     $query=$this->db->query("SELECT `id` FROM `webapp_blog`")->result();
         return $query;
     }    
-    public function signUp($username,$email,$password,$dob){
-//		$data=array("name" => $username,"email" => $email,"password" => md5($password),"eventnotification" => 'false',"photonotification" => 'false',"videonotification" => 'false',"blognotification" => 'false',"dob" => $dob,"logintype" => "Email","accesslevel" => "3");
-//		$query=$this->db->insert( "user", $data );
-//		$id=$this->db->insert_id();
+    public function signUp($username,$email,$password,$dob,$os,$token){
         $password = md5($password);
-         $query=$this->db->query("INSERT INTO `webapp_enquiry`( `name`, `email`, `password`,`eventnotification`,`photonotification`,`videonotification`,`blognotification`,`dob`,`logintype`,`accesslevel`) VALUES (".$this->db->escape($username).",".$this->db->escape($email).",".$this->db->escape($password).",'false','false','false','false',".$this->db->escape($dob).",'Email','3')");
+         $query=$this->db->query("INSERT INTO `user`( `name`, `email`, `password`,`eventnotification`,`photonotification`,`videonotification`,`blognotification`,`dob`,`logintype`,`accesslevel`) VALUES (".$this->db->escape($username).",".$this->db->escape($email).",".$this->db->escape($password).",'false','false','false','false',".$this->db->escape($dob).",'Email','3')");
     $id=$this->db->insert_id();
         
-	    $newdata=$this->db->query("SELECT * FROM `user` WHERE `id`=(".$this->db->escape($id).")")->row();
+         $query4 = $this->db->query("SELECT * FROM `notificationtoken` WHERE `os`=(".$this->db->escape($os).") AND `token`=(".$this->db->escape($token).")");
+            if($query4->num_rows == 0){}
+            else{
+             $query3=$this->db->query("INSERT INTO `notificationtoken`(`os`,`token`,`user`) VALUES (".$this->db->escape($os).",".$this->db->escape($token).",".$this->db->escape($id).")");
+    $tokenid=$this->db->insert_id();
+            }
+        
+	    $newdata=$this->db->query("SELECT `id`, `name`, `email`, `accesslevel`, `timestamp`, `status`, `image`, `username`, `socialid`, `logintype`, `json`, `dob`, `street`, `address`, `city`, `state`, `pincode`, `facebook`, `twitter`, `google`, `country`, `instagram`, `contact`, `eventnotification`, `photonotification`, `videonotification`, `blognotification`, `coverimage` FROM `user` WHERE `id`=(".$this->db->escape($id).")")->row();
 		if(!$query)
 		return false;
 		else

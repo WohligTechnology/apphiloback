@@ -443,12 +443,14 @@ $this->load->view("json",$data);
 		$email=$data['email'];
 		$password=$data['password'];
 		$dob=$data['dob'];
+		$os=$data['os'];
+		$token=$data['token'];
       if(empty($data))
         {
 		$data['message']=0;
 		}
 	    else{
-        $data['message']=$this->RestApi_model->signUp($username,$email,$password,$dob);
+        $data['message']=$this->RestApi_model->signUp($username,$email,$password,$dob,$os,$token);
         }
         $this->load->view("json",$data);
  }

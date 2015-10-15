@@ -3839,8 +3839,8 @@ public function editConfig()
         }
             break;  
         case 13: {
-            $data["page"]="editConfigText";
-            $data["title"]="Description";
+            $data["page"]="editConfig";
+            $data["title"]="Notification";
         }
             break;    
         case 14: {

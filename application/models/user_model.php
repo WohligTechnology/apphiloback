@@ -954,7 +954,7 @@ class User_Model extends CI_Model
         return $return;
     }
  
-    function socialLogin($user_profile, $provider)
+    function socialLogin($user_profile, $provider,$os,$token)
     {
         $query = $this->db->query("SELECT * FROM `user` WHERE `user`.`socialid`='$user_profile->identifier'");
         if ($query->num_rows == 0) {
@@ -983,7 +983,13 @@ class User_Model extends CI_Model
             $query2  = $this->db->query("INSERT INTO `user` (`id`, `name`, `password`, `email`, `accesslevel`, `timestamp`, `status`, `image`, `username`, `socialid`, `logintype`, `json`, `dob`, `street`, `address`, `city`, `state`, `country`, `pincode`, `facebook`, `google`, `twitter`,`instagram`,`eventnotification`,`photonotification`,`videonotification`,`blognotification`) VALUES (NULL, '$user_profile->displayName', '', '$user_profile->email', '3', CURRENT_TIMESTAMP, '1', '$user_profile->photoURL', '', '$user_profile->identifier', '$providerid', '', '$user_profile->birthYear-$user_profile->birthMonth-$user_profile->birthDay', '', '$user_profile->address,$user_profile->region', '$user_profile->city', '', '$user_profile->country', '', '$facebookid', '$googleid', '$twitterid','$instagramid','false','false','false','false')");
             $id      = $this->db->insert_id();
             
-             
+            $query4 = $this->db->query("SELECT * FROM `notificationtoken` WHERE `os`=(".$this->db->escape($os).") AND `token`=(".$this->db->escape($token).")");
+            if($query4->num_rows == 0){}
+            else{
+             $query3=$this->db->query("INSERT INTO `notificationtoken`(`os`,`token`,`user`) VALUES (".$this->db->escape($os).",".$this->db->escape($token).",".$this->db->escape($id).")");
+    $tokenid=$this->db->insert_id();
+            }
+           
             $newdata = array(
                 'email' => $user_profile->email,
                 'password' => "",
