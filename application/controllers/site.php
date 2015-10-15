@@ -38,10 +38,10 @@ class Site extends CI_Controller
 		$data['accesslevel']=$this->User_Model->getAccessLevels();
 		$data[ 'status' ] =$this->User_Model->getStatusDropDown();
 		$data[ 'logintype' ] =$this->User_Model->getLogintypeDropDown();
-           $data[ 'eventnotification' ] =$this->User_Model->getEventNotificationDropDown();
-            $data[ 'photonotification' ] =$this->User_Model->getPhotoNotificationDropDown();
-            $data[ 'videonotification' ] =$this->User_Model->getVideoNotificationDropDown();
-            $data[ 'blognotification' ] =$this->User_Model->getBlogNotificationDropDown();
+    $data[ 'eventnotification' ] =$this->User_Model->getEventNotificationDropDown();
+    $data[ 'photonotification' ] =$this->User_Model->getPhotoNotificationDropDown();
+    $data[ 'videonotification' ] =$this->User_Model->getVideoNotificationDropDown();
+    $data[ 'blognotification' ] =$this->User_Model->getBlogNotificationDropDown();
 //        $data['category']=$this->category_model->getcategorydropdown();
 		$data[ 'page' ] = 'createUser';
 		$data[ 'activemenu' ] = 'users';
@@ -175,8 +175,8 @@ class Site extends CI_Controller
 		$access = array("1");
 		$this->checkAccess($access);
 		$data['page']='viewUsers';
-        $data['base_url'] = site_url("site/viewUsersJson");
-
+    $data['base_url'] = site_url("site/viewUsersJson");
+		$data[ 'activemenu' ] = 'users';
 		$data['title']='View Users';
 		$this->load->view('template',$data);
 	}
@@ -458,6 +458,7 @@ $data["page"]="viewArticles";
 $data[ 'status' ] =$this->User_Model->getStatusDropDown();
 $data["base_url"]=site_url("site/viewArticlesjson");
 $data["title"]="View Pages";
+$data[ 'activemenu' ] = 'pages';
 $this->load->view("template",$data);
 }
 function viewArticlesjson()
@@ -660,6 +661,7 @@ $data["page"]="viewFrontmenu";
 $data[ 'status' ] =$this->User_Model->getStatusDropDown();
 $data["base_url"]=site_url("site/viewFrontmenuJson");
 $data["title"]="View Navigation";
+$data[ 'activemenu' ] = 'navigations';
 $this->load->view("template",$data);
 }
 function viewFrontmenuJson()
@@ -893,6 +895,7 @@ $data["page"]="viewGallery";
 $data[ 'status' ] =$this->User_Model->getStatusDropDown();
 $data["base_url"]=site_url("site/viewGalleryJson");
 $data["title"]="View Image Gallery";
+$data[ 'activemenu' ] = 'image gallery';
 $this->load->view("template",$data);
 }
 function viewGalleryJson()
@@ -1327,6 +1330,7 @@ $this->checkAccess($access);
 $data["page"]="viewVideoGallery";
 $data["base_url"]=site_url("site/viewVideoGalleryJson");
 $data["title"]="View Video Gallery";
+$data[ 'activemenu' ] = 'video gallery';
 $this->load->view("template",$data);
 }
 function viewVideoGalleryJson()
@@ -2278,6 +2282,7 @@ $this->checkAccess($access);
 $data["page"]="viewEnquiry";
 $data["base_url"]=site_url("site/viewEnquiryJson");
 $data["title"]="View Enquiry";
+$data[ 'activemenu' ] = 'enquiries';
 $this->load->view("template",$data);
 }
 function viewEnquiryJson()
@@ -2443,6 +2448,7 @@ $this->checkAccess($access);
 $data["page"]="viewNotification";
 $data["base_url"]=site_url("site/viewNotificationJson");
 $data["title"]="View Notifications";
+$data[ 'activemenu' ] = 'notifications';
 $this->load->view("template",$data);
 }
 function viewNotificationJson()
@@ -3504,6 +3510,7 @@ $this->checkAccess($access);
 $data["page"]="viewSlider";
 $data["base_url"]=site_url("site/viewSliderJson");
 $data["title"]="View Sliders";
+$data[ 'activemenu' ] = 'home slides';
 $this->load->view("template",$data);
 }
 function viewSliderJson()
@@ -3681,6 +3688,7 @@ $this->checkAccess($access);
 $data["page"]="viewConfig";
 $data["base_url"]=site_url("site/viewConfigJson");
 $data["title"]="View Config";
+$data[ 'activemenu' ] = 'config';
 $this->load->view("template",$data);
 }
 function viewConfigJson()
