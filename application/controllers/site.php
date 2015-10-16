@@ -19,6 +19,34 @@ class Site extends CI_Controller
         } //$is_logged_in !== 'true' || !isset( $is_logged_in )
     }
 
+    public function getOrderingDone()
+    {
+        $orderby=$this->input->get("orderby");
+        $ids=$this->input->get("ids");
+        $ids=explode(",",$ids);
+        $tablename=$this->input->get("tablename");
+        $where=$this->input->get("where");
+        if($where == "" || $where=="undefined")
+        {
+            $where=1;
+        }
+        $access = array(
+            '1',
+        );
+        $this->checkAccess($access);
+        $i=1;
+        foreach($ids as $id)
+        {
+            //echo "UPDATE `$tablename` SET `$orderby` = '$i' WHERE `id` = `$id` AND $where";
+            $this->db->query("UPDATE `$tablename` SET `$orderby` = '$i' WHERE `id` = '$id' AND $where");
+            $i++;
+            //echo "/n";
+        }
+        $data["message"]=true;
+        $this->load->view("json",$data);
+        
+    }
+    
     public function checkAccess($access)
     {
         $accesslevel = $this->session->userdata('accesslevel');
@@ -194,6 +222,7 @@ class Site extends CI_Controller
         $data['page'] = 'viewUsers';
         $data['base_url'] = site_url('site/viewUsersJson');
         $data['deleteselected'] = site_url('site/deleteSelectedUsers');
+          echo "delete mul   tiple";
         $data['activemenu'] = 'users';
         $data['title'] = 'View Users';
         $this->load->view('template', $data);
@@ -202,7 +231,10 @@ class Site extends CI_Controller
     public function deleteSelectedUsers()
     {
         $selected = $this->input->get('selected');
-        echo $selected;
+        $this->user_model->multipleDelete($selected);
+        $data['alertsuccess'] = 'User Deleted Successfully';
+        $data['redirect'] = 'site/viewUsers';
+        $this->load->view('redirect', $data);
     }
 
     public function viewUsersJson()
@@ -699,6 +731,21 @@ class Site extends CI_Controller
         $data['activemenu'] = 'navigations';
         $this->load->view('template', $data);
     }
+    
+    public function viewFrontmenu2()
+    {
+        $access = array(
+            '1',
+        );
+        $this->checkAccess($access);
+        $data['page'] = 'viewFrontmenu2';
+        $data['base_url'] = site_url('site/viewFrontmenuJson');
+        $data["tablename"] = 'webapp_frontmenu';
+        $data["orderfield"] = 'order';
+        
+        $data['activemenu'] = 'navigations';
+        $this->load->view('template', $data);
+    }
 
     public function viewFrontmenuJson()
     {
@@ -739,7 +786,7 @@ class Site extends CI_Controller
         $orderorder = $this->input->get_post('orderorder');
         $maxrow = $this->input->get_post('maxrow');
         if ($maxrow == '') {
-            $maxrow = 20;
+            $maxrow = 10;
         }
 
         if ($orderby == '') {
