@@ -388,3 +388,7 @@ textarea.materialize-textarea:focus:not([readonly]) {
 .toast {
     text-transform: capitalize;
 }
+[type="checkbox"]+label {
+    padding-left: 15px;
+    margin-bottom: -9px;
+}

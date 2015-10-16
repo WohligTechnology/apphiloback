@@ -1,6 +1,7 @@
+var globalfilldata={};
 function generatejquery(url) {
   //console.log("ABCD");
-
+  var isselectalldone = false;
   $(document).ready(function() {
 
     var search = $(".chintantablesearch").val();
@@ -11,7 +12,11 @@ function generatejquery(url) {
     $(".drawchintantable .maxrow").val(maxrow);
 
 
+
+
+
     function fillchintandata() {
+      $(".drawchintantable tr th input[id='chintanselectall']").prop("checked",false);
       $(".drawchintantable .loader").show();
       $.getJSON(url, {
         search: search,
@@ -23,12 +28,17 @@ function generatejquery(url) {
 
         $(".drawchintantable table tbody").html("");
         var result = data.queryresult;
+
+        var appendval = $(".drawchintantable thead tr th[data-selectall='true']").attr('data-field');
+
         for (var i = 0; i < result.length; i++) {
-          $(".drawchintantable table tbody").append(drawtable(result[i]));
+          var appendtext = drawtable(result[i]);
+          var whatappend = result[i][appendval];
+          if (appendval) {
+            appendtext = appendtext.replace("<tr>", "<tr><td><input type='checkbox' data-id='" + whatappend + "' name='chintansideselect' id='chintansideselect" + whatappend + "' /><label for='chintansideselect" + whatappend + "'></label></td>");
+          }
+          $(".drawchintantable table tbody").append(appendtext);
         }
-
-
-
 
         $(".chintantablepagination ul.pagination").html("");
         if (data.pageno != 1) {
@@ -76,6 +86,17 @@ function generatejquery(url) {
           var element = data.elements[i];
           $(".drawchintantable thead tr th[data-field='" + element.alias + "']").html(element.header);
 
+          var isselectall = $(".drawchintantable thead tr th[data-field='" + element.alias + "']").attr("data-selectall");
+          if (isselectall == "true" && !isselectalldone) {
+            var tablehtml = $(".drawchintantable thead tr").html();
+            tablehtml = "<th><input type='checkbox' name='chintanselectall' id='chintanselectall' /><label for='chintanselectall' onClick='chintanselectallcall();'></label></th>" + tablehtml;
+            $(".drawchintantable").append("<a href='#' onClick='chintandeleteselected()' class='red btn less-pad z-depth-0 waves-effect waves-light'><i class='material-icons'>delete</i></a>");
+            isselectalldone = true;
+            $(".drawchintantable thead tr").html(tablehtml);
+          }
+
+
+
           if (element.sort == "ASC") {
             $(".drawchintantable thead tr th[data-field='" + element.alias + "']").append("<button data-sort='DESC' class='btn chisorting text-blue waves-effect waves-blue z-depth-0'><i class='material-icons'>keyboard_arrow_down</i></button>");
           } else if (element.sort == "DESC") {
@@ -86,7 +107,6 @@ function generatejquery(url) {
         }
 
         $(".drawchintantable .chisorting").click(function() {
-          console.log("Clicked");
           orderby = $(this).parents("th").attr("data-field");
           orderorder = $(this).attr("data-sort");
           maxrow = $(".drawchintantable select.maxrow").val();
@@ -131,11 +151,8 @@ function generatejquery(url) {
       fillchintandata();
     });
 
-
-
+    globalfilldata=fillchintandata;
     fillchintandata();
-
-
 
 
 
@@ -217,4 +234,35 @@ function jsonsubmit(todiv, fromdiv) {
   }
   //console.log(tojson);
   $(todiv).val(JSON.stringify(tojson));
+}
+
+
+
+function chintanselectallcall() {
+  var isselectall = !$(".drawchintantable tr th input[id='chintanselectall']").prop("checked");
+  if (isselectall) {
+    $(".drawchintantable tr td input[name='chintansideselect']").prop("checked", true);
+  } else {
+    $(".drawchintantable tr td input[name='chintansideselect']").prop("checked", false);
+  }
+}
+
+function chintandeleteselected() {
+  var confirmval = confirm("Are you sure you want to delete the selected items");
+  var deleteselectedurl = $(".drawchintantable tr th[data-delete-selected]").attr("data-delete-selected");
+  if (confirmval) {
+    var deletedarr = [];
+    var $selecteddelete = $(".drawchintantable tr td input[name='chintansideselect']");
+    for (var i = 0; i < $selecteddelete.length; i++) {
+      if ($selecteddelete.eq(i).prop("checked")) {
+        deletedarr.push($selecteddelete.eq(i).attr("data-id"));
+      }
+    }
+    deletedarr = deletedarr.join();
+    $.get(deleteselectedurl, {
+      selected: deletedarr
+    }).success(function() {
+      globalfilldata();
+    });
+  }
 }

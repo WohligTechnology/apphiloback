@@ -6,7 +6,7 @@
                 <table class="highlight responsive-table">
                     <thead>
                         <tr>
-                            <th data-field="id">Id</th>
+                            <th data-field="id" data-selectall='true' data-delete-selected="<?php echo $deleteselected;?>">Id</th>
                             <th data-field="name">Name</th>
                             <th data-field="email">Item Name</th>
                             <th data-field="logintype">Login Type</th>

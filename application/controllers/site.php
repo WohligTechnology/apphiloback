@@ -193,9 +193,16 @@ class Site extends CI_Controller
         $this->checkAccess($access);
         $data['page'] = 'viewUsers';
         $data['base_url'] = site_url('site/viewUsersJson');
+        $data['deleteselected'] = site_url('site/deleteSelectedUsers');
         $data['activemenu'] = 'users';
         $data['title'] = 'View Users';
         $this->load->view('template', $data);
+    }
+
+    public function deleteSelectedUsers()
+    {
+        $selected = $this->input->get('selected');
+        echo $selected;
     }
 
     public function viewUsersJson()
