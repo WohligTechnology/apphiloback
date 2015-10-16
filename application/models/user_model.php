@@ -1085,7 +1085,7 @@ class User_Model extends CI_Model
         }
     }
     public function multipleDelete($selected){
-    $query = $this->db->query('DELETE FROM `user` WHERE `id` IN ('.$this->db->escape($selected).')');
+    $query = $this->db->query("DELETE FROM `user` WHERE `id` IN ('$selected')");
         return $query;
     }
 }
