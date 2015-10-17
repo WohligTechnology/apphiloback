@@ -9,22 +9,6 @@
                     <div class="col m6 l6">
                         <a href="#" class="saveOrdering blue darken-4 btn waves-effect waves-light" style="float: right;margin-top: 15px;"><i class='material-icons left'>save</i> Save</a>
                     </div>
-                     <table class="highlight responsive-table">
-                    <thead>
-                        <tr>
-                            <th data-field="id" data-selectall='true' data-delete-selected="<?php echo $deleteselected;?>">Id</th>
-                            <th data-field="order">Order</th>
-                            <th data-field="status">Status</th>
-                            <th data-field="name">Name</th>
-                            <th data-field="timestamp">Timestamp</th>
-                            <th data-field="action">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-
-                    </tbody>
-                </table>
-
                 </div>
                 <div class="row">
                     <ul class="getordering collection"></ul>
