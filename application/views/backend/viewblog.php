@@ -10,7 +10,6 @@
                             <th data-field="title">Title</th>
                             <th data-field="timestamp">Timestamp</th>
                             <th data-field="action">Action</th>
-
                         </tr>
                     </thead>
                     <tbody>

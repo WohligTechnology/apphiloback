@@ -25,6 +25,10 @@ class Chintantable
     }
     public function query($pageno = 1, $maxlength = 20, $orderby = '', $orderorder = '', $search = '', $elements, $from, $where = ' WHERE 1 ', $group = '', $having = '', $order = '', $baseurl = 'http://localhost/puneetdemo/index.php/site/index', $options = array())
     {
+        if($elements == "")
+        {
+            $elements=$this->onlyelementjson;
+        }
         /*         QUERY
                     1. SELECT
                     2. FROM
