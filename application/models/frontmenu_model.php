@@ -51,4 +51,8 @@ class FrontMenu_Model extends CI_Model
         $this->db->where('id', 18);
         $query = $this->db->update('linktype', $data);
     }
+      public function multipleDelete($selected) {
+        $query = $this->db->query("DELETE FROM `webapp_frontmenu` WHERE `id` IN ($selected)");
+        return $query;
+    }
 }

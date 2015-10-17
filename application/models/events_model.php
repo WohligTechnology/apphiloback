@@ -62,4 +62,10 @@ AND `status`=1')->result();
 
         return $query;
     }
+     public function multipleDelete($selected) {
+        $query = $this->db->query("DELETE FROM `webapp_eventvideo` WHERE `event` IN ($selected)");
+        $query = $this->db->query("DELETE FROM `webapp_eventimages` WHERE `event` IN ($selected)");
+        $query = $this->db->query("DELETE FROM `webapp_events` WHERE `id` IN ($selected)");
+        return $query;
+    }
 }

@@ -43,4 +43,9 @@ class VideoGallery_Model extends CI_Model
 
         return $query;
     }
+     public function multipleDelete($selected) {
+        $query = $this->db->query("DELETE FROM `webapp_videogallery` WHERE `id` IN ($selected)");
+        $query = $this->db->query("DELETE FROM `webapp_videogalleryvideo` WHERE `videogallery` IN ($selected)");
+        return $query;
+    }
 }

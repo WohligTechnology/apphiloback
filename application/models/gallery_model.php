@@ -55,4 +55,9 @@ return $query;
 
         return $query;
     }
+      public function multipleDelete($selected) {
+        $query = $this->db->query("DELETE FROM `webapp_gallery` WHERE `id` IN ($selected)");
+        $query = $this->db->query("DELETE FROM `webapp_galleryimage` WHERE `gallery` IN ($selected)");
+        return $query;
+    }
 }

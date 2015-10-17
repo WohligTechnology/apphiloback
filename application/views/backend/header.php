@@ -15,6 +15,7 @@
 	<script src="<?php echo base_url('assets').'/';?>js/jquery.fancybox.pack.js"></script>
 	<script src="<?php echo base_url('assets').'/';?>tinymce/tinymce.min.js"></script>
 	<script src="<?php echo base_url('assets').'/';?>js/formInit.js"></script>
+	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 	<!--Let browser know website is optimized for mobile-->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<script>
@@ -25,7 +26,7 @@
 <body>
 	<header>
 		<nav class="blue darken-4">
-			<?php   $menus = $this->menu_model->viewMenus(); 	  ?>
+			<?php   $menus = $this->Menu_Model->viewMenus(); 	  ?>
 				<ul id="slide-out" class="side-nav fixed">
 					<li class="sub-menu logo">
 						<a id="logo-container" href="<?php echo site_url(); ?>" class="align-center blue-text text-darken-4" style="font-size: 28px;">
@@ -43,12 +44,12 @@
 					}
 					else
 						$page2=$pieces[1];
-					$submenus = $this->menu_model->getSubMenus($row->id);
+					$submenus = $this->Menu_Model->getSubMenus($row->id);
 					?>
 						<li class="<?php if($page==$page2 || $activemenu == strtolower($row->name) || $page == strtolower($row->name)) { echo 'active'; } //echo $page2;
 					if(count($submenus > 0))
 					{
-						$pages =  $this->menu_model->getPages($row->id);
+						$pages =  $this->Menu_Model->getPages($row->id);
 						//echo $page2;
 						//print_r($pages);
 						echo ' sub-menu';

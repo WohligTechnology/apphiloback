@@ -69,4 +69,8 @@ class Slider_Model extends CI_Model
 
         return $query;
     }
+     public function multipleDelete($selected) {
+        $query = $this->db->query("DELETE FROM `slider` WHERE `id` IN ($selected)");
+        return $query;
+    }
 }

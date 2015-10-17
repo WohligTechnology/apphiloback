@@ -55,4 +55,8 @@ class Blog_Model extends CI_Model
 
         return $query;
     }
+         public function multipleDelete($selected) {
+        $query = $this->db->query("DELETE FROM `webapp_blog` WHERE `id` IN ($selected)");
+        return $query;
+    }
 }

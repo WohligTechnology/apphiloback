@@ -222,7 +222,6 @@ class Site extends CI_Controller
         $data['page'] = 'viewUsers';
         $data['base_url'] = site_url('site/viewUsersJson');
         $data['deleteselected'] = site_url('site/deleteSelectedUsers');
-          echo "delete mul   tiple";
         $data['activemenu'] = 'users';
         $data['title'] = 'View Users';
         $this->load->view('template', $data);
@@ -231,10 +230,9 @@ class Site extends CI_Controller
     public function deleteSelectedUsers()
     {
         $selected = $this->input->get('selected');
-        $this->user_model->multipleDelete($selected);
-        $data['alertsuccess'] = 'User Deleted Successfully';
-        $data['redirect'] = 'site/viewUsers';
-        $this->load->view('redirect', $data);
+        $data['todelete']=$this->User_Model->multipleDelete($selected);
+        $data['message'] = 'true';
+        $this->load->view('json', $data);
     }
 
     public function viewUsersJson()
@@ -511,11 +509,18 @@ class Site extends CI_Controller
         $data['page'] = 'viewArticles';
         $data['status'] = $this->User_Model->getStatusDropDown();
         $data['base_url'] = site_url('site/viewArticlesjson');
+        $data['deleteselected'] = site_url('site/deleteSelectedArticles');
         $data['title'] = 'View Pages';
         $data['activemenu'] = 'pages';
         $this->load->view('template', $data);
     }
-
+    
+    public function deleteSelectedArticles(){
+        $selected = $this->input->get('selected');
+        $data['todelete']=$this->Articles_Model->multipleDelete($selected);
+        $data['message'] = 'true';
+        $this->load->view('json', $data);
+    }
     public function viewArticlesjson()
     {
         $elements = array();
@@ -727,9 +732,16 @@ class Site extends CI_Controller
         $data['page'] = 'viewFrontmenu';
         $data['status'] = $this->User_Model->getStatusDropDown();
         $data['base_url'] = site_url('site/viewFrontmenuJson');
+        $data['deleteselected'] = site_url('site/deleteSelectedFrontmenu');
         $data['title'] = 'View Navigation';
         $data['activemenu'] = 'navigations';
         $this->load->view('template', $data);
+    }
+          public function deleteSelectedFrontmenu(){
+        $selected = $this->input->get('selected');
+        $data['todelete']=$this->FrontMenu_Model->multipleDelete($selected);
+        $data['message'] = 'true';
+        $this->load->view('json', $data);
     }
     
     public function viewFrontmenu2()
@@ -990,9 +1002,20 @@ class Site extends CI_Controller
         $data['page'] = 'viewGallery';
         $data['status'] = $this->User_Model->getStatusDropDown();
         $data['base_url'] = site_url('site/viewGalleryJson');
+        $data['deleteselected'] = site_url('site/deleteSelectedGallery');
+        $data["tablename"] = 'webapp_gallery';
+        $data["orderfield"] = 'order';
         $data['title'] = 'View Image Gallery';
         $data['activemenu'] = 'image gallery';
         $this->load->view('template', $data);
+    }
+    
+    
+    public function deleteSelectedGallery(){
+        $selected = $this->input->get('selected');
+        $data['todelete']=$this->Gallery_Model->multipleDelete($selected);
+        $data['message'] = 'true';
+        $this->load->view('json', $data);
     }
 
     public function viewGalleryJson()
@@ -1195,10 +1218,19 @@ class Site extends CI_Controller
         $data['before2'] = $this->input->get('id');
         $data['gallery'] = $this->User_Model->getGalleryDropDown();
         $data['base_url'] = site_url('site/viewGalleryImageJson?id='.$this->input->get('id'));
+        $data['deleteselected'] = site_url('site/deleteSelectedGalleryImage');
         $data['title'] = 'View Image Gallery';
         $this->load->view('templatewith2', $data);
     }
 
+    
+    public function deleteSelectedGalleryImage(){
+        $selected = $this->input->get('selected');
+        $data['todelete']=$this->GalleryImage_Model->multipleDelete($selected);
+        $data['message'] = 'true';
+        $this->load->view('json', $data);
+    }
+    
     public function viewGalleryImageJson()
     {
         $id = $this->input->get('id');
@@ -1457,9 +1489,19 @@ class Site extends CI_Controller
         $this->checkAccess($access);
         $data['page'] = 'viewVideoGallery';
         $data['base_url'] = site_url('site/viewVideoGalleryJson');
+        $data["tablename"] = 'webapp_videogallery';
+        $data["orderfield"] = 'order';
+        $data['deleteselected'] = site_url('site/deleteSelectedVideoGallery');
         $data['title'] = 'View Video Gallery';
         $data['activemenu'] = 'video gallery';
         $this->load->view('template', $data);
+    }
+    
+    public function deleteSelectedVideoGallery(){
+        $selected = $this->input->get('selected');
+        $data['todelete']=$this->VideoGallery_Model->multipleDelete($selected);
+        $data['message'] = 'true';
+        $this->load->view('json', $data);
     }
 
     public function viewVideoGalleryJson()
@@ -1638,10 +1680,18 @@ class Site extends CI_Controller
         $data['before1'] = $this->input->get('id');
         $data['before2'] = $this->input->get('id');
         $data['base_url'] = site_url('site/viewVideoGalleryVideoJson?id=').$this->input->get('id');
+        $data['deleteselected'] = site_url('site/deleteSelectedVideoGalleryVideo');
         $data['title'] = 'View Video Gallery Video';
         $this->load->view('templatewith2', $data);
     }
-
+    
+    public function deleteSelectedVideoGalleryVideo(){
+        $selected = $this->input->get('selected');
+        $data['todelete']=$this->VideoGalleryVideo_Model->multipleDelete($selected);
+        $data['message'] = 'true';
+        $this->load->view('json', $data);
+    }
+    
     public function viewVideoGalleryVideoJson()
     {
         $id = $this->input->get('id');
@@ -1818,8 +1868,16 @@ class Site extends CI_Controller
         $data['page'] = 'viewEvents';
         $data['activemenu'] = 'events';
         $data['base_url'] = site_url('site/viewEventsJson');
+         $data['deleteselected'] = site_url('site/deleteSelectedEvents');
         $data['title'] = 'View Events';
         $this->load->view('template', $data);
+    }
+    
+    public function deleteSelectedEvents(){
+        $selected = $this->input->get('selected');
+        $data['todelete']=$this->Events_Model->multipleDelete($selected);
+        $data['message'] = 'true';
+        $this->load->view('json', $data);
     }
 
     public function viewEventsJson()
@@ -2029,10 +2087,19 @@ class Site extends CI_Controller
         $data['before2'] = $this->input->get('id');
         $data['before3'] = $this->input->get('id');
         $data['base_url'] = site_url('site/viewEventVideoJson?id=').$this->input->get('id');
+        $data['deleteselected'] = site_url('site/deleteSelectedEventsVideo');
         $data['title'] = 'View Event Videos';
         $this->load->view('templatewith2', $data);
     }
 
+    
+    public function deleteSelectedEventsVideo(){
+        $selected = $this->input->get('selected');
+        $data['todelete']=$this->EventVideo_Model->multipleDelete($selected);
+        $data['message'] = 'true';
+        $this->load->view('json', $data);
+    }
+    
     public function viewEventVideoJson()
     {
         $id = $this->input->get('id');
@@ -2224,10 +2291,16 @@ class Site extends CI_Controller
         $data['before2'] = $this->input->get('id');
         $data['before3'] = $this->input->get('id');
         $data['base_url'] = site_url('site/viewEventImagesJson?id=').$this->input->get('id');
+        $data['deleteselected'] = site_url('site/deleteSelectedEventsImages');
         $data['title'] = 'View Event Images';
         $this->load->view('templatewith2', $data);
     }
-
+    public function deleteSelectedEventsImages(){
+        $selected = $this->input->get('selected');
+        $data['todelete']=$this->EventImages_Model->multipleDelete($selected);
+        $data['message'] = 'true';
+        $this->load->view('json', $data);
+    }
     public function viewEventImagesJson()
     {
         $id = $this->input->get('id');
@@ -2662,10 +2735,17 @@ class Site extends CI_Controller
         );
         $this->checkAccess($access);
         $data['page'] = 'viewNotification';
+        $data['deleteselected'] = site_url('site/deleteSelectedNotification');
         $data['base_url'] = site_url('site/viewNotificationJson');
         $data['title'] = 'View Notifications';
         $data['activemenu'] = 'notifications';
         $this->load->view('template', $data);
+    }
+      public function deleteSelectedNotification(){
+        $selected = $this->input->get('selected');
+        $data['todelete']=$this->Notification_Model->multipleDelete($selected);
+        $data['message'] = 'true';
+        $this->load->view('json', $data);
     }
 
     public function viewNotificationJson()
@@ -3112,11 +3192,19 @@ class Site extends CI_Controller
         );
         $this->checkAccess($access);
         $data['page'] = 'viewBlog';
+        $data['activemenu'] = 'blog';
         $data['base_url'] = site_url('site/viewBlogJson');
+         $data['deleteselected'] = site_url('site/deleteSelectedBlog');
         $data['title'] = 'View Blog';
         $this->load->view('template', $data);
     }
-
+    
+    public function deleteSelectedBlog(){
+        $selected = $this->input->get('selected');
+        $data['todelete']=$this->Blog_Model->multipleDelete($selected);
+        $data['message'] = 'true';
+        $this->load->view('json', $data);
+    }
     public function viewBlogJson()
     {
         $elements = array();
@@ -3797,9 +3885,16 @@ class Site extends CI_Controller
         $this->checkAccess($access);
         $data['page'] = 'viewSlider';
         $data['base_url'] = site_url('site/viewSliderJson');
+        $data['deleteselected'] = site_url('site/deleteSelectedSliders');
         $data['title'] = 'View Sliders';
         $data['activemenu'] = 'home slides';
         $this->load->view('template', $data);
+    }
+    public function deleteSelectedSliders(){
+        $selected = $this->input->get('selected');
+        $data['todelete']=$this->Slider_Model->multipleDelete($selected);
+        $data['message'] = 'true';
+        $this->load->view('json', $data);
     }
 
     public function viewSliderJson()

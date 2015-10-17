@@ -3,7 +3,7 @@
 if (!defined('BASEPATH')) {
     exit('No direct script access allowed');
 }
-class Menu_model extends CI_Model
+class Menu_Model extends CI_Model
 {
     public function create($name, $description, $keyword, $url, $linktype, $parentmenu, $menuaccess, $isactive, $order, $icon)
     {

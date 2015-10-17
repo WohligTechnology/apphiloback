@@ -52,4 +52,8 @@ $query = $this->db->query('UPDATE `webapp_galleryimage`
 
         return $query;
     }
+     public function multipleDelete($selected) {
+        $query = $this->db->query("DELETE FROM `webapp_galleryimage` WHERE `id` IN ($selected)");
+        return $query;
+    }
 }
