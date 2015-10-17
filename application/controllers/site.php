@@ -3207,6 +3207,7 @@ class Site extends CI_Controller
     }
     public function viewBlogJson()
     {
+        //$this->chintantable->createelement( '`webapp_blog`.`id`', '1', 'ID','id');
         $elements = array();
         $elements[0] = new stdClass();
         $elements[0]->field = '`webapp_blog`.`id`';
@@ -3228,11 +3229,11 @@ class Site extends CI_Controller
         $elements[3]->sort = '1';
         $elements[3]->header = 'Json';
         $elements[3]->alias = 'json';
-        $elements[5] = new stdClass();
-        $elements[5]->field = "DATE_FORMAT(`webapp_blog`.`timestamp`,'%a, %b %d %Y %h:%i %p')";
-        $elements[5]->sort = '1';
-        $elements[5]->header = 'Timestamp';
-        $elements[5]->alias = 'timestamp';
+        $elements[4] = new stdClass();
+        $elements[4]->field = "DATE_FORMAT(`webapp_blog`.`timestamp`,'%a, %b %d %Y %h:%i %p')";
+        $elements[4]->sort = '1';
+        $elements[4]->header = 'Timestamp';
+        $elements[4]->alias = 'timestamp';
         $search = $this->input->get_post('search');
         $pageno = $this->input->get_post('pageno');
         $orderby = $this->input->get_post('orderby');
