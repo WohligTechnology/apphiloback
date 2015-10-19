@@ -33,24 +33,24 @@ $config =
                 'enabled' => false,
             ),
             //google
-'Google' => array(
-                'enabled' => true,
-                'keys' => array('id' => '774201901098-4l1iufsi9tegjdm5oj8s0g1519mm1kq5.apps.googleusercontent.com', 'secret' => 'Q_-ui4gdqWJvFH1UknGE0CyO'),
-            ),//google
+'Google' => array (
+				'enabled' => true,
+				'keys'    => array ( 'id' => '774201901098-4l1iufsi9tegjdm5oj8s0g1519mm1kq5.apps.googleusercontent.com', 'secret' => 'Q_-ui4gdqWJvFH1UknGE0CyO' )
+			),//google
 
             //facebook
-'Facebook' => array(
-                'enabled' => true,
-                'keys' => array('id' => '1072550936103157', 'secret' => '335344270f5085d99a13873cd90da8c7'),
-                'scope' => 'email, user_about_me, user_birthday, user_hometown, user_website,publish_actions',
-            ),
+'Facebook' => array (
+				'enabled' => true,
+				'keys'    => array ( 'id' => '1072550936103157', 'secret' => '335344270f5085d99a13873cd90da8c7' ),
+                'scope'   => 'email, user_about_me, user_birthday, user_hometown, user_website,publish_actions'
+			),
 //facebook
 
             //twitter
-'Twitter' => array(
-                'enabled' => true,
-                'keys' => array('key' => '33vWD8ADW7VcZhxLkaVsUeqwI', 'secret' => 'lr8dK6i23oSKbhDojbb9zHIOOyW55yq8mfbTCsf3HkDPrsbqaL'),
-            ),
+'Twitter' => array (
+				'enabled' => true,
+				'keys'    => array ( 'key' => '33vWD8ADW7VcZhxLkaVsUeqwI', 'secret' =>'lr8dK6i23oSKbhDojbb9zHIOOyW55yq8mfbTCsf3HkDPrsbqaL' )
+			),
 //twitter
 
             // windows live
@@ -74,10 +74,10 @@ $config =
                 'keys' => array('id' => '', 'secret' => ''),
             ),
             //instagram
-'Instagram' => array(
-                'enabled' => true,
-                'keys' => array('id' => 'c25d17a3a84c42a3829571daa762b00f', 'secret' => '945be1ecd6fd40be912e2fb5eeb9f9c4'),
-            ),
+'Instagram' => array (
+				'enabled' => true,
+				'keys'    => array ( 'id' => 'c25d17a3a84c42a3829571daa762b00f', 'secret' => '945be1ecd6fd40be912e2fb5eeb9f9c4' )
+			),
 //instagram
         ),
 

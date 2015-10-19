@@ -42,21 +42,32 @@ class RestApi_model extends CI_Model
     public function signUp($username, $email, $password, $dob, $os, $token)
     {
         $password = md5($password);
-        $query = $this->db->query('INSERT INTO `user`( `name`, `email`, `password`,`eventnotification`,`photonotification`,`videonotification`,`blognotification`,`dob`,`logintype`,`accesslevel`) VALUES ('.$this->db->escape($username).','.$this->db->escape($email).','.$this->db->escape($password).",'false','false','false','false',".$this->db->escape($dob).",'Email','3')");
-        $id = $this->db->insert_id();
+         $query1=$this->db->query("SELECT `id` FROM `user` WHERE `email`='$email'");
+				$num=$query1->num_rows();
+        if($num == 0)
+        {
+            $query = $this->db->query('INSERT INTO `user`( `name`, `email`, `password`,`eventnotification`,`photonotification`,`videonotification`,`blognotification`,`dob`,`logintype`,`accesslevel`) VALUES ('.$this->db->escape($username).','.$this->db->escape($email).','.$this->db->escape($password).",'false','false','false','false',".$this->db->escape($dob).",'Email','3')");
+            $id = $this->db->insert_id();
 
-        $query4 = $this->db->query('SELECT * FROM `notificationtoken` WHERE `os`=('.$this->db->escape($os).') AND `token`=('.$this->db->escape($token).')');
-        if ($query4->num_rows == 0) {
-            $query3 = $this->db->query('INSERT INTO `notificationtoken`(`os`,`token`,`user`) VALUES ('.$this->db->escape($os).','.$this->db->escape($token).','.$this->db->escape($id).')');
-            $tokenid = $this->db->insert_id();
-        } else {
+            $query4 = $this->db->query('SELECT * FROM `notificationtoken` WHERE `os`=('.$this->db->escape($os).') AND `token`=('.$this->db->escape($token).')');
+            if ($query4->num_rows == 0) {
+                $query3 = $this->db->query('INSERT INTO `notificationtoken`(`os`,`token`,`user`) VALUES ('.$this->db->escape($os).','.$this->db->escape($token).','.$this->db->escape($id).')');
+                $tokenid = $this->db->insert_id();
+            } else {
+            }
+
+            $newdata = $this->db->query('SELECT `id`, `name`, `email`, `accesslevel`, `timestamp`, `status`, `image`, `username`, `socialid`, `logintype`, `json`, `dob`, `street`, `address`, `city`, `state`, `pincode`, `facebook`, `twitter`, `google`, `country`, `instagram`, `contact`, `eventnotification`, `photonotification`, `videonotification`, `blognotification`, `coverimage` FROM `user` WHERE `id`=('.$this->db->escape($id).')')->row();
+            if (!$query) {
+                return false;
+            } else {
+                return $newdata;
+            }
         }
+          else
+        {
+              $newdata=false;
+              return $newdata;
 
-        $newdata = $this->db->query('SELECT `id`, `name`, `email`, `accesslevel`, `timestamp`, `status`, `image`, `username`, `socialid`, `logintype`, `json`, `dob`, `street`, `address`, `city`, `state`, `pincode`, `facebook`, `twitter`, `google`, `country`, `instagram`, `contact`, `eventnotification`, `photonotification`, `videonotification`, `blognotification`, `coverimage` FROM `user` WHERE `id`=('.$this->db->escape($id).')')->row();
-        if (!$query) {
-            return false;
-        } else {
-            return $newdata;
         }
     }
     public function signIn($username, $password)
