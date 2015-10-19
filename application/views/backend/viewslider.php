@@ -11,13 +11,6 @@
                     </div>
                       <table class="highlight responsive-table">
                     <thead>
-                        <tr>
-                          <th data-field="id" data-selectall='true' data-delete-selected="<?php echo $deleteselected;?>">Id</th>
-                          <th data-field="status">Status</th>
-                        <th data-field="order">Order</th>
-                        <th data-field="image">Image</th>
-                        <th data-field="action">Action</th>
-                        </tr>
                     </thead>
                     <tbody>
 
@@ -30,15 +23,11 @@
             </div>
         </div>
     </div>
-     <div class="createbuttonplacement"><a class="btn-floating btn-large waves-effect waves-light blue darken-4 tooltipped" href="<?php echo site_url("site/createGallery"); ?>"data-position="top" data-delay="50" data-tooltip="Create"><i class="material-icons">add</i></a>
+     <div class="createbuttonplacement"><a class="btn-floating btn-large waves-effect waves-light blue darken-4 tooltipped" href="<?php echo site_url("site/createSlider"); ?>"data-position="top" data-delay="50" data-tooltip="Create"><i class="material-icons">add</i></a>
     </div>
 </div>
 <script>
 function drawtable(resultrow) {
-//     var image = "<a href='<?php echo base_url('uploads').'/'; ?>" + resultrow.image + "'  class='img-center'><img src='<?php echo base_url('uploads').'/'; ?>" + resultrow.image + "'></a>";
-//        if (resultrow.image == "") {
-//            image = "No Receipt Available";
-//        }
      return "<li class='collection-item avatar' data-id='"+resultrow.id+"'><img src='<?php echo base_url('uploads').'/'; ?>"+ resultrow.image +"' class='circle'><span class='title'>" + resultrow.image + "</span><p>" + resultrow.status + "</p><a class='secondary-content blue-text text-darken-4' href='<?php echo site_url('site/editSlider?id=');?>" + resultrow.id + "'><i class='material-icons'>mode_edit</i></a><a class='secondary-content red-text' style='top:50px;' onclick=\"return confirm('Are you sure you want to delete?');\" href='<?php echo site_url('site/deleteSlider?id='); ?>" + resultrow.id + "'><i class='material-icons propericon'>delete</i></a></li>";
     
     }

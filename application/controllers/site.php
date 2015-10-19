@@ -1050,7 +1050,12 @@ class Site extends CI_Controller
         $elements[5]->field = "DATE_FORMAT(`webapp_gallery`.`timestamp`,'%a, %b %d %Y %h:%i %p')";
         $elements[5]->sort = '1';
         $elements[5]->header = 'Timestamp';
-        $elements[5]->alias = 'timestamp';
+        $elements[5]->alias = 'timestamp';  
+        $elements[6] = new stdClass();
+        $elements[6]->field = "`webapp_gallery`.`image`";
+        $elements[6]->sort = '1';
+        $elements[6]->header = 'image';
+        $elements[6]->alias = 'image';
         $search = $this->input->get_post('search');
         $pageno = $this->input->get_post('pageno');
         $orderby = $this->input->get_post('orderby');
@@ -1092,6 +1097,7 @@ class Site extends CI_Controller
         $this->form_validation->set_rules('status', 'Status', 'trim');
         $this->form_validation->set_rules('name', 'Name', 'trim');
         $this->form_validation->set_rules('json', 'Json', 'trim');
+        $this->form_validation->set_rules('image', 'Image', 'required');
         if ($this->form_validation->run() == false) {
             $data['alerterror'] = validation_errors();
             $data['status'] = $this->User_Model->getStatusDropDown();
@@ -1213,6 +1219,8 @@ class Site extends CI_Controller
         $data['page'] = 'viewgalleryimage';
         $data['activemenu'] = 'image gallery';
         $data['page2'] = 'block/galleryblock';
+         $data["tablename"] = 'webapp_galleryimage';
+        $data["orderfield"] = 'order';
         $data['status'] = $this->User_Model->getStatusDropDown();
         $data['before1'] = $this->input->get('id');
         $data['before2'] = $this->input->get('id');
@@ -1311,6 +1319,7 @@ class Site extends CI_Controller
         $this->form_validation->set_rules('status', 'Status', 'trim');
         $data['gallery'] = $this->User_Model->getGalleryDropDown();
         $this->form_validation->set_rules('image', 'Image', 'trim');
+         $this->form_validation->set_rules('image', 'Image', 'required');
         if ($this->form_validation->run() == false) {
             $data['alerterror'] = validation_errors();
             $data['page'] = 'creategalleryimage';
@@ -1677,6 +1686,8 @@ class Site extends CI_Controller
         $data['page'] = 'viewvideogalleryvideo';
         $data['activemenu'] = 'video gallery';
         $data['page2'] = 'block/videoblock';
+          $data["tablename"] = 'webapp_videogalleryvideo';
+        $data["orderfield"] = 'order';
         $data['before1'] = $this->input->get('id');
         $data['before2'] = $this->input->get('id');
         $data['base_url'] = site_url('site/viewVideoGalleryVideoJson?id=').$this->input->get('id');
@@ -3887,6 +3898,8 @@ class Site extends CI_Controller
         $data['page'] = 'viewslider';
         $data['base_url'] = site_url('site/viewSliderJson');
         $data['deleteselected'] = site_url('site/deleteSelectedSliders');
+        $data["tablename"] = 'slider';
+        $data["orderfield"] = 'order';
         $data['title'] = 'View Sliders';
         $data['activemenu'] = 'home slides';
         $this->load->view('template', $data);
@@ -3966,7 +3979,7 @@ class Site extends CI_Controller
         $this->form_validation->set_rules('blog', 'ID', 'trim');
         $this->form_validation->set_rules('status', 'Status', 'trim');
         $this->form_validation->set_rules('order', 'Order', 'trim');
-        $this->form_validation->set_rules('image', 'Image', 'trim');
+        $this->form_validation->set_rules('image', 'Document', 'required');
         if ($this->form_validation->run() == false) {
             $data['alerterror'] = validation_errors();
             $data['page'] = 'createslider';
@@ -4342,10 +4355,6 @@ class Site extends CI_Controller
         $content = $this->input->get_post('content');
         $description = $this->input->get_post('description');
         $newtext = json_decode($text);
-        echo " abdskdj   ";
-        echo $text;
-        echo "  danfh  ";
-        print_r($text);
         // update hauth
         
         $urlforcontrollertest = $_SERVER['SCRIPT_FILENAME'];

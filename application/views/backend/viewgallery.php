@@ -11,13 +11,7 @@
                     </div>
                       <table class="highlight responsive-table">
                     <thead>
-                        <tr>
-                          <th data-field="id" data-selectall='true' data-delete-selected="<?php echo $deleteselected;?>">Id</th>
-                          <th data-field="name">Name</th>
-                          <th data-field="status">Status</th>
-                          <th data-field="timestamp">Timestamp</th>
-                          <th data-field="action">Action</th>
-                        </tr>
+                      
                     </thead>
                     <tbody>
 
@@ -35,7 +29,7 @@
 </div>
 <script>
 function drawtable(resultrow) {
-     return "<li class='collection-item avatar' data-id='"+resultrow.id+"'><i class='material-icons circle red'>play_arrow</i><span class='title'>" + resultrow.name + "</span><p>" + resultrow.status + "<br>" + resultrow.timestamp + "</p><a class='secondary-content blue-text text-darken-4' href='<?php echo site_url('site/editGallery?id=');?>" + resultrow.id + "'><i class='material-icons'>mode_edit</i></a><a class='secondary-content red-text' style='top:50px;' onclick=\"return confirm('Are you sure you want to delete?');\" href='<?php echo site_url('site/deleteGallery?id='); ?>" + resultrow.id + "'><i class='material-icons propericon'>delete</i></a></li>";
+     return "<li class='collection-item avatar' data-id='"+resultrow.id+"'><img src='<?php echo base_url('uploads').'/'; ?>"+ resultrow.image +"' class='circle'><span class='title'>" + resultrow.name + "</span><p>" + resultrow.status + "<br>" + resultrow.timestamp + "</p><a class='secondary-content blue-text text-darken-4' href='<?php echo site_url('site/editGallery?id=');?>" + resultrow.id + "'><i class='material-icons'>mode_edit</i></a><a class='secondary-content red-text' style='top:50px;' onclick=\"return confirm('Are you sure you want to delete?');\" href='<?php echo site_url('site/deleteGallery?id='); ?>" + resultrow.id + "'><i class='material-icons propericon'>delete</i></a></li>";
     }
     
     getDragDropOrdering("<?php echo $base_url;?>" , "<?php echo $orderfield; ?>","<?php echo $tablename;?>" ,"<?php echo $where;?>");

@@ -4,7 +4,7 @@ if (!defined('BASEPATH')) {
     exit('No direct script access allowed');
 }
 class Notification_Model extends CI_Model
-{
+{  
     public function create($linktype, $event, $video, $gallery, $article, $status, $blog, $link, $content, $image)
     {
         $query = $this->db->query('INSERT INTO `webapp_notification`(`status`, `event`, `video`, `link`, `image`,`linktype`,`blog`,`article`,`gallery`,`content`) VALUES ('.$this->db->escape($status).','.$this->db->escape($event).','.$this->db->escape($video).','.$this->db->escape($link).','.$this->db->escape($image).','.$this->db->escape($linktype).','.$this->db->escape($blog).','.$this->db->escape($article).','.$this->db->escape($gallery).','.$this->db->escape($content).')');
