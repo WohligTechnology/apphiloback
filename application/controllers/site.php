@@ -1097,7 +1097,6 @@ class Site extends CI_Controller
         $this->form_validation->set_rules('status', 'Status', 'trim');
         $this->form_validation->set_rules('name', 'Name', 'trim');
         $this->form_validation->set_rules('json', 'Json', 'trim');
-        $this->form_validation->set_rules('image', 'Image', 'required');
         if ($this->form_validation->run() == false) {
             $data['alerterror'] = validation_errors();
             $data['status'] = $this->User_Model->getStatusDropDown();
@@ -1117,15 +1116,21 @@ class Site extends CI_Controller
             if ($this->upload->do_upload($filename)) {
                 $uploaddata = $this->upload->data();
                 $image = $uploaddata['file_name'];
+                if ($this->Gallery_Model->create($order, $status, $name, $json, $image) == 0) {
+                $data['alerterror'] = 'New Image Gallery could not be created.';
+                } else {
+                    $data['alertsuccess'] = 'Image Gallery created Successfully.';
+                }
+                $data['redirect'] = 'site/viewGallery';
+                $this->load->view('redirect', $data);
+            }
+            else{
+                $data['alerterror'] = 'Image Upload is Mandatory!';
+                $data['redirect'] = 'site/createGallerySubmit';
+                $this->load->view('redirect', $data);
             }
 
-            if ($this->Gallery_Model->create($order, $status, $name, $json, $image) == 0) {
-                $data['alerterror'] = 'New Image Gallery could not be created.';
-            } else {
-                $data['alertsuccess'] = 'Image Gallery created Successfully.';
-            }
-            $data['redirect'] = 'site/viewGallery';
-            $this->load->view('redirect', $data);
+            
         }
     }
 
@@ -1319,7 +1324,6 @@ class Site extends CI_Controller
         $this->form_validation->set_rules('status', 'Status', 'trim');
         $data['gallery'] = $this->User_Model->getGalleryDropDown();
         $this->form_validation->set_rules('image', 'Image', 'trim');
-         $this->form_validation->set_rules('image', 'Image', 'required');
         if ($this->form_validation->run() == false) {
             $data['alerterror'] = validation_errors();
             $data['page'] = 'creategalleryimage';
@@ -1367,15 +1371,21 @@ class Site extends CI_Controller
 
                     // return false;
                 }
-            }
-
-            if ($this->GalleryImage_Model->create($gallery, $order, $status, $image, $alt) == 0) {
+                if ($this->GalleryImage_Model->create($gallery, $order, $status, $image, $alt) == 0) {
                 $data['alerterror'] = 'New Image Gallery Image could not be created.';
             } else {
                 $data['alertsuccess'] = 'Image Gallery Image created Successfully.';
             }
             $data['redirect'] = 'site/viewGalleryImage?id='.$gallery;
             $this->load->view('redirect2', $data);
+            }
+            else{
+            $data['alerterror'] = 'Image Upload is Mandatory.';
+            $data['redirect'] = 'site/createGalleryImage?id='.$gallery;
+            $this->load->view('redirect2', $data);
+            }
+
+            
         }
     }
 
@@ -3979,7 +3989,7 @@ class Site extends CI_Controller
         $this->form_validation->set_rules('blog', 'ID', 'trim');
         $this->form_validation->set_rules('status', 'Status', 'trim');
         $this->form_validation->set_rules('order', 'Order', 'trim');
-        $this->form_validation->set_rules('image', 'Document', 'required');
+    
         if ($this->form_validation->run() == false) {
             $data['alerterror'] = validation_errors();
             $data['page'] = 'createslider';
@@ -4001,15 +4011,24 @@ class Site extends CI_Controller
             if ($this->upload->do_upload($filename)) {
                 $uploaddata = $this->upload->data();
                 $image = $uploaddata['file_name'];
+                
+                
+                if ($this->Slider_Model->create($alt, $status, $order, $image) == 0) {
+                    $data['alerterror'] = 'New slider could not be created.';
+                } else {
+                    $data['alertsuccess'] = 'slider created Successfully.';
+                }
+                $data['redirect'] = 'site/viewSlider';
+                $this->load->view('redirect', $data);
+            }
+            else
+            {
+                $data['alerterror'] ='Image Upload is Mandatory!';
+                 $data['redirect'] = 'site/createSliderSubmit';
+                $this->load->view('redirect', $data);
             }
 
-            if ($this->Slider_Model->create($alt, $status, $order, $image) == 0) {
-                $data['alerterror'] = 'New slider could not be created.';
-            } else {
-                $data['alertsuccess'] = 'slider created Successfully.';
-            }
-            $data['redirect'] = 'site/viewSlider';
-            $this->load->view('redirect', $data);
+            
         }
     }
 
