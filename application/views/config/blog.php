@@ -48,6 +48,38 @@
             </div>
 
         </div>
+        
+        <div class="logintype wordpressSelf">
+            <div class="row checkbox">
+                <div class="col s6">
+                    <label for="filled-in-box" class="form-checkbox">Self Hosted Wordpress</label>
+                </div>
+                <div class="col s6">
+                    <div class="switch">
+                        <label>
+                            Off
+                            <input type="checkbox" name="wordpressself">
+                            <span class="lever"></span> On
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <!--
+            <div class="checkbox">
+                <input type="checkbox" class="filled-in class1" name="wordpress" id="filled-in-box" />
+                <label for="filled-in-box">Wordpress</label>
+            </div>
+-->
+            <div class="sublogintype" style=" min-height: 110px;">
+                <div class="input-field col s12">
+                    <label for="appid">Self Hosted Wordpress URL</label>
+                    <input type="text" id="appid" name="appid">
+                </div>
+            </div>
+
+        </div>
+      
+        
         <div class="logintype twitterLogin">
             <div class="row checkbox">
                 <div class="col s6">
@@ -197,6 +229,7 @@
                     if($inputs.eq(i).prop("checked"))
                     {
                        $inputs.eq(i).prop("checked",false);
+                        checkboxclick($inputs.eq(i));
                     }
                 }   
                 $(checkbox).prop("checked",true)
