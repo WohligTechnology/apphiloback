@@ -115,7 +115,7 @@ class Json extends CI_Controller
         $maxrow = $this->input->get_post('maxrow');
         if ($maxrow == '') {
         }
-        if ($orderby == '`webapp_gallery`.`order`') {
+        if ($orderby == '') {
             $orderby = 'order';
             $orderorder = 'ASC';
         }
@@ -170,7 +170,7 @@ class Json extends CI_Controller
         if ($maxrow == '') {
         }
         if ($orderby == '') {
-            $orderby = 'id';
+            $orderby = 'order';
             $orderorder = 'ASC';
         }
         $data['message'] = $this->chintantable->query($pageno, $maxrow, $orderby, $orderorder, $search, $elements, 'FROM `webapp_galleryimage`', "WHERE `webapp_galleryimage`.`status`=1 AND `webapp_galleryimage`.`gallery`='$id'");
@@ -228,8 +228,8 @@ class Json extends CI_Controller
         $maxrow = $this->input->get_post('maxrow');
         if ($maxrow == '') {
         }
-        if ($orderby == '`webapp_videogallery`.`order`') {
-            $orderby = 'id';
+        if ($orderby == '') {
+            $orderby = 'order';
             $orderorder = 'ASC';
         }
         $data['message'] = $this->chintantable->query($pageno, $maxrow, $orderby, $orderorder, $search, $elements, 'FROM `webapp_videogallery` LEFT OUTER JOIN `webapp_videogalleryvideo` ON `webapp_videogalleryvideo`.`videogallery`=`webapp_videogallery`.`id`', 'WHERE `webapp_videogallery`.`status`=1', 'GROUP BY `webapp_videogallery`.`id`');
@@ -319,7 +319,7 @@ class Json extends CI_Controller
         if ($maxrow == '') {
         }
         if ($orderby == '') {
-            $orderby = 'ordervideo';
+            $orderby = 'order';
             $orderorder = 'ASC';
         }
         $data['message'] = $this->chintantable->query($pageno, $maxrow, $orderby, $orderorder, $search, $elements, 'FROM `webapp_videogalleryvideo` LEFT OUTER JOIN `webapp_videogallery` ON `webapp_videogallery`.`id`=`webapp_videogalleryvideo`.`videogallery`', "WHERE `webapp_videogallery`.`status`=1 AND `webapp_videogalleryvideo`.`status`=1 AND `webapp_videogalleryvideo`.`videogallery`='$id'");

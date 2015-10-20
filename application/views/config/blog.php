@@ -137,9 +137,6 @@
             }
         }
     });
-
-
-
     var $logint = {};
     $(document).ready(function () {
 
@@ -153,7 +150,6 @@
             console.log(alldata[i]);
 
             $inputs.eq(0).val(alldata[i].appid);
-            $inputs.eq(1).val(alldata[i].secret);
 
             if (alldata[i].value == true) {
                 $checkbox.prop("checked", true);

@@ -27,8 +27,8 @@ class Events_Model extends CI_Model
     {
         $query = $this->db->query('SELECT `id`, `status`, `title`, date(`timestamp`) as `timestamp`, `content`,`image`,`venue` FROM `webapp_events` WHERE `status`=1 AND `id`=('.$this->db->escape($id).')')->row();
         $query->eventimages = $this->db->query('SELECT `id`, `event`, `status`, `order`, `image` FROM `webapp_eventimages` WHERE `event`=('.$this->db->escape($id).')
-AND `status`=1')->result();
-        $query->eventvideos = $this->db->query('SELECT `id`, `event`, `videogallery`, `status`, `order`,`url` FROM `webapp_eventvideo` WHERE `status`=1 AND `event`=('.$this->db->escape($id).')')->result();
+AND `status`=1 ORDER BY `order` ASC')->result();
+        $query->eventvideos = $this->db->query('SELECT `id`, `event`, `videogallery`, `status`, `order`,`url` FROM `webapp_eventvideo` WHERE `status`=1 AND `event`=('.$this->db->escape($id).') ORDER BY `order` ASC')->result();
 
         return $query;
     }

@@ -1117,10 +1117,11 @@ class Site extends CI_Controller
                 $uploaddata = $this->upload->data();
                 $image = $uploaddata['file_name'];
                 if ($this->Gallery_Model->create($order, $status, $name, $json, $image) == 0) {
-                $data['alerterror'] = 'New Image Gallery could not be created.';
+                    $data['alerterror'] = 'New Image Gallery could not be created.';
                 } else {
                     $data['alertsuccess'] = 'Image Gallery created Successfully.';
                 }
+               
                 $data['redirect'] = 'site/viewGallery';
                 $this->load->view('redirect', $data);
             }
@@ -1995,15 +1996,21 @@ class Site extends CI_Controller
             if ($this->upload->do_upload($filename)) {
                 $uploaddata = $this->upload->data();
                 $image = $uploaddata['file_name'];
-            }
-
-            if ($this->Events_Model->create($status, $title, $timestamp, $content, $venue, $image, $startdate, $starttime) == 0) {
+                if ($this->Events_Model->create($status, $title, $timestamp, $content, $venue, $image, $startdate, $starttime) == 0) {
                 $data['alerterror'] = 'New Event could not be created.';
             } else {
                 $data['alertsuccess'] = 'Event created Successfully.';
             }
             $data['redirect'] = 'site/viewEvents';
             $this->load->view('redirect', $data);
+            }
+            else{
+            $data['alerterror'] = 'Image upload is mandatory!';
+            $data['redirect'] = 'site/createEventsSubmit';
+            $this->load->view('redirect', $data);
+            }
+
+            
         }
     }
 
@@ -2104,6 +2111,8 @@ class Site extends CI_Controller
         $data['page'] = 'vieweventvideo';
         $data['activemenu'] = 'events';
         $data['page2'] = 'block/eventblock';
+        $data["tablename"] = 'webapp_eventvideo';
+        $data["orderfield"] = 'order';
         $data['before1'] = $this->input->get('id');
         $data['before2'] = $this->input->get('id');
         $data['before3'] = $this->input->get('id');
@@ -2308,6 +2317,8 @@ class Site extends CI_Controller
         $data['page'] = 'vieweventimages';
         $data['activemenu'] = 'events';
         $data['page2'] = 'block/eventblock';
+        $data["tablename"] = 'webapp_eventimages';
+        $data["orderfield"] = 'order';
         $data['before1'] = $this->input->get('id');
         $data['before2'] = $this->input->get('id');
         $data['before3'] = $this->input->get('id');
@@ -2445,18 +2456,23 @@ class Site extends CI_Controller
                     // dest_image
 
                     $image = $this->image_lib->dest_image;
-
+                     if ($this->EventImages_Model->create($event, $status, $order, $image) == 0) {
+                    $data['alerterror'] = 'New Event Images could not be created.';
+                    } else {
+                        $data['alertsuccess'] = 'Event Image created Successfully.';
+                    }
+                    $data['redirect'] = 'site/viewEventImages?id='.$event;
+                    $this->load->view('redirect2', $data);
                     // return false;
                 }
             }
-
-            if ($this->EventImages_Model->create($event, $status, $order, $image) == 0) {
-                $data['alerterror'] = 'New Event Images could not be created.';
-            } else {
-                $data['alertsuccess'] = 'Event Image created Successfully.';
+            else{
+                $data['alerterror'] = 'Images Field is Mandatory!';
+                $data['redirect'] = 'site/createEventImagesSubmit?id='.$event;
+                $this->load->view('redirect2', $data);
             }
-            $data['redirect'] = 'site/viewEventImages?id='.$event;
-            $this->load->view('redirect2', $data);
+
+           
         }
     }
 
