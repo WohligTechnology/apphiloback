@@ -139,42 +139,27 @@
     });
     var $logint = {};
     $(document).ready(function () {
+        $(".sublogintype").hide();
 
         var $logintype = $(".logintype");
-        console.log(JSON.parse($("#textid").val()).length);
-        var alldata = JSON.parse($("#textid").val());
-        for (var i = 0; i < JSON.parse($("#textid").val()).length; i++) {
+        var alldata = getStringtoJson($("#textid").val());
+        for (var i = 0; i < alldata.length; i++) {
             //                var obj = {};
             var $checkbox = $logintype.eq(i).children(".checkbox").find("input[type=checkbox]");
             var $inputs = $logintype.eq(i).children(".sublogintype").find("input");
             console.log(alldata[i]);
-
+            
             $inputs.eq(0).val(alldata[i].appid);
 
             if (alldata[i].value == true) {
                 $checkbox.prop("checked", true);
+                checkboxclick($checkbox);
             }
         }
 
 
-        $(".logintype input[type=checkbox]").click(function () {
-            var shouldshow = $(this).prop("checked");
-
-            var $sublogin = $(this).parents(".logintype").children(".sublogintype");
-            if (shouldshow) {
-                var $inputs=$(".logintype input[type=checkbox]");
-                for(var i=0;i<$inputs.length;i++)
-                {
-                    if($inputs.eq(i).prop("checked"))
-                    {
-                        $inputs.eq(i).click();
-                    }
-                }   
-                $(this).click();
-                $sublogin.show(200);
-            } else {
-                $sublogin.hide(200);
-            }
+        $(".logintype input[type=checkbox]").click(function( ) {
+            checkboxclick(this);
         });
 
         $("button.loginsubmit").click(function () {
@@ -198,11 +183,29 @@
             $("form.loginform").submit();
         });
 
-        function triggercheckbox() {
-            $(".logintype input[type=checkbox]").trigger("click");
-            $(".logintype input[type=checkbox]").trigger("click");
-        }
-        triggercheckbox();
+        
+        function checkboxclick (checkbox) {
+            var shouldshow = $(checkbox).prop("checked");
 
+            var $sublogin = $(checkbox).parents(".logintype").children(".sublogintype");
+            if (shouldshow) {
+                
+                var $inputs=$(".logintype input[type=checkbox]");
+                for(var i=0;i<$inputs.length;i++)
+                {
+                    console.log($inputs.eq(i)==$(checkbox));
+                    if($inputs.eq(i).prop("checked"))
+                    {
+                       $inputs.eq(i).prop("checked",false);
+                    }
+                }   
+                $(checkbox).prop("checked",true)
+                
+                $sublogin.show(200);
+            } else {
+                $sublogin.hide(200);
+            }
+        }
+      
     });
 </script>

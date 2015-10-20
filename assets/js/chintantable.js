@@ -307,3 +307,14 @@ function getDragDropOrdering(base_url, orderfield, tablename, where) {
 
     });
 }
+
+
+function getStringtoJson(str) {
+    var myjson={};
+    try {
+        myjson=JSON.parse(str);
+    } catch (e) {
+        console.log(e);
+    }
+    return myjson;
+}

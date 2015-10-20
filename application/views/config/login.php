@@ -204,13 +204,12 @@
 		});
 		var $logint = {};
 		$(document).ready(function () {
-
+            $(".sublogintype").hide();
 
 
 			var $logintype = $(".logintype");
-			console.log(JSON.parse($("#textid").val()).length);
-			var alldata = JSON.parse($("#textid").val());
-			for (var i = 0; i < JSON.parse($("#textid").val()).length; i++) {
+			var alldata = getStringtoJson($("#textid").val());
+			for (var i = 0; i < alldata.length; i++) {
 				var $checkbox = $logintype.eq(i).find(".checkbox").find("input[type=checkbox]");
 				var $inputs = $logintype.eq(i).find(".sublogintype").find("input");
 
@@ -219,21 +218,14 @@
 
 				if (alldata[i].value == true) {
 					$checkbox.prop("checked", true);
+                    checkboxclick($checkbox);
 				}
 
 			}
 
-			$(".logintype input[type=checkbox]").click(function () {
-				var shouldshow = $(this).prop("checked");
-				//                $demo=$(this);
-				//                console.log(shouldshow);
-				var $sublogin = $(this).parents(".logintype").find(".sublogintype");
-				if (shouldshow) {
-					$sublogin.show(200);
-				} else {
-					$sublogin.hide(200);
-				}
-			});
+			$(".logintype input[type=checkbox]").click(function() {
+                checkboxclick(this);
+            });
 
 			$("button.loginsubmit").click(function () {
 				var sendjson = [];
@@ -255,13 +247,18 @@
 				$(".logindata").val(JSON.stringify(sendjson));
 				$("form.loginform").submit();
 			});
-
-
-			function triggercheckbox() {
-				$(".logintype input[type=checkbox]").trigger("click");
-				$(".logintype input[type=checkbox]").trigger("click");
-			}
-			triggercheckbox();
-
+            
+            function checkboxclick (checkbox) {
+				var shouldshow = $(checkbox).prop("checked");
+				var $sublogin = $(checkbox).parents(".logintype").find(".sublogintype");
+				if (shouldshow) {
+					$sublogin.show(200);
+				} else {
+					$sublogin.hide(200);
+				}
+			} 
+            
+            
+            
 		});
 	</script>

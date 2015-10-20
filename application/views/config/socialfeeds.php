@@ -91,7 +91,7 @@
 
 
             var inidata=$(".logindata").val();
-            inidata=JSON.parse(inidata);
+            inidata=getStringtoJson(inidata);
 
             for(var i=0;i<inidata.length;i++)
             {
