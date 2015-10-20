@@ -40,7 +40,7 @@ class Menu extends CI_Controller
     {
         $access = array('1');
         $this->checkAccess($access);
-        $data['accesslevel'] = $this->User_Model->getaccesslevels();
+        $data['accesslevel'] = $this->user_model->getaccesslevels();
         $data['parentmenu'] = $this->menu_model->getMenu();
         $data[ 'page' ] = 'createMenu';
         $data[ 'title' ] = 'Create menu';
@@ -60,7 +60,7 @@ class Menu extends CI_Controller
         $this->form_validation->set_rules('isactive', 'Active', 'trim');
         if ($this->form_validation->run() == false) {
             $data['alerterror'] = validation_errors();
-            $data['accesslevel'] = $this->User_Model->getaccesslevels();
+            $data['accesslevel'] = $this->user_model->getaccesslevels();
             $data['parentmenu'] = $this->menu_model->getMenu();
             $data['page'] = 'createMenu';
             $data['title'] = 'Create New menu';
@@ -104,7 +104,7 @@ class Menu extends CI_Controller
     {
         $access = array('1');
         $this->checkAccess($access);
-        $data['accesslevel'] = $this->User_Model->getaccesslevels();
+        $data['accesslevel'] = $this->user_model->getaccesslevels();
         $data['parentmenu'] = $this->menu_model->getMenu();
         $data['before'] = $this->menu_model->beforeedit($this->input->get('id'));
         $data['page'] = 'editMenu';
@@ -125,7 +125,7 @@ class Menu extends CI_Controller
         $this->form_validation->set_rules('isactive', 'Active', 'trim');
         if ($this->form_validation->run() == false) {
             $data['alerterror'] = validation_errors();
-            $data['accesslevel'] = $this->User_Model->getaccesslevels();
+            $data['accesslevel'] = $this->user_model->getaccesslevels();
             $data['parentmenu'] = $this->menu_model->getMenu();
             $data['before'] = $this->menu_model->beforeedit($this->input->post('id'));
             $data['page'] = 'editMenu';

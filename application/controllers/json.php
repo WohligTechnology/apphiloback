@@ -61,7 +61,7 @@ class Json extends CI_Controller
     public function getSingleArticles()
     {
         $id = $this->input->get_post('id');
-        $data['message'] = $this->Articles_Model->getSingleArticles($id);
+        $data['message'] = $this->articles_model->getSingleArticles($id);
         $this->load->view('json', $data);
     }
     public function getAllFrontmenu()
@@ -125,7 +125,7 @@ class Json extends CI_Controller
     public function getSingleGallery()
     {
         $id = $this->input->get_post('id');
-        $data['message'] = $this->Gallery_Model->getSingleGallery($id);
+        $data['message'] = $this->gallery_model->getSingleGallery($id);
         $this->load->view('json', $data);
     }
     public function getAllGalleryImage()
@@ -238,7 +238,7 @@ class Json extends CI_Controller
     public function getSingleVideoGallery()
     {
         $id = $this->input->get_post('id');
-        $data['message'] = $this->VideoGallery_Model->getSingleVideoGallery($id);
+        $data['message'] = $this->videogallery_model->getSingleVideoGallery($id);
         $this->load->view('json', $data);
     }
     public function getAllVideoGalleryVideo()
@@ -403,7 +403,7 @@ class Json extends CI_Controller
         if (empty($data)) {
             $data['message'] = 0;
         } else {
-            $data['message'] = $this->Events_Model->getSingleEvents($id);
+            $data['message'] = $this->events_model->getSingleEvents($id);
         }
         $this->load->view('json', $data);
     }
@@ -580,7 +580,7 @@ class Json extends CI_Controller
     public function getSingleNotification()
     {
         $id = $this->input->get_post('id');
-        $data['message'] = $this->Notification_Model->getSingleNotification($id);
+        $data['message'] = $this->notification_model->getSingleNotification($id);
         $this->load->view('json', $data);
     }
     public function getAllNotificationUser()
@@ -637,7 +637,7 @@ class Json extends CI_Controller
     public function getSingleNotificationUser()
     {
         $id = $this->input->get_post('id');
-        $data['message'] = $this->NotificationUser_Model->getSingleNotificationUser($id);
+        $data['message'] = $this->notificationuser_model->getSingleNotificationUser($id);
         $this->load->view('json', $data);
     }
     public function getAllBlog()
@@ -694,13 +694,13 @@ class Json extends CI_Controller
         if (empty($data)) {
             $data['message'] = 0;
         } else {
-            $data['message'] = $this->Blog_Model->getSingleBlog($id);
+            $data['message'] = $this->blog_model->getSingleBlog($id);
         }
         $this->load->view('json', $data);
     }
     public function authenticate()
     {
-        $data['message'] = $this->User_Model->authenticate();
+        $data['message'] = $this->user_model->authenticate();
         $this->load->view('json', $data);
     }
     public function getAllSliders()
@@ -834,10 +834,10 @@ class Json extends CI_Controller
     public function forgotPassword()
     {
         $email = $this->input->get_post('email');
-        $userid = $this->User_Model->getIdByEmail($email);
+        $userid = $this->user_model->getIdByEmail($email);
         $this->load->helper('string');
         $randompassword = random_string('alnum', 8);
-        $data['message'] = $this->User_Model->forgotPasswordSubmit($randompassword, $userid);
+        $data['message'] = $this->user_model->forgotPasswordSubmit($randompassword, $userid);
         if ($userid == '') {
             $data['message'] = 'Not A Valid Email.';
             $this->load->view('json', $data);

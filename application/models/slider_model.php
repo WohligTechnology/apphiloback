@@ -3,7 +3,7 @@
 if (!defined('BASEPATH')) {
     exit('No direct script access allowed');
 }
-class Slider_Model extends CI_Model
+class slider_model extends CI_Model
 {
     public function create($alt, $status, $order, $image)
     {

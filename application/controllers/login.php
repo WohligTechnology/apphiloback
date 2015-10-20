@@ -18,10 +18,10 @@ class Login extends CI_Controller
     }
     public function validate()
     {
-        $this->load->model('User_Model');
+        $this->load->model('user_model');
         $username = $this->input->post('username');
         $password = $this->input->post('password');
-        $validate = $this->User_Model->validate($username, $password);
+        $validate = $this->user_model->validate($username, $password);
         if ($validate) {
             redirect(base_url().'index.php/site', 'refresh');
         } //$validate

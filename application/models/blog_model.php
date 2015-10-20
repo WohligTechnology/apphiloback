@@ -3,7 +3,7 @@
 if (!defined('BASEPATH')) {
     exit('No direct script access allowed');
 }
-class Blog_Model extends CI_Model
+class blog_model extends CI_Model
 {
     public function create($title, $json, $content, $url, $image)
     {

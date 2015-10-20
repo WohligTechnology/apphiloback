@@ -3,7 +3,7 @@
 if (!defined('BASEPATH')) {
     exit('No direct script access allowed');
 }
-class Notification_Model extends CI_Model
+class notification_model extends CI_Model
 {  
     public function create($linktype, $event, $video, $gallery, $article, $status, $blog, $link, $content, $image)
     {

@@ -3,7 +3,7 @@
 if (!defined('BASEPATH')) {
     exit('No direct script access allowed');
 }
-class Events_Model extends CI_Model
+class events_model extends CI_Model
 {
     public function create($status, $title, $timestamp, $content, $venue, $image, $startdate, $starttime)
     {

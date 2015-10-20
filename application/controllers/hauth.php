@@ -29,7 +29,7 @@ class HAuth extends CI_Controller
                     log_message('debug', 'controller.HAuth.login: user authenticated.');
 
                     $user_profile = $service->getUserProfile();
-                    $socialLogin = $this->User_Model->socialLogin($user_profile, $provider, $os, $token);
+                    $socialLogin = $this->user_model->socialLogin($user_profile, $provider, $os, $token);
 
 //                    redirect($this->input->get_post("returnurl"));
 

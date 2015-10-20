@@ -3,7 +3,7 @@
 if (!defined('BASEPATH')) {
     exit('No direct script access allowed');
 }
-class GalleryImage_Model extends CI_Model
+class galleryimage_model extends CI_Model
 {
     public function create($gallery, $order, $status, $image, $alt)
     {

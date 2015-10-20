@@ -3,7 +3,7 @@
 if (!defined('BASEPATH')) {
     exit('No direct script access allowed');
 }
-class Config_Model extends CI_Model
+class config_model extends CI_Model
 {
     public function create($title, $content, $text, $type)
     {

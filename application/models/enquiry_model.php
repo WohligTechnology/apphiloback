@@ -3,7 +3,7 @@
 if (!defined('BASEPATH')) {
     exit('No direct script access allowed');
 }
-class Enquiry_Model extends CI_Model
+class enquiry_model extends CI_Model
 {
     public function create($user, $name, $email, $title, $timestamp, $content)
     {

@@ -3,7 +3,7 @@
 if (!defined('BASEPATH')) {
     exit('No direct script access allowed');
 }
-class VideoGalleryVideo_Model extends CI_Model
+class videogalleryvideo_model extends CI_Model
 {
     public function create($order, $status, $videogallery, $url, $alt)
     {

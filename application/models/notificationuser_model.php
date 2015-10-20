@@ -3,7 +3,7 @@
 if (!defined('BASEPATH')) {
     exit('No direct script access allowed');
 }
-class NotificationUser_Model extends CI_Model
+class notificationuser_model extends CI_Model
 {
     public function create($notification, $user, $timestamp, $timestamp_receive)
     {
