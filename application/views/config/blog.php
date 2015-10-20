@@ -34,21 +34,13 @@
                     </div>
                 </div>
             </div>
-            <!--
-            <div class="checkbox">
-                <input type="checkbox" class="filled-in class1" name="wordpress" id="filled-in-box" />
-                <label for="filled-in-box">Wordpress</label>
-            </div>
--->
             <div class="sublogintype" style=" min-height: 110px;">
                 <div class="input-field col s12">
                     <label for="appid">Wordpress User Name</label>
                     <input type="text" id="appid" name="appid">
                 </div>
             </div>
-
         </div>
-        
         <div class="logintype wordpressSelf">
             <div class="row checkbox">
                 <div class="col s6">
@@ -64,12 +56,6 @@
                     </div>
                 </div>
             </div>
-            <!--
-            <div class="checkbox">
-                <input type="checkbox" class="filled-in class1" name="wordpress" id="filled-in-box" />
-                <label for="filled-in-box">Wordpress</label>
-            </div>
--->
             <div class="sublogintype" style=" min-height: 110px;">
                 <div class="input-field col s12">
                     <label for="appid">Self Hosted Wordpress URL</label>
