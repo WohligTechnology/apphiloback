@@ -850,7 +850,7 @@ class Site extends CI_Controller
             $data['parent'] = $this->user_model->getFrontMenuDropDown();
             $data['event'] = $this->user_model->getEventsDropDown();
             $data['blog'] = $this->user_model->getBlogDropDown();
-            $data['video'] = $this->user_model->getVideoDropDown();
+            $data['video'] = $this->user_model->getVideoGalleryDropDown();
             $data['article'] = $this->user_model->getArticleDropDown();
             $data['gallery'] = $this->user_model->getGalleryDropDown();
             $data['icon'] = $this->user_model->getLinkDropDown();
@@ -904,7 +904,7 @@ class Site extends CI_Controller
         $data['linktype'] = $this->user_model->getLinkTypeDropDown();
         $data['event'] = $this->user_model->getEventsDropDown();
         $data['blog'] = $this->user_model->getBlogDropDown();
-        $data['video'] = $this->user_model->getVideoDropDown();
+        $data['video'] = $this->user_model->getVideoGalleryDropDown();
         $data['article'] = $this->user_model->getArticleDropDown();
         $data['gallery'] = $this->user_model->getGalleryDropDown();
         $data['icon'] = $this->user_model->getLinkDropDown();
@@ -932,7 +932,7 @@ class Site extends CI_Controller
             $data['parent'] = $this->user_model->getFrontMenuDropDown();
             $data['event'] = $this->user_model->getEventsDropDown();
             $data['blog'] = $this->user_model->getBlogDropDown();
-            $data['video'] = $this->user_model->getVideoDropDown();
+           $data['video'] = $this->user_model->getVideoGalleryDropDown();
             $data['article'] = $this->user_model->getArticleDropDown();
             $data['gallery'] = $this->user_model->getGalleryDropDown();
             $data['icon'] = $this->user_model->getLinkDropDown();
