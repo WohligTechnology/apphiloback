@@ -6,7 +6,7 @@ if (!defined('BASEPATH')) {
 class Chintantable
 {
     private $CI;
-    public $onlyelementjson = array();
+    public $onlyelementjson = [];
     public function __construct()
     {
         // Assign by reference with "&" so we don't create a copy
