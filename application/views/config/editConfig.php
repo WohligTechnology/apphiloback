@@ -13,7 +13,7 @@
 		</div>
       <div class="row">
              <div class="col s12 m6">
-                  <label>GCM</label>
+                  <label>Google Cloud Messaging(GCM) Server Key</label>
                   <textarea  name="content" placeholder="Enter text ..."><?php echo set_value( 'content',$before->content);?></textarea>
            
              </div>
@@ -22,7 +22,7 @@
            	<div class="row">
 			<div class="file-field input-field col m6 s12">
 				<div class="btn blue darken-4">
-					<span>APNS File Upload</span>
+					<span>.pem File Upload</span>
 					<input name="image" type="file" multiple>
 				</div>
 				<div class="file-path-wrapper">
@@ -33,7 +33,7 @@
 		</div>
 <div class="row" >
 			<div class="input-field col m6 s12">
-				<label for="description">APNS PassPhase</label>
+				<label for="description">Passphrase for .pem</label>
 				<input type="text" id="description" name="description" value="<?php echo set_value('description',$before->description);?>">
 			</div>
 		</div>
