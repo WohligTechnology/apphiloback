@@ -723,7 +723,7 @@ class Site extends CI_Controller
         $this->load->view('redirect', $data);
     }
 
-    public function viewFrontmenu()
+    public function viewFrontmenu1()
     {
         $access = array(
             '1',
@@ -744,7 +744,7 @@ class Site extends CI_Controller
         $this->load->view('json', $data);
     }
     
-    public function viewFrontmenu2()
+    public function viewFrontmenu()
     {
         $access = array(
             '1',
@@ -754,7 +754,8 @@ class Site extends CI_Controller
         $data['base_url'] = site_url('site/viewFrontmenuJson');
         $data["tablename"] = 'webapp_frontmenu';
         $data["orderfield"] = 'order';
-        
+        $data['title'] = 'View Navigation';
+        $data['status'] = $this->user_model->getStatusDropDown();
         $data['activemenu'] = 'navigations';
         $this->load->view('template', $data);
     }
