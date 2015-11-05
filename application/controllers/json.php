@@ -390,7 +390,7 @@ class Json extends CI_Controller
         if ($maxrow == '') {
         }
         if ($orderby == '') {
-            $orderby = 'id';
+            $orderby = 'startdate';
             $orderorder = 'DESC';
         }
         $data['message'] = $this->chintantable->query($pageno, $maxrow, $orderby, $orderorder, $search, $elements, 'FROM `webapp_events`', 'WHERE `webapp_events`.`status`=1');
